@@ -1,0 +1,39 @@
+% Created 2020-10-14 Wed 13:26
+% Intended LaTeX compiler: pdflatex
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{grffile}
+\usepackage{longtable}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{textcomp}
+\usepackage{amssymb}
+\usepackage{capt-of}
+\usepackage{hyperref}
+Hello
+\usetheme{default}
+\author{Lucas Gen}
+\date{\today}
+\title{}
+\hypersetup{
+ pdfauthor={Lucas Gen},
+ pdftitle={},
+ pdfkeywords={},
+ pdfsubject={},
+ pdfcreator={Emacs 27.1 (Org mode 9.3)}, 
+ pdflang={English}}
+\begin{document}
+
+\begin{frame}{Outline}
+\tableofcontents
+\end{frame}
+
+
+
+\begin{frame}[label={sec:org57ec6c2}]{Header1}
+\end{frame}
+\end{document}

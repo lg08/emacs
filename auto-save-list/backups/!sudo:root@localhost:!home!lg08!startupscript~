@@ -1,0 +1,11 @@
+#!/bin/bash
+
+#this script runs at startup
+
+rclone --vfs-cache-mode writes mount "OneDrive": ~/OneDrive
+emacs --daemon
+
+
+# opens emacs in the desktop to the right
+
+# xdotool set_desktop 0

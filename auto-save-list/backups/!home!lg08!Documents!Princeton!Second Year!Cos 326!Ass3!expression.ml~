@@ -1,0 +1,297 @@
+(* 
+
+Name:Lucas Gen
+Email:lgen
+Minutes Spent on the for-credit parts of Problem 2:
+500
+(You aren't in any way graded on the number of minutes spent; 
+ we are just trying to calibrate for future versions of the class)
+
+Comments/Problems/Thoughts on this part of the assignment:
+
+ *)
+
+open Ast 
+open ExpressionLibrary 
+
+(* TIPS FOR PROBLEM 2:
+ * 1. Read the writeup.
+ * 2. Use the type definitions in the ast.ml as a reference. But don't worry 
+ *    about expressionLibrary.ml
+ * 3. Test!  (Use "assert" where appropriate.)
+ *)
+
+
+(*>* Problem 2.1 *>*)
+
+(* evaluate : evaluates an expression for a particular value of x. 
+ *  Example : evaluate (parse "x*x + 3") 2.0 = 7.0 *)
+let rec evaluate (e:expression) (x:float) : float =
+  match e with
+  | Num f -> f
+  | Var -> x
+  | Binop (binop, expression1, expression2) ->
+     match binop with
+     | Add -> (evaluate expression1 x) +. (evaluate expression2 x)
+     | Sub -> (evaluate expression1 x) -. (evaluate expression2 x)
+     | Mul -> (evaluate expression1 x) *. (evaluate expression2 x)
+
+
+
+
+(*>* Problem 2.2 *>*)
+
+(* See writeup for instructions.  *)
+(* this function just returns the derivative of an expressionas an expression*)
+let rec derivative (e:expression) : expression =
+  match e with
+  | Var -> Num 1.0
+  | Num f -> Num 0.0
+  | Binop (binop, expression1, expression2) ->
+     match binop with
+     | Add -> Binop (Add, (derivative expression1),  (derivative expression2))
+     | Mul -> Binop (Add, (Binop
+                             (Mul, (derivative expression1), (expression2))),
+                     Binop (Mul, (expression1), (derivative expression2)))
+     | Sub -> Binop (Sub, (derivative expression1), (derivative expression2))
+
+
+
+(* A helpful function for testing. See the writeup. *)
+let checkexp strs xval=
+  print_string ("Checking expression: " ^ strs^"\n");
+  let parsed = parse strs in (
+      print_string "Result of evaluation: ";
+      print_float  (evaluate parsed xval);
+      print_endline " ";
+      print_string "Result of derivative: ";
+      print_endline " ";
+      print_string (to_string (derivative parsed));
+      print_endline " ")
+
+
+(*>* Problem 2.3 *>*)
+
+(* See writeup for instructions. *)
+(* 
+this function just finds an approximate solution to the given
+function if it's set equal to zero
+ *)
+let rec find_zero (e:expression) (g:float) (epsilon:float) (lim:int)
+        : float option =
+  if lim == 0 then
+    None
+  else
+    if (abs_float (evaluate e g)) < epsilon then
+      Some g
+    else
+      let new_guess (guess: float) (expression: expression) : float =
+        guess -. ((evaluate expression guess) /.
+                    (evaluate (derivative expression) guess))
+      in
+      find_zero e (new_guess g e) epsilon (lim - 1)
+
+
+
+
+(*>* Problem 2.4 *>*)
+
+(* See writeup for instructions. *)
+let rec find_zero_exact (e:expression) : expression option =
+  (* 
+this function returns a pair of the total coefficients of x
+and the total constants
+   *)
+  let rec get_all_nums (exp:expression) (constant: float) (coefficient: float)
+            (multiplier: float) : float * float =
+    match exp with
+    | Num f -> ((coefficient), (constant +. f))
+    | Var -> ((coefficient +. 1.0), constant)
+    | Binop (binop, expression1, expression2) ->
+       match expression1, expression2 with
+       | Num f, Num g ->
+          (* add the sum/difference/product to the list *)
+          (match binop with
+           | Add -> ((multiplier *. coefficient),
+                     (constant +. (multiplier *. (g +. f))))
+           | Sub -> ((multiplier *. coefficient),
+                     (constant +. (multiplier *. (g -. f))))
+           | Mul -> ((multiplier *. coefficient),
+                     (constant +. (multiplier *. (g *. f)))))
+       | Binop (x, y, z), Num g ->
+          (* records the constant and solves for the binop *)
+          (match binop with
+           | Add -> get_all_nums expression1 ((multiplier *. g) +. constant)
+                      coefficient multiplier
+           | Sub -> get_all_nums expression1
+                      ((0.0 -. (multiplier *. g))
+                       +. constant) coefficient multiplier
+           | Mul -> get_all_nums expression1 constant
+                      coefficient (g *. multiplier))
+       | Num f, Binop (x, y, z) ->
+          (* revords the constant and solves for the binop *)
+          (match binop with
+           | Add -> get_all_nums expression2 ((multiplier *. f) +. constant)
+                      coefficient multiplier
+           | Sub -> get_all_nums expression2 ((multiplier *. f) +. constant)
+                      coefficient (multiplier *. -1.0)
+           | Mul -> get_all_nums expression2 constant coefficient
+                      (f *. multiplier))
+       | Num f, Var ->
+          (* records the constant and/or coefficient *)
+          (match binop with
+           | Add ->
+              if coefficient = 0.0 then
+                ((multiplier *. 1.0), (constant +. (multiplier *. f)))
+              else
+                ((multiplier *. coefficient), (constant +. (multiplier *. f)))
+           | Sub ->
+              if coefficient = 0.0 then
+                ((multiplier *. (-1.0 *. 1.0)), (constant +.
+                                                   (multiplier *. f)))
+              else
+                ((multiplier *. (-1.0 *. coefficient)),
+                 (constant +. (multiplier *. f)))
+           | Mul ->
+              if coefficient = 0.0 then
+                ((multiplier *. (1.0 *. f)), constant)
+              else
+                ((multiplier *. (coefficient *. f)), constant))
+       | Var, Num g ->
+          (* records the constant and/or coefficient *)
+          (match binop with
+           | Add ->
+              if coefficient = 0.0 then
+                ((multiplier *. 1.0), (constant +. (multiplier *. g)))
+              else
+                ((multiplier *. coefficient), (constant +. (multiplier *. g)))
+           |Sub ->
+             if coefficient = 0.0 then
+               ((multiplier *. 1.0), (constant -. (multiplier *. g)))
+             else
+               ((multiplier *. coefficient), (constant -. (multiplier *. g)))
+           | Mul ->
+              if coefficient = 0.0 then
+                ((multiplier *. (1.0 *. g)), constant)
+              else
+                ((multiplier *. (coefficient *. g)), constant))
+       | Var, Var -> (coefficient, constant)
+       | Binop (x, y, z), Var ->
+          (* records the variable and solves for the binop *)
+          (match binop with
+           | Add ->
+              if coefficient = 0.0 then
+                get_all_nums expression1 constant 1.0 multiplier
+              else
+                get_all_nums expression1 constant (coefficient +. 1.0)
+                  multiplier
+           | Sub ->
+              if coefficient = 0.0 then
+                get_all_nums expression1 constant (-1.0) multiplier
+              else
+                get_all_nums expression1 constant (coefficient -. 1.0)
+                  multiplier
+           | Mul -> 
+              get_all_nums expression1 constant (coefficient) multiplier)
+
+       | Var, Binop (x, y, z) ->
+          (* records the variable and solves for the binop *)
+          (match binop with
+           | Add ->
+              if coefficient = 0.0 then
+                get_all_nums expression2 constant 1.0 multiplier
+              else
+                get_all_nums expression2 constant (coefficient +. 1.0)
+                  multiplier
+           | Sub ->
+              if coefficient = 0.0 then
+                get_all_nums expression2 constant (-1.0) multiplier
+              else
+                get_all_nums expression2 constant (coefficient -. 1.0)
+                  multiplier
+           | Mul -> 
+              get_all_nums expression2 constant (coefficient) multiplier)
+       | Binop (a, b, c), Binop (x, y, z) ->
+          (* solves for both binops and deals with their solutions accordingly*)
+          (match binop with
+           | Add ->
+              let new_pair = get_all_nums expression1 constant coefficient
+                               multiplier in
+              (match new_pair with
+               | (new_coefficient, new_constant) ->
+                  let second_pair = get_all_nums expression2 new_constant
+                                      coefficient multiplier in
+                  match second_pair with
+                  | (second_coefficient, second_constant) ->
+                     ((second_coefficient +. new_coefficient), second_constant))
+           | Sub ->
+              let new_pair = get_all_nums expression1 constant coefficient
+                               multiplier in
+              (match new_pair with
+               | (new_coefficient, new_constant) ->
+                  let second_pair = get_all_nums expression2 new_constant
+                                      coefficient (multiplier *. -1.0) in
+                  match second_pair with
+                  | (second_coefficient, second_constant) ->
+                     ((new_coefficient +. second_coefficient), second_constant))
+           | Mul ->
+              let new_pair = get_all_nums expression1 constant coefficient
+                               multiplier in
+              (match new_pair with
+               | (new_coefficient, new_constant) ->
+                  get_all_nums expression2 constant coefficient
+                    (multiplier *. new_constant)))
+  in
+  let formula = get_all_nums e 0.0 0.0 1.0 in
+  match formula with
+  | (coefficient, constant) ->
+     let answer = ((0.0 -. constant) /. coefficient) in
+     if evaluate e answer = 0.0 then
+       Some (Num answer)
+     else None
+
+
+
+          (* For extra fun (but not extra credit),
+  implement find_zero_exact2 that solves degree-two expressions.
+  This is almost as easy as solving degree-one expressions,
+  if you use the quadratic formula.  Almost as easy, assuming
+  you've already done the work to normalize polynomials into an
+  easily recognizable form. *)
+
+
+          (* For extra fun (but not extra credit), 
+
+ Consider this function,
+  let evaluate2 (e: expression) : float -> float =
+     let e' = derivative e in
+     fun x -> (evaluate e x, evaluate e' x)
+
+ Such a function can be used in Newton's method.
+ But if the expression e is large, e' can be exponentially larger,
+ because of the chain rule for multiplication, so
+ evaluate e' x  can be slow.
+
+ One solution is called "forward mode automatic differentiation",
+ which has become an important algorithm (since 2017 or so) in
+ deep learning.  You can read about it in section 3.1 of
+ this paper:  http://jmlr.org/papers/volume18/17-468/17-468.pdf
+ "Automatic Differentiation in Machine Learning: A Survey"
+ (and pay particular attention to Table 2 for a worked example).
+
+ So, the challenge (which is actually not very difficult) is,
+ write this function
+
+  let evaluate2 (e: expression) (x: float) : float * float = ...
+
+ that computes both e(x) and the first derivative e'(x),
+ without ever calculating (derivative e).  Like evaluate,
+ do it by case analysis on the syntax-tree of e. *)
+
+          (* Q.  Why do it, if no extra credit?
+   A.  Because (and only if) it's fun.  
+   A.  Because the main reason you're working so hard at Princeton
+       is to learn things, not just to get grades.
+   A.  Any well educated computer scientist graduating after 2019
+     ought to know something about deep learning . . .
+           *)

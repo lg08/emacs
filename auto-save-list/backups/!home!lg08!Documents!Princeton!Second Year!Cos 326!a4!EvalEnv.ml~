@@ -1,0 +1,213 @@
+(*************************************************)
+(* An environment-based evaluator for Dynamic ML *)
+(*************************************************)
+
+open Syntax
+open Printing
+open EvalUtil
+
+(* Defines the subset of expressions considered values
+   Notice that closures are values but the rec form is not -- this is
+   slightly different from the way values are defined in the 
+   substitution-based interpreter.  Rhetorical question:  Why is that?
+   Notice also that Cons(v1,v2) is a value (if v1 and v2 are both values).
+ *) 
+let rec is_value (e:exp) : bool = 
+  match e with
+    Constant _ -> true  
+  | Pair (e1, e2) -> is_value e1 && is_value e2
+  | EmptyList -> true
+  | Cons (e1, e2) -> is_value e1 && is_value e2
+  | Closure _ -> true
+  | _ -> false
+
+(* wrapper function for the actual prune function that just 
+   makes the current env accessible *)
+let prune_with_env (env: env) (new_env: env) (expression: exp)
+      (futureenv: env): env =
+  
+  (* pruning function: creates a new env with only the free variables *)
+  let rec prune_env (new_env: env) (expression: exp) (futureenv: env): env =
+    
+    (* helper function: just adds the variables in the list to a new 
+       future environment with completely arbitrary values since we 
+       throw it away after pruning*)
+    let rec makefutureenv (variables: variable list)
+              (currentfutureenv: env) : env =
+      (match variables with
+      | [] -> currentfutureenv
+      | hd :: tl -> makefutureenv tl (update_env currentfutureenv hd
+                                        (Constant (Int 1))))
+    in
+    
+    (* just takes in a list of expressions and prunes them all *)
+    let rec evalallexps (explist: exp list) (resultenv: env)
+              (updatedfutureenv: env) : env =
+      (match explist with
+      | [] -> resultenv
+      | hd :: tl -> evalallexps tl (prune_env resultenv hd updatedfutureenv)
+                      updatedfutureenv)
+    in
+    match expression with
+    | Var var ->
+       (* check if it's in the future env first *)
+       (match (lookup_env futureenv var) with
+        | Some e ->
+           (* if it is, just return the env, the var is bound *)
+           new_env
+        | None ->
+        (* if it's not, then check if it's in the current env *)
+           (match (lookup_env env var) with
+            (* if it is, then add it to the current env *)
+            | Some value -> update_env new_env var value
+            (* if it's not, throw an exception *)
+            | None -> raise (UnboundVariable var)))
+    (* two more base cases *)
+    | Constant constant -> new_env
+    | EmptyList -> new_env
+    (* for all the matches below, basically, just send all variables
+        to makefutureenv and send all expressions to evalallexps *)
+    | Op (e1, op, e2) ->
+       evalallexps [e1;e2] new_env futureenv
+    | If (conditional, consequent, alternative) ->
+       evalallexps [conditional;consequent;alternative] new_env futureenv
+    | Let (v1, e1, e2) ->
+       let newfuture = makefutureenv [v1] futureenv in
+       evalallexps [e2] new_env newfuture
+    | Pair (e1, e2) | Cons (e1, e2) | App (e1, e2) ->
+       evalallexps [e1;e2] new_env futureenv
+    | Fst e1 | Snd e1 ->
+       evalallexps [e1] new_env futureenv
+    | Match (e1, e2, v1, v2, e3) ->
+       let newfuture = makefutureenv [v1;v2] futureenv in
+       evalallexps [e1;e2;e3] new_env newfuture
+    | Rec (v1, v2, e3) ->
+       let newfuture = makefutureenv [v1;v2] futureenv in
+       evalallexps [e3] new_env newfuture
+    | Closure (arbitraryenv, v1, v2, e1) ->
+       let newfuture = makefutureenv [v1;v2] futureenv in
+       evalallexps [e1] new_env newfuture
+  in
+  prune_env new_env expression futureenv
+
+(* evaluation; use eval_loop to recursively evaluate subexpressions *)
+let eval_body (env:env) (eval_loop:env -> exp -> exp) (e:exp) : exp =
+  (* just looks up the variable and returns it's value or exp in the env *)
+  match e with
+  | Var x -> 
+     (match lookup_env env x with 
+  	None -> raise (UnboundVariable x)
+      | Some v -> v)
+  | Constant constant ->
+     Constant constant
+  | Pair (expr1, expr2) ->
+     Pair ((eval_loop env expr1), (eval_loop env expr2))
+  | Fst pair ->
+     (match (eval_loop env pair) with
+      |Pair (expr1, expr2) ->
+        eval_loop env expr1
+      | _ -> raise (BadPair (pair)))
+  | Snd pair ->
+     (match (eval_loop env pair) with
+      | Pair (expr1, expr2) ->
+         eval_loop env expr2
+      | _ -> raise (BadPair (pair)))
+  | EmptyList ->
+     EmptyList
+  | Cons (e1, e2) ->
+     Cons ((eval_loop env e1), (eval_loop env e2))
+  | Op (e1, op, e2) ->
+     (* if its an operation, just evaluate each expression,
+      and then pass them in, assuming they are Constants *)
+     let newe1 = eval_loop env e1 in
+     let newe2 = eval_loop env e2 in
+     (match (newe1, newe2) with
+      | (Constant a, Constant b) ->
+         (match (a, b) with
+          (* to make sure they are numbers, not booleans *)
+          | (Int num1, Int num2) ->
+             apply_op  newe1 op newe2
+          | _ ->
+             (* can't operate on a bool *)
+             raise (BadOp (e1, op, e2)))
+      (* e1 and e2 should always eval to a Constant *)
+      | _ -> raise (BadOp (e1, op, e1)))
+  | If (conditional, consequent, alternative) ->
+     (match (eval_loop env conditional) with
+      | Constant constant ->
+         (match constant with
+          (* can't be an int *)
+          | Int int -> raise (BadIf (conditional))
+          | Bool boolean ->
+             if boolean then
+               eval_loop env consequent
+             else
+               eval_loop env alternative)
+      (* if conditional doesn't eval to a constant *)
+      | _ -> raise (BadIf (conditional)))
+  | Let (variable, expr1, expr2) ->
+     let new_env = update_env env variable (eval_loop env expr1) in
+     eval_loop new_env expr2
+  | Match (exp1, exp2, var1, var2, exp3) ->
+     (match (eval_loop env exp1) with
+      (* if emptylist, just evaluate e2 *)
+      | EmptyList ->
+         eval_loop env exp2
+      (* otherwise, put var1 and var2 in the environment as variable
+         names for the two cons exps and eval the e3 with that env *)
+      | Cons (e1, e2) ->
+         let new_env = update_env (update_env env var1 e1) var2 e2 in
+         eval_loop new_env exp3
+      | _ ->
+         (* if exp1 is not a Cons or empty list *)
+         raise (BadMatch (exp1)))
+  | Rec (function_name, parameter, body) ->
+     (* create a futureenv with the function_name 
+        and parameter as variables in it *)
+     let newfuture = update_env (update_env [] function_name (Constant (Int 1)))
+                       parameter (Constant (Int 1))in
+     (* create a pruned env for the body with only the free variabls *)
+     let pruned_env = prune_with_env env [] body newfuture in
+     (* return the closure with the pruned env *)
+     Closure (pruned_env, function_name, parameter, body)
+  | Closure (environment, function_name, parameter, body) ->
+     Closure (environment, function_name, parameter, body)
+  | App (f, x) ->
+     let closure_from_f = eval_loop env f in
+     (match closure_from_f with
+     | Closure (environment, function_name, parameter, body) ->
+        (* put the x in the env as the parameter *)
+        let new_env = update_env environment parameter (eval_loop env x) in
+        (* put the function name in the env as a closure *)
+        let newer_env = update_env new_env function_name closure_from_f in
+        eval_loop newer_env body
+     (* if it's not a closure, ima call an exception since you guys gave us
+      that exception, but it seems like I could just evaluate f by itself, 
+      with x being an unnecessary parameter *)
+     | _ ->
+        raise (BadApplication f))
+
+
+
+
+(* evaluate closed, top-level expression e *)
+let eval e =
+  let rec loop env e = eval_body env loop e in
+  loop empty_env e
+
+
+(* print out subexpression after each step of evaluation *)
+let debug_eval e = 
+  let rec loop env e =
+    if is_value e then e  (* don't print values *)
+    else 
+      begin
+	Printf.printf "Evaluating %s\n" (string_of_exp e); 
+	let v = eval_body env loop e in 
+	Printf.printf 
+	  "%s evaluated to %s\n" (string_of_exp e) (string_of_exp v); 
+	v
+      end
+  in
+  loop empty_env e
+

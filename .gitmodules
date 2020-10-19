@@ -1,0 +1,6 @@
+[submodule "straight/repos/yasnippet"]
+	path = straight/repos/yasnippet
+	url = https://github.com/joaotavora/yasnippet.git
+[submodule "straight/repos/with-editor"]
+	path = straight/repos/with-editor
+	url = https://github.com/magit/with-editor.git

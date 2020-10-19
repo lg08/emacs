@@ -1,0 +1,4 @@
+ls
+cd ubet
+ls
+python manage.py runserver

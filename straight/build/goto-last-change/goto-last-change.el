@@ -1,0 +1,1 @@
+/home/lg08/.emacs.d/straight/repos/goto-last-change.el/goto-last-change.el

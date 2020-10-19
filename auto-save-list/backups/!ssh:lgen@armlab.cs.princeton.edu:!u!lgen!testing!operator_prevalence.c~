@@ -1,0 +1,48 @@
+/* just prints all the sizes of armlab stuff */
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <assert.h>
+
+int multiple (double f, double g) {
+  printf("%f\n", f);
+  printf("%f\n", g);
+  printf("%f\n", 10 * g);
+  return (f == 10 * g);
+  }
+
+
+void q3a(unsigned int input) {
+ int i, num = sizeof(int) * 8;
+ for (i = num-1; i >= 0; i--)
+ printf("%d", (input >> i) % 2);
+ putchar('\n');
+}
+
+void q3b(const char* pcSrc) {
+ char* pcCurrent = (char *) pcSrc;
+ assert(pcSrc != NULL);
+ while (*pcCurrent++ != '\0') ;
+ for (pcCurrent--; pcCurrent >= pcSrc; pcCurrent--)
+ putchar(*pcCurrent);
+}
+
+size_t q3c(const char* pcSrc, char c) {
+ size_t local = 0;
+ assert(pcSrc != NULL);
+ for ( ; *pcSrc != '\0'; pcSrc++)
+ local += (*pcSrc == c);
+ return local;
+}
+
+int main(void)
+{
+
+  char * hello = "hello";
+
+  printf ("%d", -~1);
+
+
+
+   return 0;
+}

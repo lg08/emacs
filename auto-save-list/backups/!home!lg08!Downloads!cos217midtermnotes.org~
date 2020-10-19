@@ -1,0 +1,34 @@
+# Cos 217 Midterm Notes
+
+
+* Fall 2015 ExamZ
+** 1
+*** a
+0
+*** 2
+*** 0377
+*** 43
+*** 60
+** 2
+*** a
+the bug is that the function is effectively just checking if the char d appears in the given string
+danger
+*** b
+it produces the wrong answer when an odd number of chars are entered since it would try to print the eof char
+
+void q2b(void) {
+ while (getchar() != EOF)
+
+ int char = getchar();
+ if (char == EOF){
+ return;
+ }
+ putchar(char);
+}
+*** c
+it returns the wrong value when all of the ints in the array are negative
+
+
+
+
+

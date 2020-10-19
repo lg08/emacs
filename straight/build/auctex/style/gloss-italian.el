@@ -1,0 +1,1 @@
+/home/lg08/.emacs.d/straight/repos/auctex/style/gloss-italian.el

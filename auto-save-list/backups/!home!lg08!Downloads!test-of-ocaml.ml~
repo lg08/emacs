@@ -1,0 +1,13 @@
+
+(* sum the numbers from 0 to n
+  precondition: n must be a natural number
+   ,*)
+
+  let rec sumTo (n:int) : int =   (* "rec" means that it's recursive, so it can call itself *)
+    match n with                  (* also the argument is called n of type int *)
+      0 -> 0                      (* the result is of type int *)
+    | n -> n + sumTo (n-1)
+
+  let _ =
+    print_int (sumTo 8);
+    print_newline()

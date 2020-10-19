@@ -1,0 +1,90 @@
+=====================================================================
+PROBLEM 5 - "SUM" MORE DEBUGGING - 20 points / 80 total on exam
+=====================================================================
+
+Consider a program intended to sum the ASCII values of the characters
+in the string provided as the first argument on the command line in
+several different ways. This example shows the correct behavior,
+because 'a' is ASCII value 97 and 'b' is ASCII value 98:
+
+./sumCLArg ab
+ 195
+ 195
+ 195
+
+Now consider this flawed implementation of that program:
+
+     1	#include <stdio.h>
+     2	#include <sting.h>
+     3
+     4	size_t sumString1(const char* string) {
+     5	  size_t sum = 0;
+     6	  while(string != '\0') {
+     7	    sum = *string;
+     8	    string++;
+     9	  }
+    10	  return sum;
+    11	}
+    12
+    13	size_t sumString2(const char string[], size_t len) {
+    14	  size_t sum = 0;
+    15	  for(size_t i = 0; i < len; i++)
+    16	    sum += string[len];
+    17	  return sum;
+    18	}
+    19
+    20	size_t sumString3(const char string[], size_t len) {
+    21	  size_t sum = 0;
+    22	  while(len >= 0)
+    23	    sum += string[len--];
+    24	  return sum;
+    25	}
+    26
+    27	int main(int argc, char** argv) {
+    28	  char* arg = argv[0];
+    29	  if(arg == NULL)
+    30	    return 1;
+    31	  printf(" %lu\n", sumString1(arg));
+    32	  printf(" %lu\n", sumString2(arg, strlen(arg)));
+    33	  printf(" %lu\n", sumString3(arg, strlen(arg)));
+    34	  return 0;
+    35	}
+
+
+It has *many* bugs that cause warnings or errors from gcc217, runtime
+crashes, and incorrect output.
+
+In the spaces provided below, identify 5 such bugs, including at least
+1 from each of the 4 functions. (There are more than 5 bugs, but we
+will read only the first 5 you supply, so there is no benefit to
+listing more.)  The 5 bugs need not be distinct: if the same error
+occurs multiple times, you may include it as multiple bugs.
+
+Identify the bugs by line, with a short description of the problem
+(e.g. "infinite loop", "accesses array out of bounds", "missing ;
+after do-while loop") and how it could be fixed (e.g. "start i at 1
+not 0", "bound loop with < n not <= n", "add ;", respectively). Be
+concise in your explanations: there is no need for complete sentences
+or elaborate descriptions.
+
+
+Bug 1 Line:
+Bug 1 Idea:
+Bug 1 Fix :
+
+Bug 2 Line:
+Bug 2 Idea:
+Bug 2 Fix :
+
+Bug 3 Line:
+Bug 3 Idea:
+Bug 3 Fix :
+
+Bug 4 Line:
+Bug 4 Idea:
+Bug 4 Fix :
+
+Bug 5 Line:
+Bug 5 Idea:
+Bug 5 Fix :
+

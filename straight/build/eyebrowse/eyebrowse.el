@@ -1,0 +1,1 @@
+/home/lg08/.emacs.d/straight/repos/eyebrowse/eyebrowse.el

@@ -1,0 +1,55 @@
+/*--------------------------------------------------------------------*/
+/* str.h                                                              */
+/* the interface module for basic string functions                    */
+/* Lucas Gen                                                          */
+/*--------------------------------------------------------------------*/
+
+#ifndef STR_INCLUDED
+#define STR_INCLUDED
+
+#include <stddef.h>
+
+
+/*--------------------------------------------------------------------*/
+/* this function takes in a pointer to a char array pcSrc and returns */
+/* the length of that char array                                      */
+/*--------------------------------------------------------------------*/
+size_t Str_getLength(const char *pcSrc);
+
+
+/*--------------------------------------------------------------------*/
+/* this function takes in 2 pointers to char arrays, str1 and         */
+/* str2 and copies the contents of str2 into str1,                    */
+/* returning a pointer to the new char array                          */
+/*--------------------------------------------------------------------*/
+char * Str_copy(char *str1, const char *str2);
+
+
+/*--------------------------------------------------------------------*/
+/* this function takes in 2 pointers to char arrays, str1 and         */
+/* str2 and concatenates the str2 onto the end of str1,               */
+/* returning a pointer to the resulting char array                    */
+/*--------------------------------------------------------------------*/
+char * Str_concat(char *str1, const char *str2);
+
+
+/*--------------------------------------------------------------------*/
+/* this function takes in 2 pointers to char arrays, str1 and         */
+/* str2, compares them, and returns -1, 0, or 1 depending on          */
+/* whether the first char array is greater than, less than, or equal  */
+/* to the second char array                                           */
+/*--------------------------------------------------------------------*/
+int Str_compare(const char *str1, const char *str2);
+
+
+/*--------------------------------------------------------------------*/
+/* this function takes in two pointers to character arrays str1,      */
+/* and str2, searches the first char array for an ocurrence of        */
+/* the second and then returns a pointer to the first character in    */
+/* the first char array of the first match of the second char array,  */
+/* or null if there is no such occurence                               */
+/*--------------------------------------------------------------------*/
+char * Str_search(const char *str1, const char *str2);
+
+
+#endif

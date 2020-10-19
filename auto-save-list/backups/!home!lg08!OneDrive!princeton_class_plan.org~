@@ -1,0 +1,47 @@
+* Required Classes for Certificates
+** Robotics and Intelligent systems requirements
+- [ ] PHY 210 - (experimental physics seminar) (PDF ONLY)
+- [ ] MAE 345 - (robotics and intelligent systems) [also cognitive science]
+- [ ] PSY 345 (sensation and perception) [also cognitive science]
+- [ ] PHI 207 (phi of cog science) [also cog sci]
+- (with cos 217 and 226, this is done)
+** Statistics and Machine Learning
+- [ ] PSY 251 (quantitative methods)
+- [ ] SML 201 (intro to data science)
+- (with Mae 345, COS 324, COS 402 this is done)
+** Cognitive Science
+- [ ] PSY 212 (psych of moral behaviour)
+- [with PSY 345, MAE 345, COS 324 PHI 207]
+* Cos courses
+- [X] General Pre-requisites
+  - [X] COS 126
+  - [X] COS 226 [also robotics and ai]
+  - [X] COS 217 [also robotics and ai]
+- [-] Theory Courses
+  - [X] COS 340 (reasoning about computation)
+  - [ ] COS 511 (theoretical machine learning)
+- [ ] Systems Courses
+  - [ ] COS 318 (operating systems)
+  - [ ] COS 461 (computer networks) ?
+- [ ] Applications Courses
+  - [ ] COS 326 (functional programming)
+  - [ ] COS 432 (information security)
+  - [ ] COS 324 (introduction to machine learning) [also stats and ai][also cog science]
+  - [ ] COS 402 (machine learning and artificial intelligence) [also stats and ai]
+* Distribution Requirements
+- [X] FRS 175 (EC)
+- [X] FRS 122 (SA)
+- [ ] PHI 203 (EC)
+* Schedule
+** Fall 2020
+- COS 217
+- COS 340
+- MAT 202
+- PHI 203
+** Spring 2021
+- PHY 210 (PDF) (have to take this semester)
+- COS 318
+- MAE 345
+- 
+** Fall 2021
+- CHEM 207

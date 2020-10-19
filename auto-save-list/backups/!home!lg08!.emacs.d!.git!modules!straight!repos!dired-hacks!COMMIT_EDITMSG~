@@ -1,0 +1,22 @@
+
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+#
+# On branch master
+# Your branch is up to date with 'origin/master'.
+#
+# Changes to be committed:
+#	new file:   dired-avfs.elc
+#	new file:   dired-collapse.elc
+#	new file:   dired-columns.elc
+#	new file:   dired-filter.elc
+#	new file:   dired-hacks-utils.elc
+#	new file:   dired-list.elc
+#	new file:   dired-narrow.elc
+#	new file:   dired-open.elc
+#	new file:   dired-rainbow.elc
+#	new file:   dired-ranger.elc
+#	new file:   dired-subtree.elc
+#	new file:   dired-tagsistant.elc
+#	new file:   tests/test-dired-utils.elc
+#

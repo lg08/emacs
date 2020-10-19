@@ -1,0 +1,184 @@
+;; Object semanticdb-project-database-file-157f42801c08
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "semanticdb-project-database-file-157f42801c08"
+  :tables
+  (list
+    (semanticdb-table "semanticdb-table-157f42801be8"
+      :major-mode c-mode
+      :tags 
+        '( ("stdio.h" include (:system-flag t) nil [64 82])
+            ("stdlib.h" include (:system-flag t) nil [83 102])
+            ("stddef.h" include (:system-flag t) nil [103 122])
+            ("assert.h" include (:system-flag t) nil [123 142])
+            ("string.h" include (:system-flag t) nil [143 162])
+            ("Str_getLength" function
+               (:arguments 
+                  ( ("pcSrc" variable
+                       (:dereference 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [227 246]))                  
+                :type ("size_t" type (:type "class") nil nil))
+                nil [206 363])
+            ("Str_copy" function
+               (:arguments 
+                  ( ("str1" variable
+                       (:dereference 1
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [417 429])
+                    ("str2" variable
+                       (:dereference 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [430 448]))                  
+                :type "char")
+                nil [403 705])
+            ("Str_concat" function
+               (:arguments 
+                  ( ("str1" variable
+                       (:dereference 1
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [778 790])
+                    ("str2" variable
+                       (:dereference 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [791 809]))                  
+                :type "char")
+                nil [762 1223])
+            ("Str_compare" function
+               (:arguments 
+                  ( ("str1" variable
+                       (:dereference 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [1292 1310])
+                    ("str2" variable
+                       (:dereference 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [1311 1329]))                  
+                :type "int")
+                nil [1276 2100])
+            ("main" function
+               (:arguments 
+                  ( ("" variable (:type "void") (reparse-symbol arg-sub-list) [2230 2235]))                  
+                :type "int")
+                nil [2220 2932]))          
+      :file "stra.c"
+      :pointmax 2933
+      :fsize 2932
+      :lastmodtime '(24437 45730 130964 679000)
+      :unmatched-syntax nil)
+    (semanticdb-table "semanticdb-table-157f42bfcbd8"
+      :major-mode c-mode
+      :tags 
+        '( ("stdio.h" include (:system-flag t) nil [64 82])
+            ("stdlib.h" include (:system-flag t) nil [83 102])
+            ("stddef.h" include (:system-flag t) nil [103 122])
+            ("assert.h" include (:system-flag t) nil [123 142])
+            ("string.h" include (:system-flag t) nil [143 162])
+            ("Str_getLength" function
+               (:arguments 
+                  ( ("pcSrc" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [253 271]))                  
+                :type ("size_t" type (:type "class") nil nil))
+                nil [232 417])
+            ("Str_copy" function
+               (:arguments 
+                  ( ("str1beg" variable
+                       (:pointer 1
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [524 538])
+                    ("str2beg" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [539 559]))                  
+                :type "char")
+                nil [510 971])
+            ("Str_concat" function
+               (:arguments 
+                  ( ("str1beg" variable
+                       (:pointer 1
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [1080 1094])
+                    ("str2beg" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [1095 1115]))                  
+                :type "char")
+                nil [1064 1310])
+            ("Str_compare" function
+               (:arguments 
+                  ( ("str1beg" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [1408 1428])
+                    ("str2beg" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [1429 1449]))                  
+                :type "int")
+                nil [1392 2304])
+            ("main" function
+               (:arguments 
+                  ( ("" variable (:type "void") (reparse-symbol arg-sub-list) [2387 2392]))                  
+                :type "int")
+                nil [2377 3221]))          
+      :file "strp.c"
+      :pointmax 3222
+      :fsize 3221
+      :lastmodtime '(24437 45823 744479 248000)
+      :unmatched-syntax nil)
+    (semanticdb-table "semanticdb-table-157f428327ac"
+      :major-mode c-mode
+      :tags 
+        '( ("str.h" include nil nil [294 310])
+            ("stdio.h" include (:system-flag t) nil [311 329])
+            ("assert.h" include (:system-flag t) nil [330 349])
+            ("stdlib.h" include (:system-flag t) nil [350 369])
+            ("replaceAndWrite" function
+               (:typemodifiers ("static")
+                :arguments 
+                  ( ("pcLine" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [881 900])
+                    ("pcFrom" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [931 950])
+                    ("pcTo" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [951 968]))                  
+                :type ("size_t" type (:type "class") nil nil))
+                nil [851 1004])
+            ("main" function
+               (:arguments 
+                  ( ("argc" variable (:type "int") (reparse-symbol arg-sub-list) [1656 1665])
+                    ("argv" variable
+                       (:pointer 1
+                        :dereference 1
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [1666 1679]))                  
+                :type "int")
+                nil [1647 2196]))          
+      :file "replace.c"
+      :pointmax 2197
+      :fsize 2196
+      :lastmodtime '(24436 8947 66980 191000)
+      :unmatched-syntax nil))
+  :file "!home!lg08!Documents!Princeton!Second Year!cos217!assignment2!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2")

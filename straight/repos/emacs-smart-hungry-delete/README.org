@@ -1,0 +1,133 @@
+
+
+* Smart-hungry-delete
+
+Delete whitespace between words, parenthesis and other delimiters in a smart (dumb) way.
+
+Suppose you have this text in the buffer:
+
+[[./doc/demo-00-01.png]]
+
+With =smart-hungry-delete/backward-char=, it will delete all but one (white-)space between =word= and =paren=:
+
+
+[[./doc/demo-00-02.png]]
+
+If you delete here:
+
+
+[[./doc/demo-00-03.png]]
+
+it deletes all whitespace, because it's on the inside of a paren:
+
+[[./doc/demo-00-04.png]]
+
+Inside of right paren:
+
+[[./doc/demo-00-05.png]]
+
+[[./doc/demo-00-06.png]]
+
+This is configured for =C=-like languages (e.g. Python), where =:= usually has no space to the left:
+
+[[./doc/demo-00-07.png]]
+
+[[./doc/demo-00-08.png]]
+
+It has space to the right though:
+
+[[./doc/demo-00-09.png]]
+
+[[./doc/demo-00-10.png]]
+
+This also works for (nested) parentheses:
+
+[[./doc/demo-00-11.png]]
+
+[[./doc/demo-00-12.png]]
+
+[[./doc/demo-00-13.png]]
+
+Between words it will leave a space:
+
+[[./doc/demo-00-14.png]]
+
+[[./doc/demo-00-15.png]]
+
+[[./doc/demo-00-16.png]]
+
+Here's a small demonstration video:
+
+#+begin_html
+<a href="http://www.youtube.com/watch?feature=player_embedded&v=pPf5gMxpaHs" target="_blank"><img src="http://img.youtube.com/vi/pPf5gMxpaHs/0.jpg" 
+alt="Demonstration Video" border="10" /></a>
+#+end_html
+
+* Installing
+
+It's in [[https://melpa.org][MELPA]], so if you have that in your package lists, just =M-x= =package-install= =smart-hungry-delete=, and bind =smart-hungry-delete-backward-char= and =smart-hungry-delete-forward-char=:
+#+begin_src elisp
+(require 'smart-hungry-delete)
+(smart-hungry-delete-add-default-hooks)
+(global-set-key (kbd "<backspace>") 'smart-hungry-delete-backward-char)
+(global-set-key (kbd "C-d") 'smart-hungry-delete-forward-char)
+#+end_src
+
+
+
+If you use =use-package=:
+#+begin_src elisp
+(use-package smart-hungry-delete
+  :ensure t
+  :bind (("<backspace>" . smart-hungry-delete-backward-char)
+		 ("C-d" . smart-hungry-delete-forward-char))
+  :defer nil ;; dont defer so we can add our functions to hooks 
+  :config (smart-hungry-delete-add-default-hooks)
+  )
+#+end_src
+
+
+Here's the basic el-get recipe:
+
+#+begin_src elisp
+(:name smart-hungry-delete
+ :type github
+ :pkgname "hrehfeld/emacs-smart-hungry-delete")
+#+end_src elisp
+
+* Configuration
+
+smart-hungry-delete deletes hungrily if three regexps match:
+
+#+begin_src
+<left><kill>(point)<right>
+#+end_src
+
+or with =smart-hungry-delete-forward-char=:
+
+#+begin_src
+<left>(point)<kill><right>
+#+end_src
+
+You can configure these on a per buffer basis:
+
+=smart-hungry-delete-char-kill-regexp= is a buffer-local variable holding a regex that defines what will be hungrily deleted (<kill>).
+
+=smart-hungry-delete-char-trigger-killall-regexps= is a list of pairs:
+
+#+begin_src elisp
+'(("\\[" . ".") ;; delete when <left> is "[" and <right> is any of "."
+  ("." . "\\]") ;; delete when <left> is any of "." and <right> is "]"
+  ...)
+#+end_src
+
+=smart-hungry-delete-add-regexps-left-right= makes it easy to add left-right combinations of chars like parentheses:
+
+#+begin_src elisp
+(smart-hungry-delete-add-regexps-left-right "\\{" "\\}") ;;as above, but with "{" and "}"
+#+end_src
+
+
+=smart-hungry-delete-add-default-hooks= will add some good defaults for (some) programming modes. Check out the =smart-hungry-delete-default-*-hook= functions.
+
+If you have good suggestions for more defaults, make sure to [[https://github.com/hrehfeld/emacs-smart-hungry-delete/issues][suggest the recipes!]]

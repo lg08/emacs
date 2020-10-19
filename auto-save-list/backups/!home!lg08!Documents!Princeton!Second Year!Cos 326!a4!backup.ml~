@@ -1,0 +1,213 @@
+(*************************************************)
+(* An environment-based evaluator for Dynamic ML *)
+(*************************************************)
+
+open Syntax
+open Printing
+open EvalUtil
+
+(* Defines the subset of expressions considered values
+   Notice that closures are values but the rec form is not -- this is
+   slightly different from the way values are defined in the 
+   substitution-based interpreter.  Rhetorical question:  Why is that?
+   Notice also that Cons(v1,v2) is a value (if v1 and v2 are both values).
+*) 
+let rec is_value (e:exp) : bool = 
+  match e with
+      Constant _ -> true  
+    | Pair (e1, e2) -> is_value e1 && is_value e2
+    | EmptyList -> true
+    | Cons (e1, e2) -> is_value e1 && is_value e2
+    | Closure _ -> true
+    | _ -> false
+
+
+let rec prune_env  (oldenv: env) (new_env: env) (expression: exp) (futureenv: env): env =
+       (match expression with
+        | Var var ->
+          let is_in_future_env = lookup_env futureenv var in
+          (match is_in_future_env with
+           (* if it's in there, then move it to the new env *)
+           | Some e ->
+              new_env
+           | None ->
+              (* if its the function_name or parameter then ignore it *)
+              let is_necessary = lookup_env oldenv var in
+              (match is_necessary with
+               | None -> raise (UnboundVariable var)
+               | Some value -> update_env new_env var value
+              )
+          )
+       | Constant constant -> new_env
+       | Op (e1, op, e2) ->
+          let newer_env = (prune_env oldenv new_env e1 futureenv) in
+          prune_env oldenv newer_env e2 futureenv
+       | If (conditional, consequent, alternative) ->
+          let newer_env = prune_env oldenv new_env conditional futureenv in
+          let newerer_env = prune_env oldenv newer_env consequent futureenv in
+          prune_env oldenv newerer_env alternative futureenv
+       | Let (v1, e1, e2) ->
+          let updated_future_env = update_env futureenv v1 (Constant (Int 1)) in
+          prune_env oldenv (prune_env oldenv new_env e2 updated_future_env) e2 updated_future_env
+       | Pair (e1, e2) -> prune_env oldenv (prune_env oldenv new_env e2 futureenv) e1 futureenv
+       | Fst e1 ->
+          prune_env oldenv new_env e1 futureenv
+       | Snd e1 ->
+          prune_env oldenv new_env e1 futureenv
+       | EmptyList -> new_env
+       | Cons (e1, e2) -> prune_env oldenv (prune_env oldenv new_env e1 futureenv) e2 futureenv
+       | Match (e1, e2, v1, v2, e3) ->
+          let new_future_env = update_env futureenv v1 (Constant (Int 1)) in
+          let newer_future_env = update_env new_future_env v2 (Constant (Int 1)) in
+          let newer_env = prune_env oldenv new_env e1 newer_future_env in
+          let newest_env = prune_env oldenv newer_env e2 newer_future_env in
+          prune_env oldenv newest_env e3 newer_future_env
+       | Rec (v1, v2, e3) ->
+          (* let newer_env = prune_env new_env v1 in *)
+          (* let newer_env = prune_env newer_env v2 in *)
+          let new_future_env = update_env futureenv v1 (Constant (Int 1)) in
+          let newer_future_env = update_env new_future_env v2 (Constant (Int 1)) in
+          prune_env oldenv new_env e3 newer_future_env
+       | Closure (blah, v1, v2, e1) ->
+          let new_future_env = update_env futureenv v1 (Constant (Int 1)) in
+          let newer_future_env = update_env new_future_env v2 (Constant (Int 1)) in
+          prune_env oldenv new_env e1 newer_future_env
+       | App (e1, e2) ->
+          let newer_env = prune_env oldenv new_env e1 futureenv in
+          prune_env oldenv newer_env e2 futureenv
+       )
+
+
+(* evaluation; use eval_loop to recursively evaluate subexpressions *)
+let eval_body (env:env) (eval_loop:env -> exp -> exp) (e:exp) : exp = 
+  match e with
+  | Var x -> 
+     (match lookup_env env x with 
+  	None -> raise (UnboundVariable x)
+      | Some v -> v
+     )
+  | Constant constant ->
+     Constant constant
+  | Pair (expr1, expr2) ->
+     Pair ((eval_loop env expr1), (eval_loop env expr2))
+  | Fst pair ->
+     (match (eval_loop env pair) with
+      |Pair (expr1, expr2) ->
+        eval_loop env expr1
+      | _ -> raise (BadPair (pair))
+     )
+  | Snd pair ->
+     (match (eval_loop env pair) with
+      | Pair (expr1, expr2) ->
+         eval_loop env expr2
+      | _ -> raise (BadPair (pair))
+     )
+  | EmptyList ->
+     EmptyList
+  | Cons (e1, e2) ->
+     Cons ((eval_loop env e1), (eval_loop env e2))
+  | Op (e1, op, e2) ->
+     (* if its an operation, just evaluate each expression,
+      and then pass them in, assuming they are Constants *)
+     let newe1 = eval_loop env e1 in
+     let newe2 = eval_loop env e2 in
+     (match (newe1, newe2) with
+      | (Constant a, Constant b) ->
+         (match (a, b) with
+          (* to make sure they are numbers, not booleans *)
+          | (Int num1, Int num2) ->
+             apply_op  newe1 op newe2
+          | _ ->
+             raise (BadOp (e1, op, e2))
+         )
+      (* if it's not a constant *)
+      | _ -> raise (BadOp (e1, op, e1))
+     )
+  | If (conditional, consequent, alternative) ->
+     (match conditional with
+      (* if it's an operation, just make sure it evaluates to a bool *)
+      | Op (exp1, operator, exp2) ->
+         (* if it's an op, just evaluate the op *)
+         let bool = eval_loop env conditional in
+         (match bool with
+         | Constant (Bool babybool) ->
+            if babybool then eval_loop env consequent else eval_loop env alternative
+         | _ -> raise (BadIf conditional))
+      (* otherwise it has to be a bool *)
+      | Constant constant ->
+         (match constant with
+          (* can't be an int *)
+          | Int int -> raise (BadIf (conditional))
+          | Bool boolean ->
+             if boolean then
+               eval_loop env consequent
+             else
+               eval_loop env alternative
+         )
+      | _ -> raise (BadIf (conditional))
+     )
+  | Let (variable, expr1, expr2) ->
+     let new_env = update_env env variable (eval_loop env expr1) in
+     eval_loop new_env expr2
+  | Match (exp1, exp2, var1, var2, exp3) ->
+     (match (eval_loop env exp1) with
+      (* if emptylist, just evaluate e2 *)
+      | EmptyList ->
+         eval_loop env exp2
+      (* otherwise, put var1 and var2 in the environment 
+         as variable names for the two cons *)
+      | Cons (e1, e2) ->
+         let new_env = update_env env var1 e1 in
+         let newer_env = update_env new_env var2 e2 in
+         eval_loop newer_env exp3
+      | _ ->
+         (* if exp1 is not a Cons *)
+         raise (BadMatch (exp1))
+     )
+  | Rec (function_name, parameter, body) ->
+     let future_env = update_env [] function_name (Constant (Int 1)) in
+     let newer_future_env = update_env future_env parameter (Constant (Int 1)) in
+     let pruned_env = prune_env env [] body newer_future_env in
+     Closure (pruned_env, function_name, parameter, body)
+     | Closure (environment, function_name, parameter, body) ->
+        Closure (environment, function_name, parameter, body)
+  | App (f, x) ->
+     let closure_from_f = eval_loop env f in
+     match closure_from_f with
+     | Closure (environment, function_name, parameter, body) ->
+        (* put the x in the env as the parameter *)
+        (* look in the new env since the old env doesn't have any variable names *)
+        let new_env = update_env environment parameter (eval_loop env x) in
+        (* put the function name in the env as a closure *)
+        let newer_env = update_env new_env function_name closure_from_f in
+        eval_loop newer_env body
+     | _ -> eval_loop env f
+        
+
+
+
+
+(* evaluate closed, top-level expression e *)
+
+let eval e =
+  let rec loop env e = eval_body env loop e in
+  loop empty_env e
+
+
+(* print out subexpression after each step of evaluation *)
+let debug_eval e = 
+  let rec loop env e =
+    if is_value e then e  (* don't print values *)
+    else 
+      begin
+	Printf.printf "Evaluating %s\n" (string_of_exp e); 
+	let v = eval_body env loop e in 
+	Printf.printf 
+	  "%s evaluated to %s\n" (string_of_exp e) (string_of_exp v); 
+	v
+      end
+  in
+  loop empty_env e
+
+
+       (* this passes all the tests *)
