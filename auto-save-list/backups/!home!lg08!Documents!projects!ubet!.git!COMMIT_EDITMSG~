@@ -10,8 +10,6 @@
 #	modified:   bets/templates/bets/_bet_card.html
 #	modified:   bets/templates/bets/bet_create_form.html
 #	modified:   bets/views.py
-#	modified:   db.sqlite3
-#	modified:   templates/base.html
-#	modified:   users/templates/users/add_money_form_page.html
-#	modified:   users/templates/users/user_profile_page.html
+#	modified:   users/__pycache__/views.cpython-38.pyc
+#	modified:   users/views.py
 #

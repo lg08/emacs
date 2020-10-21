@@ -26,13 +26,15 @@
       (eval-print-last-sexp)))
   (load bootstrap-file nil 'nomessage))
 
-;; loads the theme
-(straight-use-package 'doom-themes)
-(load-theme 'doom-one t)
-
 ;; replaces use-package with straight-use-package
 (straight-use-package 'use-package)
 (setq straight-use-package-by-default t)
+
+;; loads the theme
+(straight-use-package 'doom-themes)
+(load-theme 'doom-one t)
+(set-background-color "black")
+
 
 ;; requires all necessary files
 (require 'my-settings)

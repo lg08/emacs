@@ -4,3 +4,48 @@
 [submodule "straight/repos/with-editor"]
 	path = straight/repos/with-editor
 	url = https://github.com/magit/with-editor.git
+[submodule "straight/repos/web-beautify"]
+	path = straight/repos/web-beautify
+	url = https://github.com/yasuyk/web-beautify.git
+[submodule "straight/repos/tidy"]
+	path = straight/repos/tidy
+	url = https://github.com/emacsmirror/tidy.git
+[submodule "straight/repos/pos-tip"]
+	path = straight/repos/pos-tip
+	url = https://github.com/pitkali/pos-tip.git
+[submodule "straight/repos/merlin-eldoc"]
+	path = straight/repos/merlin-eldoc
+	url = https://github.com/Khady/merlin-eldoc.git
+[submodule "straight/repos/lsp-ivy"]
+	path = straight/repos/lsp-ivy
+	url = https://github.com/emacs-lsp/lsp-ivy.git
+[submodule "straight/repos/literate-calc-mode.el"]
+	path = straight/repos/literate-calc-mode.el
+	url = https://github.com/sulami/literate-calc-mode.el.git
+[submodule "straight/repos/highlight-thing.el"]
+	path = straight/repos/highlight-thing.el
+	url = https://github.com/fgeller/highlight-thing.el.git
+[submodule "straight/repos/highlight-symbol.el"]
+	path = straight/repos/highlight-symbol.el
+	url = https://github.com/nschum/highlight-symbol.el.git
+[submodule "straight/repos/highlight-indent-guides"]
+	path = straight/repos/highlight-indent-guides
+	url = https://github.com/DarthFennec/highlight-indent-guides.git
+[submodule "straight/repos/goto-line-preview"]
+	path = straight/repos/goto-line-preview
+	url = https://github.com/jcs-elpa/goto-line-preview.git
+[submodule "straight/repos/golden-ratio.el"]
+	path = straight/repos/golden-ratio.el
+	url = https://github.com/roman/golden-ratio.el.git
+[submodule "straight/repos/emacs-language-id"]
+	path = straight/repos/emacs-language-id
+	url = https://github.com/lassik/emacs-language-id.git
+[submodule "straight/repos/emacs-format-all-the-code"]
+	path = straight/repos/emacs-format-all-the-code
+	url = https://github.com/lassik/emacs-format-all-the-code.git
+[submodule "straight/repos/company-quickhelp"]
+	path = straight/repos/company-quickhelp
+	url = https://github.com/company-mode/company-quickhelp.git
+[submodule "straight/repos/apheleia"]
+	path = straight/repos/apheleia
+	url = https://github.com/raxod502/apheleia.git

@@ -5,8 +5,9 @@
 (set-default-coding-systems 'utf-8)               ; Default to utf-8 encoding
 (show-paren-mode 1)                               ; Show the parent
 (setq lexical-binding t)              ;idk, something to do with loading lexical files faster
-;; (setq inhibit-startup-message t)  ;don't show me that ugly ass startup ad
+(setq inhibit-startup-message t)  ;don't show me that ugly ass startup ad
 (setq ring-bell-function 'ignore)   ;don't annoy me with bells and shit
+(setq visible-bell t)
 ;; (electric-pair-mode 1)		;pairs parenthesis automatically
 (setq save-abbrevs 'silent)        ;; save abbrevs when files are saved
 (setq initial-major-mode 'fundamental-mode) ;starts in fundamental mode to load faster
@@ -20,6 +21,7 @@
 (setq global-auto-revert-non-file-buffers t) ;reverts dired too
 (setq dired-recursive-deletes 'always)  ;doesn't ask you whether to delete recursively
 (setq delete-by-moving-to-trash t)      ;delete files by moving to the trash
+(setq delete-old-versions t)
 
 ;; scrolling stuff
 (setq auto-window-vscroll nil)          ;supposed to help with scrolling a bit
@@ -29,6 +31,17 @@
 (setq fast-but-imprecise-scrolling t)
 ;; make return key also do indent, globally
 (electric-indent-mode 1)
+;; shows the little black lines on the side of the buffer
+(setq-default indicate-empty-lines t)
+(when (not indicate-empty-lines)
+  (toggle-indicate-empty-lines))
+(electric-pair-mode 1)
+
+(add-hook 'after-init-hook
+          (lambda ()
+            (require 'server)
+            (unless (server-running-p)
+              (server-start))))
 
 
 (setq
@@ -68,7 +81,11 @@
 
 
 ;; redefines basic folders and files
+(setq make-backup-files nil)
 (setq backup-directory-alist    `(("." . ,(concat user-emacs-directory "auto-save-list/backups"))))
+(setq make-backup-files nil)
+
+(global-visual-line-mode t)
 
 ;; startup message 
 (setq startup-message
@@ -80,7 +97,7 @@
 ;; sets up frame title and initial scratch messsage
 (setq frame-title-format '("" "%b - My-Dope-Ass Config"))
 ;; (setq-default initial-scratch-message (concat ";; Welcome back, " user-login-name " - Emacs ♥ you!\n\n"))
-(setq initial-scratch-message "")
+(setq initial-scratch-message "Welcome back old friend")
 
 ;; deletes stale elc files on save
 (add-hook 'emacs-lisp-mode-hook 'my/remove-elc-on-save)

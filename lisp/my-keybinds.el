@@ -57,14 +57,14 @@
  "<f8>" 'dired-sidebar-toggle-sidebar
  "C-M-w" 'avy-kill-region
  "M-g" 'nil
- "M-g" 'avy-goto-end-of-line
+ "M-g" 'goto-line-preview
  "C-<backspace>" 'smart-hungry-delete-backward-char
  "C-M-a" 'sp-beginning-of-sexp
  "C-M-e" 'sp-end-of-sexp
- "C-M-l" 'sp-forward-sexp
- "C-M-h" 'sp-backward-sexp
- "M-]" 'sp-unwrap-sexp
- "M-[" 'sp-backward-unwrap-sexp 
+ "C-M-l" 'forward-list
+ "C-M-h" 'backward-list
+ "C-c k" 'highlight-symbol-prev
+ "C-c j" 'highlight-symbol-next
  )
 
 ;; MINOR MODE MAPS---------------------------------------------------------------------
@@ -129,8 +129,6 @@
  "d" 'delete-char
  "o" 'crux-smart-open-line-above
  "s" 'swiper-isearch
- "[" 'backward-sexp
- "]" 'forward-sexp
  "f" 'iy-go-to-char
  "p" 'my/select-current-line-and-forward-line
  )

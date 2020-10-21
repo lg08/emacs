@@ -97,7 +97,15 @@
 ;; (setq projectile-indexing-method 'alien)
 ;; (setq projectile-enable-caching t)
 
-(setq line-spacing 0.5)
+(setq line-spacing 0)
+
+;; trying this out from purcell emacs
+(setq hippie-expand-try-functions-list
+      '(try-complete-file-name-partially
+        try-complete-file-name
+        try-expand-dabbrev
+        try-expand-dabbrev-all-buffers
+        try-expand-dabbrev-from-kill))
 
 
 

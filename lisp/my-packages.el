@@ -20,7 +20,7 @@
 (use-package ivy                        ;filtering system
   :config
   (ivy-mode 1)
-  (setq ivy-height 5)
+  (setq ivy-height 10)
 
   (use-package amx
     :defer t
@@ -71,11 +71,11 @@
         )
   )
 
-(use-package nyan-mode                  ;shows scroll bar in modeline
-  :defer 0
-  :config
-  (nyan-mode 1)
-  )
+;; (use-package nyan-mode                  ;shows scroll bar in modeline
+;;   :defer 0
+;;   :config
+;;   (nyan-mode 1)
+;;   )
 
 (use-package undo-tree                  ;very helpful undo visualizer
   :defer 0
@@ -103,6 +103,7 @@
 (use-package counsel                    ;ivy-based functions
   :defer t
   :config
+  
   )
 
 (use-package projectile                 ;prokect management
@@ -123,7 +124,7 @@
   :config
   (add-hook 'magit-mode-hook (lambda () (modalka-mode -1)))
   (add-hook 'git-commit-mode-hook (lambda () (modalka-mode -1)))
-  (add-to-list 'magit-no-confirm 'stage-all-changes)  
+  (add-to-list 'magit-no-confirm 'stage-all-changes)
   (use-package git-gutter)
   )
 
@@ -143,7 +144,7 @@
 ;;   :config
 ;;   )
 
-(use-package dimmer                     ;dims other buffers 
+(use-package dimmer                     ;dims other buffers
   :defer t
   :config
   )
@@ -169,7 +170,7 @@
   ;; provides instant autocompletion
   (setq company-idle-delay 0)
   (setq ;; Only 2 letters required for completion to activate.
-   company-minimum-prefix-length 2
+   company-minimum-prefix-length 1
 
    ;; Search other buffers for compleition candidates
    company-dabbrev-other-buffers t
@@ -230,16 +231,24 @@
 
 (use-package goto-chg
   :defer t
-  
+
   )
 (use-package color-identifiers-mode     ;colors differnet variable names
   :defer t
   :config
   )
 
-(use-package indent-guide               ;shows indent lines on the left
+;; (use-package indent-guide               ;shows indent lines on the left
+;;   :defer t
+;;   :config
+;;   )
+
+(use-package highlight-indent-guides
+  :init
+  (setq highlight-indent-guides-method 'character)
   :defer t
   :config
+
   )
 
 (use-package all-the-icons              ;just has a nuch of icons for stuff
@@ -280,7 +289,7 @@
 (use-package writeroom-mode             ;distraction-free editing
   :defer t
   :config
-  
+
   )
 
 (use-package auctex
@@ -294,44 +303,44 @@
 (use-package nlinum                     ;supposedly more efficient line mode
   :defer t
   :config
-  
+
   )
 
 (use-package rainbow-mode
   :defer t
   :config
-  
+
   )
 
 (use-package dired-narrow
   :defer t
   :config
-  
+
   )
 
 (use-package dired+
   :defer t
   :config
-  
+
   )
 
 (use-package smart-hungry-delete
   :defer t
   :config
-  
+
   )
 
 (use-package perspective
   :defer 1
   :config
   (persp-mode 1)
-  
+
   )
 
 (use-package iy-go-to-char
   :defer t
   :config
-  
+
   )
 
 (use-package yasnippet
@@ -341,23 +350,29 @@
   (use-package yasnippet-snippets
     :defer t
     :config
-    
+
     )
   )
 
-(use-package smartparens
-  :defer t
-  :config
-  
-  )
+;; (use-package smartparens
+;;   :defer t
+;;   :config
+
+;;   )
 
 (use-package tuareg
   :defer t
   :config
-  
+
   )
 
 (use-package merlin
+  :defer t
+  :config
+
+  )
+
+(use-package merlin-eldoc
   :defer t
   :config
   
@@ -371,10 +386,10 @@
 (use-package linum-relative
   :defer t
   :config
-  
+
   )
 
-(use-package fix-word                   
+(use-package fix-word
   :defer t
   :config
   )
@@ -382,25 +397,25 @@
 (use-package fold-this
   :defer t
   :config
-  
+
   )
 
 (use-package moe-theme
   :defer t
   :config
-  
+
   )
 
 (use-package tao-theme
   :defer t
   :config
-  
+
   )
 
 (use-package smerge-mode
   :defer t
   :config
-  
+
   )
 
 (use-package outshine
@@ -409,7 +424,70 @@
   (add-hook 'outline-minor-mode-hook 'outshine-mode)
   :defer t
   :config
+
+  )
+
+;; (use-package highlight-thing
+;;   :defer t
+;;   :config
+;;   (setq highlight-thing-delay-seconds 0)
+
+;;   )
+
+(use-package highlight-symbol
+  :defer t
+  :config
+  (setq highlight-symbol-idle-delay 0)
+  )
+
+
+(use-package lsp-mode
+  :defer t
+  :config
+
+  )
+
+(use-package lsp-ui
+  :defer t
+  :config
+
+  )
+
+(use-package lsp-ivy
+  :defer t
+  :config
+
+  )
+
+(use-package golden-ratio
+  :defer t
+  :config
+
+  )
+
+(use-package goto-line-preview
+  :defer t
+  :config
+
+  )
+
+(use-package format-all
+  :defer t
+  :config
+
+  )
+
+(use-package company-quickhelp
+  :defer t
+  :config
+  (setq company-quickhelp-delay 0)
+  )
+
+(use-package web-beautify
+  :defer t
+  :config
   
   )
+
 
 (provide 'my-packages)
