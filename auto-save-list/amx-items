@@ -1,21 +1,21 @@
 
 ;; ----- amx-history -----
 (
- whitespace-mode
  eval-buffer
- highlight-indent-guides-mode
- highlight-symbol-mode
- use-package-template
- hippie-expand
- whitespace-cleanup
+ projectile-mode
+ format-all-mode
+ format-all-buffer
+ hanoi
+ hexl-mode
+ lsp
 )
 
 ;; ----- amx-data -----
 (
- (eval-buffer . 303)
+ (eval-buffer . 314)
  (load-theme . 145)
  (modalka-mode . 7)
- (use-package-template . 56)
+ (use-package-template . 60)
  (tmm-menubar-mouse . 1)
  (smooth-scrolling-mode . 5)
  (describe-mode . 3)
@@ -23,7 +23,7 @@
  (garbage-collect . 2)
  (my/where-am-i . 14)
  (my/byte-compile-init-dir . 21)
- (describe-variable . 14)
+ (describe-variable . 16)
  (gcmh-mode . 6)
  (rgrep . 18)
  (switch-to-buffer . 1)
@@ -31,7 +31,7 @@
  (visual-line-mode . 24)
  (beginning-of-visual-line . 1)
  (global-visual-line-mode . 2)
- (whitespace-mode . 47)
+ (whitespace-mode . 48)
  (toggle-indicate-empty-lines . 1)
  (whitespace-cleanup . 22)
  (straight-use-package . 11)
@@ -45,11 +45,11 @@
  (beacon-mode . 4)
  (pixel-scroll-mode . 1)
  (display-line-numbers-mode . 1)
- (avy-isearch . 3)
+ (avy-isearch . 4)
  (counsel-grep-or-swiper . 1)
  (swiper-avy . 3)
  (swiper-mc . 1)
- (swiper-isearch . 2)
+ (swiper-isearch . 3)
  (counsel-projectile-mode . 6)
  (projectile-invalidate-cache . 1)
  (scroll-bar-mode . 3)
@@ -91,7 +91,7 @@
  (linum-relative-mode . 2)
  (set-variable . 10)
  (set-face-font . 1)
- (set-background-color . 1)
+ (set-background-color . 5)
  (rainbow-mode . 4)
  (dired-narrow . 1)
  (font-lock-mode . 5)
@@ -119,7 +119,7 @@
  (magit-refresh . 1)
  (lsp-mode . 9)
  (lsp-ui-mode . 9)
- (lsp . 3)
+ (lsp . 4)
  (fixup-whitespace . 4)
  (delete-blank-lines . 2)
  (flush-lines . 2)
@@ -133,7 +133,7 @@
  (magit . 1)
  (mc/edit-lines . 57)
  (fundamental-mode . 7)
- (python-mode . 4)
+ (python-mode . 6)
  (follow-mode . 1)
  (viper-mode . 1)
  (kill-buffer . 1)
@@ -165,7 +165,7 @@
  (column-marker-2 . 2)
  (untabify . 5)
  (edit-armlab-file . 2)
- (my/edit-armlab-file . 33)
+ (my/edit-armlab-file . 34)
  (tramp-cleanup-connection . 1)
  (tramp-cleanup-this-connection . 1)
  (tramp-cleanup-all-connections . 2)
@@ -218,7 +218,7 @@
  (highlight-indentation-mode . 1)
  (lsp-doctor . 2)
  (lsp-ivy-global-workspace-symbol . 1)
- (golden-ratio-mode . 1)
+ (golden-ratio-mode . 2)
  (highlight-symbol-list-all . 2)
  (highlight-symbol-next-in-defun . 1)
  (highlight-thing-mode . 2)
@@ -227,17 +227,31 @@
  (projectile-grep . 3)
  (lsp-ui-doc-mode . 2)
  (lsp-ui-peek-mode . 1)
- (format-all-mode . 1)
- (format-all-buffer . 11)
+ (format-all-mode . 2)
+ (format-all-buffer . 12)
  (html-mode . 1)
  (tidy-buffer . 2)
  (apheleia-mode . 1)
  (apheleia-format-buffer . 2)
- (company-quickhelp-mode . 5)
+ (company-quickhelp-mode . 6)
  (web-beautify-html . 6)
  (forward-sexp . 1)
  (backward-list . 1)
  (er/expand-region . 1)
  (hippie-expand . 1)
  (highlight-indent-guides-mode . 4)
+ (display-fill-column-indicator-mode . 1)
+ (elpy-mode . 1)
+ (my/open-buffer-path-in-explorer . 5)
+ (isearch-forward . 2)
+ (iedit-mode . 7)
+ (goto-last-change . 4)
+ (text-scale-decrease . 1)
+ (text-scale-increase . 2)
+ (text-scale-adjust . 1)
+ (ido-mode . 2)
+ (volatile-highlights-mode . 2)
+ (hexl-mode . 1)
+ (hanoi . 1)
+ (projectile-mode . 1)
 )

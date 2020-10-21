@@ -63,6 +63,8 @@
  "C-M-e" 'sp-end-of-sexp
  "C-M-l" 'forward-list
  "C-M-h" 'backward-list
+ "C-M-k" 'backward-up-list
+ "C-M-j" 'down-list
  "C-c k" 'highlight-symbol-prev
  "C-c j" 'highlight-symbol-next
  )
@@ -110,13 +112,12 @@
  "k" 'previous-line
  "l" 'forward-char
  "h" 'backward-char
- ;; "w" 'crux-smart-kill-line
+ ";"  'goto-last-change
  "v" 'set-mark-command
  "q" 'set-mark-command
  "y" "C-y"
  "u" 'undo
  "i" 'modalka-mode
- ";" 'smart-comment
  "e" "C-e"
  "a" "C-a"
  "." "M->"

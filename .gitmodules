@@ -49,3 +49,33 @@
 [submodule "straight/repos/apheleia"]
 	path = straight/repos/apheleia
 	url = https://github.com/raxod502/apheleia.git
+[submodule "straight/repos/volatile-highlights.el"]
+	path = straight/repos/volatile-highlights.el
+	url = https://github.com/k-talo/volatile-highlights.el.git
+[submodule "straight/repos/popup-el"]
+	path = straight/repos/popup-el
+	url = https://github.com/auto-complete/popup-el.git
+[submodule "straight/repos/iedit"]
+	path = straight/repos/iedit
+	url = https://github.com/victorhge/iedit.git
+[submodule "straight/repos/emacs-python-environment"]
+	path = straight/repos/emacs-python-environment
+	url = https://github.com/tkf/emacs-python-environment.git
+[submodule "straight/repos/emacs-jedi"]
+	path = straight/repos/emacs-jedi
+	url = https://github.com/tkf/emacs-jedi.git
+[submodule "straight/repos/emacs-epc"]
+	path = straight/repos/emacs-epc
+	url = https://github.com/kiwanami/emacs-epc.git
+[submodule "straight/repos/emacs-deferred"]
+	path = straight/repos/emacs-deferred
+	url = https://github.com/kiwanami/emacs-deferred.git
+[submodule "straight/repos/emacs-ctable"]
+	path = straight/repos/emacs-ctable
+	url = https://github.com/kiwanami/emacs-ctable.git
+[submodule "straight/repos/company-jedi"]
+	path = straight/repos/company-jedi
+	url = https://github.com/emacsorphanage/company-jedi.git
+[submodule "straight/repos/auto-complete"]
+	path = straight/repos/auto-complete
+	url = https://github.com/auto-complete/auto-complete.git

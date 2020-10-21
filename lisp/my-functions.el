@@ -204,6 +204,14 @@ Version 2020-06-26"
 ;; kills all buffers
 (defun close-all-buffers ()
 (interactive)
-  (mapc 'kill-buffer (buffer-list)))
+(mapc 'kill-buffer (buffer-list)))
+
+;; opens the urrent buffer in the file explorer
+(defun my/open-buffer-path-in-explorer ()
+  "Run explorer on the directory of the current buffer."
+  (interactive)
+  (shell-command (concat
+                  "xdg-open "
+                  default-directory)))
 
 (provide 'my-functions)

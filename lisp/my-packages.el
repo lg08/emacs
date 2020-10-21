@@ -20,7 +20,7 @@
 (use-package ivy                        ;filtering system
   :config
   (ivy-mode 1)
-  (setq ivy-height 10)
+  (setq ivy-height 20)
 
   (use-package amx
     :defer t
@@ -40,13 +40,13 @@
 
   )
 
-(use-package which-key                  ;shows possible keyboard commands
-  :config
-  (which-key-mode t)
-  (which-key-setup-side-window-bottom)
-  (setq which-key-idle-delay 1)
+;; (use-package which-key                  ;shows possible keyboard commands
+;;   :config
+;;   (which-key-mode t)
+;;   (which-key-setup-side-window-bottom)
+;;   (setq which-key-idle-delay 1)
 
-  )
+;;   )
 
 ;; below, all are deferred for one second ----------------------------------------------------------
 
@@ -112,6 +112,7 @@
   (projectile-mode +1)
   (setq projectile-completion-system 'ivy)
   (setq projectile-globally-ignored-file-suffixes '("pyc"))
+  
   )
 
 (use-package doom-themes                ;pretty themes
@@ -196,10 +197,30 @@
   (global-company-mode t)
   )
 
-(use-package elpy                       ;python ide
+(use-package company-jedi
+  :init
+  (defun company-jedi-setup ()
+    (add-to-list 'company-backends 'company-jedi))
+  (add-hook 'python-mode-hook 'company-jedi-setup)
   :defer t
   :config
+  
   )
+
+(use-package jedi
+  :init
+  (setq jedi:setup-keys t)
+  (setq jedi:complete-on-dot t)
+  (add-hook 'python-mode-hook 'jedi:setup)
+  :defer t
+  :config
+  
+  )
+
+;; (use-package elpy                       ;python ide
+;;   :defer t
+;;   :config
+;;   )
 
 (use-package dired-sidebar              ;helpful dired-based popup sidebar
   :defer t
@@ -489,5 +510,17 @@
   
   )
 
+(use-package iedit
+  :defer t
+  :config
+  
+  )
+
+(use-package volatile-highlights
+  :defer t
+  :config
+  
+  )
 
 (provide 'my-packages)
+

@@ -1,0 +1,1 @@
+/home/lg08/.emacs.d/straight/repos/emacs-python-environment/python-environment.el
