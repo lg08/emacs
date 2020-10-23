@@ -1,1 +1,0 @@
-/home/lg08/.emacs.d/straight/repos/highlight-thing.el/highlight-thing.el

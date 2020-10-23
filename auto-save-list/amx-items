@@ -1,21 +1,21 @@
 
 ;; ----- amx-history -----
 (
+ package-install
  eval-buffer
- projectile-mode
- format-all-mode
- format-all-buffer
- hanoi
- hexl-mode
- lsp
+ use-package-template
+ describe-variable
+ company-mode
+ rgrep
+ grep
 )
 
 ;; ----- amx-data -----
 (
- (eval-buffer . 314)
+ (eval-buffer . 321)
  (load-theme . 145)
  (modalka-mode . 7)
- (use-package-template . 60)
+ (use-package-template . 65)
  (tmm-menubar-mouse . 1)
  (smooth-scrolling-mode . 5)
  (describe-mode . 3)
@@ -23,9 +23,9 @@
  (garbage-collect . 2)
  (my/where-am-i . 14)
  (my/byte-compile-init-dir . 21)
- (describe-variable . 16)
+ (describe-variable . 21)
  (gcmh-mode . 6)
- (rgrep . 18)
+ (rgrep . 20)
  (switch-to-buffer . 1)
  (find-grep-dired . 2)
  (visual-line-mode . 24)
@@ -37,7 +37,7 @@
  (straight-use-package . 11)
  (buffer-flip . 1)
  (rainbow-delimiters-mode . 12)
- (color-identifiers-mode . 8)
+ (color-identifiers-mode . 9)
  (global-undo-tree-mode . 1)
  (aggressive-indent-mode . 11)
  (shell . 3)
@@ -80,7 +80,7 @@
  (kill-ring-save . 1)
  (fill-region . 2)
  (xah-cycle-hyphen-underscore-space . 19)
- (package-install . 1)
+ (package-install . 2)
  (writeroom-mode . 25)
  (auto-revert-mode . 5)
  (nlinum-mode . 2)
@@ -88,7 +88,7 @@
  (fzf . 2)
  (minimap-mode . 8)
  (avy-goto-char . 1)
- (linum-relative-mode . 2)
+ (linum-relative-mode . 4)
  (set-variable . 10)
  (set-face-font . 1)
  (set-background-color . 5)
@@ -102,7 +102,7 @@
  (dired . 1)
  (my/quit-all-dired-windows . 5)
  (flymake-mode . 3)
- (straight-prune-build . 4)
+ (straight-prune-build . 5)
  (swiper . 1)
  (template-tag-skeleton . 2)
  (emmet-mode . 9)
@@ -165,7 +165,7 @@
  (column-marker-2 . 2)
  (untabify . 5)
  (edit-armlab-file . 2)
- (my/edit-armlab-file . 34)
+ (my/edit-armlab-file . 45)
  (tramp-cleanup-connection . 1)
  (tramp-cleanup-this-connection . 1)
  (tramp-cleanup-all-connections . 2)
@@ -175,11 +175,11 @@
  (org-todo . 3)
  (tuareg-eval-phrase . 1)
  (org-mode . 5)
- (c-mode . 2)
+ (c-mode . 8)
  (comment-line . 1)
  (revert-buffer . 1)
  (gdb . 9)
- (company-mode . 9)
+ (company-mode . 18)
  (global-linum-mode . 2)
  (global-nlinum-mode . 1)
  (hl-line-mode . 2)
@@ -188,7 +188,7 @@
  (restart-emacs . 1)
  (compile . 1)
  (diff-restrict-view . 1)
- (doctor . 1)
+ (doctor . 2)
  (global-hl-line-mode . 1)
  (mc/mark-next-like-this . 10)
  (wc-mode . 5)
@@ -228,7 +228,7 @@
  (lsp-ui-doc-mode . 2)
  (lsp-ui-peek-mode . 1)
  (format-all-mode . 2)
- (format-all-buffer . 12)
+ (format-all-buffer . 13)
  (html-mode . 1)
  (tidy-buffer . 2)
  (apheleia-mode . 1)
@@ -254,4 +254,12 @@
  (hexl-mode . 1)
  (hanoi . 1)
  (projectile-mode . 1)
+ (insert-kbd-macro . 2)
+ (name-last-kbd-macro . 1)
+ (enter_armlab . 393)
+ (jedi:install-server . 1)
+ (comint-dynamic-complete-filename . 1)
+ (company-tabnine-install-binary . 1)
+ (projectile-remove-known-project . 12)
+ (grep . 1)
 )

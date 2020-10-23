@@ -1,1 +1,0 @@
-/home/lg08/.emacs.d/straight/repos/pos-tip/pos-tip.el

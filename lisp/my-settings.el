@@ -99,7 +99,7 @@
 ;; sets up frame title and initial scratch messsage
 (setq frame-title-format '("" "%b - My-Dope-Ass Config"))
 ;; (setq-default initial-scratch-message (concat ";; Welcome back, " user-login-name " - Emacs ♥ you!\n\n"))
-(setq initial-scratch-message "Welcome back old friend... \n \n")
+(setq initial-scratch-message "Welcome back old friend... \n\nEmacs is here. You're ok now.\n\n\n")
 
 ;; deletes stale elc files on save
 (add-hook 'emacs-lisp-mode-hook 'my/remove-elc-on-save)

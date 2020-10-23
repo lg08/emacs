@@ -201,6 +201,10 @@ Version 2020-06-26"
   (find-file "/ssh:lgen@armlab.cs.princeton.edu:")
   )
 
+;; macro to enter armlab without entering password and shit
+(fset 'enter_armlab
+   (kmacro-lambda-form [?\M-x ?a ?r ?m return ?D ?i ?m ?e ?n ?s ?i ?o ?n ?_ ?C ?- ?1 ?3 ?7 return ?1 return] 0 "%d"))
+
 ;; kills all buffers
 (defun close-all-buffers ()
 (interactive)

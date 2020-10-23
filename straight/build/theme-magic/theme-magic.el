@@ -1,1 +1,0 @@
-/home/lg08/.emacs.d/straight/repos/theme-magic/theme-magic.el

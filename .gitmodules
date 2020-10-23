@@ -79,3 +79,21 @@
 [submodule "straight/repos/auto-complete"]
 	path = straight/repos/auto-complete
 	url = https://github.com/auto-complete/auto-complete.git
+[submodule "straight/repos/unicode-escape.el"]
+	path = straight/repos/unicode-escape.el
+	url = https://github.com/kosh04/unicode-escape.el.git
+[submodule "straight/repos/names"]
+	path = straight/repos/names
+	url = https://github.com/Malabarba/names.git
+[submodule "straight/repos/ido-yes-or-no"]
+	path = straight/repos/ido-yes-or-no
+	url = https://github.com/DarwinAwardWinner/ido-yes-or-no.git
+[submodule "straight/repos/ido-vertical-mode.el"]
+	path = straight/repos/ido-vertical-mode.el
+	url = https://github.com/creichert/ido-vertical-mode.el.git
+[submodule "straight/repos/company-tabnine"]
+	path = straight/repos/company-tabnine
+	url = https://github.com/TommyX12/company-tabnine.git
+[submodule "straight/repos/ido-completing-read-plus"]
+	path = straight/repos/ido-completing-read-plus
+	url = https://github.com/DarwinAwardWinner/ido-completing-read-plus.git

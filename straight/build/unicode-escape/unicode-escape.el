@@ -1,0 +1,1 @@
+/home/lg08/.emacs.d/straight/repos/unicode-escape.el/unicode-escape.el

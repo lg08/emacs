@@ -1,1 +1,0 @@
-/home/lg08/.emacs.d/straight/repos/emacs-jedi/jedi-core.el

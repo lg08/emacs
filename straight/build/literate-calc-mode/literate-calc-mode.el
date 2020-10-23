@@ -1,1 +1,0 @@
-/home/lg08/.emacs.d/straight/repos/literate-calc-mode.el/literate-calc-mode.el

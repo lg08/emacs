@@ -1,1 +1,0 @@
-/home/lg08/.emacs.d/straight/repos/company-quickhelp/company-quickhelp.el

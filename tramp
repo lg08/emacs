@@ -1,4 +1,4 @@
-;; -*- emacs-lisp -*- <20/10/20 18:50:28 /home/lg08/.emacs.d/tramp>
+;; -*- emacs-lisp -*- <20/10/21 14:51:39 /home/lg08/.emacs.d/tramp>
 ;; Tramp connection history.  Don't change this file.
 ;; Run `M-x tramp-cleanup-all-connections' instead.
 
@@ -22,4 +22,10 @@
   ("ls--quoting-style=literal --show-control-chars" "--quoting-style=literal --show-control-chars")
   ("ls--dired" "--dired")
   ("df-blocksize" 1)
-  ("df" "\\df --block-size=1 --output=size,used,avail")))
+  ("df" "\\df --block-size=1 --output=size,used,avail")
+  ("perl-file-spec" t)
+  ("perl-cwd-realpath" t)
+  ("perl" "\\perl")
+  ("bzr" nil)
+  ("git" "\\git")
+  ("hg" nil)))

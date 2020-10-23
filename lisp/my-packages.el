@@ -29,6 +29,38 @@
     )
   )
 
+;; (ido-mode 1)
+;; (ido-everywhere 1)
+
+;; (use-package ido-completing-read+
+;;   :init
+;;   (ido-ubiquitous-mode 1)
+;;   :defer t
+;;   :config
+;;   (amx-mode 1)
+
+;;   )
+
+;; (use-package ido-vertical-mode
+;;   :defer t
+;;   :config
+
+;;   )
+
+;; (use-package ido-yes-or-no
+;;   :init
+;;   (ido-yes-or-no-mode 1)
+;;   :defer t
+;;   :config
+
+;;   )
+
+;; (use-package amx
+;;   ;; :defer t
+;;   :config
+
+;;   )
+
 (use-package eyebrowse                  ;window management package
   :config
   (eyebrowse-mode 1)
@@ -168,59 +200,49 @@
 (use-package company                    ;autocompletion system
   :defer t
   :config
+  ;; (setq company-minimum-prefix-length 0)            ; WARNING, probably you will get perfomance issue if min len is 0!
+  (setq company-tooltip-limit 20)                      ; bigger popup window
+  (setq company-tooltip-align-annotations 't)          ; align annotations to the right tooltip border
+  (setq company-idle-delay .3)                         ; decrease delay before autocompletion popup shows
+  (setq company-begin-commands '(self-insert-command)) ; start autocompletion only after typing
+  
   ;; provides instant autocompletion
   (setq company-idle-delay 0)
-  (setq ;; Only 2 letters required for completion to activate.
-   company-minimum-prefix-length 1
+  ;; (setq ;; Only 2 letters required for completion to activate.
+  ;;  company-minimum-prefix-length 1
 
-   ;; Search other buffers for compleition candidates
-   company-dabbrev-other-buffers t
-   company-dabbrev-code-other-buffers t
+  ;;  ;; Search other buffers for compleition candidates
+  ;;  company-dabbrev-other-buffers t
+  ;;  company-dabbrev-code-other-buffers t
 
-   ;; Show candidates according to importance, then case, then in-buffer frequency
-   company-transformers '(company-sort-by-backend-importance
-                          company-sort-prefer-same-case-prefix
-                          company-sort-by-occurrence)
-   ;; Flushright any annotations for a compleition;
-   ;; e.g., the description of what a snippet template word expands into.
-   company-tooltip-align-annotations t
-   ;; Allow (lengthy) numbers to be eligible for completion.
-   company-complete-number t
-   ;; Even if I write something with the ‘wrong’ case,
-   ;; provide the ‘correct’ casing.
-   company-dabbrev-ignore-case nil)
-  :custom
-  (company-begin-commands '(self-insert-command))
-  (company-minimum-prefix-length 2)
-  (company-show-numbers t)
-  (company-tooltip-align-annotations 't)
-  (global-company-mode t)
+  ;;  ;; Show candidates according to importance, then case, then in-buffer frequency
+  ;;  company-transformers '(company-sort-by-backend-importance
+  ;;                         company-sort-prefer-same-case-prefix
+  ;;                         company-sort-by-occurrence)
+  ;;  ;; Flushright any annotations for a compleition;
+  ;;  ;; e.g., the description of what a snippet template word expands into.
+  ;;  company-tooltip-align-annotations t
+  ;;  ;; Allow (lengthy) numbers to be eligible for completion.
+  ;;  company-complete-number t
+  ;;  ;; Even if I write something with the ‘wrong’ case,
+  ;;  ;; provide the ‘correct’ casing.
+  ;;  company-dabbrev-ignore-case nil)
+  ;; :custom
+  ;; (company-begin-commands '(self-insert-command))
+  (setq company-minimum-prefix-length 2)
+  ;; (company-show-numbers t)
+  ;; (company-tooltip-align-annotations 't)
+  ;; (global-company-mode t)
   )
 
-(use-package company-jedi
-  :init
-  (defun company-jedi-setup ()
-    (add-to-list 'company-backends 'company-jedi))
-  (add-hook 'python-mode-hook 'company-jedi-setup)
+;; potential deep learning thing; could be dope
+(use-package company-tabnine :ensure t)
+(add-to-list 'company-backends #'company-tabnine)
+
+(use-package elpy                       ;python ide
   :defer t
   :config
-  
   )
-
-(use-package jedi
-  :init
-  (setq jedi:setup-keys t)
-  (setq jedi:complete-on-dot t)
-  (add-hook 'python-mode-hook 'jedi:setup)
-  :defer t
-  :config
-  
-  )
-
-;; (use-package elpy                       ;python ide
-;;   :defer t
-;;   :config
-;;   )
 
 (use-package dired-sidebar              ;helpful dired-based popup sidebar
   :defer t
@@ -351,12 +373,12 @@
 
   )
 
-(use-package perspective
-  :defer 1
-  :config
-  (persp-mode 1)
+;; (use-package perspective
+;;   :defer 1
+;;   :config
+;;   (persp-mode 1)
 
-  )
+;;   )
 
 (use-package iy-go-to-char
   :defer t
@@ -498,11 +520,11 @@
 
   )
 
-(use-package company-quickhelp
-  :defer t
-  :config
-  (setq company-quickhelp-delay 0)
-  )
+;; (use-package company-quickhelp
+;;   :defer t
+;;   :config
+;;   (setq company-quickhelp-delay 0)
+;;   )
 
 (use-package web-beautify
   :defer t
@@ -522,5 +544,5 @@
   
   )
 
-(provide 'my-packages)
 
+(provide 'my-packages)

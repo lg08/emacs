@@ -47,7 +47,7 @@
  ;; "M-u" 'xah-toggle-letter-case
  "M-u" 'fix-word-upcase
  "C-r" 'avy-goto-char
- "C-." 'company-complete
+ ;; "C-." 'company-complete
  "C-z" 'my/modalka-normal-mode
  "<f9>" 'my/modalka-normal-mode
  "C-c _" 'undo-tree-visualize
@@ -84,12 +84,12 @@
  "C-k" 'ivy-previous-line
  )
 
-(general-define-key
- :keymaps 'company-active-map
- "C-j" 'company-select-next
- "C-l" 'nil
- "C-k" 'company-select-previous
- )
+;; (general-define-key
+;;  :keymaps 'company-active-map
+;;  "C-j" 'company-select-next
+;;  "C-l" 'nil
+;;  "C-k" 'company-select-previous
+;;  )
 
 (general-define-key
  :keymaps 'dired-mode-map

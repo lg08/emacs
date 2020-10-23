@@ -1,1 +1,0 @@
-/home/lg08/.emacs.d/straight/repos/wc-mode/wc-mode.el
