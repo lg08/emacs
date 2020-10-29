@@ -97,3 +97,15 @@
 [submodule "straight/repos/ido-completing-read-plus"]
 	path = straight/repos/ido-completing-read-plus
 	url = https://github.com/DarwinAwardWinner/ido-completing-read-plus.git
+[submodule "straight/repos/yaml-mode"]
+	path = straight/repos/yaml-mode
+	url = https://github.com/yoshiki/yaml-mode.git
+[submodule "straight/repos/prescient.el"]
+	path = straight/repos/prescient.el
+	url = https://github.com/raxod502/prescient.el.git
+[submodule "straight/repos/org-bullets"]
+	path = straight/repos/org-bullets
+	url = https://github.com/integral-dw/org-bullets.git
+[submodule "straight/repos/haskell-mode"]
+	path = straight/repos/haskell-mode
+	url = https://github.com/haskell/haskell-mode.git

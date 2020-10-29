@@ -56,8 +56,6 @@
  "C-x d" 'dired
  "<f8>" 'dired-sidebar-toggle-sidebar
  "C-M-w" 'avy-kill-region
- "M-g" 'nil
- "M-g" 'goto-line-preview
  "C-<backspace>" 'smart-hungry-delete-backward-char
  "C-M-a" 'sp-beginning-of-sexp
  "C-M-e" 'sp-end-of-sexp
@@ -84,12 +82,12 @@
  "C-k" 'ivy-previous-line
  )
 
-;; (general-define-key
-;;  :keymaps 'company-active-map
-;;  "C-j" 'company-select-next
-;;  "C-l" 'nil
-;;  "C-k" 'company-select-previous
-;;  )
+(general-define-key
+ :keymaps 'company-active-map
+ "C-j" 'company-select-next
+ "C-l" 'nil
+ "C-k" 'company-select-previous
+ )
 
 (general-define-key
  :keymaps 'dired-mode-map

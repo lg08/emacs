@@ -37,6 +37,7 @@
   (toggle-indicate-empty-lines))
 (electric-pair-mode 1)
 
+
 (add-hook 'after-init-hook
           (lambda ()
             (require 'server)

@@ -1,0 +1,8 @@
+/ssh:lgen@armlab.cs.princeton.edu:/u/lgen/cos217/assignment3/testsymtable.c
+/tmp/#!ssh:lgen@armlab.cs.princeton.edu:!u!lgen!cos217!assignment3!testsymtable.c#
+/ssh:lgen@armlab.cs.princeton.edu:/u/lgen/cos217/assignment3/symtablelist.c
+/tmp/#!ssh:lgen@armlab.cs.princeton.edu:!u!lgen!cos217!assignment3!symtablelist.c#
+/ssh:lgen@armlab.cs.princeton.edu:/u/lgen/cos217/assignment3/symtablehash.c
+/tmp/#!ssh:lgen@armlab.cs.princeton.edu:!u!lgen!cos217!assignment3!symtablehash.c#
+/home/lg08/.emacs.d/lisp/my-testing-stuff.el
+/home/lg08/.emacs.d/lisp/#my-testing-stuff.el#

@@ -1,4 +1,4 @@
-;; -*- emacs-lisp -*- <20/10/21 14:51:39 /home/lg08/.emacs.d/tramp>
+;; -*- emacs-lisp -*- <20/10/28 01:57:19 /home/lg08/.emacs.d/tramp>
 ;; Tramp connection history.  Don't change this file.
 ;; Run `M-x tramp-cleanup-all-connections' instead.
 
@@ -13,8 +13,8 @@
   ("~" "/u/lgen")
   ("file-exists" "test -e")
   ("case-insensitive" nil)
-  ("readlink" "\\readlink")
   ("stat" "env QUOTING_STYLE=locale \\stat")
+  ("readlink" "\\readlink")
   ("id" "/usr/bin/id")
   ("gid-integer" 35)
   ("gid-string" "utempter")
@@ -28,4 +28,4 @@
   ("perl" "\\perl")
   ("bzr" nil)
   ("git" "\\git")
-  ("hg" nil)))
+  ("env-u-option" t)))

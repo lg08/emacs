@@ -50,9 +50,3 @@
 (require 'my-modes)
 
 (require 'my-testing-stuff)
-
-
-
-
-
-;; (my/double-pane-dired)

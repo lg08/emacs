@@ -1,1 +1,1 @@
-("~/Documents/projects/ubet/bets/" "~/Documents/projects/ubet/" "~/.emacs.d/" "~/Documents/Princeton/second_year/cos326/a4/" "~/Documents/projects/copsaccountable/" "~/Documents/notes/django_notes/21-Social_Clone_Project/simplesocial/")
+("~/Documents/projects/ubet/" "~/.emacs.d/" "~/Documents/Princeton/second_year/cos326/a4/" "~/Documents/projects/copsaccountable/" "~/Documents/notes/django_notes/21-Social_Clone_Project/simplesocial/")

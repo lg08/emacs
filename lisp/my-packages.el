@@ -27,8 +27,16 @@
     :config
 
     )
-  )
 
+  (use-package prescient
+    :config
+    
+    )
+  (use-package ivy-prescient
+    :config
+    (ivy-prescient-mode 1)
+    )
+  )
 ;; (ido-mode 1)
 ;; (ido-everywhere 1)
 
@@ -135,7 +143,7 @@
 (use-package counsel                    ;ivy-based functions
   :defer t
   :config
-  
+
   )
 
 (use-package projectile                 ;prokect management
@@ -144,7 +152,7 @@
   (projectile-mode +1)
   (setq projectile-completion-system 'ivy)
   (setq projectile-globally-ignored-file-suffixes '("pyc"))
-  
+
   )
 
 (use-package doom-themes                ;pretty themes
@@ -204,9 +212,9 @@
   (setq company-tooltip-limit 20)                      ; bigger popup window
   (setq company-tooltip-align-annotations 't)          ; align annotations to the right tooltip border
   (setq company-idle-delay .3)                         ; decrease delay before autocompletion popup shows
-  (setq company-begin-commands '(self-insert-command)) ; start autocompletion only after typing
-  
-  ;; provides instant autocompletion
+  ;; (setq company-begin-commands '(self-insert-command)) ; start autocompletion only after typing
+
+  ;; provides almost instant autocompletion
   (setq company-idle-delay 0)
   ;; (setq ;; Only 2 letters required for completion to activate.
   ;;  company-minimum-prefix-length 1
@@ -229,7 +237,7 @@
   ;;  company-dabbrev-ignore-case nil)
   ;; :custom
   ;; (company-begin-commands '(self-insert-command))
-  (setq company-minimum-prefix-length 2)
+  (setq company-minimum-prefix-length 4)
   ;; (company-show-numbers t)
   ;; (company-tooltip-align-annotations 't)
   ;; (global-company-mode t)
@@ -418,7 +426,7 @@
 (use-package merlin-eldoc
   :defer t
   :config
-  
+
   )
 
 (use-package column-marker
@@ -477,10 +485,20 @@
 
 ;;   )
 
-(use-package highlight-symbol
+;; (use-package highlight-symbol
+;;   :defer t
+;;   :config
+;;   (setq highlight-symbol-idle-delay 0)
+;;   )
+
+(use-package highlight-thing
   :defer t
   :config
-  (setq highlight-symbol-idle-delay 0)
+  (setq highlight-thing-delay-seconds 0.0)
+  ;; Don't highlight the thing at point itself. Default is nil.
+  (setq highlight-thing-exclude-thing-under-point t)
+  (setq highlight-thing-case-sensitive-p t)
+
   )
 
 
@@ -508,12 +526,6 @@
 
   )
 
-(use-package goto-line-preview
-  :defer t
-  :config
-
-  )
-
 (use-package format-all
   :defer t
   :config
@@ -529,16 +541,34 @@
 (use-package web-beautify
   :defer t
   :config
-  
+
   )
 
 (use-package iedit
   :defer t
   :config
-  
+
   )
 
 (use-package volatile-highlights
+  :defer t
+  :config
+
+  )
+
+(use-package haskell-mode
+  :defer t
+  :config
+
+  )
+
+(use-package yaml-mode
+  :defer t
+  :config
+
+  )
+
+(use-package org-bullets
   :defer t
   :config
   
