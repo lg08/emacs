@@ -65,6 +65,10 @@
  "C-M-j" 'down-list
  "C-c k" 'highlight-symbol-prev
  "C-c j" 'highlight-symbol-next
+ ;; "C-J" 'windmove-down
+ ;; "C-K" 'windmove-up
+ ;; "C-L" 'windmove-right
+ ;; "C-H" 'windmove-left
  )
 
 ;; MINOR MODE MAPS---------------------------------------------------------------------
@@ -147,14 +151,13 @@
  "3" 'switch-window-then-split-right
  "0" 'switch-window-then-delete
  "b" 'switch-to-buffer
- "s s" 'persp-switch
+ "s s" 'my-term
  "SPC" 'amx
  "w n" 'eyebrowse-next-window-config        
  "w p" 'eyebrowse-prev-window-config
  "d d" 'dired-sidebar-toggle-sidebar
  "w w" 'avy-kill-region
  "k" 'kill-buffer
- "s s" 'persp-switch
  )
 
 

@@ -36,6 +36,7 @@
 (when (not indicate-empty-lines)
   (toggle-indicate-empty-lines))
 (electric-pair-mode 1)
+(global-display-line-numbers-mode)
 
 
 (add-hook 'after-init-hook

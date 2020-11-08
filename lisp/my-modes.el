@@ -69,4 +69,8 @@
                          (define-key (current-local-map) (kbd "C-M-h") 'c-mark-function)
                          ))
 
+(add-hook 'eshell-mode-hook (lambda ()
+                              (company-mode -1)
+                           ))
+
 (provide 'my-modes)

@@ -36,6 +36,20 @@
     :config
     (ivy-prescient-mode 1)
     )
+
+  (use-package mini-frame
+  ;; :defer t
+  :init
+  (mini-frame-mode)
+  :config
+ 
+  (custom-set-variables
+ '(mini-frame-show-parameters
+   '((top . 0)
+     (width . 0.7)
+     (left . 0.5)
+     (height . 15))))
+  )
   )
 ;; (ido-mode 1)
 ;; (ido-everywhere 1)
@@ -97,6 +111,12 @@
   (doom-modeline-mode t)
   (setq doom-modeline-height 10)
   )
+
+;; (use-package all-the-icons-ivy
+;;   :defer 1
+;;   :init (add-hook 'after-init-hook 'all-the-icons-ivy-setup)
+  
+;;   )
 
 
 (use-package gcmh                       ;garbage management system
@@ -244,8 +264,8 @@
   )
 
 ;; potential deep learning thing; could be dope
-(use-package company-tabnine :ensure t)
-(add-to-list 'company-backends #'company-tabnine)
+;; (use-package company-tabnine :ensure t)
+;; (add-to-list 'company-backends 'company-tabnine)
 
 (use-package elpy                       ;python ide
   :defer t
@@ -572,6 +592,34 @@
   :defer t
   :config
   
+  )
+
+;; (use-package ivy-rich
+;;   :after ivy
+;;   :custom
+;;   (ivy-virtual-abbreviate 'full
+;;                           ivy-rich-switch-buffer-align-virtual-buffer t
+;;                           ivy-rich-path-style 'abbrev)
+;;   :config
+;;   (ivy-set-display-transformer 'ivy-switch-buffer
+;;                                'ivy-rich-switch-buffer-transformer))
+
+(use-package flycheck
+  :defer t
+  :config
+  
+  )
+
+(use-package highlight-indentation
+  :defer t
+  :config
+  
+  )
+
+(use-package wakatime-mode
+  :defer t
+  :config
+  (global-wakatime-mode)  
   )
 
 

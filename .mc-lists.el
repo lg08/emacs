@@ -3,7 +3,10 @@
 
 (setq mc/cmds-to-run-for-all
       '(
+        crux-move-beginning-of-line
+        end-of-visual-line
         kill-region
+        smart-hungry-delete-backward-char
         ))
 
 (setq mc/cmds-to-run-once

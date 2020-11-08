@@ -218,4 +218,13 @@ Version 2020-06-26"
                   "xdg-open "
                   default-directory)))
 
+;; opens ansi-term in current directory without a prompt
+(defun my/term ()
+  "My personal term command."
+  (interactive)
+  (set-buffer (make-term "terminal" "/bin/bash"))
+  (term-mode)
+  (term-char-mode)
+  (switch-to-buffer "*terminal*"))
+
 (provide 'my-functions)

@@ -1,4 +1,4 @@
-;; -*- emacs-lisp -*- <20/10/28 01:57:19 /home/lg08/.emacs.d/tramp>
+;; -*- emacs-lisp -*- <20/11/06 22:28:01 /home/lg08/.emacs.d/tramp>
 ;; Tramp connection history.  Don't change this file.
 ;; Run `M-x tramp-cleanup-all-connections' instead.
 
@@ -28,4 +28,7 @@
   ("perl" "\\perl")
   ("bzr" nil)
   ("git" "\\git")
-  ("env-u-option" t)))
+  ("env-u-option" t)
+  ("tmpdir" "/ssh:lgen@armlab.cs.princeton.edu:/tmp")
+  ("touch-t" t)
+  ("touch" "\\touch")))

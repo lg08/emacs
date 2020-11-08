@@ -109,3 +109,39 @@
 [submodule "straight/repos/haskell-mode"]
 	path = straight/repos/haskell-mode
 	url = https://github.com/haskell/haskell-mode.git
+[submodule "straight/repos/wakatime-mode"]
+	path = straight/repos/wakatime-mode
+	url = https://github.com/wakatime/wakatime-mode.git
+[submodule "straight/repos/tab-jump-out"]
+	path = straight/repos/tab-jump-out
+	url = https://github.com/zhangkaiyulw/tab-jump-out.git
+[submodule "straight/repos/spotify-el"]
+	path = straight/repos/spotify-el
+	url = https://github.com/remvee/spotify-el.git
+[submodule "straight/repos/snow.el"]
+	path = straight/repos/snow.el
+	url = https://github.com/alphapapa/snow.el.git
+[submodule "straight/repos/posframe"]
+	path = straight/repos/posframe
+	url = https://github.com/tumashu/posframe.git
+[submodule "straight/repos/let-alist"]
+	path = straight/repos/let-alist
+	url = https://github.com/emacs-straight/let-alist.git
+[submodule "straight/repos/ivy-rich"]
+	path = straight/repos/ivy-rich
+	url = https://github.com/Yevgnen/ivy-rich.git
+[submodule "straight/repos/ivy-posframe"]
+	path = straight/repos/ivy-posframe
+	url = https://github.com/tumashu/ivy-posframe.git
+[submodule "straight/repos/flycheck"]
+	path = straight/repos/flycheck
+	url = https://github.com/flycheck/flycheck.git
+[submodule "straight/repos/emacs-mini-frame"]
+	path = straight/repos/emacs-mini-frame
+	url = https://github.com/muffinmad/emacs-mini-frame.git
+[submodule "straight/repos/counsel-spotify"]
+	path = straight/repos/counsel-spotify
+	url = https://github.com/Lautaro-Garcia/counsel-spotify.git
+[submodule "straight/repos/all-the-icons-ivy"]
+	path = straight/repos/all-the-icons-ivy
+	url = https://github.com/asok/all-the-icons-ivy.git
