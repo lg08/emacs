@@ -1,0 +1,123 @@
+(* COS 326 Midterm Exam *)
+
+(* FILL THIS OUT:
+
+ * LOGIN:
+ * NAME:
+ * WRITE the Princeton honor pledge in this comment here:
+
+
+
+
+ * TYPE your FULL NAME again here to indicate you will abide by the pledge:  
+
+
+
+ *)
+
+
+(* Code: *)
+
+let count (x:int) (a:int) (ls:int list) : int =
+  match ls with
+       [] -> a
+     | hd::tl ->
+         if hd = x then
+           count x (a+1) tl
+         else
+           count x a tl
+
+let rec double (ls:int list) : int list =
+  match ls with
+    | [] -> []
+    | hd::tl -> hd::hd::double tl
+
+
+
+
+(* Proofs
+   -- Fill in proofs below.  Feel free to restructure things if you would like. *)
+
+======
+Lemma 1:
+======
+
+for all ls:int list,
+for all a:int, b:int, x:int,
+a + (count x b ls) == count x (a+b) ls
+
+====
+Proof:
+====
+
+Strategy:  We will prove the lemma by induction on the structure of the list ls.
+
+CASE: ls = []
+
+Must Prove:
+for all a:int, b:int, x:int,
+a + (count x b []) == count x (a+b) []
+
+
+
+
+
+
+
+
+
+CASE: ls = hd::tl   && assuming   hd != x
+
+Must Prove:
+for all a:int, b:int, x:int,
+a + (count x b (hd::tl)) == count x (a+b) (hd::tl)
+
+IH:  forall a:int, b:int, x:int, a + (count x b tl) == count x (a+b) tl
+
+
+
+
+
+
+
+
+CASE: ls = hd::tl   &&  assuming  hd = x
+
+Must Prove:
+for all a:int, b:int, x:int,
+a + (count x b (hd::tl)) == count x (a+b) (hd::tl)
+
+IH:  forall a:int, b:int, x:int, a + (count x b tl) == count x (a+b) tl
+
+
+
+
+
+==============
+End Proof of Lemma 1
+==============
+
+
+=======================
+Lemma 2 (for theorem 2, if needed):
+=======================
+
+
+
+
+
+=======
+Theorem2:
+=======
+for all a:int, x:int, ls:int list,
+2*(count x 0 ls) == count x 0 (double ls)
+
+====
+Proof:
+====
+
+
+
+===============
+End Proof of Theorem 2
+===============

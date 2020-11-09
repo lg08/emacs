@@ -1,0 +1,320 @@
+* Ocaml basics
+** byte compilers
+- ocamlc = fast byte compiler
+- ocamlopt = optimizing, native compiler
+- ocamlbuild = nice wrapper that computes dependencies
+
+
+- underscore just means to throw away the variable
+#+BEGIN_SRC ocaml
+
+(* sum the numbers from 0 to n
+  precondition: n must be a natural number
+   ,*)
+
+  let rec sumTo (n:int) : int =   (* "rec" means that it's recursive, so it can call itself *)
+    match n with                  (* also the argument is called n of type int *)
+      0 -> 0                      (* the result is of type int *)
+    | n -> n + sumTo (n-1)
+
+  let _ =
+    print_int (sumTo 8);
+    print_newline()
+
+
+#+END_SRC
+
+- expressions are computations
+  - 2+3 is a computation
+- values are the results of computations
+  - 5 is a value
+- types describe collections of values and the computations that generate those values
+  - int is a type
+  - value of type int include
+    + 0, 1, 2, 3
+    + -1, -2, etc
+
+** types, evals, and expressions
+
+- when multiplying/adding floats, you have to add a '.' after the operator
+- string concatenation is done with '^'
+- to convert char to int, do int_of_char 'a'
+- '()' is the same as void
+  - it's called "unit" and it's just a tuple with no fields
+
+** functions
+
+- no commas or parenthesis when passing arguments except parenthesis for grouping
+- f x y z is the same as:
+  - ((f x) y) z
+
+* Let Declarations
+
+#+BEGIN_SRC ocaml
+
+  (* example 2 *)
+  let x = 2 + 3 in
+  x * x
+
+        (* ex 1 *)
+let y =
+    if x < 17 then
+        let w = x + 1 in
+        2 * w
+    else
+        26
+
+#+END_SRC
+
+** all variables are immutable
+
+- alpha conversion is just renaming variable of the same name
+** tuples
+ - a tuple is a fixed, finite, ordered collection of values
+ - defined like: (1, 2)     : int * int
+ - ("hello", 7+3, true)     : string * int * bool
+ - 
+ - use example:
+#+BEGIN_SRC ocaml
+
+let (x,y) = (2,4) in x + x + y
+
+#+END_SRC
+** records
+- records are like tuples but they have named fields
+- example:
+#+BEGIN_SRC ocaml
+
+  type name = {first:string; last:string;} (* type declaration *)
+  let my_name = {first="David"; last="Walker";}
+  let to_string (n:name) = n.last ^ ", " ^ n.first (* use dot notation to extract info *)
+
+#+END_SRC
+
+
+
+* developing programs
+** steps to writing functions over typed data
+1. Write down the function and argument names
+2. write down the argument and result types
+3. write down some examples (in a comment)
+4. deconstruct input data structures
+5. build new output values
+6. clean up by identifying repeated patterns
+** defining new types
+#+BEGIN_SRC ocaml
+
+  (* it's a type abbreviation basically *)
+  type point = float * float
+
+#+END_SRC
+* examples
+#+BEGIN_SRC ocaml
+
+  (* just calculates the distance between two points *)
+  let distance (p1:point) (p2:point) : float =
+      let (x1,y1) = p1 in
+      let (x2,y2) = p2 in
+      sqrt ((x2 -. x1) *. (x2 -. x1) +.
+      (y2 -. y1) *. (y2 -. y1))
+
+#+END_SRC
+
+* OPtion Types
+- When contructing, use Some and None
+- when deconstructing, use "match" like below
+#+BEGIN_SRC ocaml
+
+  match slope p1 p2 with          (* if you put "_" as an option, that's like the else in an if sta *)
+  | Some s ->
+  print_string ("Slope: " ^ string_of_float s)
+  | None ->
+  print_string "Vertical line \n"
+
+#+END_SRC
+* Inductive Programming
+- an inductive data type T is a data type defined by
+  - base cases
+    - don't refer to T
+  - inductive cases
+    - build a new data of type T from a pre-existing data of type T
+    - the pre-existsing data is guarenteed to be smaller thatn the new values
+** Inductive Proving
+- prove the function correct for base cases
+  - prove them one by one
+- prove the function correct for teh inductive cases
+  - prove them one-by-one
+  - asssume your function already workd correctly on smaller data values
+  - use this assumption to reason about calls over smaller data values
+  - this asssumption is called the induction hypothesis of your proof
+** Lists
+- [] (empty list)
+- v::vs (a value v followed by a shorter list of values vs)
+  - ex: 2::3::5::[] has type int list
+  - is the same as 2::(3::(5::[]))
+  - you can also just do [2;3;5]
+*** DONE rules
+- [] may have any list type t list
+- if e1:t and e2:t list then (e1::e2):t list
+* Poly-Ho
+- anonymous functions can be used for small, temporary functions
+#+BEGIN_SRC ocaml
+  (* with "fun" being the anonymous function *)
+  let inc_all cs = map (fun x -> x + 1) xs
+
+#+END_SRC
+** multi-argument functions
+- multi-argument function syntax is just syntactic sugar for nested functions in this way
+#+BEGIN_SRC ocaml
+
+let add = (fun x y -> x + y)
+              (* the above function is just shorthand for: *)
+let add = (fun x -> (fun y -> x+y))
+
+#+END_SRC
+*** Curried functions
+- to encode a multi-argument function using nested, higher-order functions
+* Swap function
+#+BEGIN_SRC ocaml
+
+let  rec swap (orig_list: 'a list) (list1: 'a list) (list2: 'a list) (list3: 'a list) (num1: int) (num2: int)  : 'a list=
+    match orig_list with
+    (* if it reaches the end of the original list, swap the heads and reorder the lists *)
+    | [] ->
+       (match List.rev list1 with
+        | [] -> list1            (* this can't happen *)
+        | hd :: tl ->
+           match List.rev list3 with
+           | [] -> list3         (* this can't happen *)
+           | hd3 :: tl3 ->
+              (List.rev list2) @ (hd :: tl3) @ (hd3 :: tl))
+    | hd :: tl ->
+       match num1, num2 with
+       | 0, _ ->
+          (* moves list 1 to the back and appends hd to the new list *)
+          swap tl (hd :: list2) list3 list1 (num1 -1) (num2 -1)
+       | _, 0 ->
+          (* does the same thing as if num1 == 0 *)
+          swap tl (hd :: list2) (list3) (list1) (num1 -1) (num2 -1)
+       | _, _ ->
+          (* otherwise, just append the head to list 1 and move on *)
+          swap tl (hd :: list1) list2 list3 (num1 -1) (num2 -1)
+
+#+END_SRC
+* Insert Function
+#+BEGIN_SRC ocaml
+
+let rec insert (item: 'a) (list: 'a list) (n: 'int) (return_list: 'a list) : 'a list=
+    match list with
+    | [] -> return_list
+    | hd :: tl ->
+       (* if we reach the spot, insert the item and return the new list *)
+       if n == 0 then
+         return_list @ item :: hd :: tl
+       else
+         insert item tl (n-1) (return_list @ [hd])
+
+#+END_SRC
+* Permutation function
+#+BEGIN_SRC ocaml
+
+let perm (items:'a list) : 'a list list =
+  let rec insert (item: 'a) (initial_list: 'a list) (n: 'int) (final_list: 'a list) : 'a list =
+    match initial_list with
+    | [] -> final_list @ [item]
+    | hd :: tl ->
+       (* if we reach the spot, insert the item and return the new list *)
+       if n == 0 then
+         final_list @ item :: hd :: tl
+       else
+         insert item tl (n-1) (final_list @ [hd])
+  in
+  let pretty_insert (item: 'a) (list: 'a list) (n: int) =
+    insert item list n []
+  in
+  let rec add_a_bunch (itemy: 'a) (listy: 'a list) (list_to_return:'a list list) (count: int) : 'a list list =
+    if count == (List.length listy + 1) then
+      list_to_return
+    else
+      add_a_bunch itemy listy ((pretty_insert itemy listy count) :: list_to_return) (count + 1)
+  in
+  let pretty_add_a_bunch (item: 'a) (list: 'a list) : 'a list list =
+    add_a_bunch item list [] 0
+  in
+  (* pretty_add_a_bunch 1 [3; 2] *)
+  let rec insert_list_of_list (list: 'a list list) (item: 'a) (return_list: 'a list list) : 'a list list =
+    match list, return_list with
+    | [], head:: tail ->
+       return_list
+    |[], [] -> pretty_add_a_bunch item []
+    | hd :: tl, _ ->
+       insert_list_of_list tl item (pretty_add_a_bunch item hd @ return_list)
+  in
+  (* insert_list_of_list [[1; 2]; [2; 1]] 3 [] *)
+  let rec final_wrapper (original_list: 'a list) (list_of_list: 'a list list) =
+    match original_list with
+    | [] -> list_of_list
+    | hd :: tl ->
+       final_wrapper tl (insert_list_of_list list_of_list hd [])
+  in
+  final_wrapper items []
+
+
+let testyperm = perm [1;2;3;4]
+
+#+END_SRC
+
+
+#+BEGIN_SRC ocaml
+
+let mult (x) (y) = 
+  Printf.printf "%d * %d\n" x y ;
+  x * y
+
+let rec fold_left (f:'b -> 'a -> 'b) (base:'b) (xs:'a list) : 'b =
+  match xs with
+      [] -> base
+    | hd::tail -> fold_left f (f base hd) tail
+
+let rec fold_right (f:'a -> 'b -> 'b) (xs:'a list) (base:'b) : 'b =
+  match xs with
+      [] -> base
+    | hd::tail -> f hd (fold_right f tail base)
+
+(* what is the product of all the numbers in the list? *)
+let leftprod = fold_left mult 1 [1 ; 2; 3; 4; 5]
+let rightprod = fold_right mult [1 ; 2; 3; 4; 5] 1
+
+let rec map (f:'a -> 'b) (xs: 'a list) : 'b list =
+  match xs with
+    | [] -> []
+    | hd::tl -> (f hd) :: (map f tl)
+
+(* what is the value x^2 - 4x + 9 for each value in the list? *)
+let algebra (x:int) : int =
+  x*x - 4*x + 9
+
+let algmap = map algebra [-2; -1; 0; 1; 2]
+
+(* what is the transformation of each item in the list to letter? *)
+let letter_index (x:int) : char =
+  Char.chr((Char.code 'a') + (x-1)) (*x - 1 because 'a' is 1st letter*)
+
+let l = map letter_index [15; 3; 1; 13; 12] (* ['o';'c';'a';'m';'l'] *)
+let stringL = fold_left (fun s c -> s ^ Char.escaped c) "" l (*"ocaml"*)
+let stringR = fold_right (fun c s -> Char.escaped c ^ s) l "" (*"ocaml"*)
+
+
+
+
+
+#+END_SRC
+* Function Closures
+- a closure is just a pair that includes the code for the function and
+ the environment that holds the free variables
+- We don't include the space needed for the code in the closure space
+** cost of the pair
+- 2 pointers (8 bytes)
+- cost of environment (num of free variables)
+- but not the cost of the code
+

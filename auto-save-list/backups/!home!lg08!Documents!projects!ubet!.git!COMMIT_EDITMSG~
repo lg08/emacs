@@ -1,0 +1,15 @@
+
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+#
+# On branch master
+# Changes to be committed:
+#	modified:   bets/__pycache__/forms.cpython-38.pyc
+#	modified:   bets/__pycache__/views.cpython-38.pyc
+#	modified:   bets/forms.py
+#	modified:   bets/templates/bets/_bet_card.html
+#	modified:   bets/templates/bets/bet_create_form.html
+#	modified:   bets/views.py
+#	modified:   users/__pycache__/views.cpython-38.pyc
+#	modified:   users/views.py
+#

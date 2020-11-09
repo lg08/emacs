@@ -1,0 +1,7 @@
+ls
+cd ubet
+ls
+python manage.py runserver
+emacs -nw
+ssh lgen@armlab.cs.princeton.edu
+ssh lgen@armlab.cs.princeton.edu

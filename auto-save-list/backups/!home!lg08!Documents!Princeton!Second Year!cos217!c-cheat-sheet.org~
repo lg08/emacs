@@ -1,0 +1,7 @@
+* include
+- this just includes the whole library
+#+BEGIN_SRC c
+
+#include <stdio.h>
+
+#+END_SRC

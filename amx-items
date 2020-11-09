@@ -1,0 +1,16 @@
+
+;; ----- amx-history -----
+(
+ my/open-terminal-in-workdir
+ cd
+ 5x5
+ amx
+ arp
+ dbx
+ dig
+)
+
+;; ----- amx-data -----
+(
+ (my/open-terminal-in-workdir . 1)
+)

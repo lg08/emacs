@@ -1,0 +1,6 @@
+/ssh:lgen@armlab.cs.princeton.edu:/u/lgen/armlabsizes.c
+/tmp/#!ssh:lgen@armlab.cs.princeton.edu:!u!lgen!armlabsizes.c#
+/ssh:lgen@armlab.cs.princeton.edu:/u/lgen/testsort.c
+/tmp/#!ssh:lgen@armlab.cs.princeton.edu:!u!lgen!testsort.c#
+/home/lg08/.emacs.d/init.el
+/home/lg08/.emacs.d/#init.el#

@@ -1,0 +1,161 @@
+NAME: Lucas
+LOGIN: lgen
+
+Part 2, Assignment #4, COS 326
+------------------------------
+
+
+
+Part 2.1:
+--------
+
+Prove that for all a, b, c : complex,
+
+cadd a (cadd b c) == cadd (cadd a b) c
+
+Proof:
+                
+(1) cadd a (cadd b c)                                   (lhs)
+== cadd a (
+== cadd a ((b1 + c1), (b2 + c2))                        (eval)
+== (a1 + (b1 + c1)), (a2 + (b2 + c2))                   (eval)
+== (a1 + b1 + c1), (a2 + b2 + c2)                       (math)
+== ((a1 + b1) + c1), ((a2 + b2) + c2)                   (math)
+== cadd ((a1 + b1) (a2 + b2)) c                         (reverse eval)
+== cadd (cadd a b) c                                    (reverse eval)
+
+
+
+
+
+
+Part 2.2: 
+---------
+
+Prove that for all integer lists xs and ys,
+max (maxs xs) (maxs ys) == (maxs (append xs ys)).
+
+Clearly justify each step of your proof.
+
+Proof:  By induction on the structure of the list xs.
+
+case xs == []:
+
+To show: max (maxs []) (maxs ys) == (maxs (append [] ys))
+
+Proof:
+
+(1) max (maxs []) (maxs ys)                     (lhs)
+(2) max (min_int) (maxs ys)                     ()
+(3) maxs ys
+(4) maxs ys
+(5) maxs (append [] ys)
+(6) maxs (append xs ys)
+
+
+
+
+
+
+
+case xs == hd::tail:
+
+IH:   max (maxs tail) (maxs ys) == (maxs (append tail ys))
+
+To show:   
+
+Proof:
+(1) max (maxs hd::tail) (maxs ys)           (lhs)
+(2) max (max hd (maxs tail)) (maxs ys)      (eval maxs)
+(3) max (hd) (max (maxs tail) (maxs ys))    (associativity)
+(4) max (hd) (maxs (append tail ys))        (IH)
+(5) maxs (hd :: (append tail ys))           (reverse eval maxs)
+(6) maxs (append (hd::tail) (ys))           (reverse eval append)
+
+
+QED!
+
+Part 2.3: 
+---------
+
+(a) Prove that for all integer lists l, bump1 l == bump2 l.
+
+Proof: 
+case l == []:
+
+bump1 []
+map (fun x -> x + 1) []                         (eval bump1)
+[]                                              (eval map)
+bump2 []                                        (reverse eval bump2)
+
+case l == hd :: tl:
+IH: bump1 tl == bump2 tl
+
+bump1 (hd::tl)                                  (lhs)
+map (fun x -> x+1) (hd :: tl)                   (eval bump1)
+(fun x -> x + 1)[hd/x] :: map f tl              (eval map)
+(hd + 1) :: map (fun x -> x + 1) tl             (substitution)
+bump2 (hd::tl)                                  (reverse eval bump2)
+
+
+
+
+(b) Prove that for all integer lists l, bump1 l == bump3 l.
+
+Proof:
+case l == []:
+
+bump1 []
+map (fun x -> x + 1) []                         (eval bump1)
+[]                                              (eval map)
+bump3 []                                        (reverse eval bump3)
+
+case l == hd::tl:
+IH:  bump1 tl == bump3 tl
+
+bump1 (hd::tl)                                  (lhs)
+map (fun x -> x + 1) (hd::tl)                   (eval bump1)
+(fun x -> x + 1)[hd/x] :: map f tl              (eval map)
+(hd + 1) :: map (fun x -> x + 1) tl             (substitution)
+(hd + 1) :: (bump1 tl)                          (reverse eval bump1)
+(hd + 1) :: (bump3 tl)                          (IH)
+bump3 (hd :: tl)                                (reverse eval bump3)
+
+
+(c) In one sentence, what's the big difference between parts (a) and (b)?
+I'm guessing that you're looking for the fact that part b uses the
+induction hypothesis while part a does not
+
+
+Part 2.4:
+---------
+
+Either prove or disprove each of the following. You will do any proofs using
+induction on lists and you will disprove any false statement by providing a
+counter-example to the claim.  When you do a proof, be sure to use the 
+standard template for list proofs.
+
+(a) For all l : ('a * 'b) list, zip(unzip l) == l.
+
+Proof:
+case l == []:
+zip(unzip [])                                   (lhs)
+zip(([]. []))                                   (eval unzip)
+[]                                              (eval zip)
+
+
+case l == hd::tl:
+IH: zip(unzip tl) == tl
+
+Proof:
+zip (unzip (hd::tl))                            (lhs)
+zip
+
+
+
+
+
+(b) For all l1 : 'a list, l2 : 'b list, unzip(zip (l1,l2)) == (l1,l2).
+False
+if l1 = ([1;2], [4;5;6])
+basically, if the lists are different lengths, then it won't return the same pair of lists

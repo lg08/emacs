@@ -1,0 +1,72 @@
+  let rec get_all_nums (exp:expression) (constant_list: float list) (coefficient_list: float list) (multiplier: float) : float * float =
+    match exp with
+    | Num f -> ((add_all coefficient_list), (add_all constant_list))
+    | Var -> ((add_all coefficient_list), (add_all constant_list))
+    | Binop (binop, expression1, expression2) ->
+       match expression1, expression2 with
+       | Num f, Num g ->
+          (* add the sum/difference/product to the list *)
+          (match binop with
+          | Add -> ((add_all coefficient_list), (add_all ((multiplier *. (g +. f)) :: constant_list)))
+          | Sub -> ((add_all coefficient_list), (add_all ((multiplier *. (f -. g)) :: constant_list)))
+          | Mul -> ((add_all coefficient_list), (add_all ((multiplier *. (g *. f)) :: constant_list))))
+       | Binop (x, y, z), Num g ->
+          (match binop with
+          | Add -> get_all_nums expression1 ((multiplier *. g) :: constant_list) coefficient_list multiplier
+          | Sub -> get_all_nums expression1 ((0.0 -. (multiplier *. g)) :: constant_list) coefficient_list multiplier
+          | Mul -> get_all_nums expression1 constant_list coefficient_list (g *. multiplier))
+       | Num f, Binop (x, y, z) ->
+          (match binop with
+          | Add -> get_all_nums expression2 ((multiplier *. f) :: constant_list) coefficient_list multiplier
+          | Sub -> get_all_nums expression2 ((multiplier *. f) :: constant_list) coefficient_list (multiplier *. -1.0)
+          | Mul -> get_all_nums expression2 constant_list coefficient_list (f *. multiplier))
+       | Num f, Var ->
+          (match binop with
+          | Add -> ((add_all coefficient_list), (add_all (multiplier *. f) :: constant_list))
+          | Sub -> ((add_all coefficient_list), ((multiplier *. (0.0 -. f)) :: constant_list))
+          | Mul -> ((add_all coefficient_list), (add_all constant_list)))
+       | Var, Num g ->
+          (match binop with
+          | Add -> ((add_all cofficient_list), ((multiplier *. g) :: constant_list))
+          | Sub -> ((add_all coefficient_list), ((multiplier *. (0.0 -. g)) :: constant_list))
+          | Mul -> ((add_all coefficient_list), (add_all constant_list)))
+       | Var, Var -> list
+       | Binop (x, y, z), Var -> get_all_nums expression1 constant_list coefficient_list multiplier
+       | Var, Binop (x, y, z) -> get_all_nums expression2 constant_list coefficient_list multiplier
+       | Binop (a, b, c), Binop (x, y, z) ->
+          (match binop with
+          | Add ->
+             let new_list = get_all_nums expression1 constant_list coefficient_list multiplier in
+             (match new_list with
+             | [] -> get_all_nums expression2 new_list coefficient_list multiplier
+             | hd :: tl ->
+                let new_coefficient_list = hd in
+                (match tl with
+                | [] -> []
+                | hd2 :: tl2 ->
+                   let new_constant_list= hd2 in
+                   get_all_nums expression2 new_constant_list new_coefficient_list multiplier))
+          | Sub ->
+
+             let new_list = get_all_nums expression1 constant_list coefficient_list multiplier in
+             (match new_list with
+             | [] -> get_all_nums expression2 new_list coefficient_list multiplier
+             | hd :: tl ->
+                let new_coefficient_list = hd in
+                (match tl with
+                | [] -> []
+                | hd2 :: tl2 ->
+                   let new_constant_list= hd2 in
+                   get_all_nums expression2 new_constant_list new_coefficient_list (multiplier *. -1.0)))
+          | Mul ->
+             let new_list = get_all_nums expression1 list multiplier in
+             (match new_list with
+             | [] -> get_all_nums expression2 new_list coefficient_list multiplier
+             | hd :: tl ->
+                let new_coefficient_list = hd in
+                (match tl with
+                | [] -> []
+                | hd2 :: tl2 ->
+                   let new_constant_list= hd2 in
+                   get_all_nums expression2 constant_list (multiplier *. new_constant_list)
+                )))

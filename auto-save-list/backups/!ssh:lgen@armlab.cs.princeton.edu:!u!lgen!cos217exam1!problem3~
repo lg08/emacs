@@ -1,0 +1,54 @@
+=====================================================================
+PROBLEM 3 - DMM ERROR CLASSIFICATION - 14 points / 80 total on exam
+=====================================================================
+
+For the statements in each part of this question, indicate one or
+more appropriate statuses from this list:
+
+ML - Memory Leak: aka garbage creation
+BD - Bad Dereference: dereferences a NULL pointer or a pointer to
+     memory that was never allocated or has already been freed
+IF - Improper Free: frees a pointer to memory that was never
+     allocated or has already been freed
+OK - Okay: exhibits no dynamic memory problem
+
+If different statuses could result depending on the result of a call
+to malloc, calloc, or realloc, then list all possible statuses.
+You do NOT have to delineate the cases in which each would result.
+
+Each part of this question is independent from the others,
+but you should assume for each that:
+* p is a char pointer pointing to k bytes that have been allocated
+  in the heap, at least one of which is the null byte ('\0').
+* q is a char pointer
+
+
+a.
+           strcpy(calloc(strlen(p)+1, sizeof(char)), p);
+Status(es):
+
+b.
+           for(i=0; i<k; i++) free(p+i);
+Status(es):
+
+c.
+           free(p); printf("%ul\n", p);
+Status(es):
+
+d.
+           free(p++);
+Status(es):
+
+e.
+           q = p; free(q); printf("%s", p);
+Status(es):
+
+f.         Hint: man 3 free
+           free(p); p=NULL; free(p);
+Status(es):
+
+g.
+           p = realloc(p, 2*k);
+Status(es):
+
+
