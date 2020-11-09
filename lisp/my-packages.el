@@ -450,12 +450,6 @@
     )
   )
 
-;; (use-package smartparens
-;;   :defer t
-;;   :config
-
-;;   )
-
 (use-package tuareg
   :defer t
   :config
@@ -472,22 +466,6 @@
   :defer t
   :config
 
-  )
-
-(use-package column-marker
-  :defer t
-  :config
-  )
-
-(use-package linum-relative
-  :defer t
-  :config
-
-  )
-
-(use-package fix-word
-  :defer t
-  :config
   )
 
 (use-package fold-this
@@ -523,13 +501,6 @@
 
   )
 
-;; (use-package highlight-thing
-;;   :defer t
-;;   :config
-;;   (setq highlight-thing-delay-seconds 0)
-
-;;   )
-
 ;; (use-package highlight-symbol
 ;;   :defer t
 ;;   :config
@@ -547,29 +518,29 @@
   )
 
 
-(use-package lsp-mode
-  :defer t
-  :config
+;; (use-package lsp-mode
+;;   :defer t
+;;   :config
 
-  )
+;;   )
 
-(use-package lsp-ui
-  :defer t
-  :config
+;; (use-package lsp-ui
+;;   :defer t
+;;   :config
 
-  )
+;;   )
 
-(use-package lsp-ivy
-  :defer t
-  :config
+;; (use-package lsp-ivy
+;;   :defer t
+;;   :config
 
-  )
+;;   )
 
-(use-package golden-ratio
-  :defer t
-  :config
+;; (use-package golden-ratio
+;;   :defer t
+;;   :config
 
-  )
+;;   )
 
 (use-package format-all
   :defer t

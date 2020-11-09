@@ -134,6 +134,7 @@
  "o" 'crux-smart-open-line-above
  "s" 'swiper-isearch
  "f" 'iy-go-to-char
+ "b" 'iy-go-to-char-backward
  "p" 'my/select-current-line-and-forward-line
  "J" 'windmove-down
  "K" 'windmove-up
