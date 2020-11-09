@@ -606,7 +606,19 @@
   
   )
 
+(use-package fix-word
+  :defer t
+  :config
+  
+  )
+
 (use-package highlight-indentation
+  :defer t
+  :config
+  
+  )
+
+(use-package indent-guide
   :defer t
   :config
   
@@ -618,23 +630,43 @@
   (global-wakatime-mode)  
   )
 
-(use-package counsel-spotify
+;; (use-package counsel-spotify
+;;   :defer t
+;;   :init
+;;   (setq counsel-spotify-client-id "03945bf411484a0ba9c32e25144f655d")
+;;   (setq counsel-spotify-client-secret "4a994748c37644fcb9674ffb25f280a4")
+;;   :config
+  
+;;   )
+
+;; (use-package spotify
+;;   :defer t
+;;   :config
+;;   (setq spotify-oauth2-client-secret "4a994748c37644fcb9674ffb25f280a4")
+;;   (setq spotify-oauth2-client-id "03945bf411484a0ba9c32e25144f655d")
+;;   )
+
+;; (setq spotify-oauth2-client-secret "4a994748c37644fcb9674ffb25f280a4")
+;; (setq spotify-oauth2-client-id "03945bf411484a0ba9c32e25144f655d")
+;; (define-key spotify-mode-map (kbd "C-c .") 'spotify-command-map)
+
+
+(use-package helm
   :defer t
-  :init
-  (setq counsel-spotify-client-id "03945bf411484a0ba9c32e25144f655d")
-  (setq counsel-spotify-client-secret "4a994748c37644fcb9674ffb25f280a4")
+  :config
+  
+  )
+(use-package helm-swoop
+  :defer t
   :config
   
   )
 
-(use-package spotify
+(use-package helm-spotify
   :defer t
   :config
-  (setq spotify-oauth2-client-secret "4a994748c37644fcb9674ffb25f280a4")
-  (setq spotify-oauth2-client-id "03945bf411484a0ba9c32e25144f655d")
+  
   )
-
-
 
 
 (provide 'my-packages)

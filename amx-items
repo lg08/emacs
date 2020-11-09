@@ -1,16 +1,38 @@
 
 ;; ----- amx-history -----
 (
- my/open-terminal-in-workdir
- cd
- 5x5
- amx
- arp
- dbx
- dig
+ indent-guide-mode
+ prettify-symbols-mode
+ eval-buffer
+ helm-swoop
+ pixel-scroll-mode
+ use-package-template
+ highlight-indent-guides-mode
 )
 
 ;; ----- amx-data -----
 (
- (my/open-terminal-in-workdir . 1)
+ (my/open-terminal-in-workdir . 2)
+ (wakatime-mode . 2)
+ (smerge-mode . 2)
+ (iy-go-to-char-done . 1)
+ (eval-buffer . 19)
+ (iy-go-to-or-up-to-continue . 3)
+ (iy-go-to-char-isearch . 4)
+ (use-package-template . 6)
+ (helm-mode . 7)
+ (ivy-mode . 6)
+ (helm-find-files . 2)
+ (helm-spotify . 3)
+ (spotify-play . 2)
+ (restart-emacs . 1)
+ (prettify-symbols-mode . 13)
+ (rgrep . 1)
+ (helm-swoop . 4)
+ (auto-fill-mode . 2)
+ (comment-box . 1)
+ (highlight-indent-guides-mode . 4)
+ (highlight-indentation-mode . 3)
+ (indent-guide-mode . 2)
+ (pixel-scroll-mode . 1)
 )

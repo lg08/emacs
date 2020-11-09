@@ -1,1 +1,1 @@
-("~/Documents/Princeton/second_year/cos326/my-a5/a5/moogle/")
+("~/.emacs.d/" "~/Documents/Princeton/second_year/cos326/my-a5/a5/moogle/")
