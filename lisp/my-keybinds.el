@@ -1,6 +1,6 @@
 ;; GLOBAL KEYS-----------------------------------------------------------------
 (general-define-key
- "M-y" 'counsel-yank-pop
+ "M-y" 'helm-show-kill-ring
  "M-x" 'execute-extended-command
  "C-s" 'swiper-isearch
  "C-z" 'nil
@@ -65,10 +65,7 @@
  "C-M-j" 'down-list
  "C-c k" 'highlight-symbol-prev
  "C-c j" 'highlight-symbol-next
- ;; "C-J" 'windmove-down
- ;; "C-K" 'windmove-up
- ;; "C-L" 'windmove-right
- ;; "C-H" 'windmove-left
+ "C-c u" 'helm-all-mark-rings
  )
 
 ;; MINOR MODE MAPS---------------------------------------------------------------------
@@ -84,6 +81,24 @@
  :keymaps 'ivy-minibuffer-map
  "C-j" 'ivy-next-line
  "C-k" 'ivy-previous-line
+ )
+
+(general-define-key
+ :keymaps 'helm-map
+  "C-j" 'helm-next-line
+  "C-k" 'helm-previous-line
+  ;; "<tab>" 'helm-execute-persistent-action
+  "C-z" 'helm-select-action
+  )
+
+;; (general-define-key
+;;  :keymaps helm-swoop-map
+;;  "M-m" 'helm-multi-swoop-current-mode-from-helm-swoop
+;;  )
+
+(general-define-key
+ :keymaps 'helm-find-files-map
+ "<DEL>" 'helm-find-files-up-one-level
  )
 
 (general-define-key
@@ -106,6 +121,7 @@
 (general-define-key
  :keymaps 'org-mode-map
  )
+
 
 
 ;; MODALKA STUFF------------------------------------------------------------------------
@@ -132,7 +148,7 @@
  "x" 'recenter-top-bottom
  "d" 'delete-char
  "o" 'crux-smart-open-line-above
- "s" 'swiper-isearch
+ "s" 'helm-multi-swoop-all
  "f" 'iy-go-to-char
  "b" 'iy-go-to-char-backward
  "p" 'my/select-current-line-and-forward-line
@@ -140,25 +156,28 @@
  "K" 'windmove-up
  "H" 'windmove-left
  "L" 'windmove-right
+ "z" 'zop-to-char
  )
 
 (general-define-key
  :keymaps 'modalka-mode-map
  :prefix "SPC"
- "f f" 'counsel-find-file
+ "f f" 'helm-find-files
  "f b" 'bookmark-jump
  "p p" 'projectile-switch-project
  "p f" 'projectile-find-file
- "g" 'magit-status
+ "g g" 'magit-status
+ "g s" 'helm-google-suggest
  "x" 'execute-extended-command
  "o" 'switch-window
  "1" 'switch-window-then-maximize
  "2" 'switch-window-then-split-below
  "3" 'switch-window-then-split-right
  "0" 'switch-window-then-delete
- "b" 'switch-to-buffer
+ ;; "b" 'switch-to-buffer
+ "b" 'helm-mini
  "s s" 'my/term
- "SPC" 'amx
+ "SPC" 'helm-M-x
  "w n" 'eyebrowse-next-window-config
  "w p" 'eyebrowse-prev-window-config
  "d d" 'dired-sidebar-toggle-sidebar

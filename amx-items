@@ -1,22 +1,22 @@
 
 ;; ----- amx-history -----
 (
- indent-guide-mode
- prettify-symbols-mode
  eval-buffer
- helm-swoop
- pixel-scroll-mode
- use-package-template
- highlight-indent-guides-mode
+ font-lock-mode
+ my/open-terminal-in-workdir
+ indent-guide-global-mode
+ indent-guide-mode
+ run-ocaml
+ prettify-symbols-mode
 )
 
 ;; ----- amx-data -----
 (
- (my/open-terminal-in-workdir . 2)
+ (my/open-terminal-in-workdir . 4)
  (wakatime-mode . 2)
  (smerge-mode . 2)
  (iy-go-to-char-done . 1)
- (eval-buffer . 19)
+ (eval-buffer . 21)
  (iy-go-to-or-up-to-continue . 3)
  (iy-go-to-char-isearch . 4)
  (use-package-template . 6)
@@ -33,6 +33,9 @@
  (comment-box . 1)
  (highlight-indent-guides-mode . 4)
  (highlight-indentation-mode . 3)
- (indent-guide-mode . 2)
+ (indent-guide-mode . 3)
  (pixel-scroll-mode . 1)
+ (run-ocaml . 1)
+ (indent-guide-global-mode . 1)
+ (font-lock-mode . 2)
 )

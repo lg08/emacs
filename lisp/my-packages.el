@@ -17,58 +17,58 @@
 
   )
 
-(use-package ivy                        ;filtering system
-  :config
-  (ivy-mode 1)
-  (setq ivy-height 20)
+;; (use-package ivy                        ;filtering system
+;;   :config
+;;   (ivy-mode 1)
+;;   (setq ivy-height 20)
 
-  (use-package amx
-    :defer t
-    :config
+;;   (use-package amx
+;;     :defer t
+;;     :config
 
-    )
+;;     )
 
-  (use-package prescient
-    :config
+;;   (use-package prescient
+;;     :config
     
-    )
-  (use-package ivy-prescient
-    :config
-    (ivy-prescient-mode 1)
-    )
+;;     )
+;;   (use-package ivy-prescient
+;;     :config
+;;     (ivy-prescient-mode 1)
+;;     )
   
 
 
 
-  ;; (use-package mini-frame
- ;;  ;; :defer t
- ;;  :init
- ;;  (mini-frame-mode)
- ;;  :config
+;;   ;; (use-package mini-frame
+;;  ;;  ;; :defer t
+;;  ;;  :init
+;;  ;;  (mini-frame-mode)
+;;  ;;  :config
  
- ;;  (custom-set-variables
- ;; '(mini-frame-show-parameters
- ;;   '((top . 0)
- ;;     (width . 0.7)
- ;;     (left . 0.5)
- ;;     (height . 15))))
-  ;;  )
-  (use-package ivy-posframe
-    :defer t
-    :init
-    (ivy-posframe-mode)
-    :config
-    (setq ivy-posframe-parameters
-      '((left-fringe . 10)
-        (right-fringe . 10)))
-    )
-  (setq ivy-posframe-display-functions-alist
-        '((swiper          . ivy-display-function-fallback)
-          (complete-symbol . ivy-posframe-display-at-point)
-          (counsel-M-x     . ivy-posframe-display-at-window-bottom-left)
-          ;; the default one
-          (t               . ivy-posframe-display)))
-  )
+;;  ;;  (custom-set-variables
+;;  ;; '(mini-frame-show-parameters
+;;  ;;   '((top . 0)
+;;  ;;     (width . 0.7)
+;;  ;;     (left . 0.5)
+;;  ;;     (height . 15))))
+;;   ;;  )
+;;   (use-package ivy-posframe
+;;     :defer t
+;;     :init
+;;     (ivy-posframe-mode)
+;;     :config
+;;     (setq ivy-posframe-parameters
+;;       '((left-fringe . 10)
+;;         (right-fringe . 10)))
+;;     )
+;;   (setq ivy-posframe-display-functions-alist
+;;         '((swiper          . ivy-display-function-fallback)
+;;           (complete-symbol . ivy-posframe-display-at-point)
+;;           (counsel-M-x     . ivy-posframe-display-at-window-bottom-left)
+;;           ;; the default one
+;;           (t               . ivy-posframe-display)))
+;;   )
   
 ;; (ido-mode 1)
 ;; (ido-everywhere 1)
@@ -178,22 +178,22 @@
   )
 
 ;; below, all are deferred until called ------------------------------------------------------
-(use-package swiper                     ;i-search on steroroids
-  :defer t
-  :config
-  )
+;; (use-package swiper                     ;i-search on steroroids
+;;   :defer t
+;;   :config
+;;   )
 
-(use-package counsel                    ;ivy-based functions
-  :defer t
-  :config
+;; (use-package counsel                    ;ivy-based functions
+;;   :defer t
+;;   :config
 
-  )
+;;   )
 
 (use-package projectile                 ;prokect management
   :defer t
   :config
   (projectile-mode +1)
-  (setq projectile-completion-system 'ivy)
+  (setq projectile-completion-system 'helm)
   (setq projectile-globally-ignored-file-suffixes '("pyc"))
 
   )
@@ -536,12 +536,6 @@
 
 ;;   )
 
-;; (use-package golden-ratio
-;;   :defer t
-;;   :config
-
-;;   )
-
 (use-package format-all
   :defer t
   :config
@@ -627,7 +621,6 @@
 (use-package wakatime-mode
   :defer t
   :config
-  (global-wakatime-mode)  
   )
 
 ;; (use-package counsel-spotify
@@ -653,16 +646,103 @@
 
 (use-package helm
   :defer t
+  :init
+  (helm-mode)
+
+  (setq helm-split-window-default-side 'right)
+  (setq helm-samewindow t)
+
+  (setq helm-M-x-fuzzy-match t) ;; optional fuzzy matching for helm-M-x
+
+  (setq helm-locate-fuzzy-match t)
+
+
+
+  ;; this guy makes helm use a mini frame
+  ;; (setq helm-display-function 'helm-display-buffer-in-own-frame
+  ;;       helm-display-buffer-reuse-frame t
+  ;;       helm-use-undecorated-frame-option t)
   :config
   
   )
 (use-package helm-swoop
   :defer t
   :config
-  
+  (setq helm-swoop-pre-input-function
+        (lambda () nil))
+  ;; Save buffer when helm-multi-swoop-edit complete
+  (setq helm-multi-swoop-edit-save t)
+
+  ;; If this value is t, split window inside the current window
+  (setq helm-swoop-split-with-multiple-windows nil)
+
+  ;; Split direcion. 'split-window-vertically or 'split-window-horizontally
+  (setq helm-swoop-split-direction 'split-window-horizontally)
+
+  ;; If nil, you can slightly boost invoke speed in exchange for text color
+  (setq helm-swoop-speed-or-color nil)
+
+  ;; If you prefer fuzzy matching
+  (setq helm-swoop-use-fuzzy-match t)
+
   )
 
 (use-package helm-spotify
+  :defer t
+  :config
+  
+  )
+
+(use-package org-journal
+  :defer t
+  :config
+  (setq org-journal-enable-encryption t)
+  )
+
+
+;; ggtags and helm-gtags is supposed to help with c development
+(use-package ggtags
+  :defer t
+  :config
+  
+  )
+
+(use-package helm-gtags
+  :defer t
+  :config
+  
+  )
+
+(use-package company-c-headers
+  :defer t
+  :config
+  (add-to-list 'company-c-headers-path-system "/usr/include/c++/4.8/")
+  
+  )
+
+(use-package cc-mode
+  :defer t
+  :config
+  
+  )
+
+(use-package semantic
+  :defer t
+  :init
+  ;; (global-semanticdb-minor-mode 1)
+  ;; (global-semantic-idle-scheduler-mode 1)
+  (semantic-mode)
+  :config
+  
+  )
+
+(use-package helm-descbinds
+  :defer t
+  :config
+  
+  )
+
+(use-package zop-to-char
   :defer t
   :config
   

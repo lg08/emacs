@@ -35,6 +35,8 @@
 (setq-default indicate-empty-lines t)
 (when (not indicate-empty-lines)
   (toggle-indicate-empty-lines))
+
+
 (electric-pair-mode 1)
 (global-display-line-numbers-mode)
 
@@ -44,6 +46,8 @@
             (require 'server)
             (unless (server-running-p)
               (server-start))))
+
+(add-to-list 'default-frame-alist '(cursor-color . "green"))
 
 
 

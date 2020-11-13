@@ -1,5 +1,7 @@
 ;; sets up all the settings for different modes
 
+
+;; all the shit I always want while coding
 (add-hook 'prog-mode-hook (lambda ()
                             ;; (dimmer-mode 1)
                             (global-company-mode 1)
@@ -15,6 +17,7 @@
                             ;; (golden-ratio-mode)
                             ;; (company-quickhelp-mode 1)
                             (volatile-highlights-mode)
+                            (wakatime-mode 1)
                             ))
 
 (add-hook 'dired-mode-hook (lambda ()
@@ -46,6 +49,7 @@
 (add-hook 'org-mode-hook (lambda ()
                            (org-indent-mode)
                            (org-bullets-mode)
+                           (wakatime-mode 1)
                            ))
 (add-hook 'tuareg-mode-hook (lambda ()
                               (merlin-mode 1)
@@ -70,13 +74,13 @@
                               (prettify-symbols-mode 1)
                               ))
 (add-hook 'c-mode-hook (lambda ()
-                         ;; (column-marker-1 72)
-                         ;; (column-marker-2 73)
                          (setq fill-column 73)
                          (display-fill-column-indicator-mode)
-                         ;; (whitespace-mode 1)
-                         ;; (semantic-mode 1)
                          (define-key (current-local-map) (kbd "C-M-h") 'c-mark-function)
+                         (ggtags-mode)
+                         (helm-gtags-mode)
+                         (add-to-list 'company-backends 'company-c-headers)
+
                          ))
 
 (add-hook 'eshell-mode-hook (lambda ()
