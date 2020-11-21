@@ -46,6 +46,7 @@
  "C-;"  'goto-last-change
  ;; "M-u" 'xah-toggle-letter-case
  "M-u" 'fix-word-upcase
+ "M-c" 'fix-word-capitalize
  "C-r" 'avy-goto-char
  ;; "C-." 'company-complete
  "C-z" 'my/modalka-normal-mode
@@ -85,20 +86,15 @@
 
 (general-define-key
  :keymaps 'helm-map
-  "C-j" 'helm-next-line
-  "C-k" 'helm-previous-line
-  ;; "<tab>" 'helm-execute-persistent-action
-  "C-z" 'helm-select-action
+	    "C-j" 'helm-next-line
+	    "C-k" 'helm-previous-line
+	    ;; "<tab>" 'helm-execute-persistent-action
+	    "C-z" 'helm-select-action
   )
-
-;; (general-define-key
-;;  :keymaps helm-swoop-map
-;;  "M-m" 'helm-multi-swoop-current-mode-from-helm-swoop
-;;  )
 
 (general-define-key
  :keymaps 'helm-find-files-map
- "<DEL>" 'helm-find-files-up-one-level
+ "C-h" 'helm-find-files-up-one-level
  )
 
 (general-define-key
@@ -120,6 +116,7 @@
 
 (general-define-key
  :keymaps 'org-mode-map
+  
  )
 
 
@@ -148,7 +145,7 @@
  "x" 'recenter-top-bottom
  "d" 'delete-char
  "o" 'crux-smart-open-line-above
- "s" 'helm-multi-swoop-all
+ "s" 'helm-swoop
  "f" 'iy-go-to-char
  "b" 'iy-go-to-char-backward
  "p" 'my/select-current-line-and-forward-line
@@ -169,7 +166,7 @@
  "g g" 'magit-status
  "g s" 'helm-google-suggest
  "x" 'execute-extended-command
- "o" 'switch-window
+ "o o" 'switch-window
  "1" 'switch-window-then-maximize
  "2" 'switch-window-then-split-below
  "3" 'switch-window-then-split-right
@@ -183,6 +180,10 @@
  "d d" 'dired-sidebar-toggle-sidebar
  "w w" 'avy-kill-region
  "k" 'kill-buffer
+ "e b" 'eval-buffer
+ "r e" 'restart-emacs
+ "o e" 'my/open-buffer-path-in-explorer
+ "o t" 'my/open-terminal-in-workdir
  )
 
 

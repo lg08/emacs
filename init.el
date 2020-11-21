@@ -32,8 +32,8 @@
 
 ;; loads the theme
 (straight-use-package 'doom-themes)
-(load-theme 'doom-one t)
-(set-background-color "black")
+(load-theme 'whiteboard t)
+;; (set-background-color "black")
 
 
 ;; requires all necessary files

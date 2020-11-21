@@ -17,7 +17,7 @@
                             ;; (golden-ratio-mode)
                             ;; (company-quickhelp-mode 1)
                             (volatile-highlights-mode)
-                            (wakatime-mode 1)
+                            ;; (wakatime-mode 1)
                             ))
 
 (add-hook 'dired-mode-hook (lambda ()
@@ -26,6 +26,13 @@
                              (setq dired-dwim-target t)
                              (all-the-icons-dired-mode)
                              (require 'dired-x)
+                             (general-define-key
+                              :keymaps 'modalka-mode-map
+                              "u" 'nil
+                              "u" 'dired-unmark
+                              )
+                             (message "entering dired mode.")
+                                                          
                              ))
 
 (add-hook 'web-mode-hook (lambda ()
@@ -49,7 +56,16 @@
 (add-hook 'org-mode-hook (lambda ()
                            (org-indent-mode)
                            (org-bullets-mode)
-                           (wakatime-mode 1)
+                           (general-define-key
+                            :keymaps 'modalka-mode-map
+                            "SPC a o" 'begin/end_org
+                            )
+                           (general-define-key
+                            :keymaps org-mode-map
+                            "M-h" 'nil
+                            "M-h" 'backward-word
+                            )
+                           ;; (wakatime-mode 1)
                            ))
 (add-hook 'tuareg-mode-hook (lambda ()
                               (merlin-mode 1)
@@ -87,13 +103,34 @@
                               (company-mode -1)
                               ))
 
-(setq prettify-symbols-alist
-      '(
-        ("lambda" . 955) ; λ
-        ("->" . 8594)    ; →
-        ("=>" . 8658)    ; ⇒
-        ("map" . 8614)    ; ↦
-        ))
+
+(defun clojure-leave-clojure-mode-function ()
+  (when (eq major-mode 'clojure-mode)
+    (message "Leaving clojure-mode.")))
+
+(defun org-leave-mode-function ()
+  (when (eq major-mode 'org-mode)
+    (message "Leaving org-mode.")
+    (general-define-key
+     :keymaps 'modalka-mode-map
+     "SPC a o" 'nil
+     )
+    ))
+
+(defun dired-leave-mode-function ()
+  (when (eq major-mode 'dired-mode)
+    (message "Leaving org-mode.")
+    (general-define-key
+     :keymaps 'modalka-mode-map
+     "u" 'undo
+     )
+    ))
+
+(add-hook 'change-major-mode-hook (lambda ()
+                                    (clojure-leave-clojure-mode-function)
+                                    (org-leave-mode-function)
+                                    (dired-leave-mode-function)
+                                    ))
                                 
                                 
 (provide 'my-modes)

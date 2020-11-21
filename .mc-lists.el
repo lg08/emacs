@@ -6,6 +6,7 @@
         crux-move-beginning-of-line
         end-of-visual-line
         kill-region
+        org-self-insert-command
         smart-hungry-delete-backward-char
         ))
 

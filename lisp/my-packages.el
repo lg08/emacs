@@ -572,6 +572,12 @@
 
   )
 
+(use-package clojure-mode
+  :defer t
+  :config
+  
+  )
+
 (use-package yaml-mode
   :defer t
   :config
@@ -618,10 +624,10 @@
   
   )
 
-(use-package wakatime-mode
-  :defer t
-  :config
-  )
+;; (use-package wakatime-mode
+  ;; :defer t
+  ;; :config
+  ;; )
 
 ;; (use-package counsel-spotify
 ;;   :defer t
@@ -652,9 +658,9 @@
   (setq helm-split-window-default-side 'right)
   (setq helm-samewindow t)
 
-  (setq helm-M-x-fuzzy-match t) ;; optional fuzzy matching for helm-M-x
+  ;; (setq helm-M-x-fuzzy-match t) ;; optional fuzzy matching for helm-M-x
 
-  (setq helm-locate-fuzzy-match t)
+ ;; (setq helm-locate-fuzzy-match t)
 
 
 
@@ -677,13 +683,13 @@
   (setq helm-swoop-split-with-multiple-windows nil)
 
   ;; Split direcion. 'split-window-vertically or 'split-window-horizontally
-  (setq helm-swoop-split-direction 'split-window-horizontally)
+  (setq helm-swoop-split-direction 'split-window-vertically)
 
   ;; If nil, you can slightly boost invoke speed in exchange for text color
   (setq helm-swoop-speed-or-color nil)
 
   ;; If you prefer fuzzy matching
-  (setq helm-swoop-use-fuzzy-match t)
+ ;; (setq helm-swoop-use-fuzzy-match t)
 
   )
 
@@ -726,15 +732,15 @@
   
   )
 
-(use-package semantic
-  :defer t
-  :init
-  ;; (global-semanticdb-minor-mode 1)
-  ;; (global-semantic-idle-scheduler-mode 1)
-  (semantic-mode)
-  :config
+;; (use-package semantic
+;;   :defer t
+;;   :init
+;;   ;; (global-semanticdb-minor-mode 1)
+;;   ;; (global-semantic-idle-scheduler-mode 1)
+;;   (semantic-mode)
+;;   :config
   
-  )
+;;   )
 
 (use-package helm-descbinds
   :defer t
@@ -744,6 +750,20 @@
 
 (use-package zop-to-char
   :defer t
+  :config
+  
+  )
+
+(use-package minimal-theme
+  :defer t
+  :config
+  
+  )
+
+(use-package auctex-latexmk
+  :defer t
+  :init
+  (auctex-latexmk-setup)
   :config
   
   )

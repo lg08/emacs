@@ -1,4 +1,3 @@
-
 (define-skeleton template-tag-skeleton
   "fills our template tags"
   "inside the template tag: "
@@ -33,5 +32,38 @@
   "basic use-package setup"
   "package: "
   "(use-package " str \n ":defer t" \n ":config" \n _ \n ")")
+
+(define-skeleton latex-basic-setup-template
+  "basic latex setup template"
+  ""
+  "
+#+latex_class: article
+#+latex_class_options:
+#+latex_header:
+#+latex_header_extra:
+#+description:
+#+keywords:
+#+subtitle:
+#+latex_compiler: pdflatex
+#+date: 
+#+OPTIONS: toc:nil        (no default TOC at all)
+#+OPTIONS: indentfirst = true
+#+title: 
+#+author: Lucas Gen
+#+LATEX_HEADER: \\usepackage{setspace}
+#+LATEX_HEADER: \\doublespacing
+#+LATEX_HEADER: \\usepackage{indentfirst}
+"
+  _
+  )
+
+(define-skeleton begin/end_org
+  ""
+  "what?"
+  "#+BEGIN_" str \n _ \n "#+END_" str
+  )
+
+
+
 
 (provide 'my-skeletons)

@@ -5,7 +5,7 @@
 (set-default-coding-systems 'utf-8)               ; Default to utf-8 encoding
 (show-paren-mode 1)                               ; Show the parent
 (setq lexical-binding t)              ;idk, something to do with loading lexical files faster
-(setq inhibit-startup-message t)  ;don't show me that ugly ass startup ad
+;; (setq inhibit-startup-message t)  ;don't show me that ugly ass startup ad
 (setq ring-bell-function 'ignore)   ;don't annoy me with bells and shit
 (setq visible-bell t)
 ;; (electric-pair-mode 1)		;pairs parenthesis automatically
@@ -110,6 +110,8 @@
 ;; deletes stale elc files on save
 (add-hook 'emacs-lisp-mode-hook 'my/remove-elc-on-save)
 (add-hook 'before-save-hook 'whitespace-cleanup)
+
+
 ;; sets gargage collection very high while in minibuffer
 (add-hook 'minibuffer-setup-hook #'my-minibuffer-setup-hook)
 (add-hook 'minibuffer-exit-hook #'my-minibuffer-exit-hook)
@@ -122,6 +124,11 @@
 (setq bidi-paragraph-direction 'left-to-right
       bidi-inhibit-bpa t)
 (setq visual-order-cursor-movement t)
+
+;; makes dired sort by date by default
+(setq dired-listing-switches "-lt")
+
+(display-splash-screen)
 
 
 (provide 'my-settings)

@@ -240,7 +240,13 @@ Version 2020-06-26"
 (global-set-key (kbd "C-c t") 'open-terminal-in-workdir)
 
 
-(fset 'ocaml-begin/end
-   (kmacro-lambda-form [?b ?e ?g ?i ?n return ?e ?n ?d ?\C-o tab] 0 "%d"))
+(defun pulse-line (&rest _)
+      "Pulse the current line."
+      (pulse-momentary-highlight-one-line (point)))
+
+(dolist (command '(scroll-up-command scroll-down-command
+                   recenter-top-bottom other-window))
+  (advice-add command :after #'pulse-line))
+
 
 (provide 'my-functions)
