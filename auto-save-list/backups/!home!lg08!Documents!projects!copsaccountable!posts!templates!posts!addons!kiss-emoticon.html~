@@ -1,7 +1,0 @@
-{% load static %}
-
-<img 
-    src="{% static 'icons/emoticon-kiss.svg' %}" 
-    alt="angry emoji"
-    height="100"
-    width="100" />

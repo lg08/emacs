@@ -1,5 +1,0 @@
-[Desktop Entry]
-Name=Swap
-Exec=xmodmap -e "keycode 108 = F9" && xmodmap -e "keycode 119 = Insert"
-Terminal=false
-Type=Application

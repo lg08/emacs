@@ -1,1 +1,0 @@
-("~/.emacs.d/" "~/Documents/Princeton/second_year/cos326/my-a5/a5/moogle/" "~/Documents/projects/ubet/" "~/Documents/Princeton/second_year/cos326/a4/" "~/Documents/projects/copsaccountable/" "~/Documents/notes/django_notes/21-Social_Clone_Project/simplesocial/")
