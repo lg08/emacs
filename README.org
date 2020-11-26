@@ -8,7 +8,7 @@ While any text editor can save your files, only Emacs can save your soul. – Pe
 
 This quote just really hits home with me.
 Yes, I am a computer science student, planning on becoming a software engineer.
-Yes, I do write some sort of code almost every day, but even if I didn't I would still use emacs.
+Yes, I do write some sort of code almost every day, but even if I didn't I would still use emacs every day.
 The level of comfort I get from just being inside this emacs configuration that I have worked on and tailored to my exact workflow is unparalleled.
 
 ** Who this is for
