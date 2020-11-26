@@ -24,14 +24,12 @@
 (use-package helm
   :init
   (helm-mode)
-
+  (setq recentf-save-file (expand-file-name "recentf" gemacs-misc-dir))
   (setq helm-split-window-default-side 'right)
   (setq helm-samewindow t)
-
   ;; (setq helm-M-x-fuzzy-match t) ;; optional fuzzy matching for helm-M-x
-
   ;; (setq helm-locate-fuzzy-match t)
-
+  
   ;; this guy makes helm use a mini frame
   ;; (setq helm-display-function 'helm-display-buffer-in-own-frame
   ;; helm-display-buffer-reuse-frame t
@@ -87,9 +85,9 @@
   )
 
 ;; below, all are deferred until called ------------------------------------------------------
-(setq projectile-known-projects-file  "~/.emacs.d/misc/projectile-bookmarks.eld")
 (use-package projectile                 ;project management
   :init
+  (setq projectile-known-projects-file  (expand-file-name "projectile-bookmarks.eld" gemacs-misc-dir))
   :defer t
   :config
   (projectile-mode +1)

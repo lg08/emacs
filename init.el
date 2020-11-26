@@ -36,6 +36,7 @@
 (setq make-backup-files nil)
 (setq backup-directory-alist    `(("." . ,(concat user-emacs-directory "auto-save-list/backups"))))
 (setq make-backup-files nil)
+(setq bookmark-default-file (expand-file-name "bookmarks" gemacs-misc-dir))
 
 ;; declares the custom file and loads it
 (setq custom-file (concat gemacs-lisp-dir "custom-file.el"))
