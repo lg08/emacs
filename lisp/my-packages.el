@@ -88,12 +88,19 @@
 
 ;; below, all are deferred until called ------------------------------------------------------
 (use-package projectile                 ;project management
+  :init
+  ;; (defcustom projectile-known-projects-file
+  ;;   (expand-file-name "projectile-bookmarks.eld"
+  ;;                     gemacs-misc-dir)
+  ;;   "Name and location of the Projectile's known projects file."
+  ;;   :group 'projectile
+  ;;   :type 'string)
   :defer t
   :config
   (projectile-mode +1)
   (setq projectile-completion-system 'helm)
   (setq projectile-globally-ignored-file-suffixes '("pyc"))
-  (setq projectile-known-projects-file "~/.emacs.d/auto-save-list/projectile-bookmarks.eld")
+  (setq projectile-known-projects-file (concat gemacs-misc-dir "projectile-bookmarks.eld"))
 
   )
 
@@ -176,6 +183,8 @@
   )
 
 (use-package multiple-cursors           ;allows editing for multiple cursors
+  :init
+  (setq mc/list-file (concat gemacs-misc-dir ".mc-lists.el"))
   :defer t
   ;; :ensure t
   :config

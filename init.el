@@ -16,12 +16,16 @@
   "Where all the lisp files for gemacs are stored.")
 (defvar gemacs-themes-dir (expand-file-name "themes" gemacs-dir)
   "Where all the custom themes for gemacs are stored.")
+(defvar gemacs-misc-dir (expand-file-name "misc" gemacs-dir)
+  "Where all the miscellaneous auto-made files for gemacs are stored.")
 
 ;; make the folders if necessary
 (unless (file-exists-p gemacs-lisp-dir)
   (make-directory gemacs-lisp-dir))
 (unless (file-exists-p gemacs-themes-dir)
   (make-directory gemacs-themes-dir))
+(unless (file-exists-p gemacs-misc-dir)
+  (make-directory gemacs-misc-dir))
 
 ;; makes gemacs look for all our personal files
 (add-to-list 'load-path gemacs-lisp-dir)
