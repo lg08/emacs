@@ -93,9 +93,9 @@
                          (setq fill-column 73)
                          (display-fill-column-indicator-mode)
                          (define-key (current-local-map) (kbd "C-M-h") 'c-mark-function)
-                         (ggtags-mode)
-                         (helm-gtags-mode)
-                         (add-to-list 'company-backends 'company-c-headers)
+                         ;; (ggtags-mode)
+                         ;; (helm-gtags-mode)
+                         ;; (add-to-list 'company-backends 'company-c-headers)
 
                          ))
 

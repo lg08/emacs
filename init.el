@@ -1,7 +1,21 @@
-;; init.el, main config file, basically just sets things up and loads other files
+;; it.el, main config file, basically just sets things up and loads other files
 
 (setq user-full-name "Lucas Gen")
 (setq user-mail-address "lucasgen08@gmail.com")
+
+(message "Gemacs is powering up... Be patient, Master %s!" user-full-name)
+
+(when (version< emacs-version "25.1")
+  (error "Sorry, gemacs requires GNU Emacs 25.1 or newer, but you're running %s" emacs-version))
+
+
+;; define the folders needed for this configuration
+(defvar gemacs-dir (file-name-directory load-file-name)
+  "The root dir of this distribution.")
+(defvar lisp-dir (expand-file-name "lisp" gemacs-dir)
+  "Where all the lisp files for gemacs are stored.")
+
+;; make the folders if necessary
 
 ;; adds the path to personal lisp files
 (add-to-list 'load-path ".emacs.d/lisp/")
@@ -31,8 +45,8 @@
 (setq straight-use-package-by-default t)
 
 ;; loads the theme
-(straight-use-package 'doom-themes)
-(load-theme 'whiteboard t)
+;; (straight-use-package 'minimal-theme)
+(load-theme 'flatland-black t)
 ;; (set-background-color "black")
 
 

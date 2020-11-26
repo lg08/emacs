@@ -132,7 +132,7 @@
  "v" 'set-mark-command
  "q" 'set-mark-command
  "y" "C-y"
- "u" 'undo
+ "u" 'undo-tree-undo
  "i" 'modalka-mode
  "e" "C-e"
  "a" "C-a"
@@ -172,7 +172,7 @@
  "3" 'switch-window-then-split-right
  "0" 'switch-window-then-delete
  ;; "b" 'switch-to-buffer
- "b" 'helm-mini
+ "b" 'switch-to-buffer
  "s s" 'my/term
  "SPC" 'helm-M-x
  "w n" 'eyebrowse-next-window-config
