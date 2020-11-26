@@ -472,5 +472,11 @@
 
   )
 
+(use-package fireplace
+  :defer t
+  :config
+
+  )
+
 
 (provide 'my-packages)

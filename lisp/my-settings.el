@@ -102,10 +102,6 @@
 
 (display-splash-screen)                 ;just shows the splash screen
 
-(add-hook 'org-mode-hook
-          (lambda () (add-hook 'after-save-hook #'org-babel-tangle
-                               :append :local)))
-
 (add-hook 'before-save-hook 'delete-trailing-whitespace) ;deletes the whitespace at end of lines on save
 
 (provide 'my-settings)

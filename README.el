@@ -88,8 +88,9 @@
 (setq startup-message
       (format "Welcome back old friend. Emacs ready in %.2f seconds with %d garbage collections."
               (float-time (time-subtract after-init-time before-init-time)) gcs-done))
-(defun display-startup-echo-area-message ()
-  (display-message-or-buffer startup-message))
+;; (defun display-startup-echo-area-message ()
+  ;; (display-message-or-buffer startup-message))
+  (message startup-message)
 
 ;; sets up frame title and initial scratch messsage
 (setq frame-title-format '("" "%b - My-Dope-Ass Config"))
