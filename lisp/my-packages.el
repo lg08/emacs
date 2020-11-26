@@ -87,20 +87,14 @@
   )
 
 ;; below, all are deferred until called ------------------------------------------------------
+(setq projectile-known-projects-file  "~/.emacs.d/misc/projectile-bookmarks.eld")
 (use-package projectile                 ;project management
   :init
-  ;; (defcustom projectile-known-projects-file
-  ;;   (expand-file-name "projectile-bookmarks.eld"
-  ;;                     gemacs-misc-dir)
-  ;;   "Name and location of the Projectile's known projects file."
-  ;;   :group 'projectile
-  ;;   :type 'string)
   :defer t
   :config
   (projectile-mode +1)
   (setq projectile-completion-system 'helm)
   (setq projectile-globally-ignored-file-suffixes '("pyc"))
-  (setq projectile-known-projects-file (concat gemacs-misc-dir "projectile-bookmarks.eld"))
 
   )
 

@@ -124,7 +124,7 @@
  "v" 'set-mark-command
  "q" 'set-mark-command
  "y" "C-y"
- "u" 'undo-tree-undo
+ "u" 'undo
  "i" 'modalka-mode
  "e" "C-e"
  "a" "C-a"
