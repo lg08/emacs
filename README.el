@@ -1,32 +1,3 @@
-* Welcome to my emacs config!
-
-I've been using emacs for about a year now, and it's just become such a large part of my life so fast.
-
-#+BEGIN_QUOTE
-While any text editor can save your files, only Emacs can save your soul. – PerAbrahamsen
-#+END_QUOTE
-
-This quote just really hits home with me.
-Yes, I am a computer science student, planning on becoming a software engineer.
-Yes, I do write some sort of code almost every day, but even if I didn't I would still use emacs every day.
-The level of comfort I get from just being inside this emacs configuration that I have worked on and tailored to my exact workflow is unparalleled.
-
-** Who this is for
-This configuration is somewhat of a hackjob, constantly changing, and yet unbelievably functional.
-This configuration is very effective, I can tell you that for certain.
-However, it's very effective for me.
-I built this conf for me, so it will likely be quite hard for someone else to step in and be fluent right away.
-
-** Keybindings
-While most of the default keybindings are left intact (mainly because I don't use them) I've implemented a modal system of editing using the Modalka package.
-My modal keybindings are not vim bindings at all.
-I did take some inspiration from the likes of evil, but the bindings are all different.
-I tried to make them very ergonomic and intuitive, and they certainly are for me, but again, this may not be the case for other people.
-
-
-* Configuration
-
-#+BEGIN_SRC emacs-lisp
 ;; it.el, main config file, basically just sets things up and loads other files
 
 (setq user-full-name "Lucas Gen")
@@ -123,5 +94,3 @@ I tried to make them very ergonomic and intuitive, and they certainly are for me
 ;; sets up frame title and initial scratch messsage
 (setq frame-title-format '("" "%b - My-Dope-Ass Config"))
 (setq initial-scratch-message "Welcome back old friend... \n\nEmacs is here. You're ok now.\n\n\n")
-
-#+END_SRC

@@ -58,9 +58,9 @@
 
 (use-package feebleline
   :init
-  (feebleline-mode t)
-  :defer t
+  :defer 1
   :config
+  (feebleline-mode t)
 
   )
 
@@ -107,6 +107,10 @@
 (use-package doom-themes                ;pretty themes
   :defer t
   :config
+  (doom-themes-org-config)
+  (doom-themes-visual-bell-config)
+  (setq doom-themes-enable-bold t
+	doom-themes-enable-italic t)
   )
 
 (use-package magit                      ;best github client
