@@ -122,9 +122,8 @@
  "h" 'backward-char
  ";"  'goto-last-change
  "v" 'set-mark-command
- "q" 'set-mark-command
  "y" "C-y"
- "u" 'undo
+ "u" 'my/u-key-diff-modes-function
  "i" 'modalka-mode
  "e" "C-e"
  "a" "C-a"

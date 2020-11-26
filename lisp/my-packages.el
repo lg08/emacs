@@ -29,13 +29,13 @@
   (setq helm-samewindow t)
   ;; (setq helm-M-x-fuzzy-match t) ;; optional fuzzy matching for helm-M-x
   ;; (setq helm-locate-fuzzy-match t)
-  
+
   ;; this guy makes helm use a mini frame
   ;; (setq helm-display-function 'helm-display-buffer-in-own-frame
   ;; helm-display-buffer-reuse-frame t
   ;; helm-use-undecorated-frame-option t)
   :config
-  
+
   )
 
 ;; (use-package which-key                  ;shows possible keyboard commands, just uncomment if you want it
@@ -49,11 +49,19 @@
 ;; below, all are deferred for one second ----------------------------------------------------------
 
 
-(use-package doom-modeline              ;beautiful modeline
-  :defer 0
+;; (use-package doom-modeline              ;beautiful modeline
+;;   :defer 0
+;;   :config
+;;   (doom-modeline-mode t)
+;;   (setq doom-modeline-height 10)
+;;   )
+
+(use-package feebleline
+  :init
+  (feebleline-mode t)
+  :defer t
   :config
-  (doom-modeline-mode t)
-  (setq doom-modeline-height 10)
+
   )
 
 (use-package gcmh                       ;garbage management system
@@ -365,7 +373,7 @@
 (use-package clojure-mode               ;major mode for closure
   :defer t
   :config
-  
+
   )
 
 (use-package yaml-mode                  ;major mode for yaml
@@ -377,25 +385,25 @@
 (use-package org-bullets                ;shows prettier bullets in org mode
   :defer t
   :config
-  
+
   )
 
 (use-package flycheck                   ;automatic spell-checking and stuff
   :defer t
   :config
-  
+
   )
 
 (use-package fix-word                   ;used to capitalize words and stuff
   :defer t
   :config
-  
+
   )
 
 (use-package indent-guide               ;another useful indent-guide package
   :defer t
   :config
-  
+
   )
 
 
@@ -431,19 +439,19 @@
   :defer t
   :config
   (add-to-list 'company-c-headers-path-system "/usr/include/c++/4.8/")
-  
+
   )
 
 (use-package helm-descbinds             ;helps show keybindings
   :defer t
   :config
-  
+
   )
 
 (use-package zop-to-char                ;cuts to the next occurence of character
   :defer t
   :config
-  
+
   )
 
 (use-package auctex-latexmk             ;for latex development
@@ -451,7 +459,13 @@
   :init
   (auctex-latexmk-setup)
   :config
-  
+
+  )
+
+(use-package panda-theme
+  :defer t
+  :config
+
   )
 
 

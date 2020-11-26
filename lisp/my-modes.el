@@ -17,13 +17,13 @@
                              (dired-hide-details-mode 1)
                              (setq dired-dwim-target t)
                              (all-the-icons-dired-mode)
-                             (require 'dired-x)
-                             (general-define-key
-                              :keymaps 'modalka-mode-map
-                              "u" 'nil
-                              "u" 'dired-unmark
-                              )
-                             (message "entering dired mode.")
+                             ;; (require 'dired-x)
+                             ;; (general-define-key
+                             ;;  :keymaps 'modalka-mode-map
+                             ;;  "u" 'nil
+                             ;;  "u" 'dired-unmark
+                             ;;  )
+                             ;; (message "entering dired mode.")
                              
                              ))
 
@@ -109,15 +109,18 @@
 
 (defun dired-leave-mode-function ()
   (when (eq major-mode 'dired-mode)
-    (message "Leaving org-mode.")
-    (general-define-key
-     :keymaps 'modalka-mode-map
-     "u" 'undo
-     )
+    (message "Leaving dired-mode.")
+    ;; (general-define-key
+    ;;  :keymaps 'modalka-mode-map
+    ;;  "u" 'nil
+    ;;  "u" 'undo-tree-undo
+    ;;  )
+    (define-key 'modalka-mode-map "u" 'undo-tree-undo)
     ))
 
 (add-hook 'change-major-mode-hook (lambda ()
-                                    (clojure-leave-clojure-mode-function)
+                                    ;; (clojure-leave-clojure-mode-function)
+				    
                                     (org-leave-mode-function)
                                     (dired-leave-mode-function)
                                     ))

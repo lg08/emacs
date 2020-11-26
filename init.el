@@ -84,7 +84,7 @@
 
 (require 'my-testing-stuff)
 
-;; startup message 
+;; startup message
 (setq startup-message
       (format "Welcome back old friend. Emacs ready in %.2f seconds with %d garbage collections."
               (float-time (time-subtract after-init-time before-init-time)) gcs-done))

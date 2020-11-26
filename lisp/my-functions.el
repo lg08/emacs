@@ -219,8 +219,18 @@ Version 2018-09-10"
   "Pulse the current line."
   (pulse-momentary-highlight-one-line (point)))
 (dolist (command '(scroll-up-command scroll-down-command
-                   recenter-top-bottom other-window))
+				     recenter-top-bottom other-window))
   (advice-add command :after #'pulse-line))
+
+(defun my/u-key-diff-modes-function ()
+  "trying this out"
+  (interactive)
+  (if (eq major-mode 'dired-mode)
+      (dired-unmark 1)
+    (undo-tree-undo)
+    )
+  )
+
 
 
 (provide 'my-functions)
