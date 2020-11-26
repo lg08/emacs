@@ -14,7 +14,7 @@
 
 (add-hook 'dired-mode-hook (lambda ()
                              (put 'dired-find-alternate-file 'disabled nil) ;disables the warning
-                             ;; (dired-hide-details-mode 1)
+                             (dired-hide-details-mode 1)
                              (setq dired-dwim-target t)
                              (all-the-icons-dired-mode)
                              (require 'dired-x)
@@ -24,7 +24,7 @@
                               "u" 'dired-unmark
                               )
                              (message "entering dired mode.")
-                                                          
+                             
                              ))
 
 (add-hook 'web-mode-hook (lambda ()

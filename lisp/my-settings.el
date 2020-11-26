@@ -98,7 +98,7 @@
 (setq visual-order-cursor-movement t)
 
 ;; makes dired sort by date by default
-(setq dired-listing-switches "-lt")
+(setq dired-listing-switches "-alt")
 
 (display-splash-screen)                 ;just shows the splash screen
 
