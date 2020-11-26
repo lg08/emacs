@@ -3,21 +3,13 @@
 
 ;; all the shit I always want while coding
 (add-hook 'prog-mode-hook (lambda ()
-                            ;; (dimmer-mode 1)
                             (global-company-mode 1)
-                            ;; (rainbow-delimiters-mode 1)
+                            (rainbow-delimiters-mode 1)
                             ;; (global-color-identifiers-mode 1)
                             (global-undo-tree-mode 1)
-                            ;; (smartparens-global-mode 1)
-                            ;; (outline-minor-mode)
                             (highlight-thing-mode)
-                            ;; (highlight-indent-guides-mode)
-                            ;; (lsp-mode 1)
-                            ;; (lsp-ui-mode 1)
-                            ;; (golden-ratio-mode)
-                            ;; (company-quickhelp-mode 1)
                             (volatile-highlights-mode)
-                            ;; (wakatime-mode 1)
+                            (aggressive-indent-mode 1)
                             ))
 
 (add-hook 'dired-mode-hook (lambda ()
@@ -93,9 +85,7 @@
                          (setq fill-column 73)
                          (display-fill-column-indicator-mode)
                          (define-key (current-local-map) (kbd "C-M-h") 'c-mark-function)
-                         ;; (ggtags-mode)
-                         ;; (helm-gtags-mode)
-                         ;; (add-to-list 'company-backends 'company-c-headers)
+                         (add-to-list 'company-backends 'company-c-headers)
 
                          ))
 

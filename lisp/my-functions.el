@@ -1,5 +1,11 @@
 ;; loads all custom functions
 
+(defun my/minibuffer-setup-hook ()
+  (setq gc-cons-threshold most-positive-fixnum))
+
+(defun my/minibuffer-exit-hook ()
+  (setq gc-cons-threshold 800000))
+
 (defun my/select-current-line-and-forward-line (arg)
   "Select the current line and move the cursor by ARG lines IF
 no region is selected.
@@ -12,20 +18,12 @@ the cursor by ARG lines."
   (forward-line arg))
 
 (defun my/modalka-normal-mode ()
-  "turns on modalka normal mode and change modeline color"
+  "turns on modalka normal mode and changes cursor type"
   (interactive)
   (setq modalka-mode 1)
   ;; (set-face-background 'mode-line "#333")
   (setq cursor-type 'box)
-
   )
-
-;; (defun my/match-paren (arg)
-;;   "Go to the matching paren if on a paren; otherwise insert %."
-;;   (interactive "p")
-;;   (cond ((looking-at "\\s(") (forward-list 1) (backward-char 1))
-;;         ((looking-at "\\s)") (forward-char 1) (backward-list 1))
-;;         (t (self-insert-command (or arg 1)))))
 
 (defun my/where-am-i ()
   "An interactive function showing function `buffer-file-name' or `buffer-name'."
@@ -38,7 +36,7 @@ the cursor by ARG lines."
   (load "~/.emacs.d/init.el"))
 
 (defun my/dired-up-directory-same-buffer ()
-  "Go up in the same buffer."
+  "Go up in the same buffer, used in dired mode."
   (interactive)
   (find-alternate-file ".."))
 
@@ -148,62 +146,11 @@ Version 2018-09-10"
             (forward-char)))))))
 
 
-(defun xah-toggle-letter-case ()
-  "Toggle the letter case of current word or text selection.
-Always cycle in this order: Init Caps, ALL CAPS, all lower.
-URL `http://ergoemacs.org/emacs/modernization_upcase-word.html'
-Version 2020-06-26"
-  (interactive)
-  (let (
-        (deactivate-mark nil)
-        $p1 $p2)
-    (if (use-region-p)
-        (setq $p1 (region-beginning) $p2 (region-end))
-      (save-excursion
-        (skip-chars-backward "[:alpha:]")
-        (setq $p1 (point))
-        (skip-chars-forward "[:alpha:]")
-        (setq $p2 (point))))
-    (when (not (eq last-command this-command))
-      (put this-command 'state 0))
-    (cond
-     ((equal 0 (get this-command 'state))
-      (upcase-initials-region $p1 $p2)
-      (put this-command 'state 1))
-     ((equal 1 (get this-command 'state))
-      (upcase-region $p1 $p2)
-      (put this-command 'state 2))
-     ((equal 2 (get this-command 'state))
-      (downcase-region $p1 $p2)
-      (put this-command 'state 0)))))
-
-(defun my-minibuffer-setup-hook ()
-  (setq gc-cons-threshold most-positive-fixnum))
-
-(defun my-minibuffer-exit-hook ()
-  (setq gc-cons-threshold 800000))
-
-
-(defun my/double-pane-dired ()
-  "opens up dired in two buffers"
-  (interactive)
-  (require 'dired-x)
-  (delete-other-windows)
-  (dired-jump)
-  (switch-window-then-split-horizontally 1)
-  (dired-other-window "~/")
-  (other-window 1)
-  )
-
 (defun my/edit-armlab-file ()
   "opens a file on the armlab cluster at princeton for editing"
   (interactive)
   (find-file "/ssh:lgen@armlab.cs.princeton.edu:")
   )
-
-;; macro to enter armlab without entering password and shit
-(fset 'enter_armlab
-   (kmacro-lambda-form [?\M-x ?a ?r ?m return ?D ?i ?m ?e ?n ?s ?i ?o ?n ?_ ?C ?- ?1 ?3 ?7 return ?1 return] 0 "%d"))
 
 ;; kills all buffers
 (defun close-all-buffers ()
@@ -237,13 +184,40 @@ Version 2020-06-26"
     (call-process-shell-command
      (concat "gnome-terminal –working-directory=" workdir) nil 0)))
 
-(global-set-key (kbd "C-c t") 'open-terminal-in-workdir)
+
+(defun insert-comment-with-description (comment-syntax comment)
+  "Inserts a comment with '―' (Unicode character: U+2015) on each side."
+  (let* ((comment-length (length comment))
+         (current-column-pos (current-column))
+         (space-on-each-side (/ (- fill-column
+                                   current-column-pos
+                                   comment-length
+                                   (length comment-syntax)
+                                   ;; Single space on each side of comment
+                                   (if (> comment-length 0) 2 0)
+                                   ;; Single space after comment syntax sting
+                                   1)
+                                2)))
+    (if (< space-on-each-side 2)
+        (message "Comment string is too big to fit in one line")
+      (progn
+        (insert comment-syntax)
+        (insert " ")
+        (dotimes (_ space-on-each-side) (insert "―"))
+        (when (> comment-length 0) (insert " "))
+        (insert comment)
+        (when (> comment-length 0) (insert " "))
+        (dotimes (_ (if (= (% comment-length 2) 0)
+                        space-on-each-side
+                      (- space-on-each-side 1)))
+          (insert "―"))))))
 
 
+;; calles the pulse thing whenever we are scrolling,
+;; helps keep track of where we're at
 (defun pulse-line (&rest _)
-      "Pulse the current line."
-      (pulse-momentary-highlight-one-line (point)))
-
+  "Pulse the current line."
+  (pulse-momentary-highlight-one-line (point)))
 (dolist (command '(scroll-up-command scroll-down-command
                    recenter-top-bottom other-window))
   (advice-add command :after #'pulse-line))

@@ -1,1 +1,12 @@
 straight/*
+transient/*
+projectile-bookmarks.eld
+*.elc
+auto-save-list/*
+recentf
+tramp
+url/*
+abbrev_defs
+eshell/*
+idlwave/*
+bookmarks

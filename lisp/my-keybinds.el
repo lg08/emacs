@@ -79,18 +79,12 @@
  )
 
 (general-define-key
- :keymaps 'ivy-minibuffer-map
- "C-j" 'ivy-next-line
- "C-k" 'ivy-previous-line
- )
-
-(general-define-key
  :keymaps 'helm-map
-	    "C-j" 'helm-next-line
-	    "C-k" 'helm-previous-line
-	    ;; "<tab>" 'helm-execute-persistent-action
-	    "C-z" 'helm-select-action
-  )
+ "C-j" 'helm-next-line
+ "C-k" 'helm-previous-line
+ ;; "<tab>" 'helm-execute-persistent-action
+ "C-z" 'helm-select-action
+ )
 
 (general-define-key
  :keymaps 'helm-find-files-map
@@ -116,10 +110,8 @@
 
 (general-define-key
  :keymaps 'org-mode-map
-  
+ 
  )
-
-
 
 ;; MODALKA STUFF------------------------------------------------------------------------
 (general-define-key
