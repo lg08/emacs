@@ -1,4 +1,7 @@
 * Welcome!
+\\
+\\
+\\
 
 #+BEGIN_QUOTE
 While any text editor can save your files, only Emacs can save your soul. – PerAbrahamsen

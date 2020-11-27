@@ -478,7 +478,7 @@
 
   )
 
-(use-package transient
+(use-package transient			;used for a bunch of things, just want to keep it's folder out of the home directory
   :defer t
   :config
   :init
