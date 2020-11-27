@@ -1,13 +1,13 @@
 * Welcome!
-\\
-\\
+\n
+\n
 
 #+BEGIN_QUOTE
 While any text editor can save your files, only Emacs can save your soul. – PerAbrahamsen
 #+END_QUOTE
 
-\\
-\\
+\n
+\n
 
 This quote just really hits home with me.
 Yes, I am a computer science student, planning on becoming a software engineer.
