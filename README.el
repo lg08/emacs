@@ -34,14 +34,18 @@
 
 ;; redefines basic folders and files
 (setq make-backup-files nil)
+(setq auto-save-default nil)
 (setq backup-directory-alist    `(("." . ,(concat user-emacs-directory "auto-save-list/backups"))))
-(setq make-backup-files nil)
 (setq bookmark-default-file (expand-file-name "bookmarks" gemacs-misc-dir))
 
 ;; declares the custom file and loads it
-(setq custom-file (concat gemacs-lisp-dir "custom-file.el"))
-(when (file-exists-p custom-file)
-  (load custom-file))
+;; (setq custom-file (concat gemacs-lisp-dir "custom-file.el"))
+;; (when (file-exists-p custom-file)
+;;   (load custom-file))
+(setq custom-file (make-temp-file ""))
+(setq custom-safe-themes t)
+
+
 
 ;; bootstraps straight
 (defvar bootstrap-version)
@@ -57,38 +61,38 @@
       (eval-print-last-sexp)))
   (load bootstrap-file nil 'nomessage))
 
-;; replaces use-package with straight-use-package
-(straight-use-package 'use-package)
-(setq straight-use-package-by-default t)
+  ;; replaces use-package with straight-use-package
+  (straight-use-package 'use-package)
+  (setq straight-use-package-by-default t)
 
-;; loads the theme
-(straight-use-package 'doom-themes)
-(load-theme 'doom-one t)
-;; (set-background-color "black")
+  ;; loads the theme
+  (straight-use-package 'doom-themes)
+  (load-theme 'doom-one)
+  ;; (set-background-color "black")
 
 
-(message "Loading Gemacs' configurations...")
+  (message "Loading Gemacs' configurations...")
 
-;; requires all necessary files
-(require 'my-functions)
+  ;; requires all necessary files
+  (require 'my-functions)
 
-(require 'my-settings)
+  (require 'my-settings)
 
-(require 'my-packages)
+  (require 'my-packages)
 
-(require 'my-keybinds)
+  (require 'my-keybinds)
 
-(require 'my-skeletons)
+  (require 'my-skeletons)
 
-(require 'my-modes)
+  (require 'my-modes)
 
-(require 'my-testing-stuff)
+  (require 'my-testing-stuff)
 
-;; startup message
-(setq startup-message
+  ;; startup message
+  (setq startup-message
       (format "Welcome back old friend. Emacs ready in %.2f seconds with %d garbage collections."
               (float-time (time-subtract after-init-time before-init-time)) gcs-done))
-;; (defun display-startup-echo-area-message ()
+              ;; (defun display-startup-echo-area-message ()
   ;; (display-message-or-buffer startup-message))
   (message startup-message)
 

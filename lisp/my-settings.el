@@ -47,6 +47,8 @@
 
 (electric-pair-mode 1)                  ;automatically inserts matching parentheses and shit
 
+(setq use-dialog-box nil)		;don't give me gui windows
+
 (global-display-line-numbers-mode)      ;seems to be the best line number mode in my experience
 
 (global-hl-line-mode 1)            ;highlights the current line

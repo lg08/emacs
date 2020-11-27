@@ -478,5 +478,12 @@
 
   )
 
+(use-package transient
+  :defer t
+  :config
+  :init
+  (setq transient-history-file (expand-file-name "history.el" gemacs-misc-dir))
+  )
+
 
 (provide 'my-packages)
