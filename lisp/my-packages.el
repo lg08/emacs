@@ -107,7 +107,7 @@
 (use-package doom-themes                ;pretty themes
   :defer t
   :config
-  (doom-themes-org-config)
+  ;; (doom-themes-org-config)
   (doom-themes-visual-bell-config)
   (setq doom-themes-enable-bold t
 	doom-themes-enable-italic t)
@@ -162,12 +162,12 @@
   (setq company-dabbrev-code-other-buffers t)
 
   ;;  ;; Show candidates according to importance, then case, then in-buffer frequency
-   (setq company-transformers '(company-sort-by-backend-importance
-                          company-sort-prefer-same-case-prefix
-                          company-sort-by-occurrence))
+  (setq company-transformers '(company-sort-by-backend-importance
+                               company-sort-prefer-same-case-prefix
+                               company-sort-by-occurrence))
   ;;  ;; Even if I write something with the ‘wrong’ case,
   ;;  ;; provide the ‘correct’ casing.
-    (setq company-dabbrev-ignore-case nil)
+  (setq company-dabbrev-ignore-case nil)
   ;; :custom
   (setq company-minimum-prefix-length 3)
   )
@@ -433,11 +433,11 @@
 
   )
 
-(use-package org-journal                ;cool journal
-  :defer t
-  :config
-  (setq org-journal-enable-encryption t)
-  )
+;; (use-package org-journal                ;cool journal
+;;   :defer t
+;;   :config
+;;   (setq org-journal-enable-encryption t)
+;;   )
 
 (use-package company-c-headers          ;supposed to show c headers
   :defer t

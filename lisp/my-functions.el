@@ -232,5 +232,14 @@ Version 2018-09-10"
   )
 
 
+(defun my/w-key-diff-modes-function ()
+  "trying this out"
+  (interactive)
+  (if (eq major-mode 'dired-mode)
+      (browse-url-of-dired-file)
+    (xah-cut-line-or-region)
+    )
+  )
+
 
 (provide 'my-functions)

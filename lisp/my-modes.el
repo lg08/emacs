@@ -24,7 +24,7 @@
                              ;;  "u" 'dired-unmark
                              ;;  )
                              ;; (message "entering dired mode.")
-                             
+
                              ))
 
 (add-hook 'web-mode-hook (lambda ()
@@ -52,18 +52,12 @@
                             :keymaps 'modalka-mode-map
                             "SPC a o" 'begin/end_org
                             )
-                           (general-define-key
-                            :keymaps org-mode-map
-                            "M-h" 'nil
-                            "M-h" 'backward-word
-                            )
-                           ;; (wakatime-mode 1)
-                           ))
+			   ))
 (add-hook 'tuareg-mode-hook (lambda ()
                               (merlin-mode 1)
                               (general-define-key
-                              "C-c r" 'tuareg-eval-region
-                              )
+                               "C-c r" 'tuareg-eval-region
+                               )
                               ;; (company-mode -1)
                               ;; (column-marker-1 79)
                               ;; (column-marker-2 80)
@@ -120,10 +114,10 @@
 
 (add-hook 'change-major-mode-hook (lambda ()
                                     ;; (clojure-leave-clojure-mode-function)
-				    
+
                                     (org-leave-mode-function)
                                     (dired-leave-mode-function)
                                     ))
-                                
-                                
+
+
 (provide 'my-modes)

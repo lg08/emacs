@@ -110,7 +110,7 @@
 
 (general-define-key
  :keymaps 'org-mode-map
- 
+
  )
 
 ;; MODALKA STUFF------------------------------------------------------------------------
@@ -129,7 +129,7 @@
  "a" "C-a"
  "." "M->"
  "," "M-<"
- "w" 'xah-cut-line-or-region
+ "w" 'my/w-key-diff-modes-function
  "SPC" 'nil
  "r" 'avy-goto-char
  "c" 'smart-comment
