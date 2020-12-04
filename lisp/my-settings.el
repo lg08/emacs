@@ -74,6 +74,17 @@
 (setq scroll-error-top-bottom t)        ; Move the cursor to top/bottom even if the screen is viewing top/bottom (for page up/down)
 
 
+;; redefines basic folders and files
+(setq make-backup-files nil)
+(setq auto-save-default nil)
+(setq backup-directory-alist    `(("." . ,(concat user-emacs-directory "auto-save-list/backups"))))
+(setq bookmark-default-file (expand-file-name "bookmarks" gemacs-misc-dir))
+
+
+(setq auto-save-list-file-prefix nil)	;keeps the auto-save-list dir from being created
+
+
+
 
 
 

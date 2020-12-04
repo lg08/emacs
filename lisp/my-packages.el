@@ -114,13 +114,18 @@
 	doom-themes-enable-italic t)
   )
 
+(use-package git-gutter
+  :defer t
+  :config
+  )
+
+
 (use-package magit                      ;best github client
   :defer t
   :config
   (add-hook 'magit-mode-hook (lambda () (modalka-mode -1)))
   (add-hook 'git-commit-mode-hook (lambda () (modalka-mode -1)))
   (add-to-list 'magit-no-confirm 'stage-all-changes)
-  (use-package git-gutter)
   )
 
 
@@ -150,6 +155,8 @@
 
 
 (use-package company                    ;autocompletion system
+  :init
+  (setq company-backends '((company-files company-keywords company-capf company-dabbrev-code company-etags company-dabbrev company-cmake company-clang)))
   :defer t
   :config
   (setq company-tooltip-limit 20)                      ; bigger popup window
@@ -485,6 +492,5 @@
   :init
   (setq transient-history-file (expand-file-name "history.el" gemacs-misc-dir))
   )
-
 
 (provide 'my-packages)
