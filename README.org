@@ -97,8 +97,8 @@ I tried to make them very ergonomic and intuitive, and they certainly are for me
     (setq straight-use-package-by-default t)
 
     ;; loads the theme
-    (straight-use-package 'doom-themes)
-    (load-theme 'doom-one)
+    ;; (straight-use-package 'doom-themes)
+    (load-theme 'cyberpunk)
     ;; (set-background-color "black")
 
 

@@ -10,7 +10,7 @@
                             (highlight-thing-mode)
                             (volatile-highlights-mode)
                             (aggressive-indent-mode 1)
-                            ))
+			    (global-flycheck-mode 1)))
 
 (add-hook 'dired-mode-hook (lambda ()
                              (put 'dired-find-alternate-file 'disabled nil) ;disables the warning

@@ -11,8 +11,8 @@
  "M-h" 'backward-word
  "M-l" 'forward-word
  "C-b" 'kill-whole-line
- "M-k" "C-u 5 C-v"
- "M-j" "C-u 5 M-v"
+ "M-k" "C-u 10 C-v"
+ "M-j" "C-u 10 M-v"
  "M-w" 'xah-copy-line-or-region
  "C-o" 'crux-smart-open-line-above
  "C-a" 'crux-move-beginning-of-line

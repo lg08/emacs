@@ -96,6 +96,7 @@
 (use-package projectile                 ;project management
   :init
   (setq projectile-known-projects-file  (expand-file-name "projectile-bookmarks.eld" gemacs-misc-dir))
+  (setq projectile-cache-file (expand-file-name "projectile.cache" gemacs-misc-dir))
   :defer t
   :config
   (projectile-mode +1)
