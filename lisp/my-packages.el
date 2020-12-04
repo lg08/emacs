@@ -153,6 +153,9 @@
   :config
   )
 
+;; With use-package:
+(use-package company-box
+  :hook (company-mode . company-box-mode))
 
 (use-package company                    ;autocompletion system
   :init
@@ -492,5 +495,7 @@
   :init
   (setq transient-history-file (expand-file-name "history.el" gemacs-misc-dir))
   )
+
+
 
 (provide 'my-packages)

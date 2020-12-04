@@ -92,7 +92,7 @@ I tried to make them very ergonomic and intuitive, and they certainly are for me
 
     ;; loads the theme
     ;; (straight-use-package 'doom-themes)
-    (load-theme 'cyberpunk)
+    (load-theme 'soothe)
     ;; (set-background-color "black")
 
 

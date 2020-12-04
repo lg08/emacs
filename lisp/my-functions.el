@@ -178,9 +178,8 @@ Version 2018-09-10"
 ;; opens a terminal in the working directory or the projects root if one is detected
 (defun my/open-terminal-in-workdir ()
   (interactive)
-  (let ((workdir (if (projectile-project-root)
-                     (projectile-project-root)
-                   default-directory)))
+  (let ((workdir
+         default-directory))
     (call-process-shell-command
      (concat "gnome-terminal –working-directory=" workdir) nil 0)))
 

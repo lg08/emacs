@@ -11,7 +11,7 @@
                             (volatile-highlights-mode)
                             (aggressive-indent-mode 1)
 			    (global-git-gutter-mode)
-			    (global-flycheck-mode 1)
+			    ;; (global-flycheck-mode 1)
 			    ))
 
 (add-hook 'dired-mode-hook (lambda ()

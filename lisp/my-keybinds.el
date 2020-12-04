@@ -1,4 +1,9 @@
 ;; GLOBAL KEYS-----------------------------------------------------------------
+
+;; just necessary for our scroll-down function
+(autoload 'View-scroll-half-page-forward "view") (autoload 'View-scroll-half-page-backward "view")
+
+
 (general-define-key
  "M-y" 'helm-show-kill-ring
  "M-x" 'execute-extended-command
@@ -11,8 +16,8 @@
  "M-h" 'backward-word
  "M-l" 'forward-word
  "C-b" 'kill-whole-line
- "M-k" "C-u 10 C-v"
- "M-j" "C-u 10 M-v"
+ "M-k" 'View-scroll-half-page-forward
+ "M-j" 'View-scroll-half-page-backward
  "M-w" 'xah-copy-line-or-region
  "C-o" 'crux-smart-open-line-above
  "C-a" 'crux-move-beginning-of-line
