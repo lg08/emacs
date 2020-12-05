@@ -4,6 +4,26 @@
 (autoload 'View-scroll-half-page-forward "view") (autoload 'View-scroll-half-page-backward "view")
 
 
+(defun my/u-key-diff-modes-function ()
+  "trying this out"
+  (interactive)
+  (if (eq major-mode 'dired-mode)
+      (dired-unmark 1)
+    (undo-tree-undo)
+    )
+  )
+
+
+(defun my/w-key-diff-modes-function ()
+  "trying this out"
+  (interactive)
+  (if (eq major-mode 'dired-mode)
+      (browse-url-of-dired-file)
+    (xah-cut-line-or-region)
+    )
+  )
+
+
 (general-define-key
  "M-y" 'helm-show-kill-ring
  "M-x" 'execute-extended-command
@@ -20,7 +40,7 @@
  "M-j" 'View-scroll-half-page-backward
  "M-w" 'xah-copy-line-or-region
  "C-o" 'crux-smart-open-line-above
- "C-a" 'crux-move-beginning-of-line
+ "C-a" 'move-beginning-of-line
  "C-x 4 t" 'crux-transpose-windows
  "C-x o" 'switch-window
  "C-x 1" 'switch-window-then-maximize
@@ -46,7 +66,6 @@
  "C->" 'mc/mark-next-like-this
  "C-<" 'mc/mark-previous-like-this
  "C-c C->" 'mc/mark-all-like-this
- "C-=" 'er/expand-region
  "C--" 'er/contract-region
  "C-;"  'goto-last-change
  ;; "M-u" 'xah-toggle-letter-case
@@ -72,6 +91,7 @@
  "C-c k" 'highlight-symbol-prev
  "C-c j" 'highlight-symbol-next
  "C-c u" 'helm-all-mark-rings
+ "<f5>" 'revert-buffer-no-confirm
  )
 
 ;; MINOR MODE MAPS---------------------------------------------------------------------
@@ -109,6 +129,7 @@
  "g" 'revert-buffer
  "<tab>" 'dired-subtree-toggle
  "C-c n" 'dired-narrow
+ "/" 'dired-narrow
  "<DEL>" 'my/dired-up-directory-same-buffer
  "<RET>" 'dired-find-alternate-file
  )
@@ -131,7 +152,8 @@
  "u" 'my/u-key-diff-modes-function
  "i" 'modalka-mode
  "e" "C-e"
- "a" "C-a"
+ "a" 'move-beginning-of-line
+ "A" 'back-to-indentation
  "." "M->"
  "," "M-<"
  "w" 'my/w-key-diff-modes-function

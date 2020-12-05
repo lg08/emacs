@@ -19,14 +19,6 @@
                              (dired-hide-details-mode 1)
                              (setq dired-dwim-target t)
                              (all-the-icons-dired-mode)
-                             ;; (require 'dired-x)
-                             ;; (general-define-key
-                             ;;  :keymaps 'modalka-mode-map
-                             ;;  "u" 'nil
-                             ;;  "u" 'dired-unmark
-                             ;;  )
-                             ;; (message "entering dired mode.")
-
                              ))
 
 (add-hook 'web-mode-hook (lambda ()

@@ -1,5 +1,6 @@
 ;; loads all custom functions
 
+
 (defun my/minibuffer-setup-hook ()
   (setq gc-cons-threshold most-positive-fixnum))
 
@@ -221,24 +222,50 @@ Version 2018-09-10"
 				     recenter-top-bottom other-window))
   (advice-add command :after #'pulse-line))
 
-(defun my/u-key-diff-modes-function ()
-  "trying this out"
+
+
+
+(defun crux-smart-open-line-above ()
+  "Insert an empty line above the current line.
+Position the cursor at its beginning, according to the current mode."
   (interactive)
-  (if (eq major-mode 'dired-mode)
-      (dired-unmark 1)
-    (undo-tree-undo)
-    )
-  )
+  (move-beginning-of-line nil)
+  (insert "\n")
+  (if electric-indent-inhibit
+      ;; We can't use `indent-according-to-mode' in languages like Python,
+      ;; as there are multiple possible indentations with different meanings.
+      (let* ((indent-end (progn (crux-move-to-mode-line-start) (point)))
+             (indent-start (progn (move-beginning-of-line nil) (point)))
+             (indent-chars (buffer-substring indent-start indent-end)))
+        (forward-line -1)
+        ;; This new line should be indented with the same characters as
+        ;; the current line.
+        (insert indent-chars))
+    ;; Just use the current major-mode's indent facility.
+    (forward-line -1)
+    (indent-according-to-mode)))
 
 
-(defun my/w-key-diff-modes-function ()
-  "trying this out"
+(defun crux-transpose-windows (arg)
+  "Transpose the buffers shown in two windows.
+Prefix ARG determines if the current windows buffer is swapped
+with the next or previous window, and the number of
+transpositions to execute in sequence."
+  (interactive "p")
+  (let ((selector (if (>= arg 0) 'next-window 'previous-window)))
+    (while (/= arg 0)
+      (let ((this-win (window-buffer))
+            (next-win (window-buffer (funcall selector))))
+        (set-window-buffer (selected-window) next-win)
+        (set-window-buffer (funcall selector) this-win)
+        (select-window (funcall selector)))
+      (setq arg (if (cl-plusp arg) (1- arg) (1+ arg))))))
+
+
+;; Source: http://www.emacswiki.org/emacs-en/download/misc-cmds.el
+(defun revert-buffer-no-confirm ()
+  "Revert buffer without confirmation."
   (interactive)
-  (if (eq major-mode 'dired-mode)
-      (browse-url-of-dired-file)
-    (xah-cut-line-or-region)
-    )
-  )
-
+  (revert-buffer :ignore-auto :noconfirm))
 
 (provide 'my-functions)

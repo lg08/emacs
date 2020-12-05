@@ -38,6 +38,28 @@
 
   )
 
+(use-package helm-swoop                 ;really good searching buffer things
+  :defer t
+  :config
+  (setq helm-swoop-pre-input-function
+        (lambda () nil))
+  ;; Save buffer when helm-multi-swoop-edit complete
+  (setq helm-multi-swoop-edit-save t)
+
+  ;; If this value is t, split window inside the current window
+  (setq helm-swoop-split-with-multiple-windows nil)
+
+  ;; Split direcion. 'split-window-vertically or 'split-window-horizontally
+  (setq helm-swoop-split-direction 'split-window-vertically)
+
+  ;; If nil, you can slightly boost invoke speed in exchange for text color
+  (setq helm-swoop-speed-or-color nil)
+
+  ;; If you prefer fuzzy matching
+  ;; (setq helm-swoop-use-fuzzy-match t)
+
+  )
+
 ;; (use-package which-key                  ;shows possible keyboard commands, just uncomment if you want it
 ;;   :config
 ;;   (which-key-mode t)
@@ -49,14 +71,7 @@
 ;; below, all are deferred for one second ----------------------------------------------------------
 
 
-;; (use-package doom-modeline              ;beautiful modeline
-;;   :defer 0
-;;   :config
-;;   (doom-modeline-mode t)
-;;   (setq doom-modeline-height 10)
-;;   )
-
-(use-package feebleline
+(use-package feebleline			;basically gets rid of modeline
   :init
   :defer 1
   :config
@@ -64,17 +79,17 @@
 
   )
 
-(use-package gcmh                       ;garbage management system
-  :defer 0
-  :config
-  (gcmh-mode)
-  ;; Adopt a sneaky garbage collection strategy of waiting until idle time to
-  ;; collect; staving off the collector while the user is working.
-  (setq gcmh-idle-delay 5
-        gcmh-high-cons-threshold (* 16 1024 1024)  ; 16mb
-        ;; gcmh-verbose doom-debug-p
-        )
-  )
+;; (use-package gcmh                       ;garbage management system
+;;   :defer 0
+;;   :config
+;;   (gcmh-mode)
+;;   ;; Adopt a sneaky garbage collection strategy of waiting until idle time to
+;;   ;; collect; staving off the collector while the user is working.
+;;   (setq gcmh-idle-delay 5
+;;         gcmh-high-cons-threshold (* 16 1024 1024)  ; 16mb
+;;         ;; gcmh-verbose doom-debug-p
+;;         )
+;;   )
 
 (use-package undo-tree                  ;very helpful undo visualizer
   :defer 0
@@ -88,8 +103,28 @@
 (use-package key-chord                  ;very useful package, used to turn on modalka mode
   :defer 0
   :config
+  (defun key-chord-mode (arg)
+    "Toggle key chord mode.
+With positive ARG enable the mode. With zero or negative arg disable the mode.
+A key chord is two keys that are pressed simultaneously, or one key quickly
+pressed twice.
+\nSee functions `key-chord-define-global', `key-chord-define-local', and
+`key-chord-define' and variables `key-chord-two-keys-delay' and
+`key-chord-one-key-delay'."
+
+    (interactive "P")
+    (setq key-chord-mode (if arg
+			     (> (prefix-numeric-value arg) 0)
+			   (not key-chord-mode)))
+    (cond (key-chord-mode
+	   (setq input-method-function 'key-chord-input-method)
+	   )
+	  (t
+	   (setq input-method-function nil)
+	   )))
   (key-chord-mode 1)
   (key-chord-define-global "ji" 'my/modalka-normal-mode)
+  (key-chord-define-global "jn" 'set-mark-command)
   )
 
 ;; below, all are deferred until called ------------------------------------------------------
@@ -128,11 +163,6 @@
   (add-to-list 'magit-no-confirm 'stage-all-changes)
   )
 
-
-(use-package crux                       ;some very helpful functions
-  :defer t
-  :config
-  )
 
 (use-package smart-comment              ;just a better commenting function
   :defer t
@@ -210,11 +240,6 @@
   :config
   ;; removes modes from the auto indent
   (add-to-list 'aggressive-indent-excluded-modes 'html-mode)
-  )
-
-(use-package expand-region              ;helpful for expanding the mark
-  :defer t
-  :config
   )
 
 (use-package rainbow-delimiters         ;shows the depth of parenthesis with colors
@@ -295,12 +320,6 @@
 
   )
 
-(use-package dired+                     ;helpful dired additions
-  :defer t
-  :config
-
-  )
-
 (use-package smart-hungry-delete        ;deletes whitespace
   :defer t
   :config
@@ -313,16 +332,16 @@
 
   )
 
-(use-package yasnippet                  ;abbreviation package
-  :defer t
-  :config
-  ;; check out here for full list: http://andreacrotti.github.io/yasnippet-snippets/snippets.html
-  (use-package yasnippet-snippets       ;bunch of common snippets
-    :defer t
-    :config
+;; (use-package yasnippet                  ;abbreviation package
+;;   :defer t
+;;   :config
+;;   ;; check out here for full list: http://andreacrotti.github.io/yasnippet-snippets/snippets.html
+;;   (use-package yasnippet-snippets       ;bunch of common snippets
+;;     :defer t
+;;     :config
 
-    )
-  )
+;;     )
+;;   )
 
 (use-package tuareg                     ;major mode for oCaml editing
   :defer t
@@ -421,35 +440,6 @@
 
   )
 
-
-(use-package helm-swoop                 ;really good searching buffer things
-  :defer t
-  :config
-  (setq helm-swoop-pre-input-function
-        (lambda () nil))
-  ;; Save buffer when helm-multi-swoop-edit complete
-  (setq helm-multi-swoop-edit-save t)
-
-  ;; If this value is t, split window inside the current window
-  (setq helm-swoop-split-with-multiple-windows nil)
-
-  ;; Split direcion. 'split-window-vertically or 'split-window-horizontally
-  (setq helm-swoop-split-direction 'split-window-vertically)
-
-  ;; If nil, you can slightly boost invoke speed in exchange for text color
-  (setq helm-swoop-speed-or-color nil)
-
-  ;; If you prefer fuzzy matching
-  ;; (setq helm-swoop-use-fuzzy-match t)
-
-  )
-
-;; (use-package org-journal                ;cool journal
-;;   :defer t
-;;   :config
-;;   (setq org-journal-enable-encryption t)
-;;   )
-
 (use-package company-c-headers          ;supposed to show c headers
   :defer t
   :config
@@ -496,6 +486,13 @@
   (setq transient-history-file (expand-file-name "history.el" gemacs-misc-dir))
   )
 
+(use-package url			;used by other stuff, just need to customize a variable
+  :init
+  (setq url-configuration-directory (expand-file-name "url" gemacs-misc-dir))
+  :defer t
+  :config
+
+  )
 
 
 (provide 'my-packages)
