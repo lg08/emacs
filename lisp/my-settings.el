@@ -83,6 +83,11 @@
 
 (setq auto-save-list-file-prefix nil)	;keeps the auto-save-list dir from being created
 
+					;don't ask me to confirm when killing buffers with running processes
+(setq kill-buffer-query-functions
+      (delq 'process-kill-buffer-query-function kill-buffer-query-functions))
+
+
 
 
 

@@ -73,6 +73,14 @@
    '(read-file-name-internal . ivy--sort-files-by-date))
   )
 
+(use-package ivy-prescient
+  :init
+  (ivy-prescient-mode)
+  :defer t
+  :config
+
+  )
+
 (use-package swiper
   :init
   (define-key ivy-minibuffer-map "\C-k" 'nil)
@@ -542,6 +550,7 @@ pressed twice.
   )
 
 (use-package multi-term			;pretty good terminal thing
+  :init
   :defer t
   :config
 

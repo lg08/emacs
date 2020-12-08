@@ -12,6 +12,7 @@
                             (aggressive-indent-mode 1)
 			    (global-git-gutter-mode)
 			    ;; (global-flycheck-mode 1)
+			    (highlight-indent-guides-mode)
 			    ))
 
 (add-hook 'dired-mode-hook (lambda ()
