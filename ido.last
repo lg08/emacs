@@ -7,17 +7,22 @@
 
 ;; ----- ido-work-directory-list -----
 (
+ "/home/lg08/.emacs.d/lisp/"
  "/home/lg08/.emacs.d/"
  "/home/lg08/Documents/"
 )
 
 ;; ----- ido-work-file-list -----
 (
-
+ "my-testing-stuff.el"
+ "my-skeletons.el"
+ "my-packages.el"
 )
 
 ;; ----- ido-dir-file-cache -----
 (
+ ("/home/lg08/.emacs.d/lisp/" (24527 7831 316775 926000) "my-modes.el" "my-functions.el" ".#my-modes.el" "./" "my-skeletons.el" "my-keybinds.el" "../" "my-testing-stuff.el" "my-settings.el" "my-packages.el")
+
  ("/home/lg08/.emacs.d/" (24526 12165 479183 776000) "straight/" "README.org" ".git/" "misc/" "lisp/" ".gitignore" "./" "README.el" "themes/" "early-init.el" "init.el" "../")
 
  ("/home/lg08/Documents/" (24525 63989 10232 488000) ".git/" "./" "resume/" "projects/" "Princeton/" "notes/" "../")

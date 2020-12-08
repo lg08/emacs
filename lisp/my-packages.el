@@ -21,44 +21,75 @@
 
   )
 
-(use-package helm
+;; (use-package helm
+;;   :init
+;;   (helm-mode)
+;;   (setq recentf-save-file (expand-file-name "recentf" gemacs-misc-dir))
+;;   ;; (setq helm-split-window-default-side 'right)
+;;   ;; (setq helm-samewindow t)
+;;   ;; (setq helm-M-x-fuzzy-match t) ;; optional fuzzy matching for helm-M-x
+;;   ;; (setq helm-locate-fuzzy-match t)
+
+;;   ;; this guy makes helm use a mini frame
+;;   ;; (setq helm-display-function 'helm-display-buffer-in-own-frame
+;;   ;; helm-display-buffer-reuse-frame t
+;;   ;; helm-use-undecorated-frame-option t)
+;;   :config
+
+;;   )
+
+;; (use-package helm-swoop                 ;really good searching buffer things
+;;   :defer t
+;;   :config
+;;   (setq helm-swoop-pre-input-function
+;;         (lambda () nil))
+;;   ;; Save buffer when helm-multi-swoop-edit complete
+;;   (setq helm-multi-swoop-edit-save t)
+
+;;   ;; If this value is t, split window inside the current window
+;;   (setq helm-swoop-split-with-multiple-windows nil)
+
+;;   ;; Split direcion. 'split-window-vertically or 'split-window-horizontally
+;;   (setq helm-swoop-split-direction 'split-window-vertically)
+
+;;   ;; If nil, you can slightly boost invoke speed in exchange for text color
+;;   (setq helm-swoop-speed-or-color nil)
+
+;;   ;; If you prefer fuzzy matching
+;;   ;; (setq helm-swoop-use-fuzzy-match t)
+
+;;   )
+
+(use-package ivy
   :init
-  (helm-mode)
-  (setq recentf-save-file (expand-file-name "recentf" gemacs-misc-dir))
-  ;; (setq helm-split-window-default-side 'right)
-  ;; (setq helm-samewindow t)
-  ;; (setq helm-M-x-fuzzy-match t) ;; optional fuzzy matching for helm-M-x
-  ;; (setq helm-locate-fuzzy-match t)
-
-  ;; this guy makes helm use a mini frame
-  ;; (setq helm-display-function 'helm-display-buffer-in-own-frame
-  ;; helm-display-buffer-reuse-frame t
-  ;; helm-use-undecorated-frame-option t)
-  :config
-
-  )
-
-(use-package helm-swoop                 ;really good searching buffer things
+  (ivy-mode)
   :defer t
   :config
-  (setq helm-swoop-pre-input-function
-        (lambda () nil))
-  ;; Save buffer when helm-multi-swoop-edit complete
-  (setq helm-multi-swoop-edit-save t)
+  (setq ivy-use-virtual-buffers t	;    Add recent files and bookmarks to the ivy-switch-buffer
+        ivy-count-format "%d/%d ")	;    Displays the current and total number in the collection in the prompt
+  )
 
-  ;; If this value is t, split window inside the current window
-  (setq helm-swoop-split-with-multiple-windows nil)
-
-  ;; Split direcion. 'split-window-vertically or 'split-window-horizontally
-  (setq helm-swoop-split-direction 'split-window-vertically)
-
-  ;; If nil, you can slightly boost invoke speed in exchange for text color
-  (setq helm-swoop-speed-or-color nil)
-
-  ;; If you prefer fuzzy matching
-  ;; (setq helm-swoop-use-fuzzy-match t)
+(use-package swiper
+  :defer t
+  :config
 
   )
+
+(use-package counsel
+  :defer t
+  :config
+
+  )
+
+(setq x-gtk-resize-child-frames 'resize-mode)
+(use-package mini-frame
+  :init
+  (mini-frame-mode)
+  :defer t
+  :config
+
+  )
+
 
 ;; (use-package which-key                  ;shows possible keyboard commands, just uncomment if you want it
 ;;   :config
@@ -497,6 +528,12 @@ pressed twice.
   )
 
 (use-package multi-term			;pretty good terminal thing
+  :defer t
+  :config
+
+  )
+
+(use-package google-this
   :defer t
   :config
 

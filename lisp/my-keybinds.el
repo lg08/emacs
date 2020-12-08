@@ -25,7 +25,7 @@
 
 
 (general-define-key
- "M-y" 'helm-show-kill-ring
+ "M-y" 'counsel-yank-pop
  "M-x" 'execute-extended-command
  "C-s" 'swiper-isearch
  "C-z" 'nil
@@ -90,7 +90,6 @@
  "C-M-j" 'down-list
  "C-c k" 'highlight-symbol-prev
  "C-c j" 'highlight-symbol-next
- "C-c u" 'helm-all-mark-rings
  "<f5>" 'revert-buffer-no-confirm
  )
 
@@ -109,6 +108,12 @@
  "C-k" 'helm-previous-line
  ;; "<tab>" 'helm-execute-persistent-action
  "C-z" 'helm-select-action
+ )
+
+(general-define-key
+ :keymaps 'ivy-minibuffer-map
+ "C-j" 'ivy-next-line
+ "C-k" 'ivy-previous-line
  )
 
 (general-define-key
@@ -163,7 +168,7 @@
  "x" 'recenter-top-bottom
  "d" 'delete-char
  "o" 'crux-smart-open-line-above
- "s" 'helm-swoop
+ "s" 'swiper
  "f" 'iy-go-to-char
  "b" 'iy-go-to-char-backward
  "p" 'my/select-current-line-and-forward-line
@@ -177,12 +182,12 @@
 (general-define-key
  :keymaps 'modalka-mode-map
  :prefix "SPC"
- "f f" 'helm-find-files
+ "f f" 'find-file
  "f b" 'bookmark-jump
  "p p" 'projectile-switch-project
  "p f" 'projectile-find-file
  "g g" 'magit-status
- "g s" 'helm-google-suggest
+ "g s" 'google-this
  "x" 'execute-extended-command
  "o o" 'switch-window
  "1" 'switch-window-then-maximize
@@ -192,7 +197,7 @@
  ;; "b" 'switch-to-buffer
  "b" 'switch-to-buffer
  "s s" 'my/term
- "SPC" 'helm-M-x
+ "SPC" 'counsel-M-x
  "w n" 'eyebrowse-next-window-config
  "w p" 'eyebrowse-prev-window-config
  "d d" 'dired-sidebar-toggle-sidebar
