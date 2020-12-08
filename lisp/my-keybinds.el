@@ -114,6 +114,8 @@
  :keymaps 'ivy-minibuffer-map
  "C-j" 'ivy-next-line
  "C-k" 'ivy-previous-line
+ "C-h" "DEL"
+ "C-l" 'ivy-alt-done
  )
 
 (general-define-key
@@ -195,7 +197,7 @@
  "3" 'switch-window-then-split-right
  "0" 'switch-window-then-delete
  ;; "b" 'switch-to-buffer
- "b" 'switch-to-buffer
+ "b" 'ido-switch-buffer
  "s s" 'my/ansi-term-toggle
  "SPC" 'counsel-M-x
  "w n" 'eyebrowse-next-window-config

@@ -74,6 +74,8 @@
   )
 
 (use-package swiper
+  :init
+  (define-key ivy-minibuffer-map "\C-k" 'nil)
   :defer t
   :config
 
