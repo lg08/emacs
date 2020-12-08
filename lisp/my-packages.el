@@ -25,8 +25,8 @@
   :init
   (helm-mode)
   (setq recentf-save-file (expand-file-name "recentf" gemacs-misc-dir))
-  (setq helm-split-window-default-side 'right)
-  (setq helm-samewindow t)
+  ;; (setq helm-split-window-default-side 'right)
+  ;; (setq helm-samewindow t)
   ;; (setq helm-M-x-fuzzy-match t) ;; optional fuzzy matching for helm-M-x
   ;; (setq helm-locate-fuzzy-match t)
 
@@ -356,6 +356,8 @@ pressed twice.
   )
 
 (use-package smerge-mode                ;useful for merging git conflicts
+  :init
+  (setq smerge-command-prefix "\C-cv")
   :defer t
   :config
 
@@ -489,6 +491,12 @@ pressed twice.
 (use-package url			;used by other stuff, just need to customize a variable
   :init
   (setq url-configuration-directory (expand-file-name "url" gemacs-misc-dir))
+  :defer t
+  :config
+
+  )
+
+(use-package multi-term			;pretty good terminal thing
   :defer t
   :config
 

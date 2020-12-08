@@ -1,0 +1,29 @@
+;;; -*- coding: utf-8 -*-
+
+;; ----- ido-last-directory-list -----
+(
+ ("/home/lg08/" . "Documents/")
+)
+
+;; ----- ido-work-directory-list -----
+(
+ "/home/lg08/.emacs.d/"
+ "/home/lg08/Documents/"
+)
+
+;; ----- ido-work-file-list -----
+(
+
+)
+
+;; ----- ido-dir-file-cache -----
+(
+ ("/home/lg08/.emacs.d/" (24526 12165 479183 776000) "straight/" "README.org" ".git/" "misc/" "lisp/" ".gitignore" "./" "README.el" "themes/" "early-init.el" "init.el" "../")
+
+ ("/home/lg08/Documents/" (24525 63989 10232 488000) ".git/" "./" "resume/" "projects/" "Princeton/" "notes/" "../")
+
+ ("/home/lg08/" (24525 65504 192713 546000) "Templates/" ".pipewire-media-session/" "Music/" "snap/" ".nvidia-settings-rc" "Desktop/" ".profile" ".pki/" "Documents/" "Public/" "Videos/" ".gnupg/" "./" ".bash_history" ".icons/" ".local/" ".bashrc~" ".ssh/" ".bash_logout" "Pictures/" ".pam_environment" ".sudo_as_admin_successful" ".config/" "Downloads/" ".bashrc" ".cache/" ".emacs.d/" ".mozilla/" "../" ".themes/")
+)
+
+;; ----- ido-unc-hosts-cache -----
+t
