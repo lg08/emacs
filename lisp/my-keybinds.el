@@ -168,7 +168,7 @@
  "x" 'recenter-top-bottom
  "d" 'delete-char
  "o" 'crux-smart-open-line-above
- "s" 'swiper
+ "s" 'swiper-isearch
  "f" 'iy-go-to-char
  "b" 'iy-go-to-char-backward
  "p" 'my/select-current-line-and-forward-line
@@ -196,7 +196,7 @@
  "0" 'switch-window-then-delete
  ;; "b" 'switch-to-buffer
  "b" 'switch-to-buffer
- "s s" 'my/term
+ "s s" 'my/ansi-term-toggle
  "SPC" 'counsel-M-x
  "w n" 'eyebrowse-next-window-config
  "w p" 'eyebrowse-prev-window-config

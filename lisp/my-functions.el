@@ -166,15 +166,20 @@ Version 2018-09-10"
                   "xdg-open "
                   default-directory)))
 
-;; opens ansi-term in current directory without a prompt
-(defun my/term ()
-  "My personal term command."
+;; gotten from here: https://www.reddit.com/r/emacs/comments/bed0ne/dry0_quickly_popup_a_terminal_run_a_command_close/
+(defun my/ansi-term-toggle ()
+  "Toggle ansi-term window on and off with the same command."
   (interactive)
-  (split-window-vertically)
-  (set-buffer (make-term "terminal" "/bin/bash"))
-  (term-mode)
-  (term-char-mode)
-  (switch-to-buffer "*terminal*"))
+  (defvar my--ansi-term-name "ansi-term-popup")
+  (defvar my--window-name (concat "*" my--ansi-term-name "*"))
+  (cond ((get-buffer-window my--window-name)
+         (ignore-errors (delete-window
+                         (get-buffer-window my--window-name))))
+        (t (split-window-below)
+           (other-window 1)
+           (cond ((get-buffer my--window-name)
+                  (switch-to-buffer my--window-name))
+                 (t (ansi-term "bash" my--ansi-term-name))))))
 
 ;; opens a terminal in the working directory or the projects root if one is detected
 (defun my/open-terminal-in-workdir ()

@@ -67,6 +67,10 @@
   :config
   (setq ivy-use-virtual-buffers t	;    Add recent files and bookmarks to the ivy-switch-buffer
         ivy-count-format "%d/%d ")	;    Displays the current and total number in the collection in the prompt
+
+  (add-to-list				;should make find-file and stuff sort by date
+   'ivy-sort-matches-functions-alist
+   '(read-file-name-internal . ivy--sort-files-by-date))
   )
 
 (use-package swiper
@@ -87,8 +91,16 @@
   (mini-frame-mode)
   :defer t
   :config
-
+  (add-to-list 'mini-frame-ignore-commands 'swiper)
   )
+
+;; (use-package ivy-posframe
+;;   :init
+;;   (ivy-posframe-mode)
+;;   :defer t
+;;   :config
+
+;;   )
 
 
 ;; (use-package which-key                  ;shows possible keyboard commands, just uncomment if you want it
@@ -166,7 +178,7 @@ pressed twice.
   :defer t
   :config
   (projectile-mode +1)
-  (setq projectile-completion-system 'helm)
+  (setq projectile-completion-system 'ivy)
   (setq projectile-globally-ignored-file-suffixes '("pyc"))
 
   )
