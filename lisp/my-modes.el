@@ -53,10 +53,6 @@
                               (general-define-key
                                "C-c r" 'tuareg-eval-region
                                )
-                              ;; (company-mode -1)
-                              ;; (column-marker-1 79)
-                              ;; (column-marker-2 80)
-                              ;; (merlin-eldoc-setup)
                               (setq fill-column 80)
                               (display-fill-column-indicator-mode)
                               (setq prettify-symbols-alist

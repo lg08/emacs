@@ -172,6 +172,7 @@
  "o" 'crux-smart-open-line-above
  "s" 'swiper-isearch
  "f" 'iy-go-to-char
+ "F" 'iy-go-to-char-backward
  "b" 'iy-go-to-char-backward
  "p" 'my/select-current-line-and-forward-line
  "J" 'windmove-down
@@ -188,14 +189,15 @@
  "f b" 'bookmark-jump
  "p p" 'projectile-switch-project
  "p f" 'projectile-find-file
+ "p s g" 'projectile-grep
  "g g" 'magit-status
  "g s" 'google-this
  "x" 'execute-extended-command
- "o o" 'switch-window
- "1" 'switch-window-then-maximize
- "2" 'switch-window-then-split-below
- "3" 'switch-window-then-split-right
- "0" 'switch-window-then-delete
+ "o o" 'other-window
+ "1" 'delete-other-windows
+ "2" 'split-window-below
+ "3" 'split-window-right
+ "0" 'delete-window
  ;; "b" 'switch-to-buffer
  "b" 'ido-switch-buffer
  "s s" 'my/toggle-terminal

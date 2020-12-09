@@ -231,11 +231,6 @@ pressed twice.
 
   )
 
-(use-package switch-window              ;faster window switching
-  :defer t
-  :config
-  )
-
 ;; With use-package:
 (use-package company-box
   :hook (company-mode . company-box-mode))
@@ -311,7 +306,7 @@ pressed twice.
 
 (use-package highlight-indent-guides    ;shows indentation guides, pretty lightweight
   :init
-  (setq highlight-indent-guides-method 'character)
+  (setq highlight-indent-guides-method 'bitmap)
   :defer t
   :config
 
