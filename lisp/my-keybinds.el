@@ -200,7 +200,7 @@
  "0" 'delete-window
  ;; "b" 'switch-to-buffer
  "b" 'ido-switch-buffer
- "s s" 'my/toggle-terminal
+ "s s" 'my/ansi-term-toggle
  "SPC" 'counsel-M-x
  "w n" 'eyebrowse-next-window-config
  "w p" 'eyebrowse-prev-window-config

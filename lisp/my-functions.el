@@ -167,24 +167,20 @@ Version 2018-09-10"
                   default-directory)))
 
 ;; gotten from here: https://www.reddit.com/r/emacs/comments/bed0ne/dry0_quickly_popup_a_terminal_run_a_command_close/
-(cl-defun my/toggle-terminal (&optional (name "*eshell-pop-up*"))
-  "Pop up a terminal, do some work, then close it using the same command.
-
-The toggle behaviour is tied into the existence of the pop-up buffer.
-If the buffer exists, kill it; else create it.
-"
+(defun my/ansi-term-toggle ()
+  "Toggle ansi-term window on and off with the same command."
   (interactive)
-  (cond
-   ;; when our terminal buffer is alive, kill it.
-   ((get-buffer name)  (kill-buffer name)
-    (ignore-errors (delete-window)))
+  (defvar my--ansi-term-name "ansi-term-popup")
+  (defvar my--window-name (concat "*" my--ansi-term-name "*"))
+  (cond ((get-buffer-window my--window-name)
+         (ignore-errors (delete-window
+                         (get-buffer-window my--window-name))))
+        (t (split-window-below)
+           (other-window 1)
+           (cond ((get-buffer my--window-name)
+                  (switch-to-buffer my--window-name))
+                 (t (ansi-term "bash" my--ansi-term-name))))))
 
-   ;; otherwise, set value to refer to a new eshell buffer.
-   (t                  (split-window-below)
-                       (other-window 1)
-                       (multi-term)
-                       (rename-buffer name))
-   ))
 
 
 ;; opens a terminal in the working directory or the projects root if one is detected

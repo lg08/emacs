@@ -306,10 +306,10 @@ pressed twice.
 
 (use-package highlight-indent-guides    ;shows indentation guides, pretty lightweight
   :init
-  (setq highlight-indent-guides-method 'bitmap)
   :defer t
   :config
-
+  (setq highlight-indent-guides-method 'bitmap)
+  (setq highlight-indent-guides-responsive 'stack)
   )
 
 (use-package all-the-icons              ;just has a bunch of icons for stuff
