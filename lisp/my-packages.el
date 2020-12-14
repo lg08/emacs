@@ -7,6 +7,7 @@
   (modalka-global-mode 1)
   (setq-default cursor-type '(bar . 1))
   (setq modalka-cursor-type 'box)
+  ;; :diminish modalka-mode
   )
 
 (use-package eyebrowse                  ;window management package
@@ -21,49 +22,10 @@
 
   )
 
-;; (use-package helm
-;;   :init
-;;   (helm-mode)
-;;   (setq recentf-save-file (expand-file-name "recentf" gemacs-misc-dir))
-;;   ;; (setq helm-split-window-default-side 'right)
-;;   ;; (setq helm-samewindow t)
-;;   ;; (setq helm-M-x-fuzzy-match t) ;; optional fuzzy matching for helm-M-x
-;;   ;; (setq helm-locate-fuzzy-match t)
-
-;;   ;; this guy makes helm use a mini frame
-;;   ;; (setq helm-display-function 'helm-display-buffer-in-own-frame
-;;   ;; helm-display-buffer-reuse-frame t
-;;   ;; helm-use-undecorated-frame-option t)
-;;   :config
-
-;;   )
-
-;; (use-package helm-swoop                 ;really good searching buffer things
-;;   :defer t
-;;   :config
-;;   (setq helm-swoop-pre-input-function
-;;         (lambda () nil))
-;;   ;; Save buffer when helm-multi-swoop-edit complete
-;;   (setq helm-multi-swoop-edit-save t)
-
-;;   ;; If this value is t, split window inside the current window
-;;   (setq helm-swoop-split-with-multiple-windows nil)
-
-;;   ;; Split direcion. 'split-window-vertically or 'split-window-horizontally
-;;   (setq helm-swoop-split-direction 'split-window-vertically)
-
-;;   ;; If nil, you can slightly boost invoke speed in exchange for text color
-;;   (setq helm-swoop-speed-or-color nil)
-
-;;   ;; If you prefer fuzzy matching
-;;   ;; (setq helm-swoop-use-fuzzy-match t)
-
-;;   )
-
 (use-package ivy
   :init
   (ivy-mode)
-  :defer t
+  :defer
   :config
   (setq ivy-use-virtual-buffers t	;    Add recent files and bookmarks to the ivy-switch-buffer
         ivy-count-format "%d/%d ")	;    Displays the current and total number in the collection in the prompt
@@ -71,13 +33,8 @@
   (add-to-list				;should make find-file and stuff sort by date
    'ivy-sort-matches-functions-alist
    '(read-file-name-internal . ivy--sort-files-by-date))
-  )
 
-(use-package ivy-prescient
-  :init
-  (ivy-prescient-mode)
-  :defer t
-  :config
+
 
   )
 
@@ -89,11 +46,40 @@
 
   )
 
-(use-package counsel
+
+(use-package prescient
+  :init
+  (setq prescient-save-file (expand-file-name "prescient-save.el" gemacs-misc-dir))
+  :ensure t
+  :config
+  (prescient-persist-mode +1)
+
+  )
+
+(use-package ivy-prescient
+  :init
+  (ivy-prescient-mode)
   :defer t
   :config
 
   )
+
+(use-package counsel
+  ;; :defer t
+  :config
+
+  )
+
+
+(use-package ivy-rich
+  :init
+  (ivy-rich-mode 1)
+  :defer t
+  :config
+
+  )
+
+
 
 (setq x-gtk-resize-child-frames 'resize-mode)
 (use-package mini-frame
@@ -214,7 +200,24 @@ pressed twice.
   (add-hook 'magit-mode-hook (lambda () (modalka-mode -1)))
   (add-hook 'git-commit-mode-hook (lambda () (modalka-mode -1)))
   (add-to-list 'magit-no-confirm 'stage-all-changes)
+
+
+  (add-hook 'git-commit-mode-hook
+            (lambda ()
+              (set-fill-column 72)))
   )
+
+(use-package magit-todos		;really cool, shows todos in magit buffer
+  :requires (magit)
+  ;; :hook (magit-mode . magit-todos-mode)
+  :custom
+  (magit-todos-exclude-globs '("**/node_modules/**"))
+  :init
+  ;; (unless (executable-find "nice") ; don't break Magit on systems that don't have `nice'
+  ;; (setq magit-todos-nimce nil))
+  )
+
+;; TODO: see if it works
 
 
 (use-package smart-comment              ;just a better commenting function
@@ -245,7 +248,7 @@ pressed twice.
   (setq company-begin-commands '(self-insert-command)) ; start autocompletion only after typing
 
   ;; provides almost instant autocompletion
-  (setq company-idle-delay 0)
+  (setq company-idle-delay .5)
   ;;  ;; Search other buffers for compleition candidates
   (setq company-dabbrev-other-buffers t)
   (setq company-dabbrev-code-other-buffers t)
@@ -259,6 +262,11 @@ pressed twice.
   (setq company-dabbrev-ignore-case nil)
   ;; :custom
   (setq company-minimum-prefix-length 3)
+  )
+
+(use-package company-quickhelp
+  :init
+  (company-quickhelp-mode 1)
   )
 
 ;; potential deep learning thing; could be dope
@@ -332,8 +340,7 @@ pressed twice.
   :config
   )
 
-(use-package web-mode                   ;better web development major mode
-  :defer t
+(use-package web-mode                   ;better web development major mode  :defer t
   :init
   (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
   :config
@@ -472,6 +479,13 @@ pressed twice.
 
   )
 
+(use-package poporg
+  :init
+  (global-set-key (kbd "C-c \"") 'poporg-dwim)
+  :defer t
+  :config
+  )
+
 (use-package flycheck                   ;automatic spell-checking and stuff
   :defer t
   :config
@@ -554,8 +568,19 @@ pressed twice.
 (use-package google-this
   :defer t
   :config
+  )
+
+(use-package go-mode
+  :defer t
+  :config
 
   )
 
+
+(use-package highlight-parentheses
+  :defer t
+  :config
+
+  )
 
 (provide 'my-packages)

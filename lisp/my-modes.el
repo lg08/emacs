@@ -10,9 +10,10 @@
                             (highlight-thing-mode)
                             (volatile-highlights-mode)
                             (aggressive-indent-mode 1)
-			    (global-git-gutter-mode)
+			    ;; (global-git-gutter-mode)
 			    ;; (global-flycheck-mode 1)
 			    (highlight-indent-guides-mode)
+			    (global-highlight-parentheses-mode)
 			    ))
 
 (add-hook 'dired-mode-hook (lambda ()
@@ -31,8 +32,9 @@
                            ))
 
 (add-hook 'magit-mode-hook (lambda ()
-                             (global-git-gutter-mode)
+                             ;; (global-git-gutter-mode)
                              ;; (add-hook 'magit-popup-hook ' (lambda () (modalka-mode -1)))
+			     (magit-todos-mode)
                              ))
 (add-hook 'python-mode-hook (lambda ()
                               (elpy-enable)
@@ -104,8 +106,6 @@
     ))
 
 (add-hook 'change-major-mode-hook (lambda ()
-                                    ;; (clojure-leave-clojure-mode-function)
-
                                     (org-leave-mode-function)
                                     (dired-leave-mode-function)
                                     ))

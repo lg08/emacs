@@ -49,7 +49,9 @@
 
 (setq use-dialog-box nil)		;don't give me gui windows
 
-(global-display-line-numbers-mode)      ;seems to be the best line number mode in my experience
+;; (global-display-line-numbers-mode)      ;seems to be the best line number mode in my experience
+
+(setq-default display-line-numbers 'relative) ;shows the relative line numbers instead
 
 (global-hl-line-mode 1)            ;highlights the current line
 (set-face-attribute hl-line-face nil :underline t) ;underlines the current line
@@ -116,7 +118,7 @@
 (setq visual-order-cursor-movement t)
 
 ;; makes dired sort by date by default
-(setq dired-listing-switches "-alt")
+(setq dired-listing-switches "-lt")
 
 (display-splash-screen)                 ;just shows the splash screen
 
