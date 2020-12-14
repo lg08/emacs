@@ -289,4 +289,11 @@ transpositions to execute in sequence."
       )))
 
 
+;; taken from here: https://emacsredux.com/blog/2013/04/28/switch-to-previous-buffer/
+(defun er-switch-to-previous-buffer ()
+  "Switch to previously open buffer.
+Repeated invocations toggle between the two most recently open buffers."
+  (interactive)
+  (switch-to-buffer (other-buffer (current-buffer) 1)))
+
 (provide 'my-functions)

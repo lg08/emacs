@@ -1,20 +1,24 @@
 
 ;; ----- amx-history -----
 (
- wakatime-mode
- global-wakatime-mode
+ switch-to-prev-buffer
+ c-mode
+ counsel-mode
+ my/edit-armlab-file
  describe-variable
- use-package-template
- ido-insert-file
- cd
- 5x5
+ global-wakatime-mode
+ wakatime-mode
 )
 
 ;; ----- amx-data -----
 (
  (ido-insert-file . 1)
  (use-package-template . 1)
- (describe-variable . 2)
- (wakatime-mode . 2)
- (global-wakatime-mode . 4)
+ (describe-variable . 3)
+ (wakatime-mode . 1)
+ (global-wakatime-mode . 2)
+ (my/edit-armlab-file . 2)
+ (counsel-mode . 1)
+ (c-mode . 1)
+ (switch-to-prev-buffer . 3)
 )

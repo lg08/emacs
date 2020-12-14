@@ -102,6 +102,7 @@
  "C-c k" 'highlight-symbol-prev
  "C-c j" 'highlight-symbol-next
  "<f5>" 'revert-buffer-no-confirm
+ "C-<tab>" 'er-switch-to-previous-buffer
  )
 
 ;; MINOR MODE MAPS---------------------------------------------------------------------
