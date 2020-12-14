@@ -22,9 +22,9 @@
     (xah-cut-line-or-region)
     )
   )
-<<<<<<< HEAD
+
 (global-set-key (kbd "<f6>") 'ivy-resume)
-=======
+
 
 (defun my/s-key-diff-modes-function ()
   "trying this out"
@@ -34,8 +34,6 @@
     (counsel-grep)
     )
   )
-
->>>>>>> f3d19093f58d494de1b9301529cc1549e010e22a
 
 (general-define-key
  "M-y" 'counsel-yank-pop

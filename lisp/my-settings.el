@@ -10,7 +10,11 @@
 
 (setq lexical-binding t)              ;idk, something to do with loading lexical files faster
 
-;; (setq inhibit-startup-message t)  ;i kinda like it but most people don't
+(setq inhibit-startup-message t)  ;i kinda like it but most people don't
+
+;; (display-splash-screen)                 ;just shows the splash screen
+
+
 
 (setq ring-bell-function 'ignore)   ;don't annoy me with bells and shit
 
@@ -119,8 +123,6 @@
 
 ;; makes dired sort by date by default
 (setq dired-listing-switches "-lt")
-
-(display-splash-screen)                 ;just shows the splash screen
 
 (add-hook 'before-save-hook 'delete-trailing-whitespace) ;deletes the whitespace at end of lines on save
 

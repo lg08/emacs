@@ -81,22 +81,22 @@
 
 
 
-(setq x-gtk-resize-child-frames 'resize-mode)
-(use-package mini-frame
-  :init
-  (mini-frame-mode)
-  :defer t
-  :config
-  (add-to-list 'mini-frame-ignore-commands 'swiper)
-  )
-
-;; (use-package ivy-posframe
+;; (setq x-gtk-resize-child-frames 'resize-mode)
+;; (use-package mini-frame
 ;;   :init
-;;   (ivy-posframe-mode)
+;;   (mini-frame-mode)
 ;;   :defer t
 ;;   :config
-
+;;   (add-to-list 'mini-frame-ignore-commands 'swiper)
 ;;   )
+
+(use-package ivy-posframe
+  :init
+  (ivy-posframe-mode)
+  :defer t
+  :config
+
+  )
 
 
 ;; (use-package which-key                  ;shows possible keyboard commands, just uncomment if you want it

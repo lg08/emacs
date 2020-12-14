@@ -125,5 +125,8 @@ I tried to make them very ergonomic and intuitive, and they certainly are for me
   (setq frame-title-format '("" "%b - My-Dope-Ass Config"))
   (setq initial-scratch-message "Welcome back old friend... \n\nEmacs is here. You're ok now.\n\n\n")
 
+(add-hook 'fundamental-mode-hook 'modalka-mode)
+
+(splash-screen)
 
   #+END_SRC
