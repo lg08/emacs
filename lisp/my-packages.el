@@ -33,9 +33,6 @@
   (add-to-list				;should make find-file and stuff sort by date
    'ivy-sort-matches-functions-alist
    '(read-file-name-internal . ivy--sort-files-by-date))
-
-
-
   )
 
 (use-package swiper
@@ -90,13 +87,13 @@
 ;;   (add-to-list 'mini-frame-ignore-commands 'swiper)
 ;;   )
 
-(use-package ivy-posframe
-  :init
-  (ivy-posframe-mode)
-  :defer t
-  :config
+;; (use-package ivy-posframe
+;;   :init
+;;   (ivy-posframe-mode)
+;;   :defer t
+;;   :config
 
-  )
+;;   )
 
 
 ;; (use-package which-key                  ;shows possible keyboard commands, just uncomment if you want it
@@ -578,6 +575,16 @@ pressed twice.
 
 
 (use-package highlight-parentheses
+  :defer t
+  :config
+
+  )
+
+(use-package wakatime-mode
+  :init
+  (setq wakatime-api-key "4e8965d1-c63b-4bb1-9673-5c1dc7519277")
+  (setq wakatime-cli-path "/usr/local/bin/wakatime")
+  (global-wakatime-mode)
   :defer t
   :config
 

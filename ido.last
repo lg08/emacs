@@ -1,0 +1,39 @@
+;;; -*- coding: utf-8 -*-
+
+;; ----- ido-last-directory-list -----
+(
+ ("/home/lg08/.emacs.d/" . "straight/")
+ ("/home/lg08/Documents/Princeton/" . "second_year/")
+ ("/home/lg08/Documents/" . "Princeton/")
+)
+
+;; ----- ido-work-directory-list -----
+(
+ "/home/lg08/.emacs.d/straight/"
+ "/home/lg08/.emacs.d/lisp/"
+)
+
+;; ----- ido-work-file-list -----
+(
+
+)
+
+;; ----- ido-dir-file-cache -----
+(
+ ("/home/lg08/.emacs.d/straight/" (24535 56201 956641 749000) "build/" "./" "../" "build-cache.el" "repos/")
+
+ ("/home/lg08/.emacs.d/lisp/" (24535 56199 756543 930000) "my-modes.el" "my-functions.el" "./" "my-skeletons.el" "my-keybinds.el" "../" "my-testing-stuff.el" "my-settings.el" "my-packages.el")
+
+ ("/home/lg08/.emacs.d/" (24535 56200 840592 128000) "amx-items" "init.el" "./" "lisp/" "README.org" "misc/" "themes/" ".git/" "README.el" "tramp" "../" "early-init.el" "ido.last" "snippets/" "auto-save-list/" "recentf" "straight/" ".gitignore")
+
+ ("/home/lg08/Documents/Princeton/second_year/" (24527 56230 897213 104000) "cos326/" "./" "phi203/" "../")
+
+ ("/home/lg08/Documents/Princeton/" (24527 56197 797353 870000) "second_year/" "./" "../" "course_planner.org")
+
+ ("/home/lg08/Documents/" (24527 64181 755085 308000) "projects/" "./" "resume/" "../" "Princeton/" "notes/")
+
+ ("/home/lg08/" (24532 35113 797128 586000) ".pki/" ".local/" ".gphoto/" "Templates/" ".profile" ".vscode/" "./" ".bash_logout" ".pipewire-media-session/" ".ssh/" "Videos/" ".cache/" ".mozilla/" ".bash_history" "../" "Documents/" "Pictures/" ".opam/" ".icons/" "snap/" ".sudo_as_admin_successful" ".emacs.d/" "Desktop/" "Music/" ".themes/" ".config/" ".gnupg/" ".pam_environment" ".java/" ".bashrc" "Downloads/" "Public/")
+)
+
+;; ----- ido-unc-hosts-cache -----
+t

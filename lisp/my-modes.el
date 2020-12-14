@@ -14,6 +14,7 @@
 			    ;; (global-flycheck-mode 1)
 			    (highlight-indent-guides-mode)
 			    (global-highlight-parentheses-mode)
+			    (wakatime-mode)
 			    ))
 
 (add-hook 'dired-mode-hook (lambda ()

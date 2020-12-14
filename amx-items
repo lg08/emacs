@@ -1,0 +1,20 @@
+
+;; ----- amx-history -----
+(
+ wakatime-mode
+ global-wakatime-mode
+ describe-variable
+ use-package-template
+ ido-insert-file
+ cd
+ 5x5
+)
+
+;; ----- amx-data -----
+(
+ (ido-insert-file . 1)
+ (use-package-template . 1)
+ (describe-variable . 2)
+ (wakatime-mode . 2)
+ (global-wakatime-mode . 4)
+)
