@@ -22,7 +22,7 @@
     (xah-cut-line-or-region)
     )
   )
-
+(global-set-key (kbd "<f6>") 'ivy-resume)
 
 (general-define-key
  "M-y" 'counsel-yank-pop
