@@ -23,6 +23,15 @@
     )
   )
 
+(defun my/s-key-diff-modes-function ()
+  "trying this out"
+  (interactive)
+  (if (eq major-mode 'dired-mode)
+      (dired-narrow)
+    (swiper-isearch "")
+    )
+  )
+
 
 (general-define-key
  "M-y" 'counsel-yank-pop
@@ -170,7 +179,7 @@
  "x" 'recenter-top-bottom
  "d" 'delete-char
  "o" 'crux-smart-open-line-above
- "s" 'swiper-isearch
+ "s" 'my/s-key-diff-modes-function
  "f" 'iy-go-to-char
  "F" 'iy-go-to-char-backward
  "b" 'iy-go-to-char-backward

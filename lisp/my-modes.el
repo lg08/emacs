@@ -104,8 +104,6 @@
     ))
 
 (add-hook 'change-major-mode-hook (lambda ()
-                                    ;; (clojure-leave-clojure-mode-function)
-
                                     (org-leave-mode-function)
                                     (dired-leave-mode-function)
                                     ))

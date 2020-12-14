@@ -557,5 +557,11 @@ pressed twice.
 
   )
 
+(use-package go-mode
+  :defer t
+  :config
+
+  )
+
 
 (provide 'my-packages)
