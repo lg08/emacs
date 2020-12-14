@@ -28,7 +28,7 @@
   (interactive)
   (if (eq major-mode 'dired-mode)
       (dired-narrow)
-    (swiper-isearch "")
+    (counsel-grep)
     )
   )
 
