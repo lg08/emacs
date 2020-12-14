@@ -1,13 +1,13 @@
 
 ;; ----- amx-history -----
 (
+ eval-region
+ occur
  switch-to-prev-buffer
  c-mode
  counsel-mode
  my/edit-armlab-file
  describe-variable
- global-wakatime-mode
- wakatime-mode
 )
 
 ;; ----- amx-data -----
@@ -21,4 +21,6 @@
  (counsel-mode . 1)
  (c-mode . 1)
  (switch-to-prev-buffer . 3)
+ (occur . 5)
+ (eval-region . 2)
 )

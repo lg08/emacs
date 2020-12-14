@@ -38,7 +38,7 @@
 (general-define-key
  "M-y" 'counsel-yank-pop
  "M-x" 'execute-extended-command
- "C-s" 'swiper-isearch
+ "C-s" 'isearch-forward
  "C-z" 'nil
  "C-h" 'backward-char
  "C-l" 'forward-char
@@ -158,6 +158,12 @@
 
  )
 
+(general-define-key
+ :keymaps 'isearch-mode-map
+ "C-j" 'isearch-repeat-forward
+ "C-k" 'isearch-repeat-backward
+ )
+
 ;; MODALKA STUFF------------------------------------------------------------------------
 (general-define-key
  :keymaps 'modalka-mode-map
@@ -192,6 +198,7 @@
  "H" 'windmove-left
  "L" 'windmove-right
  "z" 'zop-to-char
+ "n" 'my/join-line-next
  )
 
 (general-define-key

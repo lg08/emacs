@@ -1,4 +1,4 @@
-;; taken from here: https://github.com/mattmahn/emacsfiles/blob/master/emacs-config.org
+;; ;; taken from here: https://github.com/mattmahn/emacsfiles/blob/master/emacs-config.org
 
 (use-package lsp-mode
   :commands (lsp lsp-deferred)
@@ -234,7 +234,7 @@
   "Kill the splash screen buffer (immediately)."
   (interactive)
   (if (get-buffer "*splash*")
-        (kill-buffer "*splash*")))
+      (kill-buffer "*splash*")))
 
 ;; Suppress any startup message in the echo area
 (run-with-idle-timer 0.05 nil (lambda() (message nil)))
@@ -258,62 +258,59 @@
 
 
 
-(setq frame-title-format
-      '("" invocation-name ": "
-        (:eval
-         (if buffer-file-name
-             (abbreviate-file-name buffer-file-name)
-           "%b"))))
+;; (setq frame-title-format
+;;       '("" invocation-name ": "
+;;         (:eval
+;;          (if buffer-file-name
+;;              (abbreviate-file-name buffer-file-name)
+;;            "%b"))))
 
 
 
-(setq ido-separator "\n")		;tells ido mode to display vertically
+;; (setq ido-separator "\n")		;tells ido mode to display vertically
 
-(setq flx-ido-mode 1)
-(setq ido-enable-flex-matching t)
+;; (setq flx-ido-mode 1)
+;; (setq ido-enable-flex-matching t)
 
-(ido-mode 1)
-(ido-everywhere 1)
-
-
-(use-package ido-completing-read+
-  :defer t
-  :config
-
-  )
-
-(ido-ubiquitous-mode 1)
-(use-package amx
-  :init
-  (amx-mode 1)
-  :defer t
-  :config
-
-  )
-
-(require 'icomplete)
-(icomplete-mode 1)
+;; (ido-mode 1)
+;; (ido-everywhere 1)
 
 
-(defun ido-my-keys ()
-  (define-key ido-completion-map (kbd "<up>")   'ido-prev-match)
-  (define-key ido-completion-map (kbd "<down>") 'ido-next-match)
-  (define-key ido-completion-map (kbd "C-k")   'ido-prev-match)
-  (define-key ido-completion-map (kbd "C-j") 'ido-next-match)
+;; (use-package ido-completing-read+
+;;   :defer t
+;;   :config
 
-  )
+;;   )
+
+;; (ido-ubiquitous-mode 1)
+;; (use-package amx
+;;   :init
+;;   (amx-mode 1)
+;;   :defer t
+;;   :config
+
+;;   )
+
+;; (require 'icomplete)
+;; (icomplete-mode 1)
 
 
-(add-hook 'ido-setup-hook 'ido-my-keys)
+;; (defun ido-my-keys ()
+;;   (define-key ido-completion-map (kbd "<up>")   'ido-prev-match)
+;;   (define-key ido-completion-map (kbd "<down>") 'ido-next-match)
+;;   (define-key ido-completion-map (kbd "C-k")   'ido-prev-match)
+;;   (define-key ido-completion-map (kbd "C-j") 'ido-next-match)
 
-(setq ido-decorations (quote ("\n-> " "" "\n " "\n ..." "[" "]" "
-  [No match]" " [Matched]" " [Not readable]" " [Too big]" "
-  [Confirm]")))
-(defun ido-disable-line-truncation () (set (make-local-variable 'truncate-lines) nil))
-(add-hook 'ido-minibuffer-setup-hook 'ido-disable-line-truncation)
+;;   )
 
 
+;; (add-hook 'ido-setup-hook 'ido-my-keys)
 
+;; (setq ido-decorations (quote ("\n-> " "" "\n " "\n ..." "[" "]" "
+;;   [No match]" " [Matched]" " [Not readable]" " [Too big]" "
+;;   [Confirm]")))
+;; (defun ido-disable-line-truncation () (set (make-local-variable 'truncate-lines) nil))
+;; (add-hook 'ido-minibuffer-setup-hook 'ido-disable-line-truncation)
 
 
 (provide 'my-testing-stuff)

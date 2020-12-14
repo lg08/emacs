@@ -93,6 +93,8 @@
 (setq kill-buffer-query-functions
       (delq 'process-kill-buffer-query-function kill-buffer-query-functions))
 
+(setq isearch-wrap-function '(lambda nil)) ;disables wrapping for isearch
+
 
 
 

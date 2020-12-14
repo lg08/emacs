@@ -296,4 +296,11 @@ Repeated invocations toggle between the two most recently open buffers."
   (interactive)
   (switch-to-buffer (other-buffer (current-buffer) 1)))
 
+;; join line to next one
+(defun my/join-line-next
+    ()
+  (interactive)
+  (join-line -1)
+  )
+
 (provide 'my-functions)
