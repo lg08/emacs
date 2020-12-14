@@ -21,45 +21,6 @@
 
   )
 
-;; (use-package helm
-;;   :init
-;;   (helm-mode)
-;;   (setq recentf-save-file (expand-file-name "recentf" gemacs-misc-dir))
-;;   ;; (setq helm-split-window-default-side 'right)
-;;   ;; (setq helm-samewindow t)
-;;   ;; (setq helm-M-x-fuzzy-match t) ;; optional fuzzy matching for helm-M-x
-;;   ;; (setq helm-locate-fuzzy-match t)
-
-;;   ;; this guy makes helm use a mini frame
-;;   ;; (setq helm-display-function 'helm-display-buffer-in-own-frame
-;;   ;; helm-display-buffer-reuse-frame t
-;;   ;; helm-use-undecorated-frame-option t)
-;;   :config
-
-;;   )
-
-;; (use-package helm-swoop                 ;really good searching buffer things
-;;   :defer t
-;;   :config
-;;   (setq helm-swoop-pre-input-function
-;;         (lambda () nil))
-;;   ;; Save buffer when helm-multi-swoop-edit complete
-;;   (setq helm-multi-swoop-edit-save t)
-
-;;   ;; If this value is t, split window inside the current window
-;;   (setq helm-swoop-split-with-multiple-windows nil)
-
-;;   ;; Split direcion. 'split-window-vertically or 'split-window-horizontally
-;;   (setq helm-swoop-split-direction 'split-window-vertically)
-
-;;   ;; If nil, you can slightly boost invoke speed in exchange for text color
-;;   (setq helm-swoop-speed-or-color nil)
-
-;;   ;; If you prefer fuzzy matching
-;;   ;; (setq helm-swoop-use-fuzzy-match t)
-
-;;   )
-
 (use-package ivy
   :init
   (ivy-mode)
@@ -95,22 +56,22 @@
 
   )
 
-(setq x-gtk-resize-child-frames 'resize-mode)
+;; (setq x-gtk-resize-child-frames 'resize-mode)
 (use-package mini-frame
   :init
-  (mini-frame-mode)
+  ;; (mini-frame-mode)
   :defer t
   :config
   (add-to-list 'mini-frame-ignore-commands 'swiper)
   )
 
-;; (use-package ivy-posframe
-;;   :init
-;;   (ivy-posframe-mode)
-;;   :defer t
-;;   :config
+(use-package ivy-posframe
+  :init
+  (ivy-posframe-mode)
+  :defer t
+  :config
 
-;;   )
+  )
 
 
 ;; (use-package which-key                  ;shows possible keyboard commands, just uncomment if you want it
