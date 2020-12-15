@@ -8,25 +8,26 @@
 
 ;; ----- ido-work-directory-list -----
 (
-
+ "/ssh:lgen@armlab.cs.princeton.edu:/u/lgen/cos217/assignment6/"
 )
 
 ;; ----- ido-work-file-list -----
 (
-
+ "miniassembler.h"
+ "miniassembler.c"
 )
 
 ;; ----- ido-dir-file-cache -----
 (
- ("/home/" (24527 2745 828508 698000) "jenkins/" "./" "lg08/" "../")
+ ("/home/" (24525 56621 542971 716000) "./" "lg08/" "jenkins/" "../")
 
- ("/home/lg08/" (24535 56444 91463 100000) ".pki/" ".local/" ".gphoto/" "Templates/" ".profile" ".vscode/" "./" ".bash_logout" ".pipewire-media-session/" ".ssh/" "Videos/" ".wakatime.db" ".cache/" ".mozilla/" ".bash_history" "../" "Documents/" "Pictures/" ".opam/" ".icons/" "snap/" ".sudo_as_admin_successful" ".emacs.d/" "Desktop/" "Music/" ".themes/" ".config/" ".gnupg/" ".pam_environment" ".java/" ".bashrc" "Downloads/" "Public/" ".wakatime.log")
+ ("/home/lg08/" (24536 24852 238500 81000) "Templates/" ".pipewire-media-session/" "Music/" "snap/" ".viminfo" ".nvidia-settings-rc" "Desktop/" ".profile" ".pki/" "Documents/" ".wakatime.log" "Public/" "Videos/" ".gnome/" ".gnupg/" "./" ".bash_history" ".wakatime.db" ".icons/" ".pulse-cookie" ".local/" ".zoom/" ".opam/" ".gconf/" ".bashrc~" "Steam/" ".atom/" ".ssh/" ".gitconfig" ".bash_logout" "Pictures/" ".pam_environment" ".sudo_as_admin_successful" ".config/" "Downloads/" ".steampath" ".steampid" ".bashrc" ".cache/" ".emacs.d/" ".steam/" ".mozilla/" "../" ".themes/")
 
- ("/home/lg08/.emacs.d/" (24535 56879 223094 395000) "amx-items" "init.el" "./" "lisp/" "README.org" "misc/" "themes/" ".git/" "README.el" "tramp" "../" "early-init.el" "ido.last" "snippets/" "auto-save-list/" "recentf" "straight/" ".gitignore")
+ ("/home/lg08/.emacs.d/" (24536 25005 63126 864000) "straight/" "README.org" ".git/" "misc/" "amx-items" "lisp/" ".gitignore" "./" "README.el" "ido.last" "tramp" "themes/" "early-init.el" "init.el" "../")
 
- ("/ssh:lgen@armlab.cs.princeton.edu:/u/lgen/cos217/assignment6/" (ftp . 446661.8208701723) "./" "../" "testminiassembler.c" "README.md" "memorymap" "memorymap~" "grader.c" "testminiassembler.out" "Makefile" "readme" "miniassembler.c" "grader" ".projectile" ".git/" "miniassembler.h")
+ ("/home/lg08/.emacs.d/lisp/" (24536 24853 614508 342000) "./" "my-functions.el" "my-packages.el" "my-settings.el" "my-testing-stuff.el" "my-skeletons.el" "../" "my-keybinds.el" "my-modes.el")
 
- ("/home/lg08/.emacs.d/lisp/" (24535 56341 742876 688000) "my-modes.el" "my-functions.el" "./" "my-skeletons.el" "my-keybinds.el" "../" "my-testing-stuff.el" "my-settings.el" "my-packages.el")
+ ("/ssh:lgen@armlab.cs.princeton.edu:/u/lgen/cos217/assignment6/" (ftp . 446670.8703611384) "./" "../" "testminiassembler.c" "README.md" "memorymap" "memorymap~" "createdataB.c~" "createdataB.c" "grader.c" "testminiassembler.out" "Makefile" "readme" "miniassembler.c" "grader" ".projectile" ".git/" "createdataB" "dataB" "miniassembler.h" "createdataA.c")
 
  ("/home/lg08/Documents/Princeton/second_year/" (24527 56230 897213 104000) "cos326/" "./" "phi203/" "../")
 

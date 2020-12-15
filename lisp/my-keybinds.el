@@ -50,7 +50,7 @@
  "M-k" 'View-scroll-half-page-forward
  "M-j" 'View-scroll-half-page-backward
  "M-w" 'xah-copy-line-or-region
- "C-o" 'crux-smart-open-line-above
+ "C-o" 'open-line
  "C-a" 'move-beginning-of-line
  "C-x 4 t" 'crux-transpose-windows
  "C-x o" 'switch-window
@@ -122,13 +122,13 @@
  "C-z" 'helm-select-action
  )
 
-(general-define-key
- :keymaps 'ivy-minibuffer-map
- "C-j" 'ivy-next-line
- "C-k" 'ivy-previous-line
- "C-h" "DEL"
- "C-l" 'ivy-alt-done
- )
+;; (general-define-key
+;;  :keymaps 'ivy-minibuffer-map
+;;  "C-j" 'ivy-next-line
+;;  "C-k" 'ivy-previous-line
+;;  "C-h" "DEL"
+;;  "C-l" 'ivy-alt-done
+;;  )
 
 (general-define-key
  :keymaps 'helm-find-files-map
@@ -187,7 +187,7 @@
  "c" 'smart-comment
  "x" 'recenter-top-bottom
  "d" 'delete-char
- "o" 'crux-smart-open-line-above
+ "o" 'open-line
  "s" 'my/s-key-diff-modes-function
  "f" 'iy-go-to-char
  "F" 'iy-go-to-char-backward
@@ -220,7 +220,8 @@
  ;; "b" 'switch-to-buffer
  "b" 'ido-switch-buffer
  "s s" 'my/ansi-term-toggle
- "SPC" 'counsel-M-x
+ ;; "SPC" 'counsel-M-x
+ "SPC" 'execute-extended-command
  "w n" 'eyebrowse-next-window-config
  "w p" 'eyebrowse-prev-window-config
  "d d" 'dired-sidebar-toggle-sidebar

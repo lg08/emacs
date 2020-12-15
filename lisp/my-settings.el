@@ -97,10 +97,6 @@
 
 
 
-
-
-
-
 ;; deletes stale elc files on save
 (add-hook 'emacs-lisp-mode-hook 'my/remove-elc-on-save)
 

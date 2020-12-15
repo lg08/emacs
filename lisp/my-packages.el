@@ -22,59 +22,59 @@
 
   )
 
-(use-package ivy
-  :init
-  (ivy-mode)
-  :defer
-  :config
-  (setq ivy-use-virtual-buffers t	;    Add recent files and bookmarks to the ivy-switch-buffer
-        ivy-count-format "%d/%d ")	;    Displays the current and total number in the collection in the prompt
+;; (use-package ivy
+;;   :init
+;;   (ivy-mode)
+;;   :defer
+;;   :config
+;;   (setq ivy-use-virtual-buffers t	;    Add recent files and bookmarks to the ivy-switch-buffer
+;;         ivy-count-format "%d/%d ")	;    Displays the current and total number in the collection in the prompt
 
-  (add-to-list				;should make find-file and stuff sort by date
-   'ivy-sort-matches-functions-alist
-   '(read-file-name-internal . ivy--sort-files-by-date))
-  )
+;;   (add-to-list				;should make find-file and stuff sort by date
+;;    'ivy-sort-matches-functions-alist
+;;    '(read-file-name-internal . ivy--sort-files-by-date))
+;;   )
 
-(use-package swiper
-  :init
-  (define-key ivy-minibuffer-map "\C-k" 'nil)
-  :defer t
-  :config
+;; (use-package swiper
+;;   :init
+;;   (define-key ivy-minibuffer-map "\C-k" 'nil)
+;;   :defer t
+;;   :config
 
-  )
-
-
-(use-package prescient
-  :init
-  (setq prescient-save-file (expand-file-name "prescient-save.el" gemacs-misc-dir))
-  :ensure t
-  :config
-  (prescient-persist-mode +1)
-
-  )
-
-(use-package ivy-prescient
-  :init
-  (ivy-prescient-mode)
-  :defer t
-  :config
-
-  )
-
-(use-package counsel
-  ;; :defer t
-  :config
-
-  )
+;;   )
 
 
-(use-package ivy-rich
-  :init
-  (ivy-rich-mode 1)
-  :defer t
-  :config
+;; (use-package prescient
+;;   :init
+;;   (setq prescient-save-file (expand-file-name "prescient-save.el" gemacs-misc-dir))
+;;   :ensure t
+;;   :config
+;;   (prescient-persist-mode +1)
 
-  )
+;;   )
+
+;; (use-package ivy-prescient
+;;   :init
+;;   (ivy-prescient-mode)
+;;   :defer t
+;;   :config
+
+;;   )
+
+;; (use-package counsel
+;;   ;; :defer t
+;;   :config
+
+;;   )
+
+
+;; (use-package ivy-rich
+;;   :init
+;;   (ivy-rich-mode 1)
+;;   :defer t
+;;   :config
+
+;;   )
 
 
 
@@ -245,7 +245,7 @@ pressed twice.
   (setq company-begin-commands '(self-insert-command)) ; start autocompletion only after typing
 
   ;; provides almost instant autocompletion
-  (setq company-idle-delay .5)
+  (setq company-idle-delay .05)
   ;;  ;; Search other buffers for compleition candidates
   (setq company-dabbrev-other-buffers t)
   (setq company-dabbrev-code-other-buffers t)

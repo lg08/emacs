@@ -1,12 +1,12 @@
 
 ;; ----- amx-history -----
 (
+ my/edit-armlab-file
+ eval-buffer
  eval-region
  occur
  switch-to-prev-buffer
  c-mode
- counsel-mode
- my/edit-armlab-file
  describe-variable
 )
 
@@ -17,10 +17,12 @@
  (describe-variable . 3)
  (wakatime-mode . 1)
  (global-wakatime-mode . 2)
- (my/edit-armlab-file . 2)
+ (my/edit-armlab-file . 4)
  (counsel-mode . 1)
  (c-mode . 1)
  (switch-to-prev-buffer . 3)
  (occur . 5)
  (eval-region . 2)
+ (eval-buffer . 1)
+ (tramp-cleanup-all-connections . 1)
 )
