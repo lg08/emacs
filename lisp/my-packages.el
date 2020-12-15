@@ -107,13 +107,13 @@
 ;; below, all are deferred for one second ----------------------------------------------------------
 
 
-(use-package feebleline			;basically gets rid of modeline
-  :init
-  :defer 1
-  :config
-  (feebleline-mode t)
+;; (use-package feebleline			;basically gets rid of modeline
+;;   :init
+;;   :defer 1
+;;   :config
+;;   (feebleline-mode t)
 
-  )
+;;   )
 
 ;; (use-package gcmh                       ;garbage management system
 ;;   :defer 0
@@ -171,7 +171,7 @@ pressed twice.
   :defer t
   :config
   (projectile-mode +1)
-  (setq projectile-completion-system 'ivy)
+  (setq projectile-completion-system 'ido)
   (setq projectile-globally-ignored-file-suffixes '("pyc"))
 
   )
@@ -183,6 +183,11 @@ pressed twice.
   (doom-themes-visual-bell-config)
   (setq doom-themes-enable-bold t
 	doom-themes-enable-italic t)
+  )
+
+(use-package doom-modeline
+  :config
+  (doom-modeline-mode)
   )
 
 (use-package git-gutter
@@ -594,6 +599,12 @@ pressed twice.
   :defer t
   :config
 
+  )
+
+(use-package ctrlf
+  :defer t
+  :config
+  (setq ctrlf-highlight-current-line 1)
   )
 
 (provide 'my-packages)

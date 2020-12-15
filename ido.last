@@ -27,8 +27,6 @@
 
  ("/home/lg08/.emacs.d/lisp/" (24536 24853 614508 342000) "./" "my-functions.el" "my-packages.el" "my-settings.el" "my-testing-stuff.el" "my-skeletons.el" "../" "my-keybinds.el" "my-modes.el")
 
- ("/ssh:lgen@armlab.cs.princeton.edu:/u/lgen/cos217/assignment6/" (ftp . 446670.8703611384) "./" "../" "testminiassembler.c" "README.md" "memorymap" "memorymap~" "createdataB.c~" "createdataB.c" "grader.c" "testminiassembler.out" "Makefile" "readme" "miniassembler.c" "grader" ".projectile" ".git/" "createdataB" "dataB" "miniassembler.h" "createdataA.c")
-
  ("/home/lg08/Documents/Princeton/second_year/" (24527 56230 897213 104000) "cos326/" "./" "phi203/" "../")
 
  ("/home/lg08/Documents/Princeton/" (24527 56197 797353 870000) "second_year/" "./" "../" "course_planner.org")

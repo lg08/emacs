@@ -1,19 +1,19 @@
 
 ;; ----- amx-history -----
 (
+ ctrlf-mode
+ describe-bindings
+ use-package-template
  my/edit-armlab-file
  eval-buffer
  eval-region
  occur
- switch-to-prev-buffer
- c-mode
- describe-variable
 )
 
 ;; ----- amx-data -----
 (
  (ido-insert-file . 1)
- (use-package-template . 1)
+ (use-package-template . 4)
  (describe-variable . 3)
  (wakatime-mode . 1)
  (global-wakatime-mode . 2)
@@ -25,4 +25,7 @@
  (eval-region . 2)
  (eval-buffer . 1)
  (tramp-cleanup-all-connections . 1)
+ (feebleline-mode . 4)
+ (ctrlf-mode . 3)
+ (describe-bindings . 2)
 )

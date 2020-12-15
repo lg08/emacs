@@ -31,14 +31,14 @@
   (interactive)
   (if (eq major-mode 'dired-mode)
       (dired-narrow)
-    (counsel-grep)
+    (ctrlf-forward-literal)
     )
   )
 
 (general-define-key
  "M-y" 'counsel-yank-pop
  "M-x" 'execute-extended-command
- "C-s" 'flx-isearch-forward
+ "C-s" 'ctrlf-forward-literal
  "C-z" 'nil
  "C-h" 'backward-char
  "C-l" 'forward-char
@@ -114,14 +114,6 @@
  "C-c p" 'projectile-command-map
  )
 
-(general-define-key
- :keymaps 'helm-map
- "C-j" 'helm-next-line
- "C-k" 'helm-previous-line
- ;; "<tab>" 'helm-execute-persistent-action
- "C-z" 'helm-select-action
- )
-
 ;; (general-define-key
 ;;  :keymaps 'ivy-minibuffer-map
 ;;  "C-j" 'ivy-next-line
@@ -129,11 +121,6 @@
 ;;  "C-h" "DEL"
 ;;  "C-l" 'ivy-alt-done
 ;;  )
-
-(general-define-key
- :keymaps 'helm-find-files-map
- "C-h" 'helm-find-files-up-one-level
- )
 
 (general-define-key
  :keymaps 'company-active-map
@@ -158,11 +145,12 @@
 
  )
 
-(general-define-key
- :keymaps 'flx-isearch-mode-map
- "C-j" 'isearch-repeat-forward
- "C-k" 'isearch-repeat-backward
- )
+;; (general-define-key
+;;  :keymaps 'isearch-mode-map
+;;  "C-j" 'isearch-repeat-forward
+;;  "C-k" 'isearch-repeat-backward
+;;  )
+
 
 ;; MODALKA STUFF------------------------------------------------------------------------
 (general-define-key
