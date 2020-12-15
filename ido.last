@@ -2,6 +2,9 @@
 
 ;; ----- ido-last-directory-list -----
 (
+ ("/home/lg08/" . ".emacs.d/")
+ ("/ssh:lgen@armlab.cs.princeton.edu:cos217/" . "assignment6/")
+ ("/ssh:lgen@armlab.cs.princeton.edu:" . "cos217/")
  ("/home/lg08/Documents/Princeton/" . "second_year/")
  ("/home/lg08/Documents/" . "Princeton/")
 )
@@ -9,23 +12,27 @@
 ;; ----- ido-work-directory-list -----
 (
  "/ssh:lgen@armlab.cs.princeton.edu:/u/lgen/cos217/assignment6/"
+ "/ssh:lgen@armlab.cs.princeton.edu:cos217/assignment6/"
 )
 
 ;; ----- ido-work-file-list -----
 (
- "miniassembler.h"
+ "createdataB.c"
+ "createdataA.c"
+ "Makefile"
  "miniassembler.c"
+ "miniassembler.h"
 )
 
 ;; ----- ido-dir-file-cache -----
 (
- ("/home/" (24525 56621 542971 716000) "./" "lg08/" "jenkins/" "../")
+ ("/home/lg08/.emacs.d/" (24536 37726 858926 356000) "straight/" "README.org" ".git/" "misc/" "amx-items" "lisp/" ".gitignore" "./" "README.el" "ido.last" "tramp" "themes/" "early-init.el" "init.el" "../")
 
- ("/home/lg08/" (24536 24852 238500 81000) "Templates/" ".pipewire-media-session/" "Music/" "snap/" ".viminfo" ".nvidia-settings-rc" "Desktop/" ".profile" ".pki/" "Documents/" ".wakatime.log" "Public/" "Videos/" ".gnome/" ".gnupg/" "./" ".bash_history" ".wakatime.db" ".icons/" ".pulse-cookie" ".local/" ".zoom/" ".opam/" ".gconf/" ".bashrc~" "Steam/" ".atom/" ".ssh/" ".gitconfig" ".bash_logout" "Pictures/" ".pam_environment" ".sudo_as_admin_successful" ".config/" "Downloads/" ".steampath" ".steampid" ".bashrc" ".cache/" ".emacs.d/" ".steam/" ".mozilla/" "../" ".themes/")
-
- ("/home/lg08/.emacs.d/" (24536 25005 63126 864000) "straight/" "README.org" ".git/" "misc/" "amx-items" "lisp/" ".gitignore" "./" "README.el" "ido.last" "tramp" "themes/" "early-init.el" "init.el" "../")
+ ("/home/lg08/" (24536 31241 935464 233000) "Templates/" ".pipewire-media-session/" "Music/" "snap/" ".viminfo" ".nvidia-settings-rc" "Desktop/" ".profile" ".pki/" "Documents/" ".wakatime.log" "Public/" "Videos/" ".gnome/" ".gnupg/" "./" ".bash_history" ".wakatime.db" ".icons/" ".pulse-cookie" ".local/" ".zoom/" ".opam/" ".gconf/" ".bashrc~" "Steam/" ".atom/" ".ssh/" ".gitconfig" ".bash_logout" "Pictures/" ".pam_environment" ".sudo_as_admin_successful" ".config/" "Downloads/" ".steampath" ".steampid" ".bashrc" ".cache/" ".emacs.d/" ".steam/" ".mozilla/" "../" ".themes/")
 
  ("/home/lg08/.emacs.d/lisp/" (24536 24853 614508 342000) "./" "my-functions.el" "my-packages.el" "my-settings.el" "my-testing-stuff.el" "my-skeletons.el" "../" "my-keybinds.el" "my-modes.el")
+
+ ("/home/" (24525 56621 542971 716000) "./" "lg08/" "jenkins/" "../")
 
  ("/home/lg08/Documents/Princeton/second_year/" (24527 56230 897213 104000) "cos326/" "./" "phi203/" "../")
 
