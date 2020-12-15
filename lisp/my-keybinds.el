@@ -38,7 +38,7 @@
 (general-define-key
  "M-y" 'counsel-yank-pop
  "M-x" 'execute-extended-command
- "C-s" 'isearch-forward
+ "C-s" 'flx-isearch-forward
  "C-z" 'nil
  "C-h" 'backward-char
  "C-l" 'forward-char
@@ -159,7 +159,7 @@
  )
 
 (general-define-key
- :keymaps 'isearch-mode-map
+ :keymaps 'flx-isearch-mode-map
  "C-j" 'isearch-repeat-forward
  "C-k" 'isearch-repeat-backward
  )

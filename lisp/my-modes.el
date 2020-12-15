@@ -50,6 +50,7 @@
                             :keymaps 'modalka-mode-map
                             "SPC a o" 'begin/end_org
                             )
+			   (wakatime-mode)
 			   ))
 (add-hook 'tuareg-mode-hook (lambda ()
                               (merlin-mode 1)

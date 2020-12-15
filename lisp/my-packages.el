@@ -590,4 +590,10 @@ pressed twice.
 
   )
 
+(use-package flx-isearch
+  :defer t
+  :config
+
+  )
+
 (provide 'my-packages)
