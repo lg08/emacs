@@ -242,7 +242,8 @@ pressed twice.
 
 (use-package company                    ;autocompletion system
   :init
-  (setq company-backends '((company-files company-keywords company-capf company-dabbrev-code company-etags company-dabbrev company-cmake company-clang)))
+  (setq company-backends '((company-files company-keywords company-capf company-dabbrev-code company-etags company-dabbrev company-cmake ;; company-clang
+					  )))
   :defer t
   :config
   (setq company-tooltip-limit 20)                      ; bigger popup window
@@ -606,5 +607,7 @@ pressed twice.
   :config
   (setq ctrlf-highlight-current-line 1)
   )
+
+
 
 (provide 'my-packages)

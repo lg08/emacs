@@ -1,20 +1,20 @@
 
 ;; ----- amx-history -----
 (
- wakatime-mode
+ eshell
+ fundamental-mode
+ eshell-mode
+ ansi-term
+ multi-term
  untabify
- diff
- ediff
- battery
- my/edit-armlab-file
- eval-buffer
+ goto-char
 )
 
 ;; ----- amx-data -----
 (
  (ido-insert-file . 1)
- (use-package-template . 1)
- (describe-variable . 3)
+ (use-package-template . 2)
+ (describe-variable . 6)
  (wakatime-mode . 3)
  (global-wakatime-mode . 2)
  (my/edit-armlab-file . 4)
@@ -23,10 +23,22 @@
  (switch-to-prev-buffer . 3)
  (occur . 5)
  (eval-region . 2)
- (eval-buffer . 1)
+ (eval-buffer . 3)
  (tramp-cleanup-all-connections . 1)
  (battery . 2)
- (untabify . 3)
+ (untabify . 5)
  (ediff . 2)
  (diff . 1)
+ (ido-grid-enable . 10)
+ (ido-grid-up . 1)
+ (icy-mode . 1)
+ (comment-box . 6)
+ (bjm-comment-box . 1)
+ (column-number-mode . 1)
+ (goto-char . 1)
+ (eshell . 2)
+ (multi-term . 1)
+ (ansi-term . 1)
+ (eshell-mode . 2)
+ (fundamental-mode . 1)
 )

@@ -74,7 +74,7 @@
                          (setq fill-column 73)
                          (display-fill-column-indicator-mode)
                          (define-key (current-local-map) (kbd "C-M-h") 'c-mark-function)
-                         (add-to-list 'company-backends 'company-c-headers)
+                         ;; (add-to-list 'company-backends 'company-c-headers)
 
                          ))
 
