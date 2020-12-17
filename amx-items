@@ -1,13 +1,13 @@
 
 ;; ----- amx-history -----
 (
+ org-mode
+ c-mode
+ org-self-insert-command
  eshell
  fundamental-mode
  eshell-mode
  ansi-term
- multi-term
- untabify
- goto-char
 )
 
 ;; ----- amx-data -----
@@ -19,7 +19,7 @@
  (global-wakatime-mode . 2)
  (my/edit-armlab-file . 4)
  (counsel-mode . 1)
- (c-mode . 1)
+ (c-mode . 3)
  (switch-to-prev-buffer . 3)
  (occur . 5)
  (eval-region . 2)
@@ -41,4 +41,6 @@
  (ansi-term . 1)
  (eshell-mode . 2)
  (fundamental-mode . 1)
+ (org-self-insert-command . 1)
+ (org-mode . 3)
 )

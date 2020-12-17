@@ -12,6 +12,7 @@
 
 ;; ----- ido-work-directory-list -----
 (
+ "/home/lg08/Documents/Princeton/second_year/"
  "/ssh:lgen@armlab.cs.princeton.edu:/u/lgen/cos217/assignment6/final/"
  "/ssh:lgen@armlab.cs.princeton.edu:/u/lgen/cos217/assignment6/"
  "/ssh:lgen@armlab.cs.princeton.edu:cos217/assignment6/"
@@ -21,6 +22,7 @@
 
 ;; ----- ido-work-file-list -----
 (
+ "cos217finalnotes.org"
  "readme"
  "backup_correct_output.out"
  "miniassembler.c"
@@ -30,34 +32,25 @@
  "test.org"
  "memorymap"
  "createdataAplus.c"
- "armlab.cs.princeton.edu"
 )
 
 ;; ----- ido-dir-file-cache -----
 (
- ("/ssh:lgen@armlab.cs.princeton.edu:/u/lgen/cos217/assignment6/final/" (ftp . 446692.2722620135) "./" "../" "testminiassembler.c" "feedback" "memorymap" "createdataB.c" "grader.c" "Makefile" "readme" "miniassembler.c" "miniassembler.h" "createdataA.c" "createdataAplus.c")
+ ("/home/lg08/Documents/Princeton/second_year/" (24538 2167 922925 86000) "cos217finalnotes.org" "./" "cos326/" "phi203/" "../")
+
+ ("/home/lg08/Documents/Princeton/" (24526 42713 125356 515000) "./" "second_year/" "course_planner.org" "../")
+
+ ("/home/lg08/Documents/" (24529 22993 128809 277000) "./" "resume/" "projects/" "Princeton/" "notes/" "../")
+
+ ("/home/lg08/" (24538 2229 682843 254000) "Templates/" ".pipewire-media-session/" "Music/" "snap/" ".viminfo" ".nvidia-settings-rc" "Desktop/" ".profile" ".pki/" "Documents/" ".wakatime.log" "Public/" "Videos/" ".gnome/" ".gnupg/" "./" ".bash_history" ".wakatime.db" ".icons/" ".pulse-cookie" ".local/" ".zoom/" ".opam/" ".gconf/" ".bashrc~" "Steam/" ".atom/" ".ssh/" ".gitconfig" ".bash_logout" "Pictures/" ".pam_environment" ".sudo_as_admin_successful" ".config/" "Downloads/" ".steampath" ".steampid" ".bashrc" ".cache/" ".emacs.d/" ".steam/" ".mozilla/" "../" ".themes/")
 
  ("/home/lg08/Downloads/" (24537 33239 238447 525000) "createB.c" "./" "query.ml" "NVIDIA-Linux-x86_64-450.66.run" "a7/" "README.txt" "test.org" "../")
-
- ("/ssh:lgen@armlab.cs.princeton.edu:/u/lgen/cos217/assignment6/" (ftp . 446692.08953241096) "./" "../" "file2" "tester.c" "testminiassembler.c" "dataA" "README.md" "memorymap" "createdataA" "memorymap~" "createdataAplus" "appel.txt" "createdataB.c~" "createdataB.c" "grader.c" "testminiassembler.out" "final/" "Makefile" "readme" "miniassembler.c" "grader" "testminiassembler" "dataAplus" ".projectile" ".git/" "createdataB" "file1" "backup_correct_output.out" "dataB" "miniassembler.h" "createdataA.c" "createdataAplus.c")
-
- ("/home/lg08/" (24537 26496 741439 402000) "Templates/" ".pipewire-media-session/" "Music/" "snap/" ".viminfo" ".nvidia-settings-rc" "Desktop/" ".profile" ".pki/" "Documents/" ".wakatime.log" "Public/" "Videos/" ".gnome/" ".gnupg/" "./" ".bash_history" ".wakatime.db" ".icons/" ".pulse-cookie" ".local/" ".zoom/" ".opam/" ".gconf/" ".bashrc~" "Steam/" ".atom/" ".ssh/" ".gitconfig" ".bash_logout" "Pictures/" ".pam_environment" ".sudo_as_admin_successful" ".config/" "Downloads/" ".steampath" ".steampid" ".bashrc" ".cache/" ".emacs.d/" ".steam/" ".mozilla/" "../" ".themes/")
 
  ("/home/lg08/.emacs.d/" (24537 26495 989436 795000) "straight/" "README.org" ".git/" "misc/" "amx-items" "lisp/" ".gitignore" "./" "README.el" "ido.last" "tramp" "themes/" "early-init.el" "init.el" "../")
 
  ("/home/lg08/.emacs.d/lisp/" (24537 26465 41327 52000) "./" "my-functions.el" "my-packages.el" "my-settings.el" "my-testing-stuff.el" "my-skeletons.el" "../" "my-keybinds.el" "my-modes.el")
 
- ("/ssh:lgen@armlab.cs.princeton.edu:cos217/assignment6/" (ftp . 446689.53459209576) "./" "../" "tester.c" "testminiassembler.c" "dataA" "README.md" "memorymap" "createdataA" "memorymap~" "createdataAplus" "createdataB.c~" "createdataB.c" "grader.c" "testminiassembler.out" "final/" "Makefile" "readme" "miniassembler.c" "grader" "testminiassembler" "dataAplus" ".projectile" ".git/" "createdataB" "backup_correct_output.out" "dataB" "miniassembler.h" "createdataA.c" "createdataAplus.c")
-
- ("/ssh:lgen@armlab.cs.princeton.edu:cos217/" (ftp . 446689.53395890415) "./" "../" "assignment5/" "assignment2/" "assignment0/" "assignment1/" "assignment6/" "assignment3/" "assignment4/")
-
  ("/home/" (24525 56621 542971 716000) "./" "lg08/" "jenkins/" "../")
-
- ("/home/lg08/Documents/Princeton/second_year/" (24527 56230 897213 104000) "cos326/" "./" "phi203/" "../")
-
- ("/home/lg08/Documents/Princeton/" (24527 56197 797353 870000) "second_year/" "./" "../" "course_planner.org")
-
- ("/home/lg08/Documents/" (24527 64181 755085 308000) "projects/" "./" "resume/" "../" "Princeton/" "notes/")
 )
 
 ;; ----- ido-unc-hosts-cache -----
