@@ -4,39 +4,8 @@
 (autoload 'View-scroll-half-page-forward "view") (autoload 'View-scroll-half-page-backward "view")
 
 
-(defun my/u-key-diff-modes-function ()
-  "trying this out"
-  (interactive)
-  (if (eq major-mode 'dired-mode)
-      (dired-unmark 1)
-    (undo-tree-undo)
-    )
-  )
-
-
-(defun my/w-key-diff-modes-function ()
-  "trying this out"
-  (interactive)
-  (if (eq major-mode 'dired-mode)
-      (browse-url-of-dired-file)
-    (xah-cut-line-or-region)
-    )
-  )
-
-(global-set-key (kbd "<f6>") 'ivy-resume)
-
-
-(defun my/s-key-diff-modes-function ()
-  "trying this out"
-  (interactive)
-  (if (eq major-mode 'dired-mode)
-      (dired-narrow)
-    (ctrlf-forward-literal)
-    )
-  )
-
 (general-define-key
- "M-y" 'counsel-yank-pop
+ "M-y" 'yank-pop
  "M-x" 'execute-extended-command
  "C-s" 'ctrlf-forward-literal
  "C-z" 'nil
@@ -53,14 +22,11 @@
  "C-o" 'open-line
  "C-a" 'move-beginning-of-line
  "C-x 4 t" 'crux-transpose-windows
- "C-x o" 'switch-window
- "C-x 1" 'switch-window-then-maximize
- "C-x 2" 'switch-window-then-split-below
- "C-x 3" 'switch-window-then-split-right
- "C-x 0" 'switch-window-then-delete
- "C-x 4 d" 'switch-window-then-dired
- "C-x 4 f" 'switch-window-then-find-file
- "C-x 4 C-f" 'switch-window-then-find-file
+ "C-x o" 'other-window
+ "C-x 1" 'delete-other-windows
+ "C-x 2" 'split-window-vertically
+ "C-x 3" 'split-window-horizontally
+ "C-x 0" 'delete-window
  "M-<right>" 'eyebrowse-next-window-config
  "M-<left>" 'eyebrowse-prev-window-config
  "M-1" 'eyebrowse-switch-to-window-config-1
@@ -84,8 +50,8 @@
  "M-c" 'fix-word-capitalize
  "C-r" 'avy-goto-char
  ;; "C-." 'company-complete
- "C-z" 'my/modalka-normal-mode
- "<f9>" 'my/modalka-normal-mode
+ ;; "C-z" 'my/modalka-normal-mode
+ ;; "<f9>" 'my/modalka-normal-mode
  "C-c _" 'undo-tree-visualize
  "C-c c r" 'my/reload-emacs-configuration
  "C-x C-d" 'my/double-pane-dired
@@ -145,6 +111,49 @@
 
  )
 
+(general-create-definer my-leader-def
+  ;; :prefix my-leader
+  :prefix "SPC")
+
+(general-create-definer my-local-leader-def
+  ;; :prefix my-local-leader
+  :prefix "SPC m")
+
+;; to prevent your leader keybindings from ever being overridden (e.g. an evil
+;; package may bind "SPC"), use :keymaps 'override
+(my-leader-def
+  :states 'normal
+  :keymaps 'override
+  "f f" 'find-file
+  "f b" 'bookmark-jump
+  "p p" 'projectile-switch-project
+  "p f" 'projectile-find-file
+  "p s g" 'projectile-grep
+  "g g" 'magit-status
+  "g s" 'google-this
+  "x" 'execute-extended-command
+  "o o" 'other-window
+  "1" 'delete-other-windows
+  "2" 'split-window-below
+  "3" 'split-window-right
+  "0" 'delete-window
+  ;; "b" 'switch-to-buffer
+  "b" 'ido-switch-buffer
+  "s s" 'my/ansi-term-toggle
+  ;; "SPC" 'counsel-M-x
+  "SPC" 'execute-extended-command
+  "w n" 'eyebrowse-next-window-config
+  "w p" 'eyebrowse-prev-window-config
+  "d d" 'dired-sidebar-toggle-sidebar
+  "w w" 'avy-kill-region
+  "k" 'kill-buffer
+  "e b" 'eval-buffer
+  "r e" 'restart-emacs
+  "o e" 'my/open-buffer-path-in-explorer
+  "o t" 'my/open-terminal-in-workdir
+  )
+
+
 ;; (general-define-key
 ;;  :keymaps 'isearch-mode-map
 ;;  "C-j" 'isearch-repeat-forward
@@ -153,73 +162,77 @@
 
 
 ;; MODALKA STUFF------------------------------------------------------------------------
-(general-define-key
- :keymaps 'modalka-mode-map
- "j" 'next-line
- "k" 'previous-line
- "l" 'forward-char
- "h" 'backward-char
- ";"  'goto-last-change
- "v" 'set-mark-command
- "y" "C-y"
- "u" 'my/u-key-diff-modes-function
- "i" 'modalka-mode
- "e" "C-e"
- "a" 'move-beginning-of-line
- "A" 'back-to-indentation
- "." "M->"
- "," "M-<"
- "w" 'my/w-key-diff-modes-function
- "SPC" 'nil
- "r" 'avy-goto-char
- "c" 'smart-comment
- "x" 'recenter-top-bottom
- "d" 'delete-char
- "o" 'open-line
- "s" 'my/s-key-diff-modes-function
- "f" 'iy-go-to-char
- "F" 'iy-go-to-char-backward
- "b" 'iy-go-to-char-backward
- "p" 'my/select-current-line-and-forward-line
- "J" 'windmove-down
- "K" 'windmove-up
- "H" 'windmove-left
- "L" 'windmove-right
- "z" 'zop-to-char
- "n" 'my/join-line-next
- )
+;; (general-define-key
+;;  :keymaps 'modalka-mode-map
+;;  "j" 'next-line
+;;  "k" 'previous-line
+;;  "l" 'forward-char
+;;  "h" 'backward-char
+;;  ";"  'goto-last-change
+;;  "v" 'set-mark-command
+;;  "y" "C-y"
+;;  "u" 'my/u-key-diff-modes-function
+;;  "i" 'modalka-mode
+;;  "e" "C-e"
+;;  "a" 'move-beginning-of-line
+;;  "A" 'back-to-indentation
+;;  "." "M->"
+;;  "," "M-<"
+;;  "w" 'my/w-key-diff-modes-function
+;;  "SPC" 'nil
+;;  "r" 'avy-goto-char
+;;  "c" 'smart-comment
+;;  "x" 'recenter-top-bottom
+;;  "d" 'delete-char
+;;  "o" 'open-line
+;;  "s" 'my/s-key-diff-modes-function
+;;  "f" 'iy-go-to-char
+;;  "F" 'iy-go-to-char-backward
+;;  "b" 'iy-go-to-char-backward
+;;  "p" 'my/select-current-line-and-forward-line
+;;  "J" 'windmove-down
+;;  "K" 'windmove-up
+;;  "H" 'windmove-left
+;;  "L" 'windmove-right
+;;  "z" 'zop-to-char
+;;  "n" 'my/join-line-next
+;;  )
 
-(general-define-key
- :keymaps 'modalka-mode-map
- :prefix "SPC"
- "f f" 'find-file
- "f b" 'bookmark-jump
- "p p" 'projectile-switch-project
- "p f" 'projectile-find-file
- "p s g" 'projectile-grep
- "g g" 'magit-status
- "g s" 'google-this
- "x" 'execute-extended-command
- "o o" 'other-window
- "1" 'delete-other-windows
- "2" 'split-window-below
- "3" 'split-window-right
- "0" 'delete-window
- ;; "b" 'switch-to-buffer
- "b" 'ido-switch-buffer
- "s s" 'my/ansi-term-toggle
- ;; "SPC" 'counsel-M-x
- "SPC" 'execute-extended-command
- "w n" 'eyebrowse-next-window-config
- "w p" 'eyebrowse-prev-window-config
- "d d" 'dired-sidebar-toggle-sidebar
- "w w" 'avy-kill-region
- "k" 'kill-buffer
- "e b" 'eval-buffer
- "r e" 'restart-emacs
- "o e" 'my/open-buffer-path-in-explorer
- "o t" 'my/open-terminal-in-workdir
- )
+
+
+
+
+;; (defun my/u-key-diff-modes-function ()
+;;   "trying this out"
+;;   (interactive)
+;;   (if (eq major-mode 'dired-mode)
+;;       (dired-unmark 1)
+;;     (undo-tree-undo)
+;;     )
+;;   )
+
+
+;; (defun my/w-key-diff-modes-function ()
+;;   "trying this out"
+;;   (interactive)
+;;   (if (eq major-mode 'dired-mode)
+;;       (browse-url-of-dired-file)
+;;     (xah-cut-line-or-region)
+;;     )
+;;   )
+
+;; (global-set-key (kbd "<f6>") 'ivy-resume)
+
+
+;; (defun my/s-key-diff-modes-function ()
+;;   "trying this out"
+;;   (interactive)
+;;   (if (eq major-mode 'dired-mode)
+;;       (dired-narrow)
+;;     (ctrlf-forward-literal)
+;;     )
+;;   )
+
 
 
 (provide 'my-keybinds)

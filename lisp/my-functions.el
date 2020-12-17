@@ -18,13 +18,13 @@ the cursor by ARG lines."
     (set-mark-command nil))
   (forward-line arg))
 
-(defun my/modalka-normal-mode ()
-  "turns on modalka normal mode and changes cursor type"
-  (interactive)
-  (setq modalka-mode 1)
-  ;; (set-face-background 'mode-line "#333")
-  (setq cursor-type 'box)
-  )
+;; (defun my/modalka-normal-mode ()
+;;   "turns on modalka normal mode and changes cursor type"
+;;   (interactive)
+;;   (setq modalka-mode 1)
+;;   ;; (set-face-background 'mode-line "#333")
+;;   (setq cursor-type 'box)
+;;   )
 
 (defun my/where-am-i ()
   "An interactive function showing function `buffer-file-name' or `buffer-name'."

@@ -2,13 +2,13 @@
 
 ;; these are loaded initially---------------------------------------------------
 
-(use-package modalka                    ;my mode-based system
-  :config
-  (modalka-global-mode 1)
-  (setq-default cursor-type '(bar . 1))
-  (setq modalka-cursor-type 'box)
-  ;; :diminish modalka-mode
-  )
+;; (use-package modalka                    ;my mode-based system
+;;   :config
+;;   (modalka-global-mode 1)
+;;   (setq-default cursor-type '(bar . 1))
+;;   (setq modalka-cursor-type 'box)
+;;   ;; :diminish modalka-mode
+;;   )
 
 (use-package eyebrowse                  ;window management package
   :config
@@ -159,7 +159,7 @@ pressed twice.
 	   (setq input-method-function nil)
 	   )))
   (key-chord-mode 1)
-  (key-chord-define-global "ji" 'my/modalka-normal-mode)
+  (key-chord-define-global "ji" 'evil-normal-state)
   (key-chord-define-global "jn" 'set-mark-command)
   )
 
@@ -199,8 +199,8 @@ pressed twice.
 (use-package magit                      ;best github client
   :defer t
   :config
-  (add-hook 'magit-mode-hook (lambda () (modalka-mode -1)))
-  (add-hook 'git-commit-mode-hook (lambda () (modalka-mode -1)))
+  (add-hook 'magit-mode-hook (lambda () (evil-magit-init)))
+  ;; (add-hook 'git-commit-mode-hook (lambda () (modalka-mode -1)))
   (add-to-list 'magit-no-confirm 'stage-all-changes)
 
 
@@ -608,6 +608,19 @@ pressed twice.
   (setq ctrlf-highlight-current-line 1)
   )
 
+(use-package evil
+  :init
+  (evil-mode 1)
+  :defer t
+  :config
+
+  )
+
+(use-package evil-magit
+  :defer t
+  :config
+
+  )
 
 
 (provide 'my-packages)

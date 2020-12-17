@@ -195,7 +195,7 @@
           ;; (run-with-idle-timer 10.0 nil    'splash-screen-fade-to-about)
 
 
-	  (modalka-mode)		;I added this just to help us navigate quicker
+	  ;; (modalka-mode)		;I added this just to help us navigate quicker
 	  ))))
 
 
