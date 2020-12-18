@@ -69,6 +69,7 @@
  "C-c j" 'highlight-symbol-next
  "<f5>" 'revert-buffer-no-confirm
  "C-<tab>" 'er-switch-to-previous-buffer
+ "M-;" 'smart-comment
  )
 
 ;; MINOR MODE MAPS---------------------------------------------------------------------
@@ -111,6 +112,14 @@
 
  )
 
+
+;; evil key-bindings
+(evil-define-key 'normal 'global (kbd "q") 'end-of-line)
+(evil-define-key 'normal org-mode-map (kbd "C-c b r") 'my/revert-other-buffer)
+
+(evil-define-key 'normal org-mode-map (kbd "SPC a o") 'begin/end_org)
+
+
 (general-create-definer my-leader-def
   ;; :prefix my-leader
   :prefix "SPC")
@@ -152,6 +161,9 @@
   "o e" 'my/open-buffer-path-in-explorer
   "o t" 'my/open-terminal-in-workdir
   )
+
+
+
 
 
 ;; (general-define-key

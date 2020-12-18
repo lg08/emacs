@@ -127,6 +127,6 @@ I tried to make them very ergonomic and intuitive, and they certainly are for me
 
     (add-hook 'fundamental-mode-hook 'modalka-mode)
 
-    (splash-screen)
+;;    (splash-screen)
 
   #+END_SRC

@@ -14,17 +14,20 @@
 ;; ----- ido-work-directory-list -----
 (
  "/home/lg08/Documents/Princeton/second_year/phi203/"
- "/home/lg08/.emacs.d/"
+ "/home/lg08/Documents/"
+ "/home/lg08/Downloads/"
  "/home/lg08/Documents/Princeton/second_year/"
  "/ssh:lgen@armlab.cs.princeton.edu:/u/lgen/cos217/assignment6/final/"
  "/ssh:lgen@armlab.cs.princeton.edu:/u/lgen/cos217/assignment6/"
  "/ssh:lgen@armlab.cs.princeton.edu:cos217/assignment6/"
- "/home/lg08/Downloads/"
  "/ssh:lgen@"
 )
 
 ;; ----- ido-work-file-list -----
 (
+ "finalpaper.pdf"
+ "paper3.org"
+ "finalpaper.org"
  "cos217finalnotes.org"
  "readme"
  "backup_correct_output.out"
@@ -32,31 +35,25 @@
  "createdataA.c"
  "testminiassembler.c"
  "createdataB.c"
- "test.org"
- "memorymap"
 )
 
 ;; ----- ido-dir-file-cache -----
 (
- ("/home/lg08/Documents/Princeton/second_year/phi203/" (24525 63988 886221 893000) "paper3notes.org" "paper3.html" "paper3.org" "#paper3.html#" "./" "paper3.tex" "paper3.pdf" "../")
+ ("/home/lg08/Documents/Princeton/second_year/phi203/" (24540 6700 776297 226000) "paper3notes.org" "paper3.html" "finalpaper.org" "paper3.org" "#paper3.html#" "./" "paper3.tex" "finalpaper.pdf" "finalpaper.tex~" "finalpaper.tex" "paper3.pdf" "../")
+
+ ("/home/lg08/" (24540 3213 723249 786000) "Templates/" ".pipewire-media-session/" "Music/" "snap/" ".viminfo" ".nvidia-settings-rc" "Desktop/" ".profile" ".pki/" "Documents/" ".wakatime.log" "Public/" "Videos/" ".gnome/" ".gnupg/" "./" ".swp" ".bash_history" ".wakatime.db" ".icons/" ".pulse-cookie" ".local/" ".git-credentials" ".zoom/" ".opam/" ".gconf/" ".bashrc~" "Steam/" ".atom/" ".swn" ".ssh/" ".vimrc" ".gitconfig" ".bash_logout" "Pictures/" ".pam_environment" ".swo" ".sudo_as_admin_successful" ".config/" "Downloads/" ".steampath" ".steampid" ".bashrc" ".cache/" ".swm" ".emacs.d/" ".steam/" ".mozilla/" "../" ".themes/")
+
+ ("/home/lg08/Downloads/" (24539 60001 417239 330000) "createB.c" "Computer Systems A Programmers Perspective by Bryant, WALDRON (z-lib.org).pdf" "./" "query.ml" "NVIDIA-Linux-x86_64-450.66.run" "a7/" "README.txt" "test.org" "The Norton Introduction to Philosophy by Gideon Rosen Alex Byrne Joshua Cohen Elizabeth Harman Seana Shiffrin (z-lib.org).pdf" "../")
 
  ("/home/lg08/Documents/Princeton/second_year/" (24538 13618 896846 163000) "cos217finalnotes.org" "./" "cos326/" "phi203/" "../")
-
- ("/home/lg08/Pictures/" (24525 56629 675089 933000) "./" "../")
-
- ("/home/lg08/" (24539 20068 548010 906000) "Templates/" ".pipewire-media-session/" "Music/" "snap/" ".viminfo" ".nvidia-settings-rc" "Desktop/" ".profile" ".pki/" "Documents/" ".wakatime.log" "Public/" "Videos/" ".gnome/" ".gnupg/" "./" ".swp" ".bash_history" ".wakatime.db" ".icons/" ".pulse-cookie" ".local/" ".zoom/" ".opam/" ".gconf/" ".bashrc~" "Steam/" ".atom/" ".ssh/" ".gitconfig" ".bash_logout" "Pictures/" ".pam_environment" ".sudo_as_admin_successful" ".config/" "Downloads/" ".steampath" ".steampid" ".bashrc" ".cache/" ".emacs.d/" ".steam/" ".mozilla/" "../" ".themes/")
-
- ("/home/lg08/.emacs.d/" (24539 20016 996083 70000) "straight/" "README.org" ".git/" "misc/" "amx-items" "misc.mc-lists.el" "lisp/" ".gitignore" "./" "README.el" "eshell/" "ido.last" "tramp" "themes/" "early-init.el" "init.el" "../")
-
- ("/home/lg08/.emacs.d/straight/" (24539 17836 74542 305000) "build/" "build-cache.el" "./" "repos/" "../")
-
- ("/home/lg08/.emacs.d/lisp/" (24539 19057 220098 993000) "./" "my-functions.el" "my-packages.el" "my-settings.el" "my-testing-stuff.el" "my-skeletons.el" "../" "my-keybinds.el" "my-modes.el")
 
  ("/home/lg08/Documents/Princeton/" (24526 42713 125356 515000) "./" "second_year/" "course_planner.org" "../")
 
  ("/home/lg08/Documents/" (24529 22993 128809 277000) "./" "resume/" "projects/" "Princeton/" "notes/" "../")
 
- ("/home/lg08/Downloads/" (24537 33239 238447 525000) "createB.c" "./" "query.ml" "NVIDIA-Linux-x86_64-450.66.run" "a7/" "README.txt" "test.org" "../")
+ ("/home/lg08/.emacs.d/" (24537 26495 989436 795000) "straight/" "README.org" ".git/" "misc/" "amx-items" "lisp/" ".gitignore" "./" "README.el" "ido.last" "tramp" "themes/" "early-init.el" "init.el" "../")
+
+ ("/home/lg08/.emacs.d/lisp/" (24537 26465 41327 52000) "./" "my-functions.el" "my-packages.el" "my-settings.el" "my-testing-stuff.el" "my-skeletons.el" "../" "my-keybinds.el" "my-modes.el")
 
  ("/home/" (24525 56621 542971 716000) "./" "lg08/" "jenkins/" "../")
 )

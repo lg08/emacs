@@ -1,19 +1,19 @@
 
 ;; ----- amx-history -----
 (
- eval-buffer
- follow-mode
- use-package-template
- tab-next
- tab-list
- tab-new
+ flycheck-mode
+ my/revert-other-buffer
+ untabify
+ newline
+ org-mode
  tab-bar-mode
+ text-mode
 )
 
 ;; ----- amx-data -----
 (
  (ido-insert-file . 1)
- (use-package-template . 5)
+ (use-package-template . 2)
  (describe-variable . 6)
  (wakatime-mode . 3)
  (global-wakatime-mode . 2)
@@ -23,10 +23,10 @@
  (switch-to-prev-buffer . 3)
  (occur . 5)
  (eval-region . 2)
- (eval-buffer . 14)
+ (eval-buffer . 3)
  (tramp-cleanup-all-connections . 1)
  (battery . 2)
- (untabify . 5)
+ (untabify . 8)
  (ediff . 2)
  (diff . 1)
  (ido-grid-enable . 10)
@@ -42,10 +42,10 @@
  (eshell-mode . 2)
  (fundamental-mode . 1)
  (org-self-insert-command . 1)
- (org-mode . 3)
+ (org-mode . 4)
+ (text-mode . 1)
  (tab-bar-mode . 1)
- (tab-new . 1)
- (tab-list . 1)
- (tab-next . 2)
- (follow-mode . 3)
+ (newline . 1)
+ (my/revert-other-buffer . 5)
+ (flycheck-mode . 1)
 )

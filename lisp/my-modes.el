@@ -10,12 +10,12 @@
                             (highlight-thing-mode)
                             (volatile-highlights-mode)
                             (aggressive-indent-mode 1)
-			    ;; (global-git-gutter-mode)
-			    ;; (global-flycheck-mode 1)
-			    (highlight-indent-guides-mode)
-			    (global-highlight-parentheses-mode)
-			    (wakatime-mode)
-			    ))
+                            ;; (global-git-gutter-mode)
+                            ;; (global-flycheck-mode 1)
+                            (highlight-indent-guides-mode)
+                            (global-highlight-parentheses-mode)
+                            (wakatime-mode)
+                            ))
 
 (add-hook 'dired-mode-hook (lambda ()
                              (put 'dired-find-alternate-file 'disabled nil) ;disables the warning
@@ -35,7 +35,7 @@
 (add-hook 'magit-mode-hook (lambda ()
                              ;; (global-git-gutter-mode)
                              ;; (add-hook 'magit-popup-hook ' (lambda () (modalka-mode -1)))
-			     (magit-todos-mode)
+                             (magit-todos-mode)
                              ))
 (add-hook 'python-mode-hook (lambda ()
                               (elpy-enable)
@@ -46,12 +46,8 @@
 (add-hook 'org-mode-hook (lambda ()
                            (org-indent-mode)
                            (org-bullets-mode)
-                           (general-define-key
-                            :keymaps 'modalka-mode-map
-                            "SPC a o" 'begin/end_org
-                            )
-			   (wakatime-mode)
-			   ))
+                           (wakatime-mode)
+                           ))
 (add-hook 'tuareg-mode-hook (lambda ()
                               (merlin-mode 1)
                               (general-define-key

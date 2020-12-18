@@ -320,4 +320,13 @@ Repeated invocations toggle between the two most recently open buffers."
 
 (global-set-key (kbd "C-c b b") 'bjm-comment-box)
 
+
+(defun my/revert-other-buffer ()
+  (interactive)
+  (other-window 1)
+  (revert-buffer-no-confirm)
+  (other-window 1)
+  )
+
+
 (provide 'my-functions)

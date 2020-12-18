@@ -95,6 +95,8 @@
 
 (setq isearch-wrap-function '(lambda nil)) ;disables wrapping for isearch
 
+(setq-default indent-tabs-mode nil)	;no tabs!
+
 
 
 ;; deletes stale elc files on save
