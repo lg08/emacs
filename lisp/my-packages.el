@@ -1,4 +1,4 @@
-;; Loads all packages
+                                        ; Loads all packages
 
 ;; these are loaded initially---------------------------------------------------
 
@@ -188,6 +188,7 @@ pressed twice.
 (use-package doom-modeline
   :config
   (doom-modeline-mode)
+  (setq doom-modeline-height 5)
   )
 
 (use-package git-gutter

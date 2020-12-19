@@ -118,7 +118,9 @@
 (evil-define-key 'normal org-mode-map (kbd "C-c b r") 'my/revert-other-buffer)
 
 (evil-define-key 'normal org-mode-map (kbd "SPC a o") 'begin/end_org)
+(evil-define-key 'normal org-mode-map (kbd "u") 'undo-tree-undo)
 
+(evil-define-key '(normal insert) 'global (kbd "C-e") 'end-of-line)
 
 (general-create-definer my-leader-def
   ;; :prefix my-leader
