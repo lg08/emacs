@@ -86,10 +86,7 @@
 (defun org-leave-mode-function ()
   (when (eq major-mode 'org-mode)
     (message "Leaving org-mode.")
-    (general-define-key
-     :keymaps 'modalka-mode-map
-     "SPC a o" 'nil
-     )
+
     ))
 
 (defun dired-leave-mode-function ()
@@ -100,7 +97,7 @@
     ;;  "u" 'nil
     ;;  "u" 'undo-tree-undo
     ;;  )
-    (define-key 'modalka-mode-map "u" 'undo-tree-undo)
+    ;; (define-key 'modalka-mode-map "u" 'undo-tree-undo)
     ))
 
 (add-hook 'change-major-mode-hook (lambda ()

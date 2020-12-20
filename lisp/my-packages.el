@@ -1,14 +1,5 @@
-                                        ; Loads all packages
-
 ;; these are loaded initially---------------------------------------------------
 
-;; (use-package modalka                    ;my mode-based system
-;;   :config
-;;   (modalka-global-mode 1)
-;;   (setq-default cursor-type '(bar . 1))
-;;   (setq modalka-cursor-type 'box)
-;;   ;; :diminish modalka-mode
-;;   )
 
 (use-package eyebrowse                  ;window management package
   :config
@@ -25,7 +16,7 @@
 (use-package ivy
   :init
   (ivy-mode)
-  :defer
+  :defer t
   :config
   (setq ivy-use-virtual-buffers t	;    Add recent files and bookmarks to the ivy-switch-buffer
         ivy-count-format "%d/%d ")	;    Displays the current and total number in the collection in the prompt
@@ -34,14 +25,21 @@
    'ivy-sort-matches-functions-alist
    '(read-file-name-internal . ivy--sort-files-by-date))
 
-  (defvar ivy-switch-buffer-map
-    (let ((map (make-sparse-keymap)))
-      (ivy-define-key map (kbd "C-k") 'ivy-switch-buffer-kill)
-      map))
+  (setq ivy-extra-directories nil)
+  (setq ivy-height 15)
   )
 
+(use-package ivy-rich
+  :defer 1
+  :config
+  (ivy-rich-mode 1)
+  )
 
+(use-package counsel
+  :defer t
+  :config
 
+  )
 
 (use-package swiper
   :init
@@ -69,31 +67,22 @@
 
   )
 
-(use-package counsel
-  ;; :defer t
-  :config
 
-  )
-
-
-(use-package ivy-rich
+(setq x-gtk-resize-child-frames 'resize-mode)
+(use-package mini-frame
   :init
-  (ivy-rich-mode 1)
+  (mini-frame-mode)
   :defer t
   :config
+  (add-to-list 'mini-frame-ignore-commands 'swiper)
 
+  (custom-set-variables
+   '(mini-frame-show-parameters
+     '((top . 0)
+       (width . 0.7)
+       (left . 0.5)
+       (height . 15))))
   )
-
-
-
-;; (setq x-gtk-resize-child-frames 'resize-mode)
-;; (use-package mini-frame
-;;   :init
-;;   (mini-frame-mode)
-;;   :defer t
-;;   :config
-;;   (add-to-list 'mini-frame-ignore-commands 'swiper)
-;;   )
 
 ;; (use-package ivy-posframe
 ;;   :init
@@ -105,6 +94,7 @@
 
 
 (use-package which-key                  ;shows possible keyboard commands, just uncomment if you want it
+  :defer 1
   :config
   (which-key-mode t)
   (which-key-setup-side-window-bottom)
@@ -136,7 +126,7 @@
 ;;   )
 
 (use-package undo-tree                  ;very helpful undo visualizer
-  :defer 0
+  :defer 1
   :config
   (global-undo-tree-mode 1)
   (defadvice undo-tree-make-history-save-file-name ;automatically compresses the undo history file
@@ -144,7 +134,7 @@
     (setq ad-return-value (concat ad-return-value ".gz")))
   )
 
-(use-package key-chord                  ;very useful package, used to turn on modalka mode
+(use-package key-chord
   :defer 0
   :config
   (defun key-chord-mode (arg)
@@ -219,6 +209,7 @@ pressed twice.
   )
 
 (use-package magit-todos		;really cool, shows todos in magit buffer
+  :defer t
   :requires (magit)
   ;; :hook (magit-mode . magit-todos-mode)
   :custom
@@ -247,13 +238,14 @@ pressed twice.
 
 ;; With use-package:
 (use-package company-box
+  :defer t
   :hook (company-mode . company-box-mode))
 
 (use-package company                    ;autocompletion system
+  :defer t
   :init
   (setq company-backends '((company-files company-keywords company-capf company-dabbrev-code company-etags company-dabbrev company-cmake ;; company-clang
 					  )))
-  :defer t
   :config
   (setq company-tooltip-limit 20)                      ; bigger popup window
   (setq company-tooltip-align-annotations 't)          ; align annotations to the right tooltip border
@@ -277,6 +269,7 @@ pressed twice.
   )
 
 (use-package company-quickhelp
+  :defer t
   :init
   (company-quickhelp-mode 1)
   )
@@ -288,6 +281,7 @@ pressed twice.
 (use-package elpy                       ;python ide
   :defer t
   :config
+  (add-hook 'elpy-mode-hook (lambda () (highlight-indentation-mode -1)))
   )
 
 (use-package dired-sidebar              ;helpful dired-based popup sidebar
@@ -393,12 +387,6 @@ pressed twice.
 
   )
 
-(use-package iy-go-to-char              ;like a little quicker avy for short distances
-  :defer t
-  :config
-
-  )
-
 ;; (use-package yasnippet                  ;abbreviation package
 ;;   :defer t
 ;;   :config
@@ -442,7 +430,7 @@ pressed twice.
 (use-package highlight-thing            ;highlights all occurences of current symbol
   :defer t
   :config
-  (setq highlight-thing-delay-seconds 0.0)
+  (setq highlight-thing-delay-seconds 0.5)
   ;; Don't highlight the thing at point itself. Default is nil.
   (setq highlight-thing-exclude-thing-under-point t)
   (setq highlight-thing-case-sensitive-p t)
@@ -490,6 +478,37 @@ pressed twice.
   :config
 
   )
+
+
+(use-package org
+  ;; :hook (org-mode . efs/org-mode-setup)
+  :config
+  (setq org-ellipsis " ▾")
+
+  (setq org-agenda-start-with-log-mode t)
+  (setq org-log-done 'time)
+  (setq org-log-into-drawer t)
+
+  ;; (setq org-agenda-files
+  ;;       '("~/Projects/Code/emacs-from-scratch/OrgFiles/Tasks.org"
+  ;;         "~/Projects/Code/emacs-from-scratch/OrgFiles/Habits.org"
+  ;;         "~/Projects/Code/emacs-from-scratch/OrgFiles/Birthdays.org"))
+
+  (require 'org-habit)
+  (add-to-list 'org-modules 'org-habit)
+  (setq org-habit-graph-column 60)
+
+  (setq org-todo-keywords
+        '((sequence "TODO(t)" "NEXT(n)" "|" "DONE(d!)")
+          (sequence "BACKLOG(b)" "PLAN(p)" "READY(r)" "ACTIVE(a)" "REVIEW(v)" "WAIT(w@/!)" "HOLD(h)" "|" "COMPLETED(c)" "CANC(k@)")))
+
+  (setq org-refile-targets
+        '(("Archive.org" :maxlevel . 1)
+          ("Tasks.org" :maxlevel . 1)))
+  )
+
+  ;; Save Org buffers after refiling!
+  (advice-add 'org-refile :after 'org-save-all-org-buffers)
 
 (use-package poporg
   :init
@@ -625,18 +644,19 @@ pressed twice.
 
   )
 
-(use-package evil-magit
-  :defer t
-  :config
 
-  )
+  (use-package evil-magit
+    :defer t
+    :config
 
-;; link here: https://github.com/emacs-evil/evil-surround
-(use-package evil-surround
-  :ensure t
-  :config
-  (global-evil-surround-mode 1)
-  )
+    )
+
+  ;; link here: https://github.com/emacs-evil/evil-surround
+  (use-package evil-surround
+    :ensure t
+    :config
+    (global-evil-surround-mode 1)
+    )
 
 ;; Or if you use use-package
 (use-package dashboard
@@ -644,89 +664,31 @@ pressed twice.
   :config
   (dashboard-setup-startup-hook))
 
-;; (use-package exwm
-;;   :init
-;;   :defer t
-;;   :config
+;; A more complex, more lazy-loaded config
+(use-package solaire-mode
+  ;; Ensure solaire-mode is running in all solaire-mode buffers
+  :hook (change-major-mode . turn-on-solaire-mode)
+  ;; ...if you use auto-revert-mode, this prevents solaire-mode from turning
+  ;; itself off every time Emacs reverts the file
+  :hook (after-revert . turn-on-solaire-mode)
+  ;; To enable solaire-mode unconditionally for certain modes:
+  :hook (ediff-prepare-buffer . solaire-mode)
+  ;; Highlight the minibuffer when it is activated:
+  :hook (minibuffer-setup . solaire-mode-in-minibuffer)
+  :config
+  ;; The bright and dark background colors are automatically swapped the first
+  ;; time solaire-mode is activated. Namely, the backgrounds of the `default` and
+  ;; `solaire-default-face` faces are swapped. This is done because the colors
+  ;; are usually the wrong way around. If you don't want this, you can disable it:
+  (setq solaire-mode-auto-swap-bg nil)
 
-;;   )
+  (solaire-global-mode +1))
 
-
-
-;; (require 'exwm)
-;; (require 'exwm-config)
-;; (exwm-config-default)
-;; (require 'exwm-randr)
-;; (setq exwm-randr-workspace-output-plist '(0 "eDP-1-1"))
-;; (add-hook 'exwm-randr-screen-change-hook
-;;           (lambda ()
-;;             (start-process-shell-command
-;;              "xrandr" nil "xrandr --output eDR-1-1 --mode 1920x1080 --pos 0x0 --retate normal"
-;;              )
-;;             )
-;;           )
-;; (exwm-randr-enable)
-;; (require 'exwm-systemtray)
-;; (exwm-systemtray-enable)
-
-
-
-;; (defun efs/exwm-update-class ()
-;;   (exwm-workspace-rename-buffer exwm-class-name))
-
-;; (use-package exwm
-;;   :config
-;;   ;; Set the default number of workspaces
-;;   (setq exwm-workspace-number 5)
-
-;;   ;; When window "class" updates, use it to set the buffer name
-;;   ;; (add-hook 'exwm-update-class-hook #'efs/exwm-update-class)
-
-;;   ;; These keys should always pass through to Emacs
-;;   (setq exwm-input-prefix-keys
-;;         '(?\C-x
-;;           ?\C-u
-;;           ?\C-h
-;;           ?\M-x
-;;           ?\M-`
-;;           ?\M-&
-;;           ?\M-:
-;;           ?\C-\M-j  ;; Buffer list
-;;           ?\C-\ ))  ;; Ctrl+Space
-
-;;   ;; Ctrl+Q will enable the next key to be sent directly
-;;   (define-key exwm-mode-map [?\C-q] 'exwm-input-send-next-key)
-
-;;   ;; Set up global key bindings.  These always work, no matter the input state!
-;;   ;; Keep in mind that changing this list after EXWM initializes has no ffect.
-;;   (setq exwm-input-global-keys
-;;         `(
-;;           ;; Reset to line-mode (C-c C-k switches to char-mode via exwm-input-release-keyboard)
-;;           ([?\s-r] . exwm-reset)
-
-;;           ;; Move between windows
-;;           ([s-left] . windmove-left)
-;;           ([s-right] . windmove-right)
-;;           ([s-up] . windmove-up)
-;;           ([s-down] . windmove-down)
-
-;;           ;; Launch applications via shell command
-;;           ([?\s-&] . (lambda (command)
-;;                        (interactive (list (read-shell-command "$ ")))
-;;                        (start-process-shell-command command nil command)))
-
-;;           ;; Switch workspace
-;;           ([?\s-w] . exwm-workspace-switch)
-
-;;           ;; 's-N': Switch to certain workspace with Super (Win) plus a number key (0 - 9)
-;;           ,@(mapcar (lambda (i)
-;;                       `(,(kbd (format "s-%d" i)) .
-;;                         (lambda ()
-;;                           (interactive)
-;;                           (exwm-workspace-switch-create ,i))))
-;;                     (number-sequence 0 9))))
-
-;;   (exwm-enable))
+(use-package move-text
+  :defer t
+  :config
+  (move-text-default-bindings)
+  )
 
 
 (provide 'my-packages)

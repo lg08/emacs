@@ -7,6 +7,8 @@
 (general-define-key
  "M-y" 'yank-pop
  "M-x" 'execute-extended-command
+ "M-<down>" 'move-text-down
+ "M-<up>" 'move-text-up
  "C-s" 'swiper-isearch
  "C-z" 'nil
  "C-h" 'backward-char
@@ -87,6 +89,7 @@
  "C-k" 'ivy-previous-line
  "C-h" "DEL"
  "C-l" 'ivy-alt-done
+ "C-<return>" 'ivy-alt-done
  )
 
 (general-define-key
@@ -127,6 +130,8 @@
 
 (evil-define-key '(normal insert) 'global (kbd "C-e") 'end-of-line)
 
+(evil-define-key '(normal insert) 'global (kbd "C-r") 'avy-goto-char)
+
 (general-create-definer my-leader-def
   ;; :prefix my-leader
   :prefix "SPC")
@@ -155,8 +160,8 @@
   "0" 'delete-window
   "b" 'ivy-switch-buffer
   "s s" 'my/ansi-term-toggle
-  ;; "SPC" 'counsel-M-x
-  "SPC" 'execute-extended-command
+  "SPC" 'counsel-M-x
+  ;; "SPC" 'execute-extended-command
   "w n" 'eyebrowse-next-window-config
   "w p" 'eyebrowse-prev-window-config
   "d d" 'dired-sidebar-toggle-sidebar
