@@ -22,59 +22,67 @@
 
   )
 
-;; (use-package ivy
-;;   :init
-;;   (ivy-mode)
-;;   :defer
-;;   :config
-;;   (setq ivy-use-virtual-buffers t	;    Add recent files and bookmarks to the ivy-switch-buffer
-;;         ivy-count-format "%d/%d ")	;    Displays the current and total number in the collection in the prompt
+(use-package ivy
+  :init
+  (ivy-mode)
+  :defer
+  :config
+  (setq ivy-use-virtual-buffers t	;    Add recent files and bookmarks to the ivy-switch-buffer
+        ivy-count-format "%d/%d ")	;    Displays the current and total number in the collection in the prompt
 
-;;   (add-to-list				;should make find-file and stuff sort by date
-;;    'ivy-sort-matches-functions-alist
-;;    '(read-file-name-internal . ivy--sort-files-by-date))
-;;   )
+  (add-to-list				;should make find-file and stuff sort by date
+   'ivy-sort-matches-functions-alist
+   '(read-file-name-internal . ivy--sort-files-by-date))
 
-;; (use-package swiper
-;;   :init
-;;   (define-key ivy-minibuffer-map "\C-k" 'nil)
-;;   :defer t
-;;   :config
-
-;;   )
+  (defvar ivy-switch-buffer-map
+    (let ((map (make-sparse-keymap)))
+      (ivy-define-key map (kbd "C-k") 'ivy-switch-buffer-kill)
+      map))
+  )
 
 
-;; (use-package prescient
-;;   :init
-;;   (setq prescient-save-file (expand-file-name "prescient-save.el" gemacs-misc-dir))
-;;   :ensure t
-;;   :config
-;;   (prescient-persist-mode +1)
-
-;;   )
-
-;; (use-package ivy-prescient
-;;   :init
-;;   (ivy-prescient-mode)
-;;   :defer t
-;;   :config
-
-;;   )
-
-;; (use-package counsel
-;;   ;; :defer t
-;;   :config
-
-;;   )
 
 
-;; (use-package ivy-rich
-;;   :init
-;;   (ivy-rich-mode 1)
-;;   :defer t
-;;   :config
+(use-package swiper
+  :init
+  (define-key ivy-minibuffer-map "\C-k" 'nil)
+  :defer t
+  :config
 
-;;   )
+  )
+
+
+(use-package prescient
+  :init
+  (setq prescient-save-file (expand-file-name "prescient-save.el" gemacs-misc-dir))
+  :ensure t
+  :config
+  (prescient-persist-mode +1)
+
+  )
+
+(use-package ivy-prescient
+  :init
+  (ivy-prescient-mode)
+  :defer t
+  :config
+
+  )
+
+(use-package counsel
+  ;; :defer t
+  :config
+
+  )
+
+
+(use-package ivy-rich
+  :init
+  (ivy-rich-mode 1)
+  :defer t
+  :config
+
+  )
 
 
 
@@ -96,24 +104,24 @@
 ;;   )
 
 
-;; (use-package which-key                  ;shows possible keyboard commands, just uncomment if you want it
-;;   :config
-;;   (which-key-mode t)
-;;   (which-key-setup-side-window-bottom)
-;;   (setq which-key-idle-delay 1)
+(use-package which-key                  ;shows possible keyboard commands, just uncomment if you want it
+  :config
+  (which-key-mode t)
+  (which-key-setup-side-window-bottom)
+  (setq which-key-idle-delay .2)
 
-;;   )
+  )
 
 ;; below, all are deferred for one second ----------------------------------------------------------
 
 
-;; (use-package feebleline			;basically gets rid of modeline
-;;   :init
-;;   :defer 1
-;;   :config
-;;   (feebleline-mode t)
+(use-package feebleline			;basically gets rid of modeline
+  :init
+  :defer 0
+  :config
+  (feebleline-mode t)
 
-;;   )
+  )
 
 ;; (use-package gcmh                       ;garbage management system
 ;;   :defer 0
@@ -171,7 +179,7 @@ pressed twice.
   :defer t
   :config
   (projectile-mode +1)
-  (setq projectile-completion-system 'ido)
+  (setq projectile-completion-system 'ivy)
   (setq projectile-globally-ignored-file-suffixes '("pyc"))
 
   )
@@ -185,11 +193,11 @@ pressed twice.
 	doom-themes-enable-italic t)
   )
 
-(use-package doom-modeline
-  :config
-  (doom-modeline-mode)
-  (setq doom-modeline-height 5)
-  )
+;; (use-package doom-modeline
+;;   :config
+;;   (doom-modeline-mode)
+;;   )
+
 
 (use-package git-gutter
   :defer t
@@ -622,6 +630,103 @@ pressed twice.
   :config
 
   )
+
+;; link here: https://github.com/emacs-evil/evil-surround
+(use-package evil-surround
+  :ensure t
+  :config
+  (global-evil-surround-mode 1)
+  )
+
+;; Or if you use use-package
+(use-package dashboard
+  :ensure t
+  :config
+  (dashboard-setup-startup-hook))
+
+;; (use-package exwm
+;;   :init
+;;   :defer t
+;;   :config
+
+;;   )
+
+
+
+;; (require 'exwm)
+;; (require 'exwm-config)
+;; (exwm-config-default)
+;; (require 'exwm-randr)
+;; (setq exwm-randr-workspace-output-plist '(0 "eDP-1-1"))
+;; (add-hook 'exwm-randr-screen-change-hook
+;;           (lambda ()
+;;             (start-process-shell-command
+;;              "xrandr" nil "xrandr --output eDR-1-1 --mode 1920x1080 --pos 0x0 --retate normal"
+;;              )
+;;             )
+;;           )
+;; (exwm-randr-enable)
+;; (require 'exwm-systemtray)
+;; (exwm-systemtray-enable)
+
+
+
+;; (defun efs/exwm-update-class ()
+;;   (exwm-workspace-rename-buffer exwm-class-name))
+
+;; (use-package exwm
+;;   :config
+;;   ;; Set the default number of workspaces
+;;   (setq exwm-workspace-number 5)
+
+;;   ;; When window "class" updates, use it to set the buffer name
+;;   ;; (add-hook 'exwm-update-class-hook #'efs/exwm-update-class)
+
+;;   ;; These keys should always pass through to Emacs
+;;   (setq exwm-input-prefix-keys
+;;         '(?\C-x
+;;           ?\C-u
+;;           ?\C-h
+;;           ?\M-x
+;;           ?\M-`
+;;           ?\M-&
+;;           ?\M-:
+;;           ?\C-\M-j  ;; Buffer list
+;;           ?\C-\ ))  ;; Ctrl+Space
+
+;;   ;; Ctrl+Q will enable the next key to be sent directly
+;;   (define-key exwm-mode-map [?\C-q] 'exwm-input-send-next-key)
+
+;;   ;; Set up global key bindings.  These always work, no matter the input state!
+;;   ;; Keep in mind that changing this list after EXWM initializes has no ffect.
+;;   (setq exwm-input-global-keys
+;;         `(
+;;           ;; Reset to line-mode (C-c C-k switches to char-mode via exwm-input-release-keyboard)
+;;           ([?\s-r] . exwm-reset)
+
+;;           ;; Move between windows
+;;           ([s-left] . windmove-left)
+;;           ([s-right] . windmove-right)
+;;           ([s-up] . windmove-up)
+;;           ([s-down] . windmove-down)
+
+;;           ;; Launch applications via shell command
+;;           ([?\s-&] . (lambda (command)
+;;                        (interactive (list (read-shell-command "$ ")))
+;;                        (start-process-shell-command command nil command)))
+
+;;           ;; Switch workspace
+;;           ([?\s-w] . exwm-workspace-switch)
+
+;;           ;; 's-N': Switch to certain workspace with Super (Win) plus a number key (0 - 9)
+;;           ,@(mapcar (lambda (i)
+;;                       `(,(kbd (format "s-%d" i)) .
+;;                         (lambda ()
+;;                           (interactive)
+;;                           (exwm-workspace-switch-create ,i))))
+;;                     (number-sequence 0 9))))
+
+;;   (exwm-enable))
 
 
 (provide 'my-packages)

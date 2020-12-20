@@ -45,10 +45,10 @@
 #+keywords:
 #+subtitle:
 #+latex_compiler: pdflatex
-#+date: 
+#+date:
 #+OPTIONS: toc:nil        (no default TOC at all)
 #+OPTIONS: indentfirst = true
-#+title: 
+#+title:
 #+author: Lucas Gen
 #+LATEX_HEADER: \\usepackage{setspace}
 #+LATEX_HEADER: \\doublespacing
@@ -61,6 +61,12 @@
   ""
   "what?"
   "#+BEGIN_" str \n _ \n "#+END_" str
+  )
+
+(define-skeleton surround-text
+  ""
+  "surround with?:"
+  ""
   )
 
 

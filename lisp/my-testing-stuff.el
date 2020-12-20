@@ -52,68 +52,68 @@
 
 ;; (setq ido-separator "\n")		;tells ido mode to display vertically
 
-(setq flx-ido-mode 1)
-(setq ido-enable-flex-matching t)
+;; (setq flx-ido-mode 1)
+;; (setq ido-enable-flex-matching t)
 
-(ido-mode 1)
-(ido-everywhere 1)
-
-
-(use-package ido-completing-read+
-  :defer t
-  :config
-
-  )
-
-(ido-ubiquitous-mode 1)
-(use-package amx
-  :init
-  (amx-mode 1)
-  :defer t
-  :config
-
-  )
-
-(require 'icomplete)
-(icomplete-mode 1)
+;; (ido-mode 1)
+;; (ido-everywhere 1)
 
 
-(defun ido-my-keys ()
-  (define-key ido-completion-map (kbd "C-k")   'ido-prev-match)
-  (define-key ido-completion-map (kbd "C-j") 'ido-next-match)
-  (define-key ido-completion-map (kbd "C-k")   'ido-prev-match)
-  (define-key ido-completion-map (kbd "C-j") 'ido-next-match)
+;; (use-package ido-completing-read+
+;;   :defer t
+;;   :config
 
-  )
+;;   )
+
+;; (ido-ubiquitous-mode 1)
+;; (use-package amx
+;;   :init
+;;   (amx-mode 1)
+;;   :defer t
+;;   :config
+
+;;   )
+
+;; (require 'icomplete)
+;; (icomplete-mode 1)
 
 
-(add-hook 'ido-setup-hook 'ido-my-keys)
+;; (defun ido-my-keys ()
+;;   (define-key ido-completion-map (kbd "C-k")   'ido-prev-match)
+;;   (define-key ido-completion-map (kbd "C-j") 'ido-next-match)
+;;   (define-key ido-completion-map (kbd "C-k")   'ido-prev-match)
+;;   (define-key ido-completion-map (kbd "C-j") 'ido-next-match)
 
-(setq ido-decorations (quote ("\n-> " "" "\n " "\n ..." "[" "]" "
-  [No match]" " [Matched]" " [Not readable]" " [Too big]" "
-  [Confirm]")))
-(defun ido-disable-line-truncation () (set (make-local-variable 'truncate-lines) nil))
-(add-hook 'ido-minibuffer-setup-hook 'ido-disable-line-truncation)
+;;   )
+
+
+;; (add-hook 'ido-setup-hook 'ido-my-keys)
+
+;; ;; (setq ido-decorations (quote ("\n-> " "" "\n " "\n ..." "[" "]" "
+;; ;;   [No match]" " [Matched]" " [Not readable]" " [Too big]" "
+;; ;;   [Confirm]")))
+;; (defun ido-disable-line-truncation () (set (make-local-variable 'truncate-lines) nil))
+;; (add-hook 'ido-minibuffer-setup-hook 'ido-disable-line-truncation)
 
 
 (setq tramp-default-method "ssh")
 
-;; (customize-set-variable 'tramp-syntax 'simplified)
+;; ;; (customize-set-variable 'tramp-syntax 'simplified)
 
 
 
-(defvar custom-ido-map
-  (let ((map (make-sparse-keymap)))
-    (define-key map (kbd "<C-return>") 'ido-select-text)
-    ;; (define-key map (kbd "<M-return>") 'ido-magic-forward-char)
-    map))
-(with-eval-after-load 'ido
-  (define-key ido-common-completion-map (kbd "<C-return>") 'ido-select-text)
-  ;; (define-key ido-common-completion-map (kbd "<M-return>") 'ido-magic-forward-char)
-  )
-(add-to-ordered-list 'emulation-mode-map-alists
-                     `((cua-mode . ,custom-ido-map))
-                     0)
+;; (defvar custom-ido-map
+;;   (let ((map (make-sparse-keymap)))
+;;     (define-key map (kbd "<C-return>") 'ido-select-text)
+;;     ;; (define-key map (kbd "<M-return>") 'ido-magic-forward-char)
+;;     map))
+;; (with-eval-after-load 'ido
+;;   (define-key ido-common-completion-map (kbd "<C-return>") 'ido-select-text)
+;;   ;; (define-key ido-common-completion-map (kbd "<M-return>") 'ido-magic-forward-char)
+;;   )
+;; (add-to-ordered-list 'emulation-mode-map-alists
+;;                      `((cua-mode . ,custom-ido-map))
+;;                      0)
 
 
 (provide 'my-testing-stuff)

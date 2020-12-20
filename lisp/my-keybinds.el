@@ -7,7 +7,7 @@
 (general-define-key
  "M-y" 'yank-pop
  "M-x" 'execute-extended-command
- "C-s" 'ctrlf-forward-literal
+ "C-s" 'swiper-isearch
  "C-z" 'nil
  "C-h" 'backward-char
  "C-l" 'forward-char
@@ -81,13 +81,18 @@
  "C-c p" 'projectile-command-map
  )
 
-;; (general-define-key
-;;  :keymaps 'ivy-minibuffer-map
-;;  "C-j" 'ivy-next-line
-;;  "C-k" 'ivy-previous-line
-;;  "C-h" "DEL"
-;;  "C-l" 'ivy-alt-done
-;;  )
+(general-define-key
+ :keymaps 'ivy-minibuffer-map
+ "C-j" 'ivy-next-line
+ "C-k" 'ivy-previous-line
+ "C-h" "DEL"
+ "C-l" 'ivy-alt-done
+ )
+
+(general-define-key
+ :keymaps 'ivy-switch-buffer-map
+ "C-k" 'ivy-previous-line
+ )
 
 (general-define-key
  :keymaps 'company-active-map
@@ -135,7 +140,7 @@
 (my-leader-def
   :states 'normal
   :keymaps 'override
-  "f f" 'find-file
+  "f f" 'counsel-find-file
   "f b" 'bookmark-jump
   "p p" 'projectile-switch-project
   "p f" 'projectile-find-file
@@ -148,8 +153,7 @@
   "2" 'split-window-below
   "3" 'split-window-right
   "0" 'delete-window
-  ;; "b" 'switch-to-buffer
-  "b" 'ido-switch-buffer
+  "b" 'ivy-switch-buffer
   "s s" 'my/ansi-term-toggle
   ;; "SPC" 'counsel-M-x
   "SPC" 'execute-extended-command
@@ -163,90 +167,6 @@
   "o e" 'my/open-buffer-path-in-explorer
   "o t" 'my/open-terminal-in-workdir
   )
-
-
-
-
-
-;; (general-define-key
-;;  :keymaps 'isearch-mode-map
-;;  "C-j" 'isearch-repeat-forward
-;;  "C-k" 'isearch-repeat-backward
-;;  )
-
-
-;; MODALKA STUFF------------------------------------------------------------------------
-;; (general-define-key
-;;  :keymaps 'modalka-mode-map
-;;  "j" 'next-line
-;;  "k" 'previous-line
-;;  "l" 'forward-char
-;;  "h" 'backward-char
-;;  ";"  'goto-last-change
-;;  "v" 'set-mark-command
-;;  "y" "C-y"
-;;  "u" 'my/u-key-diff-modes-function
-;;  "i" 'modalka-mode
-;;  "e" "C-e"
-;;  "a" 'move-beginning-of-line
-;;  "A" 'back-to-indentation
-;;  "." "M->"
-;;  "," "M-<"
-;;  "w" 'my/w-key-diff-modes-function
-;;  "SPC" 'nil
-;;  "r" 'avy-goto-char
-;;  "c" 'smart-comment
-;;  "x" 'recenter-top-bottom
-;;  "d" 'delete-char
-;;  "o" 'open-line
-;;  "s" 'my/s-key-diff-modes-function
-;;  "f" 'iy-go-to-char
-;;  "F" 'iy-go-to-char-backward
-;;  "b" 'iy-go-to-char-backward
-;;  "p" 'my/select-current-line-and-forward-line
-;;  "J" 'windmove-down
-;;  "K" 'windmove-up
-;;  "H" 'windmove-left
-;;  "L" 'windmove-right
-;;  "z" 'zop-to-char
-;;  "n" 'my/join-line-next
-;;  )
-
-
-
-
-
-;; (defun my/u-key-diff-modes-function ()
-;;   "trying this out"
-;;   (interactive)
-;;   (if (eq major-mode 'dired-mode)
-;;       (dired-unmark 1)
-;;     (undo-tree-undo)
-;;     )
-;;   )
-
-
-;; (defun my/w-key-diff-modes-function ()
-;;   "trying this out"
-;;   (interactive)
-;;   (if (eq major-mode 'dired-mode)
-;;       (browse-url-of-dired-file)
-;;     (xah-cut-line-or-region)
-;;     )
-;;   )
-
-;; (global-set-key (kbd "<f6>") 'ivy-resume)
-
-
-;; (defun my/s-key-diff-modes-function ()
-;;   "trying this out"
-;;   (interactive)
-;;   (if (eq major-mode 'dired-mode)
-;;       (dired-narrow)
-;;     (ctrlf-forward-literal)
-;;     )
-;;   )
-
 
 
 (provide 'my-keybinds)

@@ -2,59 +2,72 @@
 
 ;; ----- ido-last-directory-list -----
 (
+ ("/home/lg08/.emacs.d/" . "straight/")
  ("/home/lg08/Documents/Princeton/second_year/" . "cos326/")
- ("/ssh:lgen@armlab.cs.princeton.edu:/u/lgen/cos217/" . "assignment5/")
- ("/ssh:lgen@armlab.cs.princeton.edu:/u/lgen/" . "cos217/")
+ ("/ssh:lgen@armlab.cs.princeton.edu:/u/lgen/cos217/assignment6/" . "final/")
+ ("/home/lg08/" . ".emacs.d/")
  ("/ssh:lgen@armlab.cs.princeton.edu:cos217/" . "assignment6/")
  ("/ssh:lgen@armlab.cs.princeton.edu:" . "cos217/")
- ("/home/lg08/" . "Documents/")
  ("/home/lg08/Documents/Princeton/" . "second_year/")
  ("/home/lg08/Documents/" . "Princeton/")
 )
 
 ;; ----- ido-work-directory-list -----
 (
- "/home/lg08/Documents/Princeton/second_year/cos326/"
- "/home/lg08/Documents/Princeton/second_year/"
+ "/usr/share/xsessions/"
+ "/home/lg08/.emacs.d/straight/"
+ "/home/lg08/.emacs.d/lisp/"
  "/home/lg08/Documents/Princeton/second_year/phi203/"
- "/ssh:lgen@armlab.cs.princeton.edu:/u/lgen/cos217/assignment5/"
- "/ssh:lgen@armlab.cs.princeton.edu:"
+ "/home/lg08/Documents/Princeton/second_year/cos326/"
+ "/home/lg08/Documents/"
+ "/home/lg08/Downloads/"
+ "/home/lg08/Documents/Princeton/second_year/"
+ "/ssh:lgen@armlab.cs.princeton.edu:/u/lgen/cos217/assignment6/final/"
  "/ssh:lgen@armlab.cs.princeton.edu:/u/lgen/cos217/assignment6/"
  "/ssh:lgen@armlab.cs.princeton.edu:cos217/assignment6/"
+ "/ssh:lgen@"
 )
 
 ;; ----- ido-work-file-list -----
 (
+ "my-skeletons.el"
+ "my-packages.el"
+ "paper3.org"
+ "paper3notes.org"
  "finalnotes.org"
- "cos217finalnotes.org"
  "finalpaper.org"
- "bigintaddflat.c"
- "bigintaddopt.s"
- "armlabsizes.c"
- "miniassembler.c"
- "createdataA.c"
- "miniassembler.h"
+ "finalpaper.pdf"
+ "cos217finalnotes.org"
+ "readme"
 )
 
 ;; ----- ido-dir-file-cache -----
 (
- ("/home/lg08/" (24541 12793 228544 154000) ".pki/" ".local/" ".gphoto/" ".swn" "Templates/" ".gconf/" ".profile" ".vscode/" ".swp" "./" ".bash_logout" ".texlive2020/" ".pipewire-media-session/" ".ssh/" "Videos/" ".wakatime.db" ".cache/" ".mozilla/" "temp.c" ".bash_history" "../" "Documents/" "Pictures/" ".opam/" ".icons/" "snap/" ".sudo_as_admin_successful" ".emacs.d/" "Desktop/" "Music/" ".themes/" ".config/" ".swo" ".gnupg/" ".pam_environment" ".java/" ".bashrc" "Downloads/" "Public/" ".viminfo" ".wakatime.log")
+ ("/usr/share/xsessions/" (24542 31197 921874 61000) "gnome-classic.desktop" "./" "emacs.desktop" "pop.desktop" "../")
 
- ("/home/lg08/Documents/Princeton/second_year/cos326/" (24541 11031 477799 610000) "./" "../" "a7/" "finalnotes.org")
+ ("/home/lg08/" (24542 32648 328907 503000) "Templates/" ".pipewire-media-session/" "Music/" "snap/" ".viminfo" ".nvidia-settings-rc" "Desktop/" ".profile" ".pki/" "Documents/" ".wakatime.log" "Public/" "Videos/" ".gnome/" ".gnupg/" ".nv/" ".texlive2020/" "./" ".swp" ".bash_history" ".wakatime.db" ".icons/" ".pulse-cookie" ".local/" ".git-credentials" ".zoom/" ".opam/" ".gconf/" ".bashrc~" "Steam/" ".atom/" ".swn" ".ssh/" ".vimrc" ".gitconfig" ".bash_logout" "Pictures/" ".pam_environment" ".swo" ".sudo_as_admin_successful" ".config/" "Downloads/" ".steampath" ".steampid" ".bashrc" ".cache/" ".swm" ".emacs.d/" ".steam/" ".mozilla/" "../" ".themes/")
 
- ("/home/lg08/Documents/Princeton/second_year/phi203/" (24527 60515 254154 553000) "paper3notes.org" "./" "paper3.org" "../" "paper3.tex" "paper3.html" "#paper3.html#" "paper3.pdf")
+ ("/home/lg08/.emacs.d/lisp/" (24542 32513 635497 449000) "splash-screen.el" "./" "my-functions.el" "my-packages.el" "my-settings.el" "my-testing-stuff.el" "my-skeletons.el" "../" "my-keybinds.el" "my-modes.el")
 
- ("/home/lg08/Documents/Princeton/second_year/" (24538 47519 774383 548000) "cos326/" "./" "phi203/" "../" "cos217finalnotes.org")
+ ("/home/lg08/.emacs.d/straight/" (24542 28583 412859 89000) "build/" "build-cache.el" "./" "repos/" "../")
 
- ("/home/lg08/.emacs.d/" (24538 58766 104032 128000) "amx-items" "init.el" "./" "lisp/" "README.org" "misc/" "themes/" ".git/" "README.el" "tramp" "../" "early-init.el" "ido.last" "snippets/" "auto-save-list/" "recentf" "straight/" ".gitignore")
+ ("/home/lg08/.emacs.d/" (24542 28715 906134 847000) "straight/" "README.org" ".git/" "misc/" "amx-items" "misc.mc-lists.el" "lisp/" ".gitignore" "./" "README.el" "eshell/" "ido.last" "tramp" "themes/" "session.10a7b99a50b893f65e16082612259185500000023340096" "early-init.el" "init.el" "../")
 
- ("/home/" (24527 2745 828508 698000) "jenkins/" "./" "lg08/" "../")
+ ("/home/lg08/Downloads/" (24542 28664 353655 332000) "createB.c" "precept11.zip" "precept11/" "Computer Systems A Programmers Perspective by Bryant, WALDRON (z-lib.org).pdf" "./" "consult-main.zip" "query.ml" "NVIDIA-Linux-x86_64-450.66.run" "a7/" "README.txt" "test.org" "The Norton Introduction to Philosophy by Gideon Rosen Alex Byrne Joshua Cohen Elizabeth Harman Seana Shiffrin (z-lib.org).pdf" "../" "consult-main/")
 
- ("/home/lg08/.emacs.d/lisp/" (24536 51135 854888 549000) "my-modes.el" "my-functions.el" "./" "my-skeletons.el" "my-keybinds.el" "../" "my-testing-stuff.el" "my-settings.el" "my-packages.el")
+ ("/home/lg08/Downloads/consult-main/" (24542 28664 353655 332000) "./" "../" "consult-main/")
 
- ("/home/lg08/Documents/Princeton/" (24527 56197 797353 870000) "second_year/" "./" "../" "course_planner.org")
+ ("/home/lg08/Documents/Princeton/second_year/phi203/" (24540 47657 220789 697000) "paper3notes.org" "paper3.html" "finalpaper.org" "paper3.org" "#paper3.html#" "./" "paper3.tex" "finalpaper.pdf" "finalpaper.tex~" "finalpaper.html" "finalpaper.tex" "paper3.pdf" "../")
 
- ("/home/lg08/Documents/" (24527 64181 755085 308000) "projects/" "./" "resume/" "../" "Princeton/" "notes/")
+ ("/home/lg08/Documents/Princeton/second_year/cos326/" (24528 64976 738887 946000) "./" "a7/" "../")
+
+ ("/home/lg08/Documents/Princeton/second_year/" (24538 13618 896846 163000) "cos217finalnotes.org" "./" "cos326/" "phi203/" "../")
+
+ ("/home/lg08/Documents/Princeton/" (24526 42713 125356 515000) "./" "second_year/" "course_planner.org" "../")
+
+ ("/home/lg08/Documents/" (24529 22993 128809 277000) "./" "resume/" "projects/" "Princeton/" "notes/" "../")
+
+ ("/home/" (24525 56621 542971 716000) "./" "lg08/" "jenkins/" "../")
 )
 
 ;; ----- ido-unc-hosts-cache -----
