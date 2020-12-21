@@ -1,11 +1,11 @@
 ;; loads all custom functions
 
 
-(defun my/minibuffer-setup-hook ()
-  (setq gc-cons-threshold most-positive-fixnum))
+;; (defun my/minibuffer-setup-hook ()
+;;   (setq gc-cons-threshold most-positive-fixnum))
 
-(defun my/minibuffer-exit-hook ()
-  (setq gc-cons-threshold 800000))
+;; (defun my/minibuffer-exit-hook ()
+;;   (setq gc-cons-threshold 800000))
 
 (defun my/select-current-line-and-forward-line (arg)
   "Select the current line and move the cursor by ARG lines IF
@@ -192,46 +192,6 @@ Version 2018-09-10"
      (concat "gnome-terminal –working-directory=" workdir) nil 0)))
 
 
-(defun insert-comment-with-description (comment-syntax comment)
-  "Inserts a comment with '―' (Unicode character: U+2015) on each side."
-  (let* ((comment-length (length comment))
-         (current-column-pos (current-column))
-         (space-on-each-side (/ (- fill-column
-                                   current-column-pos
-                                   comment-length
-                                   (length comment-syntax)
-                                   ;; Single space on each side of comment
-                                   (if (> comment-length 0) 2 0)
-                                   ;; Single space after comment syntax sting
-                                   1)
-                                2)))
-    (if (< space-on-each-side 2)
-        (message "Comment string is too big to fit in one line")
-      (progn
-        (insert comment-syntax)
-        (insert " ")
-        (dotimes (_ space-on-each-side) (insert "―"))
-        (when (> comment-length 0) (insert " "))
-        (insert comment)
-        (when (> comment-length 0) (insert " "))
-        (dotimes (_ (if (= (% comment-length 2) 0)
-                        space-on-each-side
-                      (- space-on-each-side 1)))
-          (insert "―"))))))
-
-
-;; calles the pulse thing whenever we are scrolling,
-;; helps keep track of where we're at
-(defun pulse-line (&rest _)
-  "Pulse the current line."
-  (pulse-momentary-highlight-one-line (point)))
-(dolist (command '(scroll-up-command scroll-down-command
-				     recenter-top-bottom other-window))
-  (advice-add command :after #'pulse-line))
-
-
-
-
 (defun crux-smart-open-line-above ()
   "Insert an empty line above the current line.
 Position the cursor at its beginning, according to the current mode."
@@ -295,31 +255,6 @@ transpositions to execute in sequence."
 Repeated invocations toggle between the two most recently open buffers."
   (interactive)
   (switch-to-buffer (other-buffer (current-buffer) 1)))
-
-;; join line to next one
-(defun my/join-line-next
-    ()
-  (interactive)
-  (join-line -1)
-  )
-
-
-;; from here: http://pragmaticemacs.com/emacs/comment-boxes/
-(defun bjm-comment-box (b e)
-  "Draw a box comment around the region but arrange for the region to extend to at least the fill column. Place the point after the comment box."
-
-  (interactive "r")
-
-  (let ((e (copy-marker e t)))
-    (goto-char b)
-    (end-of-line)
-    (insert-char ?  (- fill-column (current-column)))
-    (comment-box b e 1)
-    (goto-char e)
-    (set-marker e nil)))
-
-(global-set-key (kbd "C-c b b") 'bjm-comment-box)
-
 
 (defun my/revert-other-buffer ()
   (interactive)

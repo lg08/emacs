@@ -1,13 +1,13 @@
 
 ;; ----- amx-history -----
 (
- multi-term
- evil-set-marker
- load-theme
- set-background-color
- set-variable
- count-words
- flyspell-mode
+ org-mode
+ c-mode
+ org-self-insert-command
+ eshell
+ fundamental-mode
+ eshell-mode
+ ansi-term
 )
 
 ;; ----- amx-data -----
@@ -26,7 +26,7 @@
  (eval-buffer . 3)
  (tramp-cleanup-all-connections . 1)
  (battery . 2)
- (untabify . 8)
+ (untabify . 5)
  (ediff . 2)
  (diff . 1)
  (ido-grid-enable . 10)
@@ -37,24 +37,10 @@
  (column-number-mode . 1)
  (goto-char . 1)
  (eshell . 2)
- (multi-term . 2)
+ (multi-term . 1)
  (ansi-term . 1)
  (eshell-mode . 2)
  (fundamental-mode . 1)
  (org-self-insert-command . 1)
- (org-mode . 4)
- (text-mode . 1)
- (tab-bar-mode . 1)
- (newline . 1)
- (my/revert-other-buffer . 5)
- (flycheck-mode . 2)
- (company-mode . 1)
- (count-words . 9)
- (ispell . 1)
- (writeroom-mode . 2)
- (flyspell-mode . 1)
- (load-theme . 4)
- (set-variable . 1)
- (set-background-color . 1)
- (evil-set-marker . 2)
+ (org-mode . 3)
 )

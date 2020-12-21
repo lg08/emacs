@@ -18,10 +18,10 @@
   (ivy-mode)
   :defer t
   :config
-  (setq ivy-use-virtual-buffers t	;    Add recent files and bookmarks to the ivy-switch-buffer
-        ivy-count-format "%d/%d ")	;    Displays the current and total number in the collection in the prompt
+  (setq ivy-use-virtual-buffers t       ;    Add recent files and bookmarks to the ivy-switch-buffer
+        ivy-count-format "%d/%d ")      ;    Displays the current and total number in the collection in the prompt
 
-  (add-to-list				;should make find-file and stuff sort by date
+  (add-to-list                          ;should make find-file and stuff sort by date
    'ivy-sort-matches-functions-alist
    '(read-file-name-internal . ivy--sort-files-by-date))
 
@@ -105,7 +105,7 @@
 ;; below, all are deferred for one second ----------------------------------------------------------
 
 
-(use-package feebleline			;basically gets rid of modeline
+(use-package feebleline                 ;basically gets rid of modeline
   :init
   :defer 0
   :config
@@ -148,14 +148,14 @@ pressed twice.
 
     (interactive "P")
     (setq key-chord-mode (if arg
-			     (> (prefix-numeric-value arg) 0)
-			   (not key-chord-mode)))
+                             (> (prefix-numeric-value arg) 0)
+                           (not key-chord-mode)))
     (cond (key-chord-mode
-	   (setq input-method-function 'key-chord-input-method)
-	   )
-	  (t
-	   (setq input-method-function nil)
-	   )))
+           (setq input-method-function 'key-chord-input-method)
+           )
+          (t
+           (setq input-method-function nil)
+           )))
   (key-chord-mode 1)
   (key-chord-define-global "ji" 'evil-normal-state)
   (key-chord-define-global "jn" 'set-mark-command)
@@ -180,7 +180,7 @@ pressed twice.
   ;; (doom-themes-org-config)
   (doom-themes-visual-bell-config)
   (setq doom-themes-enable-bold t
-	doom-themes-enable-italic t)
+        doom-themes-enable-italic t)
   )
 
 ;; (use-package doom-modeline
@@ -208,7 +208,7 @@ pressed twice.
               (set-fill-column 72)))
   )
 
-(use-package magit-todos		;really cool, shows todos in magit buffer
+(use-package magit-todos                ;really cool, shows todos in magit buffer
   :defer t
   :requires (magit)
   ;; :hook (magit-mode . magit-todos-mode)
@@ -245,7 +245,7 @@ pressed twice.
   :defer t
   :init
   (setq company-backends '((company-files company-keywords company-capf company-dabbrev-code company-etags company-dabbrev company-cmake ;; company-clang
-					  )))
+                                          )))
   :config
   (setq company-tooltip-limit 20)                      ; bigger popup window
   (setq company-tooltip-align-annotations 't)          ; align annotations to the right tooltip border
@@ -574,14 +574,14 @@ pressed twice.
 
   )
 
-(use-package transient			;used for a bunch of things, just want to keep it's folder out of the home directory
+(use-package transient                  ;used for a bunch of things, just want to keep it's folder out of the home directory
   :defer t
   :config
   :init
   (setq transient-history-file (expand-file-name "history.el" gemacs-misc-dir))
   )
 
-(use-package url			;used by other stuff, just need to customize a variable
+(use-package url                        ;used by other stuff, just need to customize a variable
   :init
   (setq url-configuration-directory (expand-file-name "url" gemacs-misc-dir))
   :defer t
@@ -589,7 +589,7 @@ pressed twice.
 
   )
 
-(use-package multi-term			;pretty good terminal thing
+(use-package multi-term                 ;pretty good terminal thing
   :init
   :defer t
   :config
@@ -689,6 +689,13 @@ pressed twice.
   :config
   (move-text-default-bindings)
   )
+
+(use-package gcmh
+  :defer t
+  :config
+
+  )
+
 
 
 (provide 'my-packages)
