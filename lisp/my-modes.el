@@ -9,12 +9,14 @@
                             (global-undo-tree-mode 1)
                             (highlight-thing-mode)
                             (volatile-highlights-mode)
-                            (aggressive-indent-mode 1)
+                            ;; (aggressive-indent-mode 1)
                             ;; (global-git-gutter-mode)
                             ;; (global-flycheck-mode 1)
-                            (highlight-indent-guides-mode)
+                            ;; (highlight-indent-guides-mode)
                             (global-highlight-parentheses-mode)
                             (wakatime-mode)
+                            (indent-guide-mode 1)
+                            (electric-pair-mode 1)
                             ))
 
 (add-hook 'dired-mode-hook (lambda ()
@@ -29,7 +31,7 @@
                            (web-mode-set-engine "django")
                            (electric-pair-mode -1)
                            (rainbow-mode 1)
-                           (smartparens-mode -1)
+                           (display-line-numbers-mode -1)
                            ))
 
 (add-hook 'magit-mode-hook (lambda ()
@@ -42,6 +44,7 @@
                               (setq elpy-rpc-python-command "python3") ;only if you're using python3
                               (add-to-list (make-local-variable 'company-backends)
                                            'company-anaconda)
+                              (aggressive-indent-mode -1)
                               ))
 (add-hook 'org-mode-hook (lambda ()
                            (org-indent-mode)
@@ -77,6 +80,14 @@
 (add-hook 'eshell-mode-hook (lambda ()
                               (company-mode -1)
                               ))
+
+(add-hook 'dired-sidebar-mode (lambda () (toggle-truncate-lines)))
+
+(defun sidebarbaby ()
+  (interactive)
+  (toggle-truncate-lines)
+  )
+
 
 
 (defun clojure-leave-clojure-mode-function ()

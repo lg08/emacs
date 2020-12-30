@@ -1,11 +1,11 @@
 ;; loads all custom functions
 
 
-;; (defun my/minibuffer-setup-hook ()
-;;   (setq gc-cons-threshold most-positive-fixnum))
+(defun my/minibuffer-setup-hook ()
+  (setq gc-cons-threshold most-positive-fixnum))
 
-;; (defun my/minibuffer-exit-hook ()
-;;   (setq gc-cons-threshold 800000))
+(defun my/minibuffer-exit-hook ()
+  (setq gc-cons-threshold 800000))
 
 (defun my/select-current-line-and-forward-line (arg)
   "Select the current line and move the cursor by ARG lines IF
@@ -17,14 +17,6 @@ the cursor by ARG lines."
     (forward-line 0)
     (set-mark-command nil))
   (forward-line arg))
-
-;; (defun my/modalka-normal-mode ()
-;;   "turns on modalka normal mode and changes cursor type"
-;;   (interactive)
-;;   (setq modalka-mode 1)
-;;   ;; (set-face-background 'mode-line "#333")
-;;   (setq cursor-type 'box)
-;;   )
 
 (defun my/where-am-i ()
   "An interactive function showing function `buffer-file-name' or `buffer-name'."

@@ -3,9 +3,8 @@
 ;; just necessary for our scroll-down function
 (autoload 'View-scroll-half-page-forward "view") (autoload 'View-scroll-half-page-backward "view")
 
-
 (general-define-key
- "M-y" 'yank-pop
+ "M-y" 'counsel-yank-pop
  "M-x" 'execute-extended-command
  "M-<down>" 'move-text-down
  "M-<up>" 'move-text-up
@@ -83,13 +82,18 @@
  "C-c p" 'projectile-command-map
  )
 
+(defun completatpoint ()
+  (interactive)
+  (ivy-alt-done t)
+  )
+
 (general-define-key
  :keymaps 'ivy-minibuffer-map
  "C-j" 'ivy-next-line
  "C-k" 'ivy-previous-line
  "C-h" "DEL"
- "C-l" 'ivy-alt-done
- "C-<return>" 'ivy-alt-done
+ "C-l" 'completatpoint
+ "C-<return>" 'completatpoint
  )
 
 (general-define-key
@@ -123,6 +127,10 @@
 
 ;; evil key-bindings
 (evil-define-key 'normal 'global (kbd "q") 'end-of-line)
+(evil-define-key 'normal 'global (kbd "M-h") 'windmove-left)
+(evil-define-key 'normal 'global (kbd "M-l") 'windmove-right)
+(evil-define-key 'normal 'global (kbd "M-k") 'windmove-up)
+(evil-define-key 'normal 'global (kbd "M-j") 'windmove-down)
 (evil-define-key 'normal org-mode-map (kbd "C-c b r") 'my/revert-other-buffer)
 
 (evil-define-key 'normal org-mode-map (kbd "SPC a o") 'begin/end_org)
@@ -140,6 +148,13 @@
   ;; :prefix my-local-leader
   :prefix "SPC m")
 
+(defun toggle-dired-sidebar-and-truncate-lines ()
+  "truncates sidebar lines"
+  (interactive)
+  (dired-sidebar-toggle-sidebar)
+  (toggle-truncate-lines)
+  )
+
 ;; to prevent your leader keybindings from ever being overridden (e.g. an evil
 ;; package may bind "SPC"), use :keymaps 'override
 (my-leader-def
@@ -147,6 +162,7 @@
   :keymaps 'override
   "f f" 'counsel-find-file
   "f b" 'bookmark-jump
+  ;; "p" 'projectile-command-map
   "p p" 'projectile-switch-project
   "p f" 'projectile-find-file
   "p s g" 'projectile-grep
@@ -164,7 +180,8 @@
   ;; "SPC" 'execute-extended-command
   "w n" 'eyebrowse-next-window-config
   "w p" 'eyebrowse-prev-window-config
-  "d d" 'dired-sidebar-toggle-sidebar
+  "d d" 'toggle-dired-sidebar-and-truncate-lines
+  ;; "d d" 'treemacs
   "w w" 'avy-kill-region
   "k" 'kill-buffer
   "e b" 'eval-buffer

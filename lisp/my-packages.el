@@ -107,9 +107,9 @@
 
 (use-package feebleline                 ;basically gets rid of modeline
   :init
-  :defer 0
+  :defer t
   :config
-  (feebleline-mode t)
+  ;; (feebleline-mode t)
 
   )
 
@@ -183,10 +183,12 @@ pressed twice.
         doom-themes-enable-italic t)
   )
 
-;; (use-package doom-modeline
-;;   :config
-;;   (doom-modeline-mode)
-;;   )
+(use-package doom-modeline
+  :init
+  (doom-modeline-mode 1)
+  :config
+  (doom-modeline-mode)
+  )
 
 
 (use-package git-gutter
@@ -199,9 +201,8 @@ pressed twice.
   :defer t
   :config
   (add-hook 'magit-mode-hook (lambda () (evil-magit-init)))
-  ;; (add-hook 'git-commit-mode-hook (lambda () (modalka-mode -1)))
   (add-to-list 'magit-no-confirm 'stage-all-changes)
-
+  (remove-hook 'server-switch-hook 'magit-commit-diff)
 
   (add-hook 'git-commit-mode-hook
             (lambda ()
@@ -211,7 +212,7 @@ pressed twice.
 (use-package magit-todos                ;really cool, shows todos in magit buffer
   :defer t
   :requires (magit)
-  ;; :hook (magit-mode . magit-todos-mode)
+  :hook (magit-mode . magit-todos-mode)
   :custom
   (magit-todos-exclude-globs '("**/node_modules/**"))
   :init
@@ -286,7 +287,20 @@ pressed twice.
 
 (use-package dired-sidebar              ;helpful dired-based popup sidebar
   :defer t
+  :init
+    (add-hook 'dired-sidebar-mode-hook
+            (lambda ()
+              (unless (file-remote-p default-directory)
+                (auto-revert-mode)
+                )
+              (toggle-truncate-lines)
+              ))
   :config
+  (push 'toggle-window-split dired-sidebar-toggle-hidden-commands)
+  (push 'rotate-windows dired-sidebar-toggle-hidden-commands)
+
+  (setq dired-sidebar-use-term-integration t)
+  (setq dired-sidebar-use-custom-font t)
   )
 
 (use-package multiple-cursors           ;allows editing for multiple cursors
@@ -507,8 +521,8 @@ pressed twice.
           ("Tasks.org" :maxlevel . 1)))
   )
 
-  ;; Save Org buffers after refiling!
-  (advice-add 'org-refile :after 'org-save-all-org-buffers)
+;; Save Org buffers after refiling!
+(advice-add 'org-refile :after 'org-save-all-org-buffers)
 
 (use-package poporg
   :init
@@ -532,7 +546,8 @@ pressed twice.
 (use-package indent-guide               ;another useful indent-guide package
   :defer t
   :config
-
+  ;; (setq indent-guide-recursive t)
+  (setq indent-guide-delay 0.1)
   )
 
 (use-package company-c-headers          ;supposed to show c headers
@@ -645,18 +660,18 @@ pressed twice.
   )
 
 
-  (use-package evil-magit
-    :defer t
-    :config
+(use-package evil-magit
+  :defer t
+  :config
 
-    )
+  )
 
-  ;; link here: https://github.com/emacs-evil/evil-surround
-  (use-package evil-surround
-    :ensure t
-    :config
-    (global-evil-surround-mode 1)
-    )
+;; link here: https://github.com/emacs-evil/evil-surround
+(use-package evil-surround
+  :ensure t
+  :config
+  (global-evil-surround-mode 1)
+  )
 
 ;; Or if you use use-package
 (use-package dashboard
@@ -691,11 +706,111 @@ pressed twice.
   )
 
 (use-package gcmh
+  :init
+  (gcmh-mode 1)
   :defer t
   :config
 
   )
 
+(use-package treemacs
+  :ensure t
+  :defer t
+  :init
+  (with-eval-after-load 'winum
+    (define-key winum-keymap (kbd "M-0") #'treemacs-select-window))
+  :config
+  (progn
+    (setq treemacs-collapse-dirs                 (if treemacs-python-executable 3 0)
+          treemacs-deferred-git-apply-delay      0.5
+          treemacs-directory-name-transformer    #'identity
+          treemacs-display-in-side-window        t
+          treemacs-eldoc-display                 t
+          treemacs-file-event-delay              5000
+          treemacs-file-extension-regex          treemacs-last-period-regex-value
+          treemacs-file-follow-delay             0.2
+          treemacs-file-name-transformer         #'identity
+          treemacs-follow-after-init             t
+          treemacs-git-command-pipe              ""
+          treemacs-goto-tag-strategy             'refetch-index
+          treemacs-indentation                   2
+          treemacs-indentation-string            " "
+          treemacs-is-never-other-window         nil
+          treemacs-max-git-entries               5000
+          treemacs-missing-project-action        'ask
+          treemacs-move-forward-on-expand        nil
+          treemacs-no-png-images                 nil
+          treemacs-no-delete-other-windows       t
+          treemacs-project-follow-cleanup        nil
+          treemacs-persist-file                  (expand-file-name ".cache/treemacs-persist" user-emacs-directory)
+          treemacs-position                      'left
+          treemacs-read-string-input             'from-child-frame
+          treemacs-recenter-distance             0.1
+          treemacs-recenter-after-file-follow    nil
+          treemacs-recenter-after-tag-follow     nil
+          treemacs-recenter-after-project-jump   'always
+          treemacs-recenter-after-project-expand 'on-distance
+          treemacs-show-cursor                   nil
+          treemacs-show-hidden-files             t
+          treemacs-silent-filewatch              nil
+          treemacs-silent-refresh                nil
+          treemacs-sorting                       'alphabetic-asc
+          treemacs-space-between-root-nodes      t
+          treemacs-tag-follow-cleanup            t
+          treemacs-tag-follow-delay              1.5
+          treemacs-user-mode-line-format         nil
+          treemacs-user-header-line-format       nil
+          treemacs-width                         35
+          treemacs-workspace-switch-cleanup      nil)
 
+    ;; The default width and height of the icons is 22 pixels. If you are
+    ;; using a Hi-DPI display, uncomment this to double the icon size.
+    ;;(treemacs-resize-icons 44)
+
+    (treemacs-follow-mode t)
+    (treemacs-filewatch-mode t)
+    (treemacs-fringe-indicator-mode 'always)
+    (pcase (cons (not (null (executable-find "git")))
+                 (not (null treemacs-python-executable)))
+      (`(t . t)
+       (treemacs-git-mode 'deferred))
+      (`(t . _)
+       (treemacs-git-mode 'simple))))
+  :bind
+  (:map global-map
+        ("M-0"       . treemacs-select-window)
+        ("C-x t 1"   . treemacs-delete-other-windows)
+        ("C-x t t"   . treemacs)
+        ("C-x t B"   . treemacs-bookmark)
+        ("C-x t C-t" . treemacs-find-file)
+        ("C-x t M-t" . treemacs-find-tag)))
+
+(use-package treemacs-evil
+  :after treemacs evil
+  :ensure t)
+
+(use-package treemacs-projectile
+  :after treemacs projectile
+  :ensure t)
+
+(use-package treemacs-icons-dired
+  :after treemacs dired
+  :ensure t
+  :config (treemacs-icons-dired-mode))
+
+(use-package treemacs-magit
+  :after treemacs magit
+  :ensure t)
+
+(use-package treemacs-persp ;;treemacs-persective if you use perspective.el vs. persp-mode
+  :after treemacs persp-mode ;;or perspective vs. persp-mode
+  :ensure t
+  :config (treemacs-set-scope-type 'Perspectives))
+
+(use-package nyan-mode
+  :defer t
+  :config
+
+  )
 
 (provide 'my-packages)
