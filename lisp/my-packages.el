@@ -255,7 +255,7 @@ pressed twice.
   (setq company-begin-commands '(self-insert-command)) ; start autocompletion only after typing
 
   ;; provides almost instant autocompletion
-  (setq company-idle-delay .05)
+  (setq company-idle-delay .5)
   ;;  ;; Search other buffers for compleition candidates
   (setq company-dabbrev-other-buffers t)
   (setq company-dabbrev-code-other-buffers t)
@@ -404,16 +404,16 @@ pressed twice.
 
   )
 
-;; (use-package yasnippet                  ;abbreviation package
-;;   :defer t
-;;   :config
-;;   ;; check out here for full list: http://andreacrotti.github.io/yasnippet-snippets/snippets.html
-;;   (use-package yasnippet-snippets       ;bunch of common snippets
-;;     :defer t
-;;     :config
+(use-package yasnippet                  ;abbreviation package
+  :defer t
+  :config
+  ;; check out here for full list: http://andreacrotti.github.io/yasnippet-snippets/snippets.html
+  (use-package yasnippet-snippets       ;bunch of common snippets
+    :defer t
+    :config
 
-;;     )
-;;   )
+    )
+  )
 
 (use-package tuareg                     ;major mode for oCaml editing
   :defer t
@@ -642,12 +642,6 @@ pressed twice.
 
   )
 
-(use-package ctrlf
-  :defer t
-  :config
-  (setq ctrlf-highlight-current-line 1)
-  )
-
 (use-package evil
   :init
   (evil-mode 1)
@@ -712,6 +706,12 @@ pressed twice.
   (emms-all)
   (emms-default-players)
   (setq emms-source-file-default-directory "~/Videos/") ;; Change to your music folder
+  :config
+
+  )
+
+(use-package evil-matchit
+  :defer t
   :config
 
   )

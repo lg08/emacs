@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: ifer
+# key: ifer
+# --
+ifer ${1:thiser}:
+     ${2:thater}
+     $0

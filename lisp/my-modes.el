@@ -1,6 +1,5 @@
 ;; sets up all the settings for different modes
 
-
 ;; all the shit I always want while coding
 (add-hook 'prog-mode-hook (lambda ()
                             (global-company-mode 1)
@@ -17,6 +16,8 @@
                             (wakatime-mode)
                             (indent-guide-mode 1)
                             (electric-pair-mode 1)
+                            (global-evil-matchit-mode 1)
+                            (yas-global-mode 1)
                             ))
 
 (add-hook 'dired-mode-hook (lambda ()
