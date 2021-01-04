@@ -41,7 +41,7 @@
 (setq custom-safe-themes t)
 
 
-(load-theme 'nord)
+;; (load-theme 'nord)
 
 ;; bootstraps straight
 (defvar bootstrap-version)
@@ -66,7 +66,7 @@
 (message "Loading Gemacs' configurations...")
 
 ;; requires all necessary files
-(require 'my-functions)
+;; (require 'my-functions)
 
 (require 'my-settings)
 
@@ -80,6 +80,7 @@
 
 (require 'my-testing-stuff)
 
+(load-theme 'nord)
 ;; startup message
 (setq startup-message
       (format "Welcome back old friend. Emacs ready in %.2f seconds with %d garbage collections."

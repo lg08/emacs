@@ -1,3 +1,4 @@
+
 ;; GLOBAL KEYS-----------------------------------------------------------------
 
 ;; just necessary for our scroll-down function
@@ -175,6 +176,9 @@
   "o e" 'my/open-buffer-path-in-explorer
   "o t" 'my/open-terminal-in-workdir
   )
+
+
+
 
 
 (provide 'my-keybinds)

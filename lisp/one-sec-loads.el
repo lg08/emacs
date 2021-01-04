@@ -296,6 +296,7 @@ pressed twice.
               (set-fill-column 72)))
   )
 
-
+;; ---------------------------------------------------------------
+(require 'my-functions)
 
 (provide 'one-sec-loads)
