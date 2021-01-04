@@ -2,16 +2,12 @@
 
 ;; all the shit I always want while coding
 (add-hook 'prog-mode-hook (lambda ()
+                            (require 'prog-mode-loads)
                             (global-company-mode 1)
                             (rainbow-delimiters-mode 1)
-                            ;; (global-color-identifiers-mode 1)
                             (global-undo-tree-mode 1)
                             (highlight-thing-mode)
                             (volatile-highlights-mode)
-                            ;; (aggressive-indent-mode 1)
-                            ;; (global-git-gutter-mode)
-                            ;; (global-flycheck-mode 1)
-                            ;; (highlight-indent-guides-mode)
                             (global-highlight-parentheses-mode)
                             (wakatime-mode)
                             (indent-guide-mode 1)
@@ -21,13 +17,16 @@
                             ))
 
 (add-hook 'dired-mode-hook (lambda ()
+                             (require 'dired-mode-loads)
                              (put 'dired-find-alternate-file 'disabled nil) ;disables the warning
                              (dired-hide-details-mode 1)
                              (setq dired-dwim-target t)
                              (all-the-icons-dired-mode)
                              ))
 
+(add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
 (add-hook 'web-mode-hook (lambda ()
+                           (require 'html-mode-loads)
                            (emmet-mode)
                            (web-mode-set-engine "django")
                            (electric-pair-mode -1)
@@ -36,11 +35,12 @@
                            ))
 
 (add-hook 'magit-mode-hook (lambda ()
-                             ;; (global-git-gutter-mode)
-                             ;; (add-hook 'magit-popup-hook ' (lambda () (modalka-mode -1)))
+                             (require 'magit-mode-loads)
                              (magit-todos-mode)
+                             (evil-magit-init)
                              ))
 (add-hook 'python-mode-hook (lambda ()
+                              (require 'python-mode-loads)
                               (elpy-enable)
                               (setq elpy-rpc-python-command "python3") ;only if you're using python3
                               (add-to-list (make-local-variable 'company-backends)
@@ -48,11 +48,13 @@
                               (aggressive-indent-mode -1)
                               ))
 (add-hook 'org-mode-hook (lambda ()
+                           (require 'org-mode-loads)
                            (org-indent-mode)
                            (org-bullets-mode)
                            (wakatime-mode)
                            ))
 (add-hook 'tuareg-mode-hook (lambda ()
+                              (require 'ocaml-mode-loads)
                               (merlin-mode 1)
                               (general-define-key
                                "C-c r" 'tuareg-eval-region
@@ -71,6 +73,7 @@
                               (prettify-symbols-mode 1)
                               ))
 (add-hook 'c-mode-hook (lambda ()
+                         (require 'c-mode-loads)
                          (setq fill-column 73)
                          (display-fill-column-indicator-mode)
                          (define-key (current-local-map) (kbd "C-M-h") 'c-mark-function)

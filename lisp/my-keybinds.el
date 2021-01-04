@@ -125,21 +125,6 @@
  )
 
 
-;; evil key-bindings
-(evil-define-key 'normal 'global (kbd "q") 'end-of-line)
-(evil-define-key 'normal 'global (kbd "M-h") 'windmove-left)
-(evil-define-key 'normal 'global (kbd "M-l") 'windmove-right)
-(evil-define-key 'normal 'global (kbd "M-k") 'windmove-up)
-(evil-define-key 'normal 'global (kbd "M-j") 'windmove-down)
-(evil-define-key 'normal org-mode-map (kbd "C-c b r") 'my/revert-other-buffer)
-(evil-define-key 'normal 'global (kbd "t") 'crux-smart-open-line-above)
-
-(evil-define-key 'normal org-mode-map (kbd "SPC a o") 'begin/end_org)
-(evil-define-key 'normal org-mode-map (kbd "u") 'undo-tree-undo)
-
-(evil-define-key '(normal insert) 'global (kbd "C-e") 'end-of-line)
-
-(evil-define-key '(normal insert) 'global (kbd "C-r") 'avy-goto-char)
 
 (general-create-definer my-leader-def
   ;; :prefix my-leader
@@ -175,7 +160,7 @@
   "2" 'split-window-below
   "3" 'split-window-right
   "0" 'delete-window
-  "b" 'ivy-switch-buffer
+  "b" 'switch-to-buffer
   "s s" 'my/ansi-term-toggle
   "SPC" 'counsel-M-x
   ;; "SPC" 'execute-extended-command

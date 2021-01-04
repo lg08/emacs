@@ -1,0 +1,67 @@
+;;; -*- coding: utf-8 -*-
+
+;; ----- ido-last-directory-list -----
+(
+ ("/home/lg08/Documents/projects/ubet/" . "ubet/")
+ ("/home/lg08/Documents/projects/" . "ubet/")
+ ("/ssh:lgen@armlab.cs.princeton.edu:/u/lgen/cos217/assignment6/" . "final/")
+ ("/home/lg08/" . ".emacs.d/")
+ ("/ssh:lgen@armlab.cs.princeton.edu:cos217/" . "assignment6/")
+ ("/ssh:lgen@armlab.cs.princeton.edu:" . "cos217/")
+ ("/home/lg08/Documents/Princeton/" . "second_year/")
+ ("/home/lg08/Documents/" . "projects/")
+)
+
+;; ----- ido-work-directory-list -----
+(
+ "/home/lg08/.emacs.d/"
+ "/home/lg08/Documents/projects/ubet/ubet/"
+ "/home/lg08/Documents/Princeton/second_year/"
+ "/ssh:lgen@armlab.cs.princeton.edu:/u/lgen/cos217/assignment6/final/"
+ "/ssh:lgen@armlab.cs.princeton.edu:/u/lgen/cos217/assignment6/"
+ "/ssh:lgen@armlab.cs.princeton.edu:cos217/assignment6/"
+ "/home/lg08/Downloads/"
+ "/ssh:lgen@"
+)
+
+;; ----- ido-work-file-list -----
+(
+ "init.el"
+ "views.py"
+ "cos217finalnotes.org"
+ "readme"
+ "backup_correct_output.out"
+ "miniassembler.c"
+ "createdataA.c"
+ "testminiassembler.c"
+ "createdataB.c"
+ "test.org"
+)
+
+;; ----- ido-dir-file-cache -----
+(
+ ("/home/lg08/.emacs.d/" (24543 52254 664870 977000) "straight/" "README.org" ".git/" "misc/" "amx-items" "misc.mc-lists.el" "lisp/" ".gitignore" "./" "README.el" "ido.last" "themes/" "snippets/" "early-init.el" "elpy/" "init.el" "../")
+
+ ("/home/lg08/" (24543 52255 517020 228000) "Templates/" ".pipewire-media-session/" "Music/" "snap/" ".dbus/" ".SpaceVim/" ".viminfo" ".nvidia-settings-rc" "Desktop/" ".profile" ".pki/" "Documents/" ".wakatime.log" "Public/" "Videos/" ".gnome/" ".vimrc_back" ".gnupg/" ".nv/" ".vim/" ".texlive2020/" "./" ".swp" ".bash_history" ".vscode/" ".wakatime.db" ".icons/" ".npm/" ".pulse-cookie" ".local/" ".SpaceVim.d/" ".git-credentials" ".zoom/" ".opam/" ".gconf/" ".bashrc~" "Steam/" ".atom/" ".swn" ".ssh/" ".gitconfig" ".bash_logout" "Pictures/" ".pam_environment" ".swo" ".sudo_as_admin_successful" ".config/" "Downloads/" ".steampath" ".steampid" ".bashrc" ".cache/" ".swm" ".doom.d/" ".emacs.d/" ".steam/" ".mozilla/" "../" ".themes/")
+
+ ("/home/lg08/Documents/projects/ubet/ubet/" (24543 51648 297909 890000) "wsgi.py" "settings.py" "./" "urls.py" "asgi.py" "__pycache__/" "views.py" "__init__.py" "../")
+
+ ("/home/lg08/Documents/projects/ubet/" (24542 59658 45429 698000) ".git/" "bets/" "db.sqlite3.orig" "requirements.txt" "./" "static/" "db.sqlite3" "templates/" "ubetenv/" "ubet/" "users/" "manage.py" "../")
+
+ ("/home/lg08/Documents/projects/" (24525 63989 10232 488000) "./" "ubet/" "copsaccountable/" "backupubet/" "../")
+
+ ("/home/lg08/Downloads/" (24543 6776 983663 998000) "createB.c" "precept11.zip" "precept11/" "UBet Wireframe.xd" "Screenshot from 2020-12-20 01-33-42.png" "Computer Systems A Programmers Perspective by Bryant, WALDRON (z-lib.org).pdf" "./" "consult-main.zip" "query.ml" "NVIDIA-Linux-x86_64-450.66.run" "a7/" "README.txt" "test.org" "The Norton Introduction to Philosophy by Gideon Rosen Alex Byrne Joshua Cohen Elizabeth Harman Seana Shiffrin (z-lib.org).pdf" "Screenshot from 2020-12-20 01-32-34.png" "../" "consult-main/")
+
+ ("/home/lg08/Documents/Princeton/second_year/" (24538 13618 896846 163000) "cos217finalnotes.org" "./" "cos326/" "phi203/" "../")
+
+ ("/home/lg08/Documents/Princeton/" (24526 42713 125356 515000) "./" "second_year/" "course_planner.org" "../")
+
+ ("/home/lg08/Documents/" (24529 22993 128809 277000) "./" "resume/" "projects/" "Princeton/" "notes/" "../")
+
+ ("/home/lg08/.emacs.d/lisp/" (24537 26465 41327 52000) "./" "my-functions.el" "my-packages.el" "my-settings.el" "my-testing-stuff.el" "my-skeletons.el" "../" "my-keybinds.el" "my-modes.el")
+
+ ("/home/" (24525 56621 542971 716000) "./" "lg08/" "jenkins/" "../")
+)
+
+;; ----- ido-unc-hosts-cache -----
+t

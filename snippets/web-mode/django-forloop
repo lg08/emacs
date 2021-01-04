@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: django_forloop
+# key: dfor
+# --
+{% for ${1:this} in ${2:that} %}
+$0
+{% endfor %}

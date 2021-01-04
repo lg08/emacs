@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: form
+# key: form
+# --
+<form method="$1" action="{% url '$2' %}">
+$0
+<button type="submit" class="btn">Submit</button>
+</form>

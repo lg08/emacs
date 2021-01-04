@@ -7,17 +7,6 @@
 (defun my/minibuffer-exit-hook ()
   (setq gc-cons-threshold 800000))
 
-(defun my/select-current-line-and-forward-line (arg)
-  "Select the current line and move the cursor by ARG lines IF
-no region is selected.
-If a region is already selected when calling this command, only move
-the cursor by ARG lines."
-  (interactive "p")
-  (when (not (use-region-p))
-    (forward-line 0)
-    (set-mark-command nil))
-  (forward-line arg))
-
 (defun my/where-am-i ()
   "An interactive function showing function `buffer-file-name' or `buffer-name'."
   (interactive)
@@ -74,81 +63,11 @@ the cursor by ARG lines."
           (if this-win-2nd (other-window 1))))))
 
 
-;; Toggle window dedication
-(defun toggle-window-dedicated ()
-  "Toggle whether the current active window is dedicated or not"
-  (interactive)
-  (message
-   (if (let ((window (get-buffer-window (current-buffer))))
-	 (set-window-dedicated-p window
-				 (not (window-dedicated-p window))))
-       "Window '%s' is dedicated"
-     "Window '%s' is normal")
-   (current-buffer)))
-
-(defun xah-cut-line-or-region ()
-  "Cut current line, or text selection.
-When `universal-argument' is called first, cut whole buffer (respects `narrow-to-region').
-
-URL `http://ergoemacs.org/emacs/emacs_copy_cut_current_line.html'
-Version 2015-06-10"
-  (interactive)
-  (if current-prefix-arg
-      (progn ; not using kill-region because we don't want to include previous kill
-        (kill-new (buffer-string))
-        (delete-region (point-min) (point-max)))
-    (progn (if (use-region-p)
-               (kill-region (region-beginning) (region-end) t)
-             (kill-region (line-beginning-position) (line-beginning-position 2))))))
-
-
-(defun xah-copy-line-or-region ()
-  "Copy current line, or text selection.
-When called repeatedly, append copy subsequent lines.
-When `universal-argument' is called first, copy whole buffer (respects `narrow-to-region').
-
-URL `http://ergoemacs.org/emacs/emacs_copy_cut_current_line.html'
-Version 2018-09-10"
-  (interactive)
-  (if current-prefix-arg
-      (progn
-        (copy-region-as-kill (point-min) (point-max)))
-    (if (use-region-p)
-        (progn
-          (copy-region-as-kill (region-beginning) (region-end)))
-      (if (eq last-command this-command)
-          (if (eobp)
-              (progn )
-            (progn
-              (kill-append "\n" nil)
-              (kill-append
-               (buffer-substring-no-properties (line-beginning-position) (line-end-position))
-               nil)
-              (progn
-                (end-of-line)
-                (forward-char))))
-        (if (eobp)
-            (if (eq (char-before) 10 )
-                (progn )
-              (progn
-                (copy-region-as-kill (line-beginning-position) (line-end-position))
-                (end-of-line)))
-          (progn
-            (copy-region-as-kill (line-beginning-position) (line-end-position))
-            (end-of-line)
-            (forward-char)))))))
-
-
 (defun my/edit-armlab-file ()
   "opens a file on the armlab cluster at princeton for editing"
   (interactive)
   (find-file "/ssh:lgen@armlab.cs.princeton.edu:")
   )
-
-;; kills all buffers
-(defun close-all-buffers ()
-(interactive)
-(mapc 'kill-buffer (buffer-list)))
 
 ;; opens the urrent buffer in the file explorer
 (defun my/open-buffer-path-in-explorer ()
