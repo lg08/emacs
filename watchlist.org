@@ -1,0 +1,33 @@
+* TV Shows
+** TODO Friends_Season_3
+*** [] friends.03.e24.mkv
+** TODO [2/9] The Office
+*** DONE [6/6] Season 1
+*** DONE [23/23] Season 2
+*** TODO [19/24] Season 3
+*** TODO [0/16] Season 4
+*** TODO [0/28] Season 5
+*** TODO [0/28] Season 6
+*** TODO [0/25] Season 7
+*** TODO [0/24] Season 8
+*** TODO [0/24] Season
+** TODO [10/12] Red Dwarf
+*** DONE [6/6] Season 1
+*** DONE [6/6] Season 2
+*** DONE [6/6] Season 3
+*** DONE [6/6] Season 4
+*** DONE [6/6] Season 5
+*** DONE [6/6] Season 6
+*** DONE [6/6] Season 7
+*** DONE [6/6] Season 8
+*** DONE [6/6] Season 9
+*** DONE [6/6] Season 10
+*** TODO [5/6] Season 11
+*** TODO [0/6] Season 12
+** TODO [2/4] Monty Python's Flying Circus [TIME: 120] ;; Time cookie (explained later)
+*** DONE [13/13] Season 1
+*** DONE [13/13] Season 2
+*** TODO [4/13] Season 3
+*** TODO [0/6] Season 4
+** DONE [26/26] Cowboy Bebop ;; For shows without seasons
+[[file:~/Downloads/Friends_Season_3/friends.s03.e24][friends.s3.e24]]

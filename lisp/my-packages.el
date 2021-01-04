@@ -671,13 +671,6 @@ pressed twice.
   (global-evil-surround-mode 1)
   )
 
-;; Or if you use use-package
-(use-package dashboard
-  :defer t
-  :ensure t
-  :config
-  (dashboard-setup-startup-hook))
-
 ;; A more complex, more lazy-loaded config
 (use-package solaire-mode
   :defer t
@@ -711,5 +704,17 @@ pressed twice.
   :config
   (nyan-mode 1)
   )
+
+(use-package emms
+  :defer t
+  :init
+  (require 'emms-setup)
+  (emms-all)
+  (emms-default-players)
+  (setq emms-source-file-default-directory "~/Videos/") ;; Change to your music folder
+  :config
+
+  )
+
 
 (provide 'my-packages)
