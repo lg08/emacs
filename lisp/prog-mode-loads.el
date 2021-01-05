@@ -1,5 +1,7 @@
 
 
+(require 'autocompletion)
+
 
 (use-package gcmh                       ;garbage management system
   :defer 1
@@ -172,43 +174,7 @@
 
   )
 
-;; With use-package:
-(use-package company-box
-  :defer t
-  :hook (company-mode . company-box-mode))
 
-(use-package company                    ;autocompletion system
-  :defer t
-  :init
-  (setq company-backends '((company-files company-keywords company-capf company-dabbrev-code company-etags company-dabbrev company-cmake ;; company-clang
-                                          )))
-  :config
-  (setq company-tooltip-limit 20)                      ; bigger popup window
-  (setq company-tooltip-align-annotations 't)          ; align annotations to the right tooltip border
-  (setq company-begin-commands '(self-insert-command)) ; start autocompletion only after typing
-
-  ;; provides almost instant autocompletion
-  (setq company-idle-delay .5)
-  ;;  ;; Search other buffers for compleition candidates
-  (setq company-dabbrev-other-buffers t)
-  (setq company-dabbrev-code-other-buffers t)
-
-  ;;  ;; Show candidates according to importance, then case, then in-buffer frequency
-  (setq company-transformers '(company-sort-by-backend-importance
-                               company-sort-prefer-same-case-prefix
-                               company-sort-by-occurrence))
-  ;;  ;; Even if I write something with the ‘wrong’ case,
-  ;;  ;; provide the ‘correct’ casing.
-  (setq company-dabbrev-ignore-case nil)
-  ;; :custom
-  (setq company-minimum-prefix-length 3)
-  )
-
-(use-package company-quickhelp
-  :defer t
-  :init
-  (company-quickhelp-mode 1)
-  )
 
 ;; link here: https://github.com/emacs-evil/evil-surround
 (use-package evil-surround
@@ -223,9 +189,6 @@
   :config
 
   )
-
-
-
 
 (use-package evil-matchit
   :defer t
@@ -275,5 +238,11 @@
   (eyebrowse-mode 1)
   (setq eyebrowse-new-workspace t)
   )
+
+
+
+
+
+
 
 (provide 'prog-mode-loads)

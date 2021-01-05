@@ -1,5 +1,7 @@
 ;; these are loaded initially---------------------------------------------------
 
+;;; Code:
+
 (use-package general                    ;keybinding system
   :defer t
   :config
@@ -13,7 +15,6 @@
   (nyan-mode 1)
   (require 'one-sec-loads)
   )
-
 
 
 (provide 'my-packages)

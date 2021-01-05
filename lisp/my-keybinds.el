@@ -102,12 +102,6 @@
  "C-k" 'ivy-previous-line
  )
 
-(general-define-key
- :keymaps 'company-active-map
- "C-j" 'company-select-next
- "C-l" 'nil
- "C-k" 'company-select-previous
- )
 
 (general-define-key
  :keymaps 'dired-mode-map
