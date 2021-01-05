@@ -46,7 +46,7 @@
  "C-<" 'mc/mark-previous-like-this
  "C-c C->" 'mc/mark-all-like-this
  "C--" 'er/contract-region
- "C-;"  'goto-last-change
+ ;; "C-;"  'goto-last-change
  ;; "M-u" 'xah-toggle-letter-case
  "M-u" 'fix-word-upcase
  "M-c" 'fix-word-capitalize

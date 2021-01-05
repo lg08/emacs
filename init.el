@@ -41,8 +41,6 @@
 (setq custom-safe-themes t)
 
 
-;; (load-theme 'nord)
-
 ;; bootstraps straight
 (defvar bootstrap-version)
 (let ((bootstrap-file
@@ -80,7 +78,8 @@
 
 (require 'my-testing-stuff)
 
-(load-theme 'dracula)
+(use-package doom-themes)
+(load-theme 'doom-gruvbox)
 ;; startup message
 (setq startup-message
       (format "Welcome back old friend. Emacs ready in %.2f seconds with %d garbage collections."

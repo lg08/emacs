@@ -14,6 +14,7 @@
                             (electric-pair-mode 1)
                             (global-evil-matchit-mode 1)
                             (yas-global-mode 1)
+                            (global-evil-surround-mode 1)
                             ))
 
 (add-hook 'dired-mode-hook (lambda ()
@@ -38,9 +39,6 @@
                               ))
 (add-hook 'org-mode-hook (lambda ()
                            (require 'org-mode-loads)
-                           (org-indent-mode)
-                           (org-bullets-mode)
-                           (wakatime-mode)
                            ))
 (add-hook 'tuareg-mode-hook (lambda ()
                               (require 'ocaml-mode-loads)
