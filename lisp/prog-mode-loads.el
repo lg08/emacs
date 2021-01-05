@@ -2,7 +2,6 @@
 
 (require 'autocompletion)
 
-
 (use-package gcmh                       ;garbage management system
   :defer 1
   :config
@@ -242,7 +241,48 @@
 
 
 
+(use-package rg)
+  ;; :ensure-system-package rg) ;; ⇒ There's a buffer *system-packages*
+                             ;;   installing this tool at the OS level!
+;; check this out here: https://github.com/alhassy/emacs.d
+
+;; lets you browse system packages with helm
+(use-package helm-system-packages
+  :defer t
+  :config
+
+  )
+
+(use-package pdf-tools
+  :defer t
+  ;; :init   (system-packages-ensure "pdf-tools")
+  :custom (pdf-tools-handle-upgrades nil)
+          (pdf-info-epdfinfo-program "/usr/local/bin/epdfinfo")
+  :config (pdf-tools-install))
+
+;; Now PDFs opened in Emacs are in pdfview-mode.
 
 
+
+(setq message-send-mail-function 'smtpmail-send-it)
+
+;; Make mail look pretty
+(use-package all-the-icons-gnus
+  :defer t
+  :config (all-the-icons-gnus-setup))
+(setq gnus-sum-thread-tree-vertical        "│"
+      gnus-sum-thread-tree-leaf-with-other "├─► "
+      gnus-sum-thread-tree-single-leaf     "╰─► "
+      gnus-summary-line-format
+      (concat
+       "%0{%U%R%z%}"
+       "%3{│%}" "%1{%d%}" "%3{│%}"
+       "  "
+       "%4{%-20,20f%}"
+       "  "
+       "%3{│%}"
+       " "
+       "%1{%B%}"
+       "%s\n"))
 
 (provide 'prog-mode-loads)

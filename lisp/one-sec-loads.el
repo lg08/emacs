@@ -1,5 +1,13 @@
 (setq evil-want-keybinding nil)
 
+
+;; for mac people
+(use-package exec-path-from-shell
+  :init
+  (when (memq window-system '(mac ns x))
+    (exec-path-from-shell-initialize)))
+
+
 (use-package evil
   :init
   (evil-mode 1)
@@ -21,6 +29,15 @@
   (evil-define-key '(normal insert) 'global (kbd "C-e") 'end-of-line)
 
   (evil-define-key '(normal insert) 'global (kbd "C-r") 'avy-goto-char)
+
+  (defun new_line_no_cut ()
+    (interactive)
+    (end-of-line)
+    (newline)
+    )
+
+  (evil-define-key '(normal) 'global (kbd "<RET>") 'new_line_no_cut)
+  (evil-define-key '(normal insert) 'global (kbd "M-<RET>") 'crux-smart-open-line-above)
 
   )
 
@@ -301,7 +318,13 @@ pressed twice.
               (set-fill-column 72)))
   )
 
-
+(use-package shell-pop
+  :init
+  (setq shell-pop-window-size '30)
+  (setq shell-pop-term-shell "/usr/bin/zsh")
+  (setq shell-pop-window-position "bottom")
+  :defer t
+  )
 
 ;; ---------------------------------------------------------------
 (require 'my-functions)

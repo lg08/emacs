@@ -156,7 +156,7 @@
   "3" 'split-window-right
   "0" 'delete-window
   "b" 'switch-to-buffer
-  "s s" 'my/ansi-term-toggle
+  "s s" 'shell-pop
   "SPC" 'counsel-M-x
   ;; "SPC" 'execute-extended-command
   "w n" 'eyebrowse-next-window-config

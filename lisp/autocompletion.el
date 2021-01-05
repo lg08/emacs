@@ -14,10 +14,10 @@
   ;; (setq company-dabbrev-other-buffers t)
   ;; (setq company-dabbrev-code-other-buffers t)
 
-  ;;  ;; Show candidates according to importance, then case, then in-buffer frequency
-  ;; (setq company-transformers '(company-sort-by-backend-importance
-  ;;                              company-sort-prefer-same-case-prefix
-  ;;                              company-sort-by-occurrence))
+   ;; Show candidates according to importance, then case, then in-buffer frequency
+  (setq company-transformers '(company-sort-by-backend-importance
+                               company-sort-prefer-same-case-prefix
+                               company-sort-by-occurrence))
   ;;  ;; Even if I write something with the ‘wrong’ case,
   ;;  ;; provide the ‘correct’ casing.
   ;; (setq company-dabbrev-ignore-case nil)
@@ -39,14 +39,14 @@
 
 
 ;; (set-variable 'ycmd-server-command '("python3" "~/.emacs.d/straight/repos/emacs-ycmd/ycmd.el"))
-(set-variable 'ycmd-server-command '("python3" "/home/lg08/.emacs.d/straight/repos/emacs-ycmd/"))
+(set-variable 'ycmd-server-command '("python3" "/usr/bin/ycmd"))
 (use-package ycmd
   :config
   (progn
     (global-ycmd-mode)
     (set-variable 'ycmd-server-command
                   ;; '("python" "/home/jeaye/.emacs.d/packages/ycmd/ycmd/")
-                  '("python3" "/home/lg08/.emacs.d/straight/repos/emacs-ycmd/")
+                  '("python3" "/usr/bin/ycmd")
                   )
     (set-variable 'ycmd-extra-conf-whitelist '("~/projects/*"))
     (setq ycmd-extra-conf-handler 'load)))
@@ -59,8 +59,8 @@
     (global-company-mode)
     (company-ycmd-setup)
 
-    (define-key company-active-map (kbd "TAB") 'company-select-next)
-    (define-key company-active-map [tab] 'company-select-next)
+    ;; (define-key company-active-map (kbd "TAB") 'company-select-next)
+    ;; (define-key company-active-map [tab] 'company-select-next)
     (setq company-selection-wrap-around t)
 
     ; Company + fci is fucked
