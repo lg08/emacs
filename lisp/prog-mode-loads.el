@@ -175,25 +175,12 @@
 
 
 
-;; link here: https://github.com/emacs-evil/evil-surround
-(use-package evil-surround
-  :defer t
-  :ensure t
-  :config
-  (global-evil-surround-mode 1)
-  )
-
 (use-package highlight-parentheses
   :defer t
   :config
 
   )
 
-(use-package evil-matchit
-  :defer t
-  :config
-
-  )
 (use-package volatile-highlights        ;just helpful for showing what you just did
   :defer t
   :config
@@ -253,12 +240,12 @@
 
   )
 
-(use-package pdf-tools
-  :defer t
-  ;; :init   (system-packages-ensure "pdf-tools")
-  :custom (pdf-tools-handle-upgrades nil)
-          (pdf-info-epdfinfo-program "/usr/local/bin/epdfinfo")
-  :config (pdf-tools-install))
+;; (use-package pdf-tools
+;;   :defer t
+;;   ;; :init   (system-packages-ensure "pdf-tools")
+;;   :custom (pdf-tools-handle-upgrades nil)
+;;           (pdf-info-epdfinfo-program "/usr/local/bin/epdfinfo")
+;;   :config (pdf-tools-install))
 
 ;; Now PDFs opened in Emacs are in pdfview-mode.
 
@@ -284,5 +271,7 @@
        " "
        "%1{%B%}"
        "%s\n"))
+
+
 
 (provide 'prog-mode-loads)

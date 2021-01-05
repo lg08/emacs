@@ -1,4 +1,5 @@
-(setq evil-want-keybinding nil)
+(require 'evil-loads)
+
 
 
 ;; for mac people
@@ -6,48 +7,6 @@
   :init
   (when (memq window-system '(mac ns x))
     (exec-path-from-shell-initialize)))
-
-
-(use-package evil
-  :init
-  (evil-mode 1)
-  :defer t
-  :config
-
-  ;; evil key-bindings
-  (evil-define-key 'normal 'global (kbd "q") 'end-of-line)
-  (evil-define-key 'normal 'global (kbd "M-h") 'windmove-left)
-  (evil-define-key 'normal 'global (kbd "M-l") 'windmove-right)
-  (evil-define-key 'normal 'global (kbd "M-k") 'windmove-up)
-  (evil-define-key 'normal 'global (kbd "M-j") 'windmove-down)
-  (evil-define-key 'normal org-mode-map (kbd "C-c b r") 'my/revert-other-buffer)
-  (evil-define-key 'normal 'global (kbd "t") 'crux-smart-open-line-above)
-
-  (evil-define-key 'normal org-mode-map (kbd "SPC a o") 'begin/end_org)
-  (evil-define-key 'normal org-mode-map (kbd "u") 'undo-tree-undo)
-
-  (evil-define-key '(normal insert) 'global (kbd "C-e") 'end-of-line)
-
-  (evil-define-key '(normal insert) 'global (kbd "C-r") 'avy-goto-char)
-
-  (defun new_line_no_cut ()
-    (interactive)
-    (end-of-line)
-    (newline)
-    )
-
-  (evil-define-key '(normal) 'global (kbd "<RET>") 'new_line_no_cut)
-  (evil-define-key '(normal insert) 'global (kbd "M-<RET>") 'crux-smart-open-line-above)
-
-  )
-
-(use-package evil-collection
-  :defer 1
-  :config
-  (evil-collection-init)
-  )
-
-
 
 (use-package ivy
   :init
@@ -326,7 +285,62 @@ pressed twice.
   :defer t
   )
 
+(use-package grandshell-theme
+  :defer t
+  :config
+
+  )
+
+(use-package poet-theme
+  :defer t
+  :config
+
+  )
+
+(use-package tron-legacy-theme
+  :defer t
+  :config
+
+  )
+(use-package slack
+  :commands (slack-start)
+  :init
+  (setq slack-buffer-emojify t) ;; if you want to enable emoji, default nil
+  (setq slack-prefer-current-team t)
+  :config
+  (slack-register-team
+   :name "emacs-slack"
+   :default t
+   :token "xoxs-1391388007062-1395035382069-1585799356885-5686a8ff205845243142f9ada94b244e45074f89f22e83c707e63e3ae515da03"
+   :subscribed-channels '(test-rename rrrrr)
+   :full-and-display-names t)
+
+  (evil-define-key 'normal slack-info-mode-map
+    ",u" 'slack-room-update-messages)
+  (evil-define-key 'normal slack-mode-map
+    ",c" 'slack-buffer-kill
+    ",ra" 'slack-message-add-reaction
+    ",rr" 'slack-message-remove-reaction
+    ",rs" 'slack-message-show-reaction-users
+    ",pl" 'slack-room-pins-list
+    ",pa" 'slack-message-pins-add
+    ",pr" 'slack-message-pins-remove
+    ",mm" 'slack-message-write-another-buffer
+    ",me" 'slack-message-edit
+    ",md" 'slack-message-delete
+    ",u" 'slack-room-update-messages
+    ",2" 'slack-message-embed-mention
+    ",3" 'slack-message-embed-channel
+    "\C-n" 'slack-buffer-goto-next-message
+    "\C-p" 'slack-buffer-goto-prev-message)
+   (evil-define-key 'normal slack-edit-message-mode-map
+    ",k" 'slack-message-cancel-edit
+    ",s" 'slack-message-send-from-buffer
+    ",2" 'slack-message-embed-mention
+    ",3" 'slack-message-embed-channel))
+
+
 ;; ---------------------------------------------------------------
 (require 'my-functions)
-(load-theme 'doom-dracula)
+;; (load-theme 'doom-gruvbox)
 (provide 'one-sec-loads)

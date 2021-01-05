@@ -4,9 +4,9 @@
   ;; (setq company-backends '((company-files company-keywords company-capf company-dabbrev-code company-etags company-dabbrev company-cmake ;; company-clang
   ;;                                         )))
   :config
-  ;; (setq company-tooltip-limit 20)                      ; bigger popup window
-  ;; (setq company-tooltip-align-annotations 't)          ; align annotations to the right tooltip border
-  ;; (setq company-begin-commands '(self-insert-command)) ; start autocompletion only after typing
+  (setq company-tooltip-limit 20)                      ; bigger popup window
+  (setq company-tooltip-align-annotations 't)          ; align annotations to the right tooltip border
+  (setq company-begin-commands '(self-insert-command)) ; start autocompletion only after typing
 
   ;; provides almost instant autocompletion
   (setq company-idle-delay 0)
