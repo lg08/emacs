@@ -1,4 +1,4 @@
-
+(setq evil-want-keybinding nil)
 
 (use-package evil
   :init
@@ -6,23 +6,29 @@
   :defer t
   :config
 
-;; evil key-bindings
-(evil-define-key 'normal 'global (kbd "q") 'end-of-line)
-(evil-define-key 'normal 'global (kbd "M-h") 'windmove-left)
-(evil-define-key 'normal 'global (kbd "M-l") 'windmove-right)
-(evil-define-key 'normal 'global (kbd "M-k") 'windmove-up)
-(evil-define-key 'normal 'global (kbd "M-j") 'windmove-down)
-(evil-define-key 'normal org-mode-map (kbd "C-c b r") 'my/revert-other-buffer)
-(evil-define-key 'normal 'global (kbd "t") 'crux-smart-open-line-above)
+  ;; evil key-bindings
+  (evil-define-key 'normal 'global (kbd "q") 'end-of-line)
+  (evil-define-key 'normal 'global (kbd "M-h") 'windmove-left)
+  (evil-define-key 'normal 'global (kbd "M-l") 'windmove-right)
+  (evil-define-key 'normal 'global (kbd "M-k") 'windmove-up)
+  (evil-define-key 'normal 'global (kbd "M-j") 'windmove-down)
+  (evil-define-key 'normal org-mode-map (kbd "C-c b r") 'my/revert-other-buffer)
+  (evil-define-key 'normal 'global (kbd "t") 'crux-smart-open-line-above)
 
-(evil-define-key 'normal org-mode-map (kbd "SPC a o") 'begin/end_org)
-(evil-define-key 'normal org-mode-map (kbd "u") 'undo-tree-undo)
+  (evil-define-key 'normal org-mode-map (kbd "SPC a o") 'begin/end_org)
+  (evil-define-key 'normal org-mode-map (kbd "u") 'undo-tree-undo)
 
-(evil-define-key '(normal insert) 'global (kbd "C-e") 'end-of-line)
+  (evil-define-key '(normal insert) 'global (kbd "C-e") 'end-of-line)
 
-(evil-define-key '(normal insert) 'global (kbd "C-r") 'avy-goto-char)
+  (evil-define-key '(normal insert) 'global (kbd "C-r") 'avy-goto-char)
 
-)
+  )
+
+(use-package evil-collection
+  :defer 1
+  :config
+  (evil-collection-init)
+  )
 
 
 
@@ -247,7 +253,7 @@ pressed twice.
 (use-package dired-sidebar              ;helpful dired-based popup sidebar
   :defer t
   :init
-    (add-hook 'dired-sidebar-mode-hook
+  (add-hook 'dired-sidebar-mode-hook
             (lambda ()
               (unless (file-remote-p default-directory)
                 (auto-revert-mode)
@@ -287,7 +293,6 @@ pressed twice.
 (use-package magit                      ;best github client
   :defer t
   :config
-  ;; (add-hook 'magit-mode-hook (lambda () (evil-magit-init)))
   (add-to-list 'magit-no-confirm 'stage-all-changes)
   (remove-hook 'server-switch-hook 'magit-commit-diff)
 
@@ -296,7 +301,9 @@ pressed twice.
               (set-fill-column 72)))
   )
 
+
+
 ;; ---------------------------------------------------------------
 (require 'my-functions)
-
+(load-theme 'doom-dracula)
 (provide 'one-sec-loads)

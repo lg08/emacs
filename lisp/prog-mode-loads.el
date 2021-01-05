@@ -1,4 +1,6 @@
 
+
+
 (use-package gcmh                       ;garbage management system
   :defer 1
   :config
@@ -17,7 +19,6 @@
   (define-key ivy-minibuffer-map "\C-k" 'nil)
   :defer t
   :config
-
   )
 
 
@@ -27,9 +28,36 @@
   (move-text-default-bindings)
   )
 
+;; ------------different highlighters
+(use-package indent-guide               ;another useful indent-guide package
+  :defer t
+  :config
+  (setq indent-guide-recursive t)
+  (setq indent-guide-delay 0.1)
+  ;; (set-face-background 'indent-guide-face "#282a36")
+  (set-face-background 'indent-guide-face "#1E2029")
+  (set-face-foreground 'indent-guide-face "dimgray")
+  )
 
+(use-package highlight-indentation
+  :defer t
+  :config
+  (setq highlight-indentation-blank-lines t)
+  )
 
+(use-package highlight-indent-guides
+  :defer t
+  :config
+  (setq highlight-indent-guides-responsive 'top)
+  (setq highlight-indent-guides-delay 0.8)
+  (setq highlight-indent-guides-method 'character)
+  )
 
+(use-package visual-indentation-mode
+  :defer t
+  :config
+
+  )
 
 (use-package wakatime-mode
   :defer 1
@@ -84,12 +112,7 @@
 
   )
 
-(use-package indent-guide               ;another useful indent-guide package
-  :defer t
-  :config
-  ;; (setq indent-guide-recursive t)
-  (setq indent-guide-delay 0.1)
-  )
+
 (use-package format-all                 ;used to format code
   :defer t
   :config
