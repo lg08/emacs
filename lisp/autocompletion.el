@@ -38,14 +38,15 @@
   )
 
 
-(set-variable 'ycmd-server-command '("python3" "~/.emacs.d/straight/repos/emacs-ycmd/ycmd.el"))
+;; (set-variable 'ycmd-server-command '("python3" "~/.emacs.d/straight/repos/emacs-ycmd/ycmd.el"))
+(set-variable 'ycmd-server-command '("python3" "/home/lg08/.emacs.d/straight/repos/emacs-ycmd/"))
 (use-package ycmd
   :config
   (progn
     (global-ycmd-mode)
     (set-variable 'ycmd-server-command
-                  '("python" "/home/jeaye/.emacs.d/packages/ycmd/ycmd/")
-                  ;; '("python3" "~/.emacs.d/straight/repos/emacs-ycmd/ycmd.el")
+                  ;; '("python" "/home/jeaye/.emacs.d/packages/ycmd/ycmd/")
+                  '("python3" "/home/lg08/.emacs.d/straight/repos/emacs-ycmd/")
                   )
     (set-variable 'ycmd-extra-conf-whitelist '("~/projects/*"))
     (setq ycmd-extra-conf-handler 'load)))
@@ -81,11 +82,11 @@
       (progn
         (company-quickhelp-mode 1)))))
 
-(use-package flycheck-ycmd
-  :config
-  (progn
-    (flycheck-ycmd-setup)
-    (global-flycheck-mode)))
+;; (use-package flycheck-ycmd
+;;   :config
+;;   (progn
+;;     (flycheck-ycmd-setup)
+;;     (global-flycheck-mode)))
 
 
 (general-define-key
@@ -93,7 +94,7 @@
  "C-j" 'company-select-next
  "C-l" 'nil
  "C-k" 'company-select-previous
- "<tab>" 'company-complete
+ "<RET>" 'company-complete
  )
 
 (global-set-key (kbd "C-<return>") 'company-complete)
