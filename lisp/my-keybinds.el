@@ -9,7 +9,7 @@
  "M-x" 'execute-extended-command
  "M-<down>" 'move-text-down
  "M-<up>" 'move-text-up
- "C-s" 'swiper-isearch
+ "C-s" 'swiper
  "C-z" 'nil
  "C-h" 'backward-char
  "C-l" 'forward-char

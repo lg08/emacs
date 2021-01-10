@@ -22,8 +22,8 @@
 (setq use-dialog-box nil)		;don't give me gui windows
 
 (global-display-line-numbers-mode)      ;seems to be the best line number mode in my experience
-;; (setq-default display-line-numbers 'relative) ;shows the relative line numbers instead
-;; (setq display-line-numbers-type 'relative)
+(setq-default display-line-numbers 'relative) ;shows the relative line numbers instead
+(setq display-line-numbers-type 'relative)
 (global-hl-line-mode 1)            ;highlights the current line
 ;; (set-face-attribute hl-line-face nil :underline t) ;underlines the current line
 

@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: django-tag
+# key: dtag
+# --
+{% $0 %}

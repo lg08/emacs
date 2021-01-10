@@ -14,11 +14,11 @@
 (setq web-mode-css-indent-offset 2)
 (setq tab-width 2)
 
-(emmet-mode)
+(emmet-mode 1)
 (web-mode-set-engine "django")
 (electric-pair-mode -1)
 (rainbow-mode 1)
-(display-line-numbers-mode -1)
+;; (display-line-numbers-mode -1)
 
 
 (set (make-local-variable 'company-backends) '(company-css company-web-html company-yasnippet company-files))

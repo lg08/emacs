@@ -13,14 +13,32 @@
   (evil-define-key 'normal 'global (kbd "M-k") 'windmove-up)
   (evil-define-key 'normal 'global (kbd "M-j") 'windmove-down)
   (evil-define-key 'normal org-mode-map (kbd "C-c b r") 'my/revert-other-buffer)
-  (evil-define-key 'normal 'global (kbd "t") 'crux-smart-open-line-above)
 
   (evil-define-key 'normal org-mode-map (kbd "SPC a o") 'begin/end_org)
   (evil-define-key 'normal org-mode-map (kbd "u") 'undo-tree-undo)
 
   (evil-define-key '(normal insert) 'global (kbd "C-e") 'end-of-line)
 
-  (evil-define-key '(normal insert) 'global (kbd "C-r") 'avy-goto-char)
+(defmacro define-and-bind-text-object (key start-regex end-regex)
+  (let ((inner-name (make-symbol "inner-name"))
+        (outer-name (make-symbol "outer-name")))
+    `(progn
+       (evil-define-text-object ,inner-name (count &optional beg end type)
+         (evil-select-paren ,start-regex ,end-regex beg end type count nil))
+       (evil-define-text-object ,outer-name (count &optional beg end type)
+         (evil-select-paren ,start-regex ,end-regex beg end type count t))
+       (define-key evil-inner-text-objects-map ,key (quote ,inner-name))
+       (define-key evil-outer-text-objects-map ,key (quote ,outer-name)))))
+;; between dollar signs:
+(define-and-bind-text-object "$" "\\$" "\\$")
+
+;; between pipe characters:
+(define-and-bind-text-object "|" "|" "|")
+(define-and-bind-text-object "," "," ",")
+
+;; from regex "b" up to regex "c", bound to k (invoke with "vik" or "vak"):
+(define-and-bind-text-object "k" "b" "c")
+(define-and-bind-text-object "c" "<!--" "-->")
 
 
   (defun new_line_no_cut ()
@@ -34,10 +52,25 @@
 
   )
 
-(add-hook 'prog-mode-hook (lambda ()
 
+(add-hook 'dired-mode-hook (lambda ()
+                             (use-package evil-collection
+                               ;; :defer 1
+                               :config
+                               (evil-collection-init)
+                               )
+                             ))
+
+(add-hook 'python-mode-hook (lambda ()
+                              (use-package evil-text-object-python
+                                :config
+                                (evil-text-object-python-add-bindings)
+                                )
+                              ))
+
+(add-hook 'prog-mode-hook (lambda ()
                             (use-package evil-collection
-                              :defer 1
+                              ;; :defer 1
                               :config
                               (evil-collection-init)
                               )
@@ -56,8 +89,8 @@
                               )
                             (use-package evil-multiedit
                               :init
-;; Highlights all matches of the selection in the buffer.
-(define-key evil-visual-state-map "R" 'evil-multiedit-match-all)
+                              ;; Highlights all matches of the selection in the buffer.
+                              (define-key evil-visual-state-map "R" 'evil-multiedit-match-all)
 
                               ;; Match the word under cursor (i.e. make it an edit region). Consecutive presses will
                               ;; incrementally add the next unmatched match.
