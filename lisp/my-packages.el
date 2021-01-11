@@ -8,7 +8,6 @@
 
   )
 
-
 (use-package nyan-mode
   :defer 0.1
 

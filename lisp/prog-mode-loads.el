@@ -1,5 +1,3 @@
-
-
 (require 'autocompletion)
 
 (use-package gcmh                       ;garbage management system
