@@ -150,17 +150,14 @@
   "p s g" 'projectile-grep
   "g g" 'magit-status
   "g s" 'google-this
-  "x s" 'persp-switch
-  "x k" 'persp-remove-buffer
-  "x c" 'persp-kill
-  "b b" 'persp-ivy-switch-buffer
-  "b a" 'persp-switch-to-buffer
+  "x" 'execute-extended-command
   "o o" 'other-window
   "1" 'delete-other-windows
   "2" 'split-window-below
   "3" 'split-window-right
   "0" 'delete-window
   ;; "b" 'switch-to-buffer
+  "b" 'counsel-ibuffer
   "s s" 'shell-pop
   "s m" 'smerge-start-session
   "SPC" 'counsel-M-x
@@ -180,6 +177,12 @@
   "i a" 'ivy-imenu-anywhere
   )
 
+
+<<<<<<< variant A
+This is an edit on the master branch
+>>>>>>> variant B
+This is an edit on the branch
+======= end
 
 
 (provide 'my-keybinds)
