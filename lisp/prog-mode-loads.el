@@ -212,6 +212,8 @@
 (use-package undo-tree                  ;very helpful undo visualizer
   :defer t
   :config
+  (setq undo-tree-visualizer-timestamps 1)
+  (setq undo-tree-visualizer-diff 1)
   (global-undo-tree-mode 1)
   (defadvice undo-tree-make-history-save-file-name ;automatically compresses the undo history file
       (after undo-tree activate)

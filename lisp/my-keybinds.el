@@ -142,7 +142,7 @@
   :states 'normal
   :keymaps 'override
   "f f" 'counsel-find-file
-  "f b" 'bookmark-jump
+  "f b" 'counsel-bookmark
   ;; "p" 'projectile-command-map
   "p p" 'projectile-switch-project
   "p f" 'projectile-find-file
@@ -156,7 +156,8 @@
   "2" 'split-window-below
   "3" 'split-window-right
   "0" 'delete-window
-  "b" 'switch-to-buffer
+  ;; "b" 'switch-to-buffer
+  "b" 'counsel-ibuffer
   "s s" 'shell-pop
   "SPC" 'counsel-M-x
   ;; "SPC" 'execute-extended-command
@@ -170,7 +171,12 @@
   "r e" 'restart-emacs
   "o e" 'my/open-buffer-path-in-explorer
   "o t" 'my/open-terminal-in-workdir
+<<<<<<< HEAD
   "t l" 'toggle-truncate-lines
+=======
+  "i m" 'counsel-imenu
+  "i a" 'ivy-imenu-anywhere
+>>>>>>> ff0a1fe8fa74241ec7446192467ab3f9e8b735f4
   )
 
 
