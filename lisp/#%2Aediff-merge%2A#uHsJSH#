@@ -178,5 +178,11 @@
   )
 
 
+<<<<<<< variant A
+This is an edit on the master branch
+>>>>>>> variant B
+This is an edit on the branch
+======= end
+
 
 (provide 'my-keybinds)
