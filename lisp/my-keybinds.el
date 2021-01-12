@@ -147,6 +147,7 @@
   "p p" 'projectile-switch-project
   "p f" 'projectile-find-file
   "p s g" 'projectile-grep
+  "p s g" 'projectile-grep
   "g g" 'magit-status
   "g s" 'google-this
   "x s" 'persp-switch
@@ -173,6 +174,7 @@
   "r e" 'restart-emacs
   "o e" 'my/open-buffer-path-in-explorer
   "o t" 'my/open-terminal-in-workdir
+  "t l" 'toggle-truncate-lines
   "i m" 'counsel-imenu
   "i a" 'ivy-imenu-anywhere
   )
