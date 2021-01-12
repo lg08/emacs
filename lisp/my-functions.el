@@ -270,7 +270,7 @@ buffer is not visiting a file."
 (setq visual-order-cursor-movement t)
 
 ;; makes dired sort by date by default
-(setq dired-listing-switches "-lt")
+(setq dired-listing-switches "-lta")
 
 (add-hook 'before-save-hook 'delete-trailing-whitespace) ;deletes the whitespace at end of lines on save
 

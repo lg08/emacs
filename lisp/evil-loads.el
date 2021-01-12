@@ -14,6 +14,7 @@
   (evil-define-key 'normal 'global (kbd "M-j") 'windmove-down)
   (evil-define-key 'normal org-mode-map (kbd "C-c b r") 'my/revert-other-buffer)
   (evil-define-key 'normal 'global (kbd "u") 'undo-tree-undo)
+  ;; (evil-define-key 'normal 'global (kbd "C-d") 'persp-mode-map)
 
   (evil-define-key 'normal org-mode-map (kbd "SPC a o") 'begin/end_org)
 

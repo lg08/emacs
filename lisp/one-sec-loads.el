@@ -28,6 +28,7 @@
   :defer 1
   :config
   (ivy-rich-mode 1)
+  (ivy-rich-project-root-cache-mode 1)  ;better performance especially for switch to buffer
   )
 
 (use-package counsel
@@ -410,10 +411,13 @@ pressed twice.
          ("C-<f2>" . bm-toggle))
   )
 
+(use-package perspective
+  :init
+  (persp-mode 1)
+  :defer t
+  :config
+  )
 
-(use-package popup-kill-ring)
-
-(use-package frog-jump-buffer)
 ;; ---------------------------------------------------------------
 (require 'my-functions)
 ;; (load-theme 'doom-gruvbox)
