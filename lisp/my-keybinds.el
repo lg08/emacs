@@ -150,14 +150,17 @@
   "p s g" 'projectile-grep
   "g g" 'magit-status
   "g s" 'google-this
-  "x" 'execute-extended-command
+  "x s" 'persp-switch
+  "x k" 'persp-remove-buffer
+  "x c" 'persp-kill
+  "b b" 'persp-ivy-switch-buffer
+  "b a" 'persp-switch-to-buffer
   "o o" 'other-window
   "1" 'delete-other-windows
   "2" 'split-window-below
   "3" 'split-window-right
   "0" 'delete-window
   ;; "b" 'switch-to-buffer
-  "b" 'counsel-ibuffer
   "s s" 'shell-pop
   "s m" 'smerge-start-session
   "SPC" 'counsel-M-x
