@@ -413,6 +413,7 @@ pressed twice.
 
 (use-package popup-kill-ring)
 
+(use-package frog-jump-buffer)
 ;; ---------------------------------------------------------------
 (require 'my-functions)
 ;; (load-theme 'doom-gruvbox)
