@@ -171,12 +171,9 @@
   "r e" 'restart-emacs
   "o e" 'my/open-buffer-path-in-explorer
   "o t" 'my/open-terminal-in-workdir
-<<<<<<< HEAD
   "t l" 'toggle-truncate-lines
-=======
   "i m" 'counsel-imenu
   "i a" 'ivy-imenu-anywhere
->>>>>>> ff0a1fe8fa74241ec7446192467ab3f9e8b735f4
   )
 
 
