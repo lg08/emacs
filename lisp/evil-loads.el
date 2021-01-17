@@ -7,7 +7,6 @@
   :config
 
   ;; evil key-bindings
-  (evil-define-key 'normal 'global (kbd "q") 'end-of-line)
   (evil-define-key 'normal 'global (kbd "M-h") 'windmove-left)
   (evil-define-key 'normal 'global (kbd "M-l") 'windmove-right)
   (evil-define-key 'normal 'global (kbd "M-k") 'windmove-up)
