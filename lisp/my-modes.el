@@ -29,6 +29,11 @@
 (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
 (add-hook 'web-mode-hook (lambda ()
                            (require 'html-mode-loads)
+                           (emmet-mode 1)
+                           (web-mode-set-engine "django")
+                           (electric-pair-mode -1)
+                           (rainbow-mode 1)
+                           (set (make-local-variable 'company-backends) '(company-css company-web-html company-yasnippet company-files))
                            ))
 
 (add-hook 'magit-mode-hook (lambda ()
