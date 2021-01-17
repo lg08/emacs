@@ -14,32 +14,33 @@
   (evil-define-key 'normal 'global (kbd "M-j") 'windmove-down)
   (evil-define-key 'normal org-mode-map (kbd "C-c b r") 'my/revert-other-buffer)
   (evil-define-key 'normal 'global (kbd "u") 'undo-tree-undo)
+  (evil-define-key 'normal 'global (kbd "C-r") 'avy-goto-char-2)
   ;; (evil-define-key 'normal 'global (kbd "C-d") 'persp-mode-map)
 
   (evil-define-key 'normal org-mode-map (kbd "SPC a o") 'begin/end_org)
 
   (evil-define-key '(normal insert) 'global (kbd "C-e") 'end-of-line)
 
-(defmacro define-and-bind-text-object (key start-regex end-regex)
-  (let ((inner-name (make-symbol "inner-name"))
-        (outer-name (make-symbol "outer-name")))
-    `(progn
-       (evil-define-text-object ,inner-name (count &optional beg end type)
-         (evil-select-paren ,start-regex ,end-regex beg end type count nil))
-       (evil-define-text-object ,outer-name (count &optional beg end type)
-         (evil-select-paren ,start-regex ,end-regex beg end type count t))
-       (define-key evil-inner-text-objects-map ,key (quote ,inner-name))
-       (define-key evil-outer-text-objects-map ,key (quote ,outer-name)))))
-;; between dollar signs:
-(define-and-bind-text-object "$" "\\$" "\\$")
+  (defmacro define-and-bind-text-object (key start-regex end-regex)
+    (let ((inner-name (make-symbol "inner-name"))
+          (outer-name (make-symbol "outer-name")))
+      `(progn
+         (evil-define-text-object ,inner-name (count &optional beg end type)
+           (evil-select-paren ,start-regex ,end-regex beg end type count nil))
+         (evil-define-text-object ,outer-name (count &optional beg end type)
+           (evil-select-paren ,start-regex ,end-regex beg end type count t))
+         (define-key evil-inner-text-objects-map ,key (quote ,inner-name))
+         (define-key evil-outer-text-objects-map ,key (quote ,outer-name)))))
+  ;; between dollar signs:
+  (define-and-bind-text-object "$" "\\$" "\\$")
 
-;; between pipe characters:
-(define-and-bind-text-object "|" "|" "|")
-(define-and-bind-text-object "," "," ",")
+  ;; between pipe characters:
+  (define-and-bind-text-object "|" "|" "|")
+  (define-and-bind-text-object "," "," ",")
 
-;; from regex "b" up to regex "c", bound to k (invoke with "vik" or "vak"):
-(define-and-bind-text-object "k" "b" "c")
-(define-and-bind-text-object "c" "<!--" "-->")
+  ;; from regex "b" up to regex "c", bound to k (invoke with "vik" or "vak"):
+  (define-and-bind-text-object "k" "b" "c")
+  (define-and-bind-text-object "c" "<!--" "-->")
 
 
   (defun new_line_no_cut ()
@@ -53,6 +54,38 @@
 
   )
 
+(use-package evil-args
+  ;; :defer t
+  ;; :config
+  :init
+  ;; bind evil-args text objects
+  (define-key evil-inner-text-objects-map "a" 'evil-inner-arg)
+  (define-key evil-outer-text-objects-map "a" 'evil-outer-arg)
+
+  ;; bind evil-forward/backward-args
+  (define-key evil-normal-state-map "L" 'evil-forward-arg)
+  (define-key evil-normal-state-map "H" 'evil-backward-arg)
+  (define-key evil-motion-state-map "L" 'evil-forward-arg)
+  (define-key evil-motion-state-map "H" 'evil-backward-arg)
+
+  ;; bind evil-jump-out-args
+  (define-key evil-normal-state-map "K" 'evil-jump-out-args)
+  )
+
+(use-package evil-quickscope
+  :defer t
+  :config
+  (global-evil-quickscope-always-mode 1)
+  )
+
+(use-package evil-lion
+  :ensure t
+  :bind (:map evil-normal-state-map
+         ("g l " . evil-lion-left)
+         ("g L " . evil-lion-right)
+         :map evil-visual-state-map
+         ("g l " . evil-lion-left)
+         ("g L " . evil-lion-right)))
 
 (add-hook 'dired-mode-hook (lambda ()
                              (use-package evil-collection
@@ -68,6 +101,7 @@
                                 (evil-text-object-python-add-bindings)
                                 )
                               ))
+
 
 (add-hook 'prog-mode-hook (lambda ()
                             (use-package evil-collection
@@ -129,6 +163,5 @@
                               (define-key evil-multiedit-insert-state-map (kbd "C-p") 'evil-multiedit-prev)
                               )
                             ))
-
 
 (provide 'evil-loads)
