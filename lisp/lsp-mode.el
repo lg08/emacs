@@ -90,4 +90,4 @@
   (defadvice lsp-ui-imenu (after hide-lsp-ui-imenu-mode-line activate)
     (setq mode-line-format nil)))
 
-(provide 'lsp-loads)
+(provide 'lsp-mode.el)

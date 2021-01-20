@@ -15,12 +15,8 @@
                             (global-evil-matchit-mode 1)
                             (yas-global-mode 1)
                             (global-evil-surround-mode 1)
-<<<<<<< HEAD
                             (toggle-truncate-lines 1)
-=======
-                            (toggle-truncate-lines)
                             (highlight-numbers-mode 1)
->>>>>>> 4479c3c5ce86d85f589faec9927ea00f49dd9a9c
                             ))
 
 (add-hook 'dired-mode-hook (lambda ()
