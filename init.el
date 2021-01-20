@@ -37,7 +37,7 @@
 ;; (setq custom-file (concat gemacs-lisp-dir "custom-file.el"))
 ;; (when (file-exists-p custom-file)
 ;;   (load custom-file))
-(setq custom-file (make-temp-file ""))
+(setq custom-file (make-temp-file ""))  ;use a temorary custom file instead
 (setq custom-safe-themes t)
 
 
@@ -60,13 +60,12 @@
 (setq straight-use-package-by-default t)
 
 
-
 (message "Loading Gemacs' configurations...")
 
 ;; requires all necessary files
 ;; (require 'my-functions)
 
-(require 'my-settings)
+ (require 'my-settings)
 
 (require 'my-packages)
 

@@ -115,6 +115,8 @@
 
 (add-hook 'before-save-hook 'delete-trailing-whitespace) ;deletes the whitespace at end of lines on save
 
+(set-face-attribute 'default nil :height 80)
+
 
 
 (provide 'my-settings)

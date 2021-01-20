@@ -28,7 +28,7 @@
   :defer 1
   :config
   (ivy-rich-mode 1)
-  (ivy-rich-project-root-cache-mode 1)  ;better performance especially for switch to buffer
+  ;; (ivy-rich-project-root-cache-mode 1)  ;better performance especially for switch to buffer
   )
 
 (use-package counsel
@@ -36,9 +36,6 @@
   :config
 
   )
-
-
-
 
 (use-package prescient
   :defer 1
@@ -171,12 +168,6 @@ pressed twice.
 
 
 
-(use-package smart-hungry-delete        ;deletes whitespace
-  :defer t
-  :config
-
-  )
-
 (use-package fireplace
   :defer t
   :config
@@ -206,66 +197,6 @@ pressed twice.
   )
 
 
-(use-package tuareg                     ;major mode for oCaml editing
-  :defer t
-  :config
-
-  )
-
-
-(use-package web-mode                   ;better web development major mode  :defer t
-  :defer t
-  :init
-  (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
-  :config
-  (setq web-mode-enable-current-element-highlight t)
-  (setq web-mode-enable-current-column-highlight t)
-
-  )
-
-(use-package smart-comment              ;just a better commenting function
-  :defer t
-  :config
-  )
-(use-package dired-sidebar              ;helpful dired-based popup sidebar
-  :defer t
-  :init
-  (add-hook 'dired-sidebar-mode-hook
-            (lambda ()
-              (unless (file-remote-p default-directory)
-                (auto-revert-mode)
-                )
-              (toggle-truncate-lines)
-              ))
-  :config
-  (push 'toggle-window-split dired-sidebar-toggle-hidden-commands)
-  (push 'rotate-windows dired-sidebar-toggle-hidden-commands)
-
-  (setq dired-sidebar-use-term-integration t)
-  (setq dired-sidebar-use-custom-font t)
-  )
-
-
-;; A more complex, more lazy-loaded config
-(use-package solaire-mode
-  :defer t
-  ;; Ensure solaire-mode is running in all solaire-mode buffers
-  :hook (change-major-mode . turn-on-solaire-mode)
-  ;; ...if you use auto-revert-mode, this prevents solaire-mode from turning
-  ;; itself off every time Emacs reverts the file
-  :hook (after-revert . turn-on-solaire-mode)
-  ;; To enable solaire-mode unconditionally for certain modes:
-  :hook (ediff-prepare-buffer . solaire-mode)
-  ;; Highlight the minibuffer when it is activated:
-  :hook (minibuffer-setup . solaire-mode-in-minibuffer)
-  :config
-  ;; The bright and dark background colors are automatically swapped the first
-  ;; time solaire-mode is activated. Namely, the backgrounds of the `default` and
-  ;; `solaire-default-face` faces are swapped. This is done because the colors
-  ;; are usually the wrong way around. If you don't want this, you can disable it:
-  (setq solaire-mode-auto-swap-bg nil)
-
-  (solaire-global-mode +1))
 
 (use-package magit                      ;best github client
   :defer t
@@ -286,66 +217,13 @@ pressed twice.
   :defer t
   )
 
-(use-package grandshell-theme
-  :defer t
-  :config
-
-  )
-
 (use-package poet-theme
   :defer t
   :config
 
   )
 
-(use-package tron-legacy-theme
-  :defer t
-  :config
 
-  )
-(use-package slack
-  :commands (slack-start)
-  :init
-  (setq slack-buffer-emojify t) ;; if you want to enable emoji, default nil
-  (setq slack-prefer-current-team t)
-  :config
-  (slack-register-team
-   :name "emacs-slack"
-   :default t
-   :token "xoxs-1391388007062-1395035382069-1585799356885-5686a8ff205845243142f9ada94b244e45074f89f22e83c707e63e3ae515da03"
-   :subscribed-channels '(test-rename rrrrr)
-   :full-and-display-names t)
-
-  (evil-define-key 'normal slack-info-mode-map
-    ",u" 'slack-room-update-messages)
-  (evil-define-key 'normal slack-mode-map
-    ",c" 'slack-buffer-kill
-    ",ra" 'slack-message-add-reaction
-    ",rr" 'slack-message-remove-reaction
-    ",rs" 'slack-message-show-reaction-users
-    ",pl" 'slack-room-pins-list
-    ",pa" 'slack-message-pins-add
-    ",pr" 'slack-message-pins-remove
-    ",mm" 'slack-message-write-another-buffer
-    ",me" 'slack-message-edit
-    ",md" 'slack-message-delete
-    ",u" 'slack-room-update-messages
-    ",2" 'slack-message-embed-mention
-    ",3" 'slack-message-embed-channel
-    "\C-n" 'slack-buffer-goto-next-message
-    "\C-p" 'slack-buffer-goto-prev-message)
-  (evil-define-key 'normal slack-edit-message-mode-map
-    ",k" 'slack-message-cancel-edit
-    ",s" 'slack-message-send-from-buffer
-    ",2" 'slack-message-embed-mention
-    ",3" 'slack-message-embed-channel))
-
-
-(use-package imenu-anywhere
-  :defer t
-  :config
-
-  )
 
 (use-package anzu
   :init
@@ -418,7 +296,26 @@ pressed twice.
   :config
   )
 
+
+(use-package hl-todo
+  ;; :defer t
+  :config
+  (setq hl-todo-keyword-faces
+        '(
+          ("TODO"   . "#1E90FF")
+          ("FIXME"  . "#FF0000")
+          ("DEBUG"  . "#A020F0")
+          ("GOTCHA" . "#FF4500")
+          ("STUB"   . "#1E90FF")
+          ))
+  (global-hl-todo-mode 1)
+  )
 ;; ---------------------------------------------------------------
 (require 'my-functions)
-;; (load-theme 'doom-gruvbox)
+;; (load-theme 'doom-vibrant)
+
+
+(set-face-attribute 'hl-line nil :inherit nil :background "black")
+
+
 (provide 'one-sec-loads)
