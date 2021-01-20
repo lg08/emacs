@@ -26,11 +26,4 @@
 
   )
 
-(org-indent-mode)
-(org-bullets-mode)
-(wakatime-mode)
-
-(setq org-agenda-files (list "~/.emacs.d/agenda.org"))
-
-
 (provide 'org-mode-loads)

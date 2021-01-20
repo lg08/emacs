@@ -72,8 +72,9 @@
   )
 
 (use-package evil-quickscope
-  :defer t
-  :config
+  ;; :defer t
+  ;; :config
+  :init
   (global-evil-quickscope-always-mode 1)
   )
 

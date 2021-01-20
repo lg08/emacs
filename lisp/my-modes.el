@@ -16,6 +16,7 @@
                             (yas-global-mode 1)
                             (global-evil-surround-mode 1)
                             (toggle-truncate-lines)
+                            (highlight-numbers-mode 1)
                             ))
 
 (add-hook 'dired-mode-hook (lambda ()
@@ -45,6 +46,11 @@
                               ))
 (add-hook 'org-mode-hook (lambda ()
                            (require 'org-mode-loads)
+                           (org-indent-mode)
+                           (org-bullets-mode)
+                           (wakatime-mode)
+                           (setq org-agenda-files (list "~/.emacs.d/agenda.org"))
+
                            ))
 (add-hook 'tuareg-mode-hook (lambda ()
                               (require 'ocaml-mode-loads)

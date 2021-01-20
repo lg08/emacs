@@ -1,5 +1,33 @@
 (require 'autocompletion)
 
+(use-package web-mode                   ;better web development major mode  :defer t
+  :defer t
+  :init
+  (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
+  :config
+  (setq web-mode-enable-current-element-highlight t)
+  (setq web-mode-enable-current-column-highlight t)
+
+  )
+
+(use-package tuareg                     ;major mode for oCaml editing
+  :defer t
+  :config
+
+  )
+
+(use-package smart-hungry-delete        ;deletes whitespace
+  :defer t
+  :config
+
+  )
+
+(use-package smart-comment              ;just a better commenting function
+  :defer t
+  :config
+  )
+
+
 (use-package gcmh                       ;garbage management system
   :defer 1
   :config
@@ -12,6 +40,33 @@
         )
   )
 
+
+(use-package imenu-anywhere
+  :defer t
+  :config
+
+  )
+
+;; A more complex, more lazy-loaded config
+(use-package solaire-mode
+  :defer t
+  ;; Ensure solaire-mode is running in all solaire-mode buffers
+  :hook (change-major-mode . turn-on-solaire-mode)
+  ;; ...if you use auto-revert-mode, this prevents solaire-mode from turning
+  ;; itself off every time Emacs reverts the file
+  :hook (after-revert . turn-on-solaire-mode)
+  ;; To enable solaire-mode unconditionally for certain modes:
+  :hook (ediff-prepare-buffer . solaire-mode)
+  ;; Highlight the minibuffer when it is activated:
+  :hook (minibuffer-setup . solaire-mode-in-minibuffer)
+  :config
+  ;; The bright and dark background colors are automatically swapped the first
+  ;; time solaire-mode is activated. Namely, the backgrounds of the `default` and
+  ;; `solaire-default-face` faces are swapped. This is done because the colors
+  ;; are usually the wrong way around. If you don't want this, you can disable it:
+  (setq solaire-mode-auto-swap-bg nil)
+
+  (solaire-global-mode +1))
 
 (use-package swiper
   :init
@@ -271,6 +326,12 @@
        " "
        "%1{%B%}"
        "%s\n"))
+
+(use-package highlight-numbers
+  :defer t
+  :config
+  ;; (highlight-numbers-mode 1)
+  )
 
 
 
