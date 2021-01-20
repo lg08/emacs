@@ -72,11 +72,8 @@
   )
 
 (use-package evil-quickscope
-<<<<<<< HEAD
-=======
   ;; :defer t
   ;; :config
->>>>>>> 4479c3c5ce86d85f589faec9927ea00f49dd9a9c
   :init
   (global-evil-quickscope-always-mode 1)
   )
