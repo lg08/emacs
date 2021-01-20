@@ -1,4 +1,5 @@
 (require 'autocompletion)
+(require 'lsp-loads)
 
 (use-package web-mode                   ;better web development major mode  :defer t
   :defer t
