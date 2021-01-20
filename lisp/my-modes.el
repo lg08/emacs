@@ -15,7 +15,7 @@
                             (global-evil-matchit-mode 1)
                             (yas-global-mode 1)
                             (global-evil-surround-mode 1)
-                            (toggle-truncate-lines)
+                            (toggle-truncate-lines 1)
                             ))
 
 (add-hook 'dired-mode-hook (lambda ()

@@ -72,19 +72,24 @@
   )
 
 (use-package evil-quickscope
-  :defer t
-  :config
+  :init
   (global-evil-quickscope-always-mode 1)
   )
 
 (use-package evil-lion
   :ensure t
   :bind (:map evil-normal-state-map
-         ("g l " . evil-lion-left)
-         ("g L " . evil-lion-right)
-         :map evil-visual-state-map
-         ("g l " . evil-lion-left)
-         ("g L " . evil-lion-right)))
+              ("g l " . evil-lion-left)
+              ("g L " . evil-lion-right)
+              :map evil-visual-state-map
+              ("g l " . evil-lion-left)
+              ("g L " . evil-lion-right)))
+
+(use-package evil-indent-plus
+  :defer t
+  :config
+  (evil-indent-plus-default-bindings)
+  )
 
 (add-hook 'dired-mode-hook (lambda ()
                              (use-package evil-collection
