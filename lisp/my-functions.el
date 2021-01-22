@@ -204,5 +204,21 @@ buffer is not visiting a file."
   (other-window 1)
   )
 
+(defun my/overview ()
+ "show an overview of the file"
+ (interactive)
+
+ (text-scale-decrease 4)
+ (font-lock-mode -1)
+  )
+
+(defun my/exit-overview ()
+ "exit overview of file"
+ (interactive)
+
+ (text-scale-increase 4)
+ (font-lock-mode 1)
+  )
+
 ;; settings
 (provide 'my-functions)

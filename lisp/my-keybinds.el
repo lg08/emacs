@@ -175,6 +175,8 @@
   "r e" 'restart-emacs
   "o e" 'my/open-buffer-path-in-explorer
   "o t" 'my/open-terminal-in-workdir
+  "o v" 'my/overview
+  "o a" 'my/exit-overview
   "t l" 'toggle-truncate-lines
   "i m" 'counsel-imenu
   "i a" 'ivy-imenu-anywhere

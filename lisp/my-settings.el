@@ -67,9 +67,9 @@
 
 ;; (setq scroll-margin 2)                  ;keeps the cursor this far away from screen edge
 
-;; (setq scroll-conservatively 10000)      ; only 'jump' when moving this far off the screen
+(setq scroll-conservatively 10000)      ; only 'jump' when moving this far off the screen
 
-;; (setq scroll-step 1)                    ; keyboard scroll one line at a time
+(setq scroll-step 1)                    ; keyboard scroll one line at a time
 
 (setq mouse-wheel-progressive-speed nil) ;don't accelerate scrolling
 

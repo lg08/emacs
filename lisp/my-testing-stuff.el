@@ -7,4 +7,11 @@
            "%b"))))
 
 
+(use-package minimap
+  :defer t
+  :config
+
+  )
+
+
 (provide 'my-testing-stuff)
