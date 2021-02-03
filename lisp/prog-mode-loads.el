@@ -87,8 +87,12 @@
 
 (use-package highlight-indent-guides
   :defer t
+  :init
+  (set-face-foreground 'highlight-indent-guides-character-face "white")
+  (set-face-background 'highlight-indent-guides-odd-face "white")
+  (set-face-background 'highlight-indent-guides-even-face "white")
   :config
-  (setq highlight-indent-guides-responsive 'top)
+  ;; (setq highlight-indent-guides-responsive 'top)
   (setq highlight-indent-guides-delay 0.8)
   (setq highlight-indent-guides-method 'character)
   )
@@ -250,24 +254,6 @@
   :config
 
   )
-(use-package undo-tree                  ;very helpful undo visualizer
-  :defer t
-  :config
-  (setq undo-tree-visualizer-timestamps 1)
-  (setq undo-tree-visualizer-diff 1)
-  (global-undo-tree-mode 1)
-  (defadvice undo-tree-make-history-save-file-name ;automatically compresses the undo history file
-      (after undo-tree activate)
-    (setq ad-return-value (concat ad-return-value ".gz")))
-  )
-(use-package eyebrowse                  ;window management package
-  :config
-  (eyebrowse-mode 1)
-  (setq eyebrowse-new-workspace t)
-  )
-
-
-
 
 (use-package rg)
   ;; :ensure-system-package rg) ;; ⇒ There's a buffer *system-packages*

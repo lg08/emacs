@@ -77,8 +77,8 @@
 
 (require 'my-testing-stuff)
 
-(use-package doom-themes)
-(load-theme 'doom-vibrant)
+;; (use-package doom-themes)
+(load-theme 'cyberpunk)
 ;; startup message
 (setq startup-message
       (format "Welcome back old friend. Emacs ready in %.2f seconds with %d garbage collections."

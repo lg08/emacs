@@ -128,7 +128,7 @@ pressed twice.
   (key-chord-define-global "jn" 'set-mark-command)
   )
 
-;; below, all are deferred until called ------------------------------------------------------
+;; ;; below, all are deferred until called ------------------------------------------------------
 (use-package projectile                 ;project management
   :defer t
   :init
@@ -138,7 +138,6 @@ pressed twice.
   (projectile-mode +1)
   (setq projectile-completion-system 'ivy)
   (setq projectile-globally-ignored-file-suffixes '("pyc"))
-
   )
 
 (use-package doom-themes                ;pretty themes
@@ -352,5 +351,20 @@ pressed twice.
   )
 
 
+(use-package undo-tree                  ;very helpful undo visualizer
+  :defer t
+  :config
+  (setq undo-tree-visualizer-timestamps 1)
+  (setq undo-tree-visualizer-diff 1)
+  (global-undo-tree-mode 1)
+  (defadvice undo-tree-make-history-save-file-name ;automatically compresses the undo history file
+      (after undo-tree activate)
+    (setq ad-return-value (concat ad-return-value ".gz")))
+  )
+(use-package eyebrowse                  ;window management package
+  :config
+  (eyebrowse-mode 1)
+  (setq eyebrowse-new-workspace t)
+  )
 
 (provide 'one-sec-loads)

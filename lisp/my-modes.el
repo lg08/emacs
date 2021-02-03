@@ -10,7 +10,8 @@
                             (volatile-highlights-mode)
                             (global-highlight-parentheses-mode)
                             (wakatime-mode)
-                            (indent-guide-mode 1)
+                            ;; (indent-guide-mode 1)
+                            (highlight-indent-guides-mode 1)
                             (electric-pair-mode 1)
                             (global-evil-matchit-mode 1)
                             (yas-global-mode 1)
@@ -35,6 +36,7 @@
                            (electric-pair-mode -1)
                            (rainbow-mode 1)
                            (set (make-local-variable 'company-backends) '(company-css company-web-html company-yasnippet company-files))
+                           (highlight-indent-guides-mode -1)
                            ))
 
 (add-hook 'magit-mode-hook (lambda ()

@@ -21,7 +21,7 @@
 ;;   :load-path (lambda () (expand-file-name "man_packages" gemacs-dir))
 ;;   :bind ("C-z <" . instant-rename-tag))
 
-(add-to-list 'load-path (expand-file-name "man_packages/instant-rename-tag" gemacs-dir)) ; add instant-rename-tag to your load-path
-(require 'instant-rename-tag)
+;; (add-to-list 'load-path (expand-file-name "man_packages/instant-rename-tag" gemacs-dir)) ; add instant-rename-tag to your load-path
+;; (require 'instant-rename-tag)
 
 (provide 'html-mode-loads)
