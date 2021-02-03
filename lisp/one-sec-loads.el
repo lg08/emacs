@@ -37,6 +37,7 @@
 
   (setq ivy-extra-directories nil)
   (setq ivy-height 25)
+  (setq ivy-count-format "【%d/%d】")
   )
 
 (use-package ivy-rich
@@ -216,12 +217,12 @@ pressed twice.
 (use-package magit                      ;best github client
   :defer t
   :config
-  (add-to-list 'magit-no-confirm 'stage-all-changes)
-  (remove-hook 'server-switch-hook 'magit-commit-diff)
+  ;; (add-to-list 'magit-no-confirm 'stage-all-changes)
+  ;; (remove-hook 'server-switch-hook 'magit-commit-diff)
 
-  (add-hook 'git-commit-mode-hook
-            (lambda ()
-              (set-fill-column 72)))
+  ;; (add-hook 'git-commit-mode-hook
+  ;;           (lambda ()
+  ;;             (set-fill-column 72)))
   )
 
 (use-package shell-pop
@@ -331,6 +332,25 @@ pressed twice.
 
 
 (set-face-attribute 'hl-line nil :inherit nil :background "black")
+
+(use-package dired-sidebar              ;helpful dired-based popup sidebar
+  :defer t
+  :init
+  (add-hook 'dired-sidebar-mode-hook
+            (lambda ()
+              (unless (file-remote-p default-directory)
+                (auto-revert-mode)
+                )
+              (toggle-truncate-lines)
+              ))
+  :config
+  (push 'toggle-window-split dired-sidebar-toggle-hidden-commands)
+  (push 'rotate-windows dired-sidebar-toggle-hidden-commands)
+
+  (setq dired-sidebar-use-term-integration t)
+  (setq dired-sidebar-use-custom-font t)
+  )
+
 
 
 (provide 'one-sec-loads)

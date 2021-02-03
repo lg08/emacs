@@ -165,12 +165,12 @@
   "s m" 'smerge-start-session
   "SPC" 'counsel-M-x
   ;; "SPC" 'execute-extended-command
-  "w n" 'eyebrowse-next-window-config
-  "w p" 'eyebrowse-prev-window-config
+  ;; "w n" 'eyebrowse-next-window-config
+  ;; "w p" 'eyebrowse-prev-window-config
   "d d" 'toggle-dired-sidebar-and-truncate-lines
   ;; "d d" 'treemacs
-  "w w" 'avy-kill-region
-  "k" 'kill-buffer
+  ;; "w w" 'avy-kill-region
+  ;; "k" 'kill-buffer
   "e b" 'eval-buffer
   "r e" 'restart-emacs
   "o e" 'my/open-buffer-path-in-explorer

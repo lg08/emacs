@@ -1,8 +1,3 @@
-
-
-
-
-
 (use-package magit-todos                ;really cool, shows todos in magit buffer
   :defer t
   :requires (magit)
@@ -12,6 +7,8 @@
   :init
   ;; (unless (executable-find "nice") ; don't break Magit on systems that don't have `nice'
   ;; (setq magit-todos-nimce nil))
+  :custom
+  (evil-magit-init)
   )
 
 
