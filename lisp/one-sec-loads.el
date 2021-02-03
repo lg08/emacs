@@ -325,6 +325,15 @@ pressed twice.
           ))
   (global-hl-todo-mode 1)
   )
+
+
+(use-package ess
+  :defer t
+  :config
+
+  )
+
+
 ;; ---------------------------------------------------------------
 (require 'my-functions)
 ;; (load-theme 'doom-vibrant)
