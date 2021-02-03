@@ -67,15 +67,21 @@
 
 ;; (setq scroll-margin 2)                  ;keeps the cursor this far away from screen edge
 
-(setq scroll-conservatively 10000)      ; only 'jump' when moving this far off the screen
+;; (setq scroll-conservatively 10000)      ; only 'jump' when moving this far off the screen
 
-(setq scroll-step 1)                    ; keyboard scroll one line at a time
+;; (setq scroll-step 1)                    ; keyboard scroll one line at a time
 
 (setq mouse-wheel-progressive-speed nil) ;don't accelerate scrolling
 
 (setq scroll-preserve-screen-position t) ; preserve line/column (nicer page up/down)
 
 (setq scroll-error-top-bottom t)        ; Move the cursor to top/bottom even if the screen is viewing top/bottom (for page up/down)
+
+;; Ask before killing emacs
+(setq confirm-kill-emacs 'y-or-n-p)
+
+;; Show Keystrokes in Progress Instantly
+(setq echo-keystrokes 0.1)
 
 
 ;; redefines basic folders and files

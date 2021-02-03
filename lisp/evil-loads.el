@@ -93,6 +93,17 @@
   (evil-indent-plus-default-bindings)
   )
 
+(use-package evil-easymotion
+  :init
+  (evilem-default-keybindings (kbd "C-f"))
+  )
+
+(use-package evil-numbers
+  :init
+  (global-set-key (kbd "C-c +") 'evil-numbers/inc-at-pt)
+  (global-set-key (kbd "C-c -") 'evil-numbers/dec-at-pt)
+  )
+
 (add-hook 'dired-mode-hook (lambda ()
                              (use-package evil-collection
                                ;; :defer 1

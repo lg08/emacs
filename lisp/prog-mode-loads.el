@@ -319,6 +319,11 @@
   ;; (highlight-numbers-mode 1)
   )
 
+(use-package dumb-jump
+  :defer t
+  :config
+
+  )
 
 
 (provide 'prog-mode-loads)
