@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: latex_sqrt
+# key: sqrt
+# --
+\sqrt($0)

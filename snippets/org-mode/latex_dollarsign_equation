@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: latex_dollarsign_equation
+# key: $
+# --
+
+\$$0\$

@@ -53,6 +53,13 @@
                            (wakatime-mode)
                            (setq org-agenda-files (list "~/.emacs.d/agenda.org"))
 
+                           (general-define-key
+                            :keymaps 'org-mode-map
+                            "M-h" 'windmove-left
+                            "M-l" 'windmove-right
+                            "M-j" 'windmove-down
+                            "M-k" 'windmove-up
+                            )
                            ))
 (add-hook 'tuareg-mode-hook (lambda ()
                               (require 'ocaml-mode-loads)

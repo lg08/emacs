@@ -15,11 +15,11 @@
  "C-l" 'forward-char
  "C-j" 'next-line
  "C-k" 'previous-line
- "M-h" 'backward-word
- "M-l" 'forward-word
+ ;; "M-h" 'backward-word
+ ;; "M-l" 'forward-word
  "C-b" 'kill-whole-line
- "M-k" 'View-scroll-half-page-forward
- "M-j" 'View-scroll-half-page-backward
+ ;; "M-k" 'View-scroll-half-page-forward
+ ;; "M-j" 'View-scroll-half-page-backward
  "M-w" 'xah-copy-line-or-region
  "C-o" 'open-line
  "C-a" 'move-beginning-of-line
@@ -116,7 +116,10 @@
 
 (general-define-key
  :keymaps 'org-mode-map
-
+ "M-h" 'windmove-left
+ "M-l" 'windmove-right
+ "M-j" 'windmove-down
+ "M-k" 'windmove-up
  )
 
 

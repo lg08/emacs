@@ -8,6 +8,12 @@
   :config
   )
 
+(use-package dired-quick-sort
+  :defer t
+  :config
+
+  )
+
 
 
 (provide 'dired-mode-loads)

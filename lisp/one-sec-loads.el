@@ -370,10 +370,29 @@ pressed twice.
       (after undo-tree activate)
     (setq ad-return-value (concat ad-return-value ".gz")))
   )
+
 (use-package eyebrowse                  ;window management package
   :config
   (eyebrowse-mode 1)
   (setq eyebrowse-new-workspace t)
   )
+
+
+(use-package pdf-tools
+   :pin manual
+   :config
+   (pdf-tools-install)
+   (setq-default pdf-view-display-size 'fit-width)
+   (define-key pdf-view-mode-map (kbd "C-s") 'isearch-forward)
+   :custom
+   (pdf-annot-activate-created-annotations t "automatically annotate highlights"))
+
+(setq TeX-view-program-selection '((output-pdf "PDF Tools"))
+      TeX-view-program-list '(("PDF Tools" TeX-pdf-tools-sync-view))
+      TeX-source-correlate-start-server t)
+
+(add-hook 'TeX-after-compilation-finished-functions
+          #'TeX-revert-document-buffer)
+
 
 (provide 'one-sec-loads)

@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: latex_big_thing
+# key: lbig
+# --
+\\$1\limits_{$2}^{$3} $0

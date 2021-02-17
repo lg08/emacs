@@ -88,9 +88,6 @@
 (use-package highlight-indent-guides
   :defer t
   :init
-  (set-face-foreground 'highlight-indent-guides-character-face "white")
-  (set-face-background 'highlight-indent-guides-odd-face "white")
-  (set-face-background 'highlight-indent-guides-even-face "white")
   :config
   ;; (setq highlight-indent-guides-responsive 'top)
   (setq highlight-indent-guides-delay 0.8)

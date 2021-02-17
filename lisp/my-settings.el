@@ -118,10 +118,12 @@
 
 ;; makes dired sort by date by default
 (setq dired-listing-switches "-la")
+;; (setq dired-listing-switches "-aBhl  --group-directories-first")
+
 
 (add-hook 'before-save-hook 'delete-trailing-whitespace) ;deletes the whitespace at end of lines on save
 
-(set-face-attribute 'default nil :height 80)
+;; (set-face-attribute 'default nil :height 80)
 
 
 
