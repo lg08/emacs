@@ -119,6 +119,15 @@
                                 )
                               ))
 
+(add-hook 'magit-mode-hook (lambda ()
+                             (use-package evil-collection
+                               ;; :defer 1
+                               :config
+                               (evil-collection-init)
+                               )
+
+                             ))
+
 
 (add-hook 'prog-mode-hook (lambda ()
                             (use-package evil-collection

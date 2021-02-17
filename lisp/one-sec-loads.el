@@ -394,5 +394,11 @@ pressed twice.
 (add-hook 'TeX-after-compilation-finished-functions
           #'TeX-revert-document-buffer)
 
+(use-package persistent-scratch
+  :defer t
+  :config
+  :init
+  (persistent-scratch-setup-default)
+  )
 
 (provide 'one-sec-loads)
