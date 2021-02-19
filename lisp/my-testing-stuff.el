@@ -23,10 +23,6 @@
   )
 
 
-(set-default 'preview-scale-function 1.2)
-
-(setq org-startup-folded "showall")
-
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -47,5 +43,10 @@
  ;; If there is more than one, they won't work right.
  '(lsp-ui-doc-background ((t (:background nil))))
  '(lsp-ui-doc-header ((t (:inherit (font-lock-string-face italic))))))
+
+
+(setq org-adapt-indentation nil)
+
+(auto-fill-mode)
 
 (provide 'my-testing-stuff)

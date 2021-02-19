@@ -27,6 +27,9 @@
   )
 
 
+(set-default 'preview-scale-function 1.2) ;makes latex more readable
+
+(setq org-startup-folded "showall")     ;starts org mode with everything showing
 
 
 (provide 'org-mode-loads)
