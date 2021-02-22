@@ -1,5 +1,9 @@
 ;; sets up all the settings for different modes
 
+(add-hook 'text-mode-hook (lambda ()
+                                      (auto-fill-mode)
+                                      ))
+
 ;; all the shit I always want while coding
 (add-hook 'prog-mode-hook (lambda ()
                             (require 'prog-mode-loads)

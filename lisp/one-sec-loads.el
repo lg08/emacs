@@ -43,7 +43,7 @@
 (use-package ivy-rich
   :defer 1
   :config
-  (ivy-rich-mode 1)
+  ;; (ivy-rich-mode 1)
   ;; (ivy-rich-project-root-cache-mode 1)  ;better performance especially for switch to buffer
   )
 
@@ -75,7 +75,7 @@
 (setq x-gtk-resize-child-frames 'resize-mode)
 (use-package mini-frame
   :init
-  (mini-frame-mode)
+  ;; (mini-frame-mode)
   :defer t
   :config
   (add-to-list 'mini-frame-ignore-commands 'swiper)
@@ -399,6 +399,14 @@ pressed twice.
   :config
   :init
   (persistent-scratch-setup-default)
+  )
+
+
+(use-package vi-tilde-fringe
+  :init
+  (global-vi-tilde-fringe-mode)
+  :config
+
   )
 
 (provide 'one-sec-loads)
