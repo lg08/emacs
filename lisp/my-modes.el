@@ -1,15 +1,16 @@
 ;; sets up all the settings for different modes
 
 (add-hook 'text-mode-hook (lambda ()
-                                      (auto-fill-mode)
-                                      ))
+                            (auto-fill-mode)
+                            (require 'autocompletion)
+                            ))
 
 ;; all the shit I always want while coding
 (add-hook 'prog-mode-hook (lambda ()
                             (require 'prog-mode-loads)
                             (global-company-mode 1)
                             (rainbow-delimiters-mode 1)
-                            (global-undo-tree-mode 1)
+                            ;; (global-undo-tree-mode 1)
                             (highlight-thing-mode)
                             (volatile-highlights-mode)
                             (global-highlight-parentheses-mode)
@@ -52,6 +53,7 @@
                               ))
 (add-hook 'org-mode-hook (lambda ()
                            (require 'org-mode-loads)
+                           (require 'autocompletion)
                            (org-indent-mode)
                            (org-bullets-mode)
                            (wakatime-mode)

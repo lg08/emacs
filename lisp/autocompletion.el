@@ -1,3 +1,81 @@
+(defun user/company-complete-selection ()
+  "Insert the selected candidate or the first if none are selected."
+  (interactive)
+  (if company-selection
+      (company-complete-selection)
+    (company-complete-number 1)))
+
+(defconst *clangd*
+  (or (executable-find "clangd")  ;; usually
+      (executable-find "/usr/local/opt/llvm/bin/clangd"))  ;; macOS
+  "Do we have clangd?")
+
+
+(use-package company
+  :diminish company-mode
+  :init
+  (setq company-backends '((company-files company-keywords company-capf
+                                          company-dabbrev-code
+                                          company-etags company-dabbrev)))
+  (global-company-mode 1)
+  :hook ((prog-mode LaTeX-mode latex-mode ess-r-mode) . company-mode)
+  :bind
+  (:map company-active-map
+        ([tab] . user/company-complete-selection)
+        ("TAB" . user/company-complete-selection))
+  :custom
+  (company-minimum-prefix-length 1)
+  (company-tooltip-align-annotations t)
+  (company-require-match 'never)
+  ;; Don't use company in the following modes
+  (company-global-modes '(not shell-mode eaf-mode))
+  ;; Trigger completion immediately.
+  (company-idle-delay 0.2)
+  ;; Number the candidates (use M-1, M-2 etc to select completions).
+  (company-show-numbers t)
+  :config
+  ;; (unless clangd-p (delete 'company-clang company-backends))
+  (global-company-mode 1)
+  ;; (defun smarter-tab-to-complete ()
+;;     "Try to `org-cycle', `yas-expand', and `yas-next-field' at current cursor position.
+
+;; If all failed, try to complete the common part with `company-complete-common'"
+;;     (interactive)
+;;     (if yas-minor-mode
+;;         (let ((old-point (point))
+;;               (old-tick (buffer-chars-modified-tick))
+;;               (func-list '(org-cycle yas-expand yas-next-field)))
+;;           (catch 'func-suceed
+;;             (dolist (func func-list)
+;;               (ignore-errors (call-interactively func))
+;;               (unless (and (eq old-point (point))
+;;                            (eq old-tick (buffer-chars-modified-tick)))
+;;                 (throw 'func-suceed t)))
+;;             (company-complete-common)))))
+  )
+
+(defun text-mode-hook-setup ()
+  ;; make `company-backends' local is critcal
+  ;; or else, you will have completion in every major mode, that's very annoying!
+  (make-local-variable 'company-backends)
+
+  ;; company-ispell is the plugin to complete words
+  (add-to-list 'company-backends 'company-ispell)
+
+  ;; OPTIONAL, if `company-ispell-dictionary' is nil, `ispell-complete-word-dict' is used
+  ;;  but I prefer hard code the dictionary path. That's more portable.
+  (setq company-ispell-dictionary (file-truename "~/.emacs.d/english-words.txt")))
+
+(add-hook 'text-mode-hook 'text-mode-hook-setup)
+
+
+
+
+
+
+
+
+
 ;; (use-package company                    ;autocompletion system
 ;;   :defer t
 ;;   :init
@@ -84,55 +162,6 @@
 
 
 
-(defun user/company-complete-selection ()
-  "Insert the selected candidate or the first if none are selected."
-  (interactive)
-  (if company-selection
-      (company-complete-selection)
-    (company-complete-number 1)))
-
-(defconst *clangd*
-  (or (executable-find "clangd")  ;; usually
-      (executable-find "/usr/local/opt/llvm/bin/clangd"))  ;; macOS
-  "Do we have clangd?")
-
-
-(use-package company
-  :diminish company-mode
-  :hook ((prog-mode LaTeX-mode latex-mode ess-r-mode) . company-mode)
-  :bind
-  (:map company-active-map
-        ([tab] . user/company-complete-selection)
-        ("TAB" . user/company-complete-selection))
-  :custom
-  (company-minimum-prefix-length 1)
-  (company-tooltip-align-annotations t)
-  (company-require-match 'never)
-  ;; Don't use company in the following modes
-  (company-global-modes '(not shell-mode eaf-mode))
-  ;; Trigger completion immediately.
-  (company-idle-delay 0.2)
-  ;; Number the candidates (use M-1, M-2 etc to select completions).
-  (company-show-numbers t)
-  :config
-  ;; (unless clangd-p (delete 'company-clang company-backends))
-  (global-company-mode 1)
-  (defun smarter-tab-to-complete ()
-    "Try to `org-cycle', `yas-expand', and `yas-next-field' at current cursor position.
-
-If all failed, try to complete the common part with `company-complete-common'"
-    (interactive)
-    (if yas-minor-mode
-        (let ((old-point (point))
-              (old-tick (buffer-chars-modified-tick))
-              (func-list '(org-cycle yas-expand yas-next-field)))
-          (catch 'func-suceed
-            (dolist (func func-list)
-              (ignore-errors (call-interactively func))
-              (unless (and (eq old-point (point))
-                           (eq old-tick (buffer-chars-modified-tick)))
-                (throw 'func-suceed t)))
-            (company-complete-common))))))
 
 ;; (use-package company-tabnine
 ;;   :defer 1
