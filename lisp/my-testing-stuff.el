@@ -34,7 +34,7 @@
    '((auto-mode . emacs)
      ("\\.mm\\'" . default)
      ("\\.x?html?\\'" . default)
-     ("\\.pdf\\'" . "vivaldi %s")))     ;changes what default app org mode uses to open pdf files
+     ("\\.pdf\\'" . "opera %s")))     ;changes what default app org mode uses to open pdf files
  '(wakatime-python-bin nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.

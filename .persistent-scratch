@@ -1,6 +1,5 @@
-(["*scratch*" "Emacs is here...
-Welcome back old friend
-
-* PA1 324
-- the target variable is denoted by MEDV(median value of owner occupied homes in $1000s)
-" (1 . 1) org-mode nil nil])
+(["*scratch*" "select_string =\"SELECT classes.classid, crosslistings.courseid, crosslistings.coursenum, courses.area, courses.title \" + \\
+    \"FROM courses\" + \\
+    \"INNER JOIN crosslistings ON crosslistings.courseid = courses.courseid\" + \\
+    \"INNER JOIN classes ON classes.courseid = courses.courseid\"
+" (1 . 54) python-mode nil nil])
