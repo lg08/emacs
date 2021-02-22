@@ -27,6 +27,8 @@
 (global-hl-line-mode 1)            ;highlights the current line
 ;; (set-face-attribute hl-line-face nil :underline t) ;underlines the current line
 
+(global-display-fill-column-indicator-mode)
+
 ;; starts a server if there's not already one running
 (add-hook 'after-init-hook
           (lambda ()
@@ -81,7 +83,7 @@
 (setq confirm-kill-emacs 'y-or-n-p)
 
 ;; Show Keystrokes in Progress Instantly
-(setq echo-keystrokes 0.1)
+;; (setq echo-keystrokes 0.1)
 
 
 ;; redefines basic folders and files
