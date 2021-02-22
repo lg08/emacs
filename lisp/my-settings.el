@@ -1,6 +1,8 @@
 ;; basic settings
 
 
+(setq fill-column 80)
+
 (setq lexical-binding t)              ;idk, something to do with loading lexical files faster
 
 (setq inhibit-startup-message t)  ;i kinda like it but most people don't
@@ -121,7 +123,23 @@
 ;; (setq dired-listing-switches "-aBhl  --group-directories-first")
 
 
-(add-hook 'before-save-hook 'delete-trailing-whitespace) ;deletes the whitespace at end of lines on save
+;; (add-hook 'before-save-hook 'delete-trailing-whitespace) ;deletes the whitespace at end of lines on save
+
+(defun delete-trailing-whitespace-except-current-line ()
+  (interactive)
+  (let ((begin (line-beginning-position))
+        (end (line-end-position)))
+    (save-excursion
+      (when (< (point-min) begin)
+        (save-restriction
+          (narrow-to-region (point-min) (1- begin))
+          (delete-trailing-whitespace)))
+      (when (> (point-max) end)
+        (save-restriction
+          (narrow-to-region (1+ end) (point-max))
+          (delete-trailing-whitespace))))))
+
+(add-hook 'before-save-hook 'delete-trailing-whitespace-except-current-line)
 
 ;; (set-face-attribute 'default nil :height 80)
 
