@@ -65,7 +65,7 @@
 ;; requires all necessary files
 ;; (require 'my-functions)
 
- (require 'my-settings)
+(require 'my-settings)
 
 (require 'my-packages)
 

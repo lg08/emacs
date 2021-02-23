@@ -2,11 +2,6 @@
 (require 'lsp-mode.el)
 
 
-(use-package smart-hungry-delete        ;deletes whitespace
-  :defer t
-  :config
-
-  )
 
 (use-package smart-comment              ;just a better commenting function
   :defer t

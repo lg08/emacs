@@ -361,6 +361,8 @@ pressed twice.
 
 
 (use-package undo-tree                  ;very helpful undo visualizer
+  :init
+  (global-undo-tree-mode 1)
   :defer t
   :config
   (setq undo-tree-visualizer-timestamps 1)
@@ -408,5 +410,12 @@ pressed twice.
   :config
 
   )
+
+(use-package smart-hungry-delete        ;deletes whitespace
+  :defer t
+  :config
+
+  )
+
 
 (provide 'one-sec-loads)
