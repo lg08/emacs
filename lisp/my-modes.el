@@ -8,7 +8,6 @@
 ;; all the shit I always want while coding
 (add-hook 'prog-mode-hook (lambda ()
                             (require 'prog-mode-loads)
-                            (global-company-mode 1)
                             (rainbow-delimiters-mode 1)
                             ;; (global-undo-tree-mode 1)
                             (highlight-thing-mode)

@@ -418,4 +418,10 @@ pressed twice.
   )
 
 
+(use-package fix-word                   ;used to capitalize words and stuff
+  :defer t
+  :config
+
+  )
+
 (provide 'one-sec-loads)
