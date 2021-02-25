@@ -47,6 +47,15 @@
 (global-set-key (kbd "C-c o")'hippie-expand)
 
 
+(setq TeX-view-program-selection '((output-pdf "PDF Tools"))
+      TeX-view-program-list '(("PDF Tools" TeX-pdf-tools-sync-view))
+      TeX-source-correlate-start-server t)
+
+(add-hook 'TeX-after-compilation-finished-functions
+          #'TeX-revert-document-buffer)
+
+
+
 ;;     (setq dcsh-command-list '("all_registers"
 ;;                               "check_design" "check_test" "compile" "current_design"
 ;;                               "link" "uniquify"

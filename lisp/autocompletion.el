@@ -57,7 +57,7 @@
 (defun text-mode-hook-setup ()
   ;; make `company-backends' local is critcal
   ;; or else, you will have completion in every major mode, that's very annoying!
-  (make-local-variable 'company-backends)
+  ;; (make-local-variable 'company-backends)
 
   ;; company-ispell is the plugin to complete words
   (add-to-list 'company-backends 'company-ispell)
