@@ -21,8 +21,11 @@
   :hook ((prog-mode LaTeX-mode latex-mode ess-r-mode) . company-mode)
   :bind
   (:map company-active-map
+        ("C-j" . company-select-next)
+        ("C-k" . company-select-previous)
         ([tab] . user/company-complete-selection)
-        ("TAB" . user/company-complete-selection))
+        ("TAB" . user/company-complete-selection)
+        )
   :custom
   (company-minimum-prefix-length 1)
   (company-tooltip-align-annotations t)
@@ -270,13 +273,13 @@
 ;; ;;     (global-flycheck-mode)))
 
 
-(general-define-key
- :keymaps 'company-active-map
- "C-j" 'company-select-next
- ;; "C-l" 'company-complete-selection
- "C-k" 'company-select-previous
- ;; "<RET>" 'company-complete-selection
- )
+;; (general-define-key
+;;  :keymaps 'company-active-map
+;;  "C-j" 'company-select-next
+;;  ;; "C-l" 'company-complete-selection
+;;  "C-k" 'company-select-previous
+;;  ;; "<RET>" 'company-complete-selection
+;;  )
 
 ;; (global-set-key (kbd "C-<return>") 'company-complete)
 

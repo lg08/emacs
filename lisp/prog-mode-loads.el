@@ -9,17 +9,17 @@
   )
 
 
-(use-package gcmh                       ;garbage management system
-  :defer 1
-  :config
-  (gcmh-mode)
-  ;; Adopt a sneaky garbage collection strategy of waiting until idle time to
-  ;; collect; staving off the collector while the user is working.
-  (setq gcmh-idle-delay 5
-        gcmh-high-cons-threshold (* 16 1024 1024)  ; 16mb
-        ;; gcmh-verbose doom-debug-p
-        )
-  )
+;; (use-package gcmh                       ;garbage management system
+;;   :defer 1
+;;   :config
+;;   (gcmh-mode)
+;;   ;; Adopt a sneaky garbage collection strategy of waiting until idle time to
+;;   ;; collect; staving off the collector while the user is working.
+;;   (setq gcmh-idle-delay 5
+;;         gcmh-high-cons-threshold (* 16 1024 1024)  ; 16mb
+;;         ;; gcmh-verbose doom-debug-p
+;;         )
+;;   )
 
 
 (use-package imenu-anywhere
@@ -87,6 +87,11 @@
   ;; (setq highlight-indent-guides-responsive 'top)
   (setq highlight-indent-guides-delay 0.8)
   (setq highlight-indent-guides-method 'character)
+
+  ;; if the org mode thing stops working, take this out
+;; (defface highlight-indent-guides-odd-face '((t nil))
+;;   "Face to highlight odd indent levels."
+;;   :group 'highlight-indent-guides)
   )
 
 (use-package visual-indentation-mode
@@ -95,14 +100,14 @@
 
   )
 
-(use-package wakatime-mode
-  :defer 1
-  :init
-  (setq wakatime-api-key "4e8965d1-c63b-4bb1-9673-5c1dc7519277")
-  (setq wakatime-cli-path "/usr/local/bin/wakatime")
-  :config
-  (global-wakatime-mode)
-  )
+;; (use-package wakatime-mode
+;;   :defer 1
+;;   :init
+;;   (setq wakatime-api-key "4e8965d1-c63b-4bb1-9673-5c1dc7519277")
+;;   (setq wakatime-cli-path "/usr/local/bin/wakatime")
+;;   :config
+;;   (global-wakatime-mode)
+;;   )
 (use-package go-mode
   :defer t
   :config
@@ -142,11 +147,6 @@
 
 
 
-(use-package fix-word                   ;used to capitalize words and stuff
-  :defer t
-  :config
-
-  )
 
 
 (use-package format-all                 ;used to format code
@@ -163,16 +163,7 @@
   (setq highlight-thing-case-sensitive-p t)
 
   )
-(use-package yasnippet                  ;abbreviation package
-  :defer t
-  :config
-  ;; check out here for full list: http://andreacrotti.github.io/yasnippet-snippets/snippets.html
-  (use-package yasnippet-snippets       ;bunch of common snippets
-    :defer t
-    :config
 
-    )
-  )
 
 (use-package rainbow-delimiters         ;shows the depth of parenthesis with colors
   :defer t

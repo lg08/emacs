@@ -386,8 +386,26 @@ pressed twice.
    (pdf-tools-install)
    (setq-default pdf-view-display-size 'fit-width)
    (define-key pdf-view-mode-map (kbd "C-s") 'isearch-forward)
+
+
+   (setq-default pdf-view-display-size 'fit-page)
+   ;; automatically annotate highlights
+   (setq pdf-annot-activate-created-annotations t)
+
+   (setq pdf-view-resize-factor 1.1)
+
+
+   ;; (setq-default pdf-view-display-size 'fit-page)
+
+
+   (use-package pdf-continuous-scroll-mode
+     :straight (pdf-continuous-scroll-mode :type git :host github :repo "dalanicolai/pdf-continuous-scroll-mode.el"))
    :custom
    (pdf-annot-activate-created-annotations t "automatically annotate highlights"))
+
+
+
+
 
 (setq TeX-view-program-selection '((output-pdf "PDF Tools"))
       TeX-view-program-list '(("PDF Tools" TeX-pdf-tools-sync-view))
@@ -417,5 +435,22 @@ pressed twice.
 
   )
 
+
+(use-package fix-word                   ;used to capitalize words and stuff
+  :defer t
+  :config
+
+  )
+
+(use-package yasnippet                  ;abbreviation package
+  :defer t
+  :config
+  ;; check out here for full list: http://andreacrotti.github.io/yasnippet-snippets/snippets.html
+  (use-package yasnippet-snippets       ;bunch of common snippets
+    :defer t
+    :config
+
+    )
+  )
 
 (provide 'one-sec-loads)

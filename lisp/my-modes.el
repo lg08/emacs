@@ -8,13 +8,12 @@
 ;; all the shit I always want while coding
 (add-hook 'prog-mode-hook (lambda ()
                             (require 'prog-mode-loads)
-                            (global-company-mode 1)
                             (rainbow-delimiters-mode 1)
                             ;; (global-undo-tree-mode 1)
                             (highlight-thing-mode)
                             (volatile-highlights-mode)
                             (global-highlight-parentheses-mode)
-                            (wakatime-mode)
+                            ;; (wakatime-mode)
                             ;; (indent-guide-mode 1)
                             (highlight-indent-guides-mode 1)
                             (electric-pair-mode 1)
@@ -24,6 +23,12 @@
                             (toggle-truncate-lines 1)
                             (highlight-numbers-mode 1)
                             ))
+
+
+(add-hook 'pdf-view-mode-hook (lambda ()
+                                (pdf-continuous-scroll-mode)
+                                (display-line-numbers-mode -1)
+                                ))
 
 (add-hook 'dired-mode-hook (lambda ()
                              (require 'dired-mode-loads)
@@ -56,7 +61,7 @@
                            (require 'autocompletion)
                            (org-indent-mode)
                            (org-bullets-mode)
-                           (wakatime-mode)
+                           ;; (wakatime-mode)
                            (setq org-agenda-files (list "~/.emacs.d/agenda.org"))
 
                            (general-define-key
