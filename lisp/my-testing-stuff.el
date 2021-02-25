@@ -34,7 +34,8 @@
    '((auto-mode . emacs)
      ("\\.mm\\'" . default)
      ("\\.x?html?\\'" . default)
-     ("\\.pdf\\'" . "opera %s")))     ;changes what default app org mode uses to open pdf files
+     ;; ("\\.pdf\\'" . "opera %s")
+     ))     ;changes what default app org mode uses to open pdf files
  '(wakatime-python-bin nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -49,6 +50,22 @@
 
 
 (global-set-key (kbd "C-c o")'hippie-expand)
+
+
+
+;; (use-package pdf-continuous-scroll-mode
+;;   :type git :host github :repo "dalanicolai/pdf-continuous-scroll-mode.el"
+;;   :init
+;;   (add-hook 'pdf-view-mode-hook 'pdf-continuous-scroll-mode)
+
+;;   )
+
+;; (straight-use-package
+;;  '(pdf-continuous-scroll-mode :type git :host github :repo "dalanicolai/pdf-continuous-scroll-mode.el")
+;;  :init
+;;  (add-hook 'pdf-view-mode-hook 'pdf-continuous-scroll-mode)
+
+;;  )
 
 
 ;;     (setq dcsh-command-list '("all_registers"

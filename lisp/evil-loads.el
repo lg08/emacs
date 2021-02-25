@@ -14,6 +14,17 @@
   (evil-define-key 'normal org-mode-map (kbd "C-c b r") 'my/revert-other-buffer)
   (evil-define-key 'normal 'global (kbd "u") 'undo-tree-undo)
   (evil-define-key 'normal 'global (kbd "C-r") 'avy-goto-char-2)
+
+
+(add-hook 'pdf-view-mode-hook
+          (lambda ()
+            (define-key evil-normal-state-local-map
+              (kbd "j") 'pdf-continuous-scroll-forward)
+            (define-key evil-normal-state-local-map
+              (kbd "k") 'pdf-continuous-scroll-backward)
+            ))
+
+
   ;; (evil-define-key 'normal 'global (kbd "C-d") 'persp-mode-map)
 
   (evil-define-key 'normal org-mode-map (kbd "SPC a o") 'begin/end_org)

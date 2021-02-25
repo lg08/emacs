@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: insert_source
+# key: bgs
+# --
+#+BEGIN_SRC $1
+$0
+#+END_SRC
