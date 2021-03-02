@@ -6,11 +6,7 @@
            "%b"))))
 
 
-(use-package minimap
-  :defer t
-  :config
 
-  )
 
 ;; keep the point out of the minibuffer
 (setq-default minibuffer-prompt-properties '(read-only t point-entered minibuffer-avoid-prompt face minibuffer-prompt))

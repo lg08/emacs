@@ -9,7 +9,7 @@
  "M-x" 'execute-extended-command
  "M-<down>" 'move-text-down
  "M-<up>" 'move-text-up
- "C-s" 'swiper
+ "C-s" 'swiper-isearch
  "C-z" 'nil
  "C-h" 'backward-char
  "C-l" 'forward-char
@@ -116,10 +116,10 @@
 
 (general-define-key
  :keymaps 'org-mode-map
- "M-h" 'windmove-left
- "M-l" 'windmove-right
- "M-j" 'windmove-down
- "M-k" 'windmove-up
+ "C-M-h" 'windmove-left
+ "C-M-l" 'windmove-right
+ "C-M-j" 'windmove-down
+ "C-M-k" 'windmove-up
  )
 
 
