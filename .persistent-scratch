@@ -2,4 +2,4 @@
     \"FROM courses\" + \\
     \"INNER JOIN crosslistings ON crosslistings.courseid = courses.courseid\" + \\
     \"INNER JOIN classes ON classes.courseid = courses.courseid\"
-" (1 . 54) python-mode nil nil])
+" (1 . 291) python-mode nil nil])

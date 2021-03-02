@@ -18,6 +18,11 @@
 
   )
 
+;; (setq ivy-format-function 'ivy-format-function-line)
+;; (ivy-current-match ((t (:background "#333333" :extend t))))
+;; (setcdr (assoc t ivy-format-functions-alist) #'ivy-format-function-line)
+
+
 
 
 (custom-set-variables

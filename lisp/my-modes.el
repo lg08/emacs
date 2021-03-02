@@ -26,7 +26,7 @@
 
 
 (add-hook 'pdf-view-mode-hook (lambda ()
-                                (pdf-continuous-scroll-mode)
+                                (pdf-continuous-scroll-mode 1)
                                 (display-line-numbers-mode -1)
                                 ))
 
