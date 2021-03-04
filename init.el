@@ -1,3 +1,5 @@
+    ;;; -*- lexical-binding: t -*-
+
 ;; it.el, main config file, basically just sets things up and loads other files
 
 (setq user-full-name "Lucas Gen")
