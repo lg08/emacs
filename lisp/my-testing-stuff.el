@@ -128,9 +128,50 @@
 
   )
 
+(use-package autothemer :ensure t)
+
+(straight-use-package
+ '(rose-pine-emacs
+   :host github
+   :repo "Caelie/rose-pine-emacs"
+   :branch "master"))
+;; (load-theme 'rose-pine-{color-moon-dawn} t)
+
 (defun my/python-mode-hook ()
   (add-to-list 'company-backends 'company-jedi))
 
 (add-hook 'python-mode-hook 'my/python-mode-hook)
+
+;; (global-hl-line-mode -1)
+
+;; (setq x-underline-at-descent-line t)
+
+;; No ugly button for checkboxes
+(setq widget-image-enable nil)
+
+;; Hide org markup for README
+(setq org-hide-emphasis-markers t)
+
+
+(add-to-list 'load-path "~/.emacs.d/nano-emacs")
+
+;; (require 'nano)
+;; (require 'nano-theme-dark)
+(require 'nano-modeline)
+(require 'nano-faces)
+;; Compact layout (need to be loaded after nano-modeline)
+;; (when (member "-compact" command-line-args)
+;;   (require 'nano-compact))
+(require 'nano-compact)
+
+
+;; ;; Compact layout (need to be loaded after nano-modeline)
+;; (when (member "-compact" command-line-args)
+;;   (require 'nano-compact))
+
+;; Splash (optional)
+(unless (member "-no-splash" command-line-args)
+  (require 'nano-splash))
+
 
 (provide 'my-testing-stuff)

@@ -75,7 +75,7 @@
 (setq x-gtk-resize-child-frames 'resize-mode)
 (use-package mini-frame
   :init
-  ;; (mini-frame-mode)
+  (mini-frame-mode)
   :defer t
   :config
   (add-to-list 'mini-frame-ignore-commands 'swiper)
@@ -339,8 +339,6 @@ pressed twice.
 ;; (load-theme 'doom-vibrant)
 
 
-(set-face-attribute 'hl-line nil :inherit nil :background "black")
-
 (use-package dired-sidebar              ;helpful dired-based popup sidebar
   :defer t
   :init
@@ -413,13 +411,6 @@ pressed twice.
 
 (add-hook 'TeX-after-compilation-finished-functions
           #'TeX-revert-document-buffer)
-
-(use-package persistent-scratch
-  :defer t
-  :config
-  :init
-  (persistent-scratch-setup-default)
-  )
 
 
 (use-package vi-tilde-fringe

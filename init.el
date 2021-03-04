@@ -82,6 +82,7 @@
 ;; (use-package tao-theme)
 ;; (use-package noctilux-theme)
 (load-theme 'doom-one)
+;; (load-theme 'rose-pine-moon)
 ;; startup message
 (setq startup-message
       (format "Welcome back old friend. Emacs ready in %.2f seconds with %d garbage collections."
