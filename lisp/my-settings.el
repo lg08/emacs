@@ -1,11 +1,13 @@
+    ;;; -*- lexical-binding: t -*-
+
 ;; basic settings
 
 
-(setq fill-column 80)
+(setq fill-column 80)                   ;sets the default fill column
 
 (setq lexical-binding t)              ;idk, something to do with loading lexical files faster
 
-(setq inhibit-startup-message t)  ;i kinda like it but most people don't
+(setq inhibit-startup-message t)  ;disable the default startup screen
 
 (setq ring-bell-function 'ignore)   ;don't annoy me with bells and shit
 
@@ -15,9 +17,9 @@
 
 ;; (global-subword-mode 1)		;detects camel case and counts them as muliple words
 
-(setq-default indicate-empty-lines t)   ; shows the little black lines on the side of the buffer
+;; (setq-default indicate-empty-lines t)   ; shows the little black lines on the side of the buffer
 
-(setq indicate-empty-lines t)           ; show empty lines in the fringe
+;; (setq indicate-empty-lines t)           ; show empty lines in the fringe
 
 (electric-pair-mode 1)                  ;automatically inserts matching parentheses and shit
 
@@ -27,7 +29,7 @@
 (setq-default display-line-numbers 'relative) ;shows the relative line numbers instead
 (setq display-line-numbers-type 'relative)
 (global-hl-line-mode 1)            ;highlights the current line
-;; (set-face-attribute hl-line-face nil :underline t) ;underlines the current line
+(set-face-attribute hl-line-face nil :underline t) ;underlines the current line
 
 (global-display-fill-column-indicator-mode)
 
@@ -46,7 +48,6 @@
 (set-default-coding-systems 'utf-8)               ; Default to utf-8 encoding
 
 (show-paren-mode 1)                               ; Show the parent
-
 
 (setq select-enable-clipboard t)            ; use the clipboard in addition to kill-ring
 
@@ -110,15 +111,15 @@
 
 ;; doc here: https://www.gnu.org/software/emacs/manual/html_node/emacs/Bidirectional-Editing.html
 ;; supposed to help with display rendering as seen from my reddit post about it
-(setq bidi-paragraph-direction 'left-to-right
-      bidi-inhibit-bpa t)
+;; (setq bidi-paragraph-direction 'left-to-right
+;;       bidi-inhibit-bpa t)
 ;; Disable bidirectional text rendering for a modest performance boost. I've set
 ;; this to `nil' in the past, but the `bidi-display-reordering's docs say that
 ;; is an undefined state and suggest this to be just as good:
-(setq-default bidi-display-reordering 'left-to-right
-              bidi-paragraph-direction 'left-to-right)
+;; (setq-default bidi-display-reordering 'left-to-right
+;;               bidi-paragraph-direction 'left-to-right)
 
-(setq visual-order-cursor-movement t)
+;; (setq visual-order-cursor-movement t)
 
 ;; makes dired sort by date by default
 (setq dired-listing-switches "-la")

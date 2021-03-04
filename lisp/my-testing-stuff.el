@@ -1,3 +1,15 @@
+;;; jsled, 2001.12.10 -- *grrr* This pisses me off...
+(defun save-buffers-kill-emacs-with-confirm ()
+ "jsled's special save-buffers-kill-emacs, but with confirm"
+ (interactive)
+ (if (null current-prefix-arg)
+     (if (y-or-n-p "Aww, you're leaving so soon????")
+         (save-buffers-kill-emacs))
+     (save-buffers-kill-emacs)))
+(global-set-key "\C-x\C-c" 'save-buffers-kill-emacs-with-confirm)
+
+
+
 (setq frame-title-format
       '("" invocation-name ": "
         (:eval
@@ -29,6 +41,8 @@
 
   )
 
+(setq py-python-command "python3")
+(setq python-shell-interpreter "python3")
 
 
 (custom-set-variables
@@ -132,5 +146,65 @@
   (add-to-list 'company-backends 'company-jedi))
 
 (add-hook 'python-mode-hook 'my/python-mode-hook)
+
+
+;; latex loads-------------------------------------------------------------
+
+
+(use-package pdf-tools
+  :ensure t
+  :config
+  (pdf-tools-install)
+  (setq-default pdf-view-display-size 'fit-page)
+  (setq pdf-annot-activate-created-annotations t)
+  (define-key pdf-view-mode-map (kbd "C-s") 'isearch-forward)
+  (define-key pdf-view-mode-map (kbd "C-r") 'isearch-backward)
+  (add-hook 'pdf-view-mode-hook (lambda ()
+				  (bms/pdf-midnite-amber))) ; automatically turns on midnight-mode for pdfs
+  )
+
+(use-package auctex-latexmk
+  :ensure t
+  :config
+  (auctex-latexmk-setup)
+  (setq auctex-latexmk-inherit-TeX-PDF-mode t))
+
+(use-package reftex
+  :ensure t
+  :defer t
+  :config
+  (setq reftex-cite-prompt-optional-args t)) ;; Prompt for empty optional arguments in cite
+
+(use-package auto-dictionary
+  :ensure t
+  :init(add-hook 'flyspell-mode-hook (lambda () (auto-dictionary-mode 1))))
+
+(use-package company-auctex
+  :ensure t
+  :init (company-auctex-init))
+
+;; (use-package tex
+;;   :ensure auctex
+;;   :mode ("\\.tex\\'" . latex-mode)
+;;   :config (progn
+;; 	    (setq TeX-source-correlate-mode t)
+;; 	    (setq TeX-source-correlate-method 'synctex)
+;; 	    (setq TeX-auto-save t)
+;; 	    (setq TeX-parse-self t)
+;; 	    (setq-default TeX-master "paper.tex")
+;; 	    (setq reftex-plug-into-AUCTeX t)
+;; 	    (pdf-tools-install)
+;; 	    (setq TeX-view-program-selection '((output-pdf "PDF Tools"))
+;; 		  TeX-source-correlate-start-server t)
+;; 	    ;; Update PDF buffers after successful LaTeX runs
+;; 	    (add-hook 'TeX-after-compilation-finished-functions
+;; 		      #'TeX-revert-document-buffer)
+;; 	    (add-hook 'LaTeX-mode-hook
+;; 		      (lambda ()
+;; 			(reftex-mode t)
+;; 			(flyspell-mode t)))
+;; 	    ))
+
+
 
 (provide 'my-testing-stuff)
