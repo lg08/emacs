@@ -1,4 +1,4 @@
-(require 'latex-loads)
+;; (require 'latex-loads)
 
 (use-package org-bullets                ;shows prettier bullets in org mode
   :defer t

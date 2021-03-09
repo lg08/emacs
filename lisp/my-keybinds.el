@@ -1,3 +1,4 @@
+    ;;; -*- lexical-binding: t -*-
 
 ;; GLOBAL KEYS-----------------------------------------------------------------
 
@@ -153,11 +154,11 @@
   "p s g" 'projectile-grep
   "g g" 'magit-status
   "g s" 'google-this
-  "x s" 'persp-switch
-  "x k" 'persp-remove-buffer
-  "x c" 'persp-kill
-  "b b" 'persp-ivy-switch-buffer
-  "b a" 'persp-switch-to-buffer
+  ;; "x s" 'persp-switch
+  ;; "x k" 'persp-remove-buffer
+  ;; "x c" 'persp-kill
+  "b b" 'ivy-switch-buffer
+  ;; "b a" 'persp-switch-to-buffer
   "o o" 'other-window
   "1" 'delete-other-windows
   "2" 'split-window-below

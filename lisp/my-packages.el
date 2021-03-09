@@ -10,13 +10,12 @@
 
   )
 
-(use-package nyan-mode
-  :defer 0.1
+(require 'one-sec-loads)
 
- :config
-  (nyan-mode 1)
-  (require 'one-sec-loads)
-  )
+(require 'evil-loads)
+
+
+
 
 
 (provide 'my-packages)

@@ -10,6 +10,8 @@
 (when (version< emacs-version "25.1")
   (error "Sorry, gemacs requires GNU Emacs 25.1 or newer, but you're running %s" emacs-version))
 
+;; backup to shut down clientless emacs daemon, taken from :https://emacs.stackexchange.com/questions/36000/how-to-gracefully-kill-clientless-daemon-from-commandline
+
 
 ;; define the folders needed for this configuration
 (defvar gemacs-dir (file-name-directory load-file-name)
@@ -65,7 +67,7 @@
 (message "Loading Gemacs' configurations...")
 
 ;; requires all necessary files
-;; (require 'my-functions)
+(require 'my-functions)
 
 (require 'my-settings)
 

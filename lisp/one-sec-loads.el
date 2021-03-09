@@ -1,5 +1,4 @@
-(require 'evil-loads)
-
+    ;;; -*- lexical-binding: t -*-
 
 (use-package web-mode                   ;better web development major mode  :defer t
   :defer t
@@ -16,12 +15,6 @@
   :config
 
   )
-
-;; for mac people
-(use-package exec-path-from-shell
-  :init
-  (when (memq window-system '(mac ns x))
-    (exec-path-from-shell-initialize)))
 
 (use-package ivy
   :init
@@ -53,7 +46,7 @@
 
   )
 
-(use-package prescient
+(use-package prescient                  ;much better sorting for ivy
   :defer 1
   :init
   (setq prescient-save-file (expand-file-name "prescient-save.el" gemacs-misc-dir))
@@ -63,7 +56,7 @@
 
   )
 
-(use-package ivy-prescient
+(use-package ivy-prescient              ;integrates prescient with ivy
   :init
   (ivy-prescient-mode)
   :defer t
@@ -71,15 +64,16 @@
 
   )
 
-
+;makes the minibuffer resize for ubuntu users
 (setq x-gtk-resize-child-frames 'resize-mode)
+;moves the modeline up to the top
 (use-package mini-frame
   :init
   (mini-frame-mode)
   :defer t
   :config
   (add-to-list 'mini-frame-ignore-commands 'swiper)
-
+  ;; dimensions of the box
   (custom-set-variables
    '(mini-frame-show-parameters
      '((top . 0)
@@ -88,7 +82,9 @@
        (height . 15))))
   )
 
-(use-package which-key                  ;shows possible keyboard commands, just uncomment if you want it
+(use-package which-key                  ;shows possible keyboard
+                                        ;commands, just uncomment if
+                                        ;you want it
   :defer 1
   :config
   (which-key-mode t)
@@ -149,25 +145,19 @@ pressed twice.
         doom-themes-enable-italic t)
   )
 
-(use-package doom-modeline
-  :defer 1
-  :init
-  (doom-modeline-mode 1)
-  :config
-  (doom-modeline-mode)
-  )
+;; (use-package doom-modeline
+;;   :defer 1
+;;   :init
+;;   (doom-modeline-mode 1)
+;;   :config
+;;   (doom-modeline-mode)
+;;   )
 
 
 
 ;; potential deep learning thing; could be dope
 ;; (use-package company-tabnine :ensure t)
 ;; (add-to-list 'company-backends 'company-tabnine)
-
-
-
-
-
-
 
 (use-package all-the-icons              ;just has a bunch of icons for stuff
   :defer t
@@ -181,13 +171,6 @@ pressed twice.
   :config
   )
 
-
-
-(use-package fireplace
-  :defer t
-  :config
-
-  )
 
 (use-package transient                  ;used for a bunch of things, just want to keep it's folder out of the home directory
   :defer t
@@ -203,14 +186,6 @@ pressed twice.
   :config
 
   )
-
-(use-package multi-term                 ;pretty good terminal thing
-  :defer t
-  :init
-  :config
-
-  )
-
 
 
 (use-package magit                      ;best github client
@@ -229,86 +204,7 @@ pressed twice.
   (setq shell-pop-window-size '30)
   (setq shell-pop-term-shell "/usr/bin/zsh")
   (setq shell-pop-window-position "bottom")
-  :defer t
-  )
-
-(use-package poet-theme
-  :defer t
-  :config
-
-  )
-
-
-
-(use-package anzu
-  :init
-  (global-anzu-mode +1)
-  :defer t
-  :config
-
-  )
-
-(use-package bm
-  :ensure t
-  :demand t
-
-  :init
-  ;; restore on load (even before you require bm)
-  (setq bm-restore-repository-on-load t)
-
-
-  :config
-  ;; Allow cross-buffer 'next'
-  ;; (setq bm-cycle-all-buffers t)
-
-  ;; where to store persistant files
-  (setq bm-repository-file "~/.emacs.d/bm-repository")
-
-  ;; save bookmarks
-  (setq-default bm-buffer-persistence t)
-
-  ;; Loading the repository from file when on start up.
-  (add-hook 'after-init-hook 'bm-repository-load)
-
-  ;; Saving bookmarks
-  (add-hook 'kill-buffer-hook #'bm-buffer-save)
-
-  ;; Saving the repository to file when on exit.
-  ;; kill-buffer-hook is not called when Emacs is killed, so we
-  ;; must save all bookmarks first.
-  (add-hook 'kill-emacs-hook #'(lambda nil
-                                 (bm-buffer-save-all)
-                                 (bm-repository-save)))
-
-  ;; The `after-save-hook' is not necessary to use to achieve persistence,
-  ;; but it makes the bookmark data in repository more in sync with the file
-  ;; state.
-  (add-hook 'after-save-hook #'bm-buffer-save)
-
-  ;; Restoring bookmarks
-  (add-hook 'find-file-hooks   #'bm-buffer-restore)
-  (add-hook 'after-revert-hook #'bm-buffer-restore)
-
-  ;; The `after-revert-hook' is not necessary to use to achieve persistence,
-  ;; but it makes the bookmark data in repository more in sync with the file
-  ;; state. This hook might cause trouble when using packages
-  ;; that automatically reverts the buffer (like vc after a check-in).
-  ;; This can easily be avoided if the package provides a hook that is
-  ;; called before the buffer is reverted (like `vc-before-checkin-hook').
-  ;; Then new bookmarks can be saved before the buffer is reverted.
-  ;; Make sure bookmarks is saved before check-in (and revert-buffer)
-  (add-hook 'vc-before-checkin-hook #'bm-buffer-save)
-
-  :bind (("<f2>" . bm-next)
-         ("S-<f2>" . bm-previous)
-         ("C-<f2>" . bm-toggle))
-  )
-
-(use-package perspective
-  :init
-  (persp-mode 1)
-  :defer t
-  :config
+  ;; :defer t
   )
 
 
@@ -327,17 +223,11 @@ pressed twice.
   )
 
 
-(use-package ess
+(use-package ess                        ;used for R
   :defer t
   :config
 
   )
-
-
-;; ---------------------------------------------------------------
-(require 'my-functions)
-;; (load-theme 'doom-vibrant)
-
 
 (use-package dired-sidebar              ;helpful dired-based popup sidebar
   :defer t

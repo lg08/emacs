@@ -1,7 +1,7 @@
 ;; sets up all the settings for different modes
 
 (add-hook 'text-mode-hook (lambda ()
-                            (auto-fill-mode)
+                            (auto-fill-mode 1)
                             (require 'autocompletion)
                             ))
 
