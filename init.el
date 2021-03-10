@@ -8,7 +8,8 @@
 (message "Gemacs is powering up... Be patient, Master %s!" user-full-name)
 
 (when (version< emacs-version "25.1")
-  (error "Sorry, gemacs requires GNU Emacs 25.1 or newer, but you're running %s" emacs-version))
+  (error "Sorry, gemacs requires GNU Emacs 25.1 or newer, but
+  you're running %s" emacs-version))
 
 ;; backup to shut down clientless emacs daemon, taken from :https://emacs.stackexchange.com/questions/36000/how-to-gracefully-kill-clientless-daemon-from-commandline
 (defun server-shutdown ()
@@ -52,7 +53,8 @@
 ;; bootstraps straight
 (defvar bootstrap-version)
 (let ((bootstrap-file
-       (expand-file-name "straight/repos/straight.el/bootstrap.el" user-emacs-directory))
+       (expand-file-name "straight/repos/straight.el/bootstrap.el"
+       user-emacs-directory))
       (bootstrap-version 5))
   (unless (file-exists-p bootstrap-file)
     (with-current-buffer
@@ -93,12 +95,15 @@
 ;; (load-theme 'rose-pine-moon)
 ;; startup message
 (setq startup-message
-      (format "Welcome back old friend. Emacs ready in %.2f seconds with %d garbage collections."
-              (float-time (time-subtract after-init-time before-init-time)) gcs-done))
+      (format "Welcome back old friend. Emacs ready in %.2f
+      seconds with %d garbage collections."
+              (float-time (time-subtract after-init-time
+              before-init-time)) gcs-done))
 (defun display-startup-echo-area-message ()
   (display-message-or-buffer startup-message))
 (message startup-message)
 
 ;; sets up frame title and initial scratch messsage
 ;; (setq frame-title-format '("" "%b - My-Dope-Ass Config"))
-(setq initial-scratch-message "Welcome back old friend... \n\nEmacs is here. You're ok now.\n\n\n")
+(setq initial-scratch-message "Welcome back old
+friend... \n\nEmacs is here. You're ok now.\n\n\n")

@@ -69,7 +69,7 @@
 ;moves the modeline up to the top
 (use-package mini-frame
   :init
-  (mini-frame-mode)
+  ;; (mini-frame-mode)
   :defer t
   :config
   (add-to-list 'mini-frame-ignore-commands 'swiper)
@@ -268,28 +268,28 @@ pressed twice.
   )
 
 
-(use-package pdf-tools
-   :pin manual
-   :config
-   (pdf-tools-install)
-   (setq-default pdf-view-display-size 'fit-width)
-   (define-key pdf-view-mode-map (kbd "C-s") 'isearch-forward)
+;; (use-package pdf-tools
+;;    :pin manual
+;;    :config
+;;    (pdf-tools-install)
+;;    (setq-default pdf-view-display-size 'fit-width)
+;;    (define-key pdf-view-mode-map (kbd "C-s") 'isearch-forward)
 
 
-   (setq-default pdf-view-display-size 'fit-page)
-   ;; automatically annotate highlights
-   (setq pdf-annot-activate-created-annotations t)
+;;    (setq-default pdf-view-display-size 'fit-page)
+;;    ;; automatically annotate highlights
+;;    (setq pdf-annot-activate-created-annotations t)
 
-   (setq pdf-view-resize-factor 1.1)
-
-
-   ;; (setq-default pdf-view-display-size 'fit-page)
+;;    (setq pdf-view-resize-factor 1.1)
 
 
-   (use-package pdf-continuous-scroll-mode
-     :straight (pdf-continuous-scroll-mode :type git :host github :repo "dalanicolai/pdf-continuous-scroll-mode.el"))
-   :custom
-   (pdf-annot-activate-created-annotations t "automatically annotate highlights"))
+;;    ;; (setq-default pdf-view-display-size 'fit-page)
+
+
+;;    (use-package pdf-continuous-scroll-mode
+;;      :straight (pdf-continuous-scroll-mode :type git :host github :repo "dalanicolai/pdf-continuous-scroll-mode.el"))
+;;    :custom
+;;    (pdf-annot-activate-created-annotations t "automatically annotate highlights"))
 
 
 
