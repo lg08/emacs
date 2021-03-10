@@ -116,6 +116,14 @@
   (global-set-key (kbd "C-c -") 'evil-numbers/dec-at-pt)
   )
 
+(use-package evil-collection
+  ;; :defer 1
+  :config
+  (evil-collection-init)
+  )
+
+
+
 (add-hook 'dired-mode-hook (lambda ()
                              (use-package evil-collection
                                ;; :defer 1

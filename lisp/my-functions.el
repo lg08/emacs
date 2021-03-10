@@ -204,6 +204,15 @@ buffer is not visiting a file."
   (other-window 1)
   )
 
+(defun triple-pane ()
+  "three vertical panes"
+  (interactive)
+ (delete-other-windows)
+  (split-window-right)
+  (split-window-right)
+  (balance-windows)
+  )
+
 (defun my/overview ()
  "show an overview of the file"
  (interactive)

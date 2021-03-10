@@ -62,7 +62,7 @@
                            (org-indent-mode)
                            (org-bullets-mode)
                            ;; (wakatime-mode)
-                           (setq org-agenda-files (list "~/.emacs.d/agenda.org"))
+                           ;; (setq org-agenda-files (list "~/.emacs.d/agenda.org"))
 
                            (general-define-key
                             :keymaps 'org-mode-map
