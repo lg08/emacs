@@ -147,7 +147,11 @@
                                )
 
                              ))
+(use-package evil-matchit
+                              :defer t
+                              :config
 
+                              )
 
 (add-hook 'prog-mode-hook (lambda ()
                             (use-package evil-collection
