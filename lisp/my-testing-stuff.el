@@ -176,7 +176,7 @@
 ;; Compact layout (need to be loaded after nano-modeline)
 ;; (when (member "-compact" command-line-args)
 ;;   (require 'nano-compact))
-(require 'nano-compact)
+;; (require 'nano-compact)
 
 
 ;; ;; Compact layout (need to be loaded after nano-modeline)
