@@ -121,7 +121,12 @@
   :config
   (evil-collection-init)
   )
-
+(use-package evil-surround
+                              :defer t
+                              :ensure t
+                              :config
+                              (global-evil-surround-mode 1)
+                              )
 
 
 (add-hook 'dired-mode-hook (lambda ()

@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: latex_partial_derivative
+# key: lpart
+# --
+\frac{\partial $1}{\partial $0}

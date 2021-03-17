@@ -8,6 +8,7 @@
      (save-buffers-kill-emacs)))
 (global-set-key "\C-x\C-c" 'save-buffers-kill-emacs-with-confirm)
 
+(setq org-format-latex-options (plist-put org-format-latex-options :scale 2.0))
 
 
 (setq frame-title-format
@@ -22,6 +23,8 @@
          ((agenda "")
           (alltodo "")))))
 
+;; Auto-refresh dired on file change
+(add-hook 'dired-mode-hook 'auto-revert-mode)
 
 ;; keep the point out of the minibuffer
 (setq-default minibuffer-prompt-properties '(read-only t point-entered minibuffer-avoid-prompt face minibuffer-prompt))
