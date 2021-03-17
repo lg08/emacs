@@ -91,7 +91,7 @@
 ;; (use-package zenburn-theme)
 ;; (use-package tao-theme)
 ;; (use-package noctilux-theme)
-(load-theme 'doom-one)
+(load-theme 'doom-dracula)
 ;; (load-theme 'rose-pine-moon)
 ;; startup message
 (setq startup-message

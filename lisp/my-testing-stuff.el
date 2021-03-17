@@ -8,7 +8,7 @@
      (save-buffers-kill-emacs)))
 (global-set-key "\C-x\C-c" 'save-buffers-kill-emacs-with-confirm)
 
-(setq org-format-latex-options (plist-put org-format-latex-options :scale 2.0))
+;; (setq org-format-latex-options (plist-put org-format-latex-options :scale 2.0))
 
 
 (setq frame-title-format
@@ -308,6 +308,12 @@
       "g\\" 'org-agenda-filter-by-tag-refine
       "]" 'org-agenda-manipulate-query-subtract)))
 ;; #+END_SRC
+
+(use-package markdown-mode
+  :defer t
+  :config
+
+  )
 
 
 (provide 'my-testing-stuff)
