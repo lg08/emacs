@@ -314,6 +314,8 @@
   :config
 
   )
-
+(setq org-latex-to-pdf-process
+  '("xelatex -interaction nonstopmode %f"
+     "xelatex -interaction nonstopmode %f")) ;; for multiple passes
 
 (provide 'my-testing-stuff)

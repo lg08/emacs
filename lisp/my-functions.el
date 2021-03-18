@@ -1,5 +1,13 @@
 ;; loads all custom functions
 
+(defun my/export-cover-letter ()
+"trying to export my cover letter automatically"
+(interactive)
+(shell-command "xelatex ~/Documents/resume/Lucas_Gen_Cover_Letter.tex")
+(shell-command "evince ~/Documents/resume/Lucas_Gen_Cover_Letter.pdf")
+(delete-other-windows)
+)
+
 
 ;; sets gargage collection very high while in minibuffer
 (add-hook 'minibuffer-setup-hook #'my/minibuffer-setup-hook)
