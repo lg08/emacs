@@ -4,9 +4,79 @@
 "trying to export my cover letter automatically"
 (interactive)
 (shell-command "xelatex ~/Documents/resume/Lucas_Gen_Cover_Letter.tex")
-(shell-command "evince ~/Documents/resume/Lucas_Gen_Cover_Letter.pdf")
+(async-shell-command "mupdf ~/Documents/resume/Lucas_Gen_Cover_Letter.pdf")
 (delete-other-windows)
 )
+
+(defun my/make_cover_letter ()
+  "give it a company name and two lines of address in newlines on a
+buffer and output the whole cover letter"
+  (interactive)
+  (split-window-right)
+  (find-file "~/Documents/resume/Lucas_Gen_Cover_Letter.tex")
+  (other-window 1)
+  (goto-line 1)
+  (kill-line)
+  (yank)
+
+  (other-window 1)
+
+  ;; replace all company names
+  (while (re-search-forward "
+" nil t)
+    (replace-match "")
+    (yank)
+    )
+
+(while (re-search-backward "
+" nil t)
+    (replace-match "")
+    (yank)
+    )
+
+;; replace all address 1's
+(other-window 1)
+(goto-line 2)
+(kill-line)
+(yank)
+(other-window 1)
+(while (re-search-backward "ADDRESS1" nil t)
+    (replace-match "")
+    (yank)
+    )
+(while (re-search-forward "ADDRESS1" nil t)
+    (replace-match "")
+    (yank)
+    )
+
+;; replace all address 2's
+(other-window 1)
+(goto-line 3)
+(kill-line)
+(yank)
+(other-window 1)
+(while (re-search-backward "ADDRESS2" nil t)
+    (replace-match "")
+    (yank)
+    )
+(while (re-search-forward "ADDRESS2" nil t)
+    (replace-match "")
+    (yank)
+    )
+
+
+;; save buffer
+(save-buffer)
+
+
+;; export the new cover letter
+(my/export-cover-letter)
+
+(undo)
+
+
+)
+
 
 
 ;; sets gargage collection very high while in minibuffer
