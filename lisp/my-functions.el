@@ -22,14 +22,12 @@ buffer and output the whole cover letter"
   (other-window 1)
 
   ;; replace all company names
-  (while (re-search-forward "
-" nil t)
+  (while (re-search-forward "COMPANYHERE" nil t)
     (replace-match "")
     (yank)
     )
 
-(while (re-search-backward "
-" nil t)
+(while (re-search-backward "COMPANYHERE" nil t)
     (replace-match "")
     (yank)
     )
@@ -74,6 +72,15 @@ buffer and output the whole cover letter"
 
 (undo)
 
+(save-buffer)
+
+(shell-command "mv ~/Documents/resume/Lucas_Gen_Cover_Letter.pdf ~/Downloads/Lucas_Gen_Cover_Letter.pdf")
+
+(find-file "~/Downloads")
+
+(delete-other-windows)
+
+(re-search-forward "Lucas_Gen_Cover_Letter.pdf")
 
 )
 
