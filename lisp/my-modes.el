@@ -15,19 +15,20 @@
                             (global-highlight-parentheses-mode)
                             ;; (wakatime-mode)
                             ;; (indent-guide-mode 1)
-                            (highlight-indent-guides-mode 1)
+                            ;; (highlight-indent-guides-mode 1)
                             (electric-pair-mode 1)
                             (global-evil-matchit-mode 1)
                             (yas-global-mode 1)
                             (global-evil-surround-mode 1)
-                            (toggle-truncate-lines 1)
                             (highlight-numbers-mode 1)
+                            (message "prog-mode loaded successfully")
                             ))
 
 
 (add-hook 'pdf-view-mode-hook (lambda ()
                                 (pdf-continuous-scroll-mode 1)
                                 (display-line-numbers-mode -1)
+                                (message "pdf-mode loaded successfully")
                                 ))
 
 (add-hook 'dired-mode-hook (lambda ()
@@ -36,6 +37,7 @@
                              (dired-hide-details-mode 1)
                              (setq dired-dwim-target t)
                              (all-the-icons-dired-mode)
+                             (message "dired-mode loaded successfully")
                              ))
 
 (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
@@ -43,18 +45,21 @@
                            (require 'html-mode-loads)
                            (emmet-mode 1)
                            (web-mode-set-engine "django")
-                           (electric-pair-mode -1)
+                           ;; (electric-pair-mode -1)
                            (rainbow-mode 1)
                            (set (make-local-variable 'company-backends) '(company-css company-web-html company-yasnippet company-files))
                            (highlight-indent-guides-mode -1)
+                           (message "web-mode loaded successfully")
                            ))
 
 (add-hook 'magit-mode-hook (lambda ()
                              (require 'magit-mode-loads)
                              (magit-todos-mode)
+                             (message "magit-mode loaded successfuly")
                              ))
 (add-hook 'python-mode-hook (lambda ()
                               (require 'python-mode-loads)
+                              (message "python-mode loaded successfully")
                               ))
 (add-hook 'org-mode-hook (lambda ()
                            (require 'org-mode-loads)
@@ -71,6 +76,7 @@
                             "M-j" 'windmove-down
                             "M-k" 'windmove-up
                             )
+                           (message 'org-mode loaded successfully)
                            ))
 (add-hook 'tuareg-mode-hook (lambda ()
                               (require 'ocaml-mode-loads)
@@ -90,6 +96,7 @@
                                       ;; ("end" . "❄")
                                       ))
                               (prettify-symbols-mode 1)
+                              (message "tuareg mode loaded successfully")
                               ))
 (add-hook 'c-mode-hook (lambda ()
                          (require 'c-mode-loads)
@@ -97,20 +104,15 @@
                          (display-fill-column-indicator-mode)
                          (define-key (current-local-map) (kbd "C-M-h") 'c-mark-function)
                          ;; (add-to-list 'company-backends 'company-c-headers)
-
+                         (message "c-mode loaded successfully")
                          ))
 
 (add-hook 'eshell-mode-hook (lambda ()
                               (company-mode -1)
+                              (message "eshell-mode loaded successfully")
                               ))
 
-(add-hook 'dired-sidebar-mode (lambda () (toggle-truncate-lines)))
-
-(defun sidebarbaby ()
-  (interactive)
-  (toggle-truncate-lines)
-  )
-
+;; (add-hook 'dired-sidebar-mode (lambda () (toggle-truncate-lines)))
 
 
 (defun clojure-leave-clojure-mode-function ()

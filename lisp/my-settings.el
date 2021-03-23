@@ -146,6 +146,10 @@
 
 ;; (set-face-attribute 'default nil :height 80)
 
+;just turns off a warning about deprecated package
+(setq byte-compile-warnings '(cl-functions))
+
+(set-default 'truncate-lines t)         ;by default, don't truncate lines, doens't work
 
 
 (provide 'my-settings)

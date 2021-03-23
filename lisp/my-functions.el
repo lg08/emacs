@@ -1,12 +1,12 @@
 ;; loads all custom functions
 
 (defun my/export-cover-letter ()
-"trying to export my cover letter automatically"
-(interactive)
-(shell-command "xelatex ~/Documents/resume/Lucas_Gen_Cover_Letter.tex")
-(async-shell-command "mupdf ~/Documents/resume/Lucas_Gen_Cover_Letter.pdf")
-(delete-other-windows)
-)
+  "trying to export my cover letter automatically"
+  (interactive)
+  (shell-command "xelatex ~/Documents/resume/Lucas_Gen_Cover_Letter.tex")
+  (async-shell-command "mupdf ~/Documents/resume/Lucas_Gen_Cover_Letter.pdf")
+  (delete-other-windows)
+  )
 
 (defun my/make_cover_letter ()
   "give it a company name and two lines of address in newlines on a
@@ -27,73 +27,62 @@ buffer and output the whole cover letter"
     (yank)
     )
 
-(while (re-search-backward "COMPANYHERE" nil t)
+  (while (re-search-backward "COMPANYHERE" nil t)
     (replace-match "")
     (yank)
     )
 
-;; replace all address 1's
-(other-window 1)
-(goto-line 2)
-(kill-line)
-(yank)
-(other-window 1)
-(while (re-search-backward "ADDRESS1" nil t)
+  ;; replace all address 1's
+  (other-window 1)
+  (goto-line 2)
+  (kill-line)
+  (yank)
+  (other-window 1)
+  (while (re-search-backward "ADDRESS1" nil t)
     (replace-match "")
     (yank)
     )
-(while (re-search-forward "ADDRESS1" nil t)
-    (replace-match "")
-    (yank)
-    )
-
-;; replace all address 2's
-(other-window 1)
-(goto-line 3)
-(kill-line)
-(yank)
-(other-window 1)
-(while (re-search-backward "ADDRESS2" nil t)
-    (replace-match "")
-    (yank)
-    )
-(while (re-search-forward "ADDRESS2" nil t)
+  (while (re-search-forward "ADDRESS1" nil t)
     (replace-match "")
     (yank)
     )
 
+  ;; replace all address 2's
+  (other-window 1)
+  (goto-line 3)
+  (kill-line)
+  (yank)
+  (other-window 1)
+  (while (re-search-backward "ADDRESS2" nil t)
+    (replace-match "")
+    (yank)
+    )
+  (while (re-search-forward "ADDRESS2" nil t)
+    (replace-match "")
+    (yank)
+    )
+  ;; save buffer
+  (save-buffer)
+  ;; export the new cover letter
+  (my/export-cover-letter)
+  (undo)
+  (save-buffer)
+  (shell-command "mv ~/Documents/resume/Lucas_Gen_Cover_Letter.pdf ~/Downloads/Lucas_Gen_Cover_Letter.pdf")
+  (find-file "~/Downloads")
+  (delete-other-windows)
+  (re-search-forward "Lucas_Gen_Cover_Letter.pdf")
+  )
 
-;; save buffer
-(save-buffer)
 
 
-;; export the new cover letter
-(my/export-cover-letter)
+;; ;; sets gargage collection very high while in minibuffer
+;; (add-hook 'minibuffer-setup-hook #'my/minibuffer-setup-hook)
+;; (add-hook 'minibuffer-exit-hook #'my/minibuffer-exit-hook)
+;; (defun my/minibuffer-setup-hook ()
+;;   (setq gc-cons-threshold most-positive-fixnum))
 
-(undo)
-
-(save-buffer)
-
-(shell-command "mv ~/Documents/resume/Lucas_Gen_Cover_Letter.pdf ~/Downloads/Lucas_Gen_Cover_Letter.pdf")
-
-(find-file "~/Downloads")
-
-(delete-other-windows)
-
-(re-search-forward "Lucas_Gen_Cover_Letter.pdf")
-
-)
-
-
-
-;; sets gargage collection very high while in minibuffer
-(add-hook 'minibuffer-setup-hook #'my/minibuffer-setup-hook)
-(add-hook 'minibuffer-exit-hook #'my/minibuffer-exit-hook)
-(defun my/minibuffer-setup-hook ()
-  (setq gc-cons-threshold most-positive-fixnum))
-
-(defun my/minibuffer-exit-hook ()
-  (setq gc-cons-threshold 800000))
+;; (defun my/minibuffer-exit-hook ()
+;;   (setq gc-cons-threshold 800000))
 
 (defun my/where-am-i ()
   "An interactive function showing function `buffer-file-name' or `buffer-name'."
@@ -110,21 +99,21 @@ buffer and output the whole cover letter"
   (interactive)
   (find-alternate-file ".."))
 
-(defun my/byte-compile-init-dir ()
-  "Byte-compile all your dotfiles."
-  (interactive)
-  (byte-recompile-directory user-emacs-directory 0))
+;; (defun my/byte-compile-init-dir ()
+;;   "Byte-compile all your dotfiles."
+;;   (interactive)
+;;   (byte-recompile-directory user-emacs-directory 0))
 
-;; deletes stale elc files on save
-(add-hook 'emacs-lisp-mode-hook 'my/remove-elc-on-save)
-(defun my/remove-elc-on-save ()
-  "If you're saving an Emacs Lisp file, likely the .elc is no longer valid."
-  (add-hook 'after-save-hook
-            (lambda ()
-              (if (file-exists-p (concat buffer-file-name "c"))
-                  (delete-file (concat buffer-file-name "c"))))
-            nil
-            t))
+;; ;; deletes stale elc files on save
+;; (add-hook 'emacs-lisp-mode-hook 'my/remove-elc-on-save)
+;; (defun my/remove-elc-on-save ()
+;;   "If you're saving an Emacs Lisp file, likely the .elc is no longer valid."
+;;   (add-hook 'after-save-hook
+;;             (lambda ()
+;;               (if (file-exists-p (concat buffer-file-name "c"))
+;;                   (delete-file (concat buffer-file-name "c"))))
+;;             nil
+;;             t))
 
 (defun toggle-window-split ()
   "with windows split horizontally, it makes the vertical and vice versa"
@@ -168,19 +157,19 @@ buffer and output the whole cover letter"
                   default-directory)))
 
 ;; gotten from here: https://www.reddit.com/r/emacs/comments/bed0ne/dry0_quickly_popup_a_terminal_run_a_command_close/
-(defun my/ansi-term-toggle ()
-  "Toggle ansi-term window on and off with the same command."
-  (interactive)
-  (defvar my--ansi-term-name "ansi-term-popup")
-  (defvar my--window-name (concat "*" my--ansi-term-name "*"))
-  (cond ((get-buffer-window my--window-name)
-         (ignore-errors (delete-window
-                         (get-buffer-window my--window-name))))
-        (t (split-window-below)
-           (other-window 1)
-           (cond ((get-buffer my--window-name)
-                  (switch-to-buffer my--window-name))
-                 (t (ansi-term "bash" my--ansi-term-name))))))
+;; (defun my/ansi-term-toggle ()
+;;   "Toggle ansi-term window on and off with the same command."
+;;   (interactive)
+;;   (defvar my--ansi-term-name "ansi-term-popup")
+;;   (defvar my--window-name (concat "*" my--ansi-term-name "*"))
+;;   (cond ((get-buffer-window my--window-name)
+;;          (ignore-errors (delete-window
+;;                          (get-buffer-window my--window-name))))
+;;         (t (split-window-below)
+;;            (other-window 1)
+;;            (cond ((get-buffer my--window-name)
+;;                   (switch-to-buffer my--window-name))
+;;                  (t (ansi-term "bash" my--ansi-term-name))))))
 
 
 
@@ -292,26 +281,26 @@ buffer is not visiting a file."
 (defun triple-pane ()
   "three vertical panes"
   (interactive)
- (delete-other-windows)
+  (delete-other-windows)
   (split-window-right)
   (split-window-right)
   (balance-windows)
   )
 
 (defun my/overview ()
- "show an overview of the file"
- (interactive)
+  "show an overview of the file"
+  (interactive)
 
- (text-scale-decrease 4)
- (font-lock-mode -1)
+  (text-scale-decrease 4)
+  (font-lock-mode -1)
   )
 
 (defun my/exit-overview ()
- "exit overview of file"
- (interactive)
+  "exit overview of file"
+  (interactive)
 
- (text-scale-increase 4)
- (font-lock-mode 1)
+  (text-scale-increase 4)
+  (font-lock-mode 1)
   )
 
 ;; settings

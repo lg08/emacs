@@ -1,86 +1,11 @@
     ;;; -*- lexical-binding: t -*-
 
-(use-package web-mode                   ;better web development major mode  :defer t
-  :defer t
-  :init
-  (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
-  :config
-  (setq web-mode-enable-current-element-highlight t)
-  (setq web-mode-enable-current-column-highlight t)
+(require 'ivy-helm)                     ;sets up ivy and  helm
 
-  )
+(require 'major-modes)                  ;makes all major modes available
 
-(use-package tuareg                     ;major mode for oCaml editing
-  :defer t
-  :config
+;; major modes --------------------------------------------------
 
-  )
-
-(use-package ivy
-  :init
-  (ivy-mode)
-  :defer t
-  :config
-  (setq ivy-use-virtual-buffers t       ;    Add recent files and bookmarks to the ivy-switch-buffer
-        ivy-count-format "%d/%d ")      ;    Displays the current and total number in the collection in the prompt
-
-  (add-to-list                          ;should make find-file and stuff sort by date
-   'ivy-sort-matches-functions-alist
-   '(read-file-name-internal . ivy--sort-files-by-date))
-
-  (setq ivy-extra-directories nil)
-  (setq ivy-height 25)
-  (setq ivy-count-format "【%d/%d】")
-  )
-
-(use-package ivy-rich
-  :defer 1
-  :config
-  ;; (ivy-rich-mode 1)
-  ;; (ivy-rich-project-root-cache-mode 1)  ;better performance especially for switch to buffer
-  )
-
-(use-package counsel
-  :defer t
-  :config
-
-  )
-
-(use-package prescient                  ;much better sorting for ivy
-  :defer 1
-  :init
-  (setq prescient-save-file (expand-file-name "prescient-save.el" gemacs-misc-dir))
-  :ensure t
-  :config
-  (prescient-persist-mode +1)
-
-  )
-
-(use-package ivy-prescient              ;integrates prescient with ivy
-  :init
-  (ivy-prescient-mode)
-  :defer t
-  :config
-
-  )
-
-;makes the minibuffer resize for ubuntu users
-(setq x-gtk-resize-child-frames 'resize-mode)
-;moves the modeline up to the top
-(use-package mini-frame
-  :init
-  ;; (mini-frame-mode)
-  :defer t
-  :config
-  (add-to-list 'mini-frame-ignore-commands 'swiper)
-  ;; dimensions of the box
-  (custom-set-variables
-   '(mini-frame-show-parameters
-     '((top . 0)
-       (width . 0.7)
-       (left . 0.5)
-       (height . 15))))
-  )
 
 (use-package which-key                  ;shows possible keyboard
                                         ;commands, just uncomment if
@@ -92,9 +17,6 @@
   (setq which-key-idle-delay .2)
 
   )
-
-
-
 
 
 (use-package key-chord
@@ -132,7 +54,7 @@ pressed twice.
   (setq projectile-cache-file (expand-file-name "projectile.cache" gemacs-misc-dir))
   :config
   (projectile-mode +1)
-  (setq projectile-completion-system 'ivy)
+  (setq projectile-completion-system 'helm)
   (setq projectile-globally-ignored-file-suffixes '("pyc"))
   )
 
@@ -144,15 +66,6 @@ pressed twice.
   (setq doom-themes-enable-bold t
         doom-themes-enable-italic t)
   )
-
-;; (use-package doom-modeline
-;;   :defer 1
-;;   :init
-;;   (doom-modeline-mode 1)
-;;   :config
-;;   (doom-modeline-mode)
-;;   )
-
 
 
 ;; potential deep learning thing; could be dope
@@ -207,28 +120,6 @@ pressed twice.
   ;; :defer t
   )
 
-
-(use-package hl-todo
-  ;; :defer t
-  :config
-  (setq hl-todo-keyword-faces
-        '(
-          ("TODO"   . "#1E90FF")
-          ("FIXME"  . "#FF0000")
-          ("DEBUG"  . "#A020F0")
-          ("GOTCHA" . "#FF4500")
-          ("STUB"   . "#1E90FF")
-          ))
-  (global-hl-todo-mode 1)
-  )
-
-
-(use-package ess                        ;used for R
-  :defer t
-  :config
-
-  )
-
 (use-package dired-sidebar              ;helpful dired-based popup sidebar
   :defer t
   :init
@@ -266,33 +157,6 @@ pressed twice.
   (eyebrowse-mode 1)
   (setq eyebrowse-new-workspace t)
   )
-
-
-;; (use-package pdf-tools
-;;    :pin manual
-;;    :config
-;;    (pdf-tools-install)
-;;    (setq-default pdf-view-display-size 'fit-width)
-;;    (define-key pdf-view-mode-map (kbd "C-s") 'isearch-forward)
-
-
-;;    (setq-default pdf-view-display-size 'fit-page)
-;;    ;; automatically annotate highlights
-;;    (setq pdf-annot-activate-created-annotations t)
-
-;;    (setq pdf-view-resize-factor 1.1)
-
-
-;;    ;; (setq-default pdf-view-display-size 'fit-page)
-
-
-;;    (use-package pdf-continuous-scroll-mode
-;;      :straight (pdf-continuous-scroll-mode :type git :host github :repo "dalanicolai/pdf-continuous-scroll-mode.el"))
-;;    :custom
-;;    (pdf-annot-activate-created-annotations t "automatically annotate highlights"))
-
-
-
 
 
 (setq TeX-view-program-selection '((output-pdf "PDF Tools"))

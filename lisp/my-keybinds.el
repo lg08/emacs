@@ -10,7 +10,8 @@
  "M-x" 'execute-extended-command
  "M-<down>" 'move-text-down
  "M-<up>" 'move-text-up
- "C-s" 'swiper-isearch
+ ;; "C-s" 'swiper-isearch
+ "C-s" 'helm-swoop
  "C-z" 'nil
  "C-h" 'backward-char
  "C-l" 'forward-char
@@ -56,7 +57,7 @@
  ;; "C-z" 'my/modalka-normal-mode
  ;; "<f9>" 'my/modalka-normal-mode
  "C-c _" 'undo-tree-visualize
- "C-c c r" 'my/reload-emacs-configuration
+ ;; "C-c c r" 'my/reload-emacs-configuration
  "C-x C-d" 'my/double-pane-dired
  "C-x d" 'dired
  "<f8>" 'dired-sidebar-toggle-sidebar
@@ -77,6 +78,11 @@
 
 ;; MINOR MODE MAPS---------------------------------------------------------------------
 
+(general-define-key
+ :keymaps 'helm-map
+ "C-j" 'helm-next-line
+ "C-k" 'helm-previous-line
+ )
 
 (general-define-key
  :keymaps 'projectile-mode-map
@@ -145,8 +151,10 @@
 (my-leader-def
   :states 'normal
   :keymaps 'override
-  "f f" 'counsel-find-file
-  "f b" 'counsel-bookmark
+  ;; "f f" 'counsel-find-file
+  "f f" 'helm-find-files
+  ;; "f b" 'counsel-bookmark
+  "f b" 'helm-bookmarks
   ;; "p" 'projectile-command-map
   "p p" 'projectile-switch-project
   "p f" 'projectile-find-file
@@ -157,7 +165,8 @@
   ;; "x s" 'persp-switch
   ;; "x k" 'persp-remove-buffer
   ;; "x c" 'persp-kill
-  "b b" 'ivy-switch-buffer
+  ;; "b b" 'ivy-switch-buffer
+  "b b" 'helm-mini
   ;; "b a" 'persp-switch-to-buffer
   "o o" 'other-window
   "1" 'delete-other-windows
@@ -167,7 +176,8 @@
   ;; "b" 'switch-to-buffer
   "s s" 'shell-pop
   "s m" 'smerge-start-session
-  "SPC" 'counsel-M-x
+  ;; "SPC" 'counsel-M-x
+  "SPC" 'helm-M-x
   ;; "SPC" 'execute-extended-command
   ;; "w n" 'eyebrowse-next-window-config
   ;; "w p" 'eyebrowse-prev-window-config

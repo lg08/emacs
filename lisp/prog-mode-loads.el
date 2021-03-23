@@ -1,6 +1,4 @@
 (require 'autocompletion)
-(require 'lsp-mode.el)
-
 
 
 (use-package smart-comment              ;just a better commenting function
@@ -9,17 +7,19 @@
   )
 
 
-;; (use-package gcmh                       ;garbage management system
-;;   :defer 1
-;;   :config
-;;   (gcmh-mode)
-;;   ;; Adopt a sneaky garbage collection strategy of waiting until idle time to
-;;   ;; collect; staving off the collector while the user is working.
-;;   (setq gcmh-idle-delay 5
-;;         gcmh-high-cons-threshold (* 16 1024 1024)  ; 16mb
-;;         ;; gcmh-verbose doom-debug-p
-;;         )
-;;   )
+(use-package hl-todo
+  ;; :defer t
+  :config
+  (setq hl-todo-keyword-faces
+        '(
+          ("TODO"   . "#1E90FF")
+          ("FIXME"  . "#FF0000")
+          ("DEBUG"  . "#A020F0")
+          ("GOTCHA" . "#FF4500")
+          ("STUB"   . "#1E90FF")
+          ))
+  (global-hl-todo-mode 1)
+  )
 
 
 (use-package imenu-anywhere
@@ -243,12 +243,6 @@
                              ;;   installing this tool at the OS level!
 ;; check this out here: https://github.com/alhassy/emacs.d
 
-;; lets you browse system packages with helm
-(use-package helm-system-packages
-  :defer t
-  :config
-
-  )
 
 ;; (use-package pdf-tools
 ;;   :defer t
