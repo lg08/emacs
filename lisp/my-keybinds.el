@@ -6,8 +6,8 @@
 (autoload 'View-scroll-half-page-forward "view") (autoload 'View-scroll-half-page-backward "view")
 
 (general-define-key
- "M-y" 'counsel-yank-pop
- "M-x" 'execute-extended-command
+ "M-y" 'helm-show-kill-ring
+ "M-x" 'helm-M-x
  "M-<down>" 'move-text-down
  "M-<up>" 'move-text-up
  ;; "C-s" 'swiper-isearch
@@ -195,6 +195,7 @@
   "t l" 'toggle-truncate-lines
   "i m" 'counsel-imenu
   "i a" 'ivy-imenu-anywhere
+  "s c" 'my/stage-all-and-commit
   )
 
 

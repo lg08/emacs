@@ -1,3 +1,5 @@
+;;; -*- lexical-binding: t -*-
+
 
 (use-package web-mode                   ;better web development major mode  :defer t
   :defer t

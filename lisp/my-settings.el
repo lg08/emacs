@@ -72,9 +72,9 @@
 
 ;; (setq scroll-margin 2)                  ;keeps the cursor this far away from screen edge
 
-;; (setq scroll-conservatively 10000)      ; only 'jump' when moving this far off the screen
+(setq scroll-conservatively 10000)      ; only 'jump' when moving this far off the screen
 
-;; (setq scroll-step 1)                    ; keyboard scroll one line at a time
+(setq scroll-step 1)                    ; keyboard scroll one line at a time
 
 (setq mouse-wheel-progressive-speed nil) ;don't accelerate scrolling
 
@@ -111,13 +111,13 @@
 
 ;; doc here: https://www.gnu.org/software/emacs/manual/html_node/emacs/Bidirectional-Editing.html
 ;; supposed to help with display rendering as seen from my reddit post about it
-;; (setq bidi-paragraph-direction 'left-to-right
-;;       bidi-inhibit-bpa t)
+(setq bidi-paragraph-direction 'left-to-right
+      bidi-inhibit-bpa t)
 ;; Disable bidirectional text rendering for a modest performance boost. I've set
 ;; this to `nil' in the past, but the `bidi-display-reordering's docs say that
 ;; is an undefined state and suggest this to be just as good:
-;; (setq-default bidi-display-reordering 'left-to-right
-;;               bidi-paragraph-direction 'left-to-right)
+(setq-default bidi-display-reordering 'left-to-right
+              bidi-paragraph-direction 'left-to-right)
 
 ;; (setq visual-order-cursor-movement t)
 

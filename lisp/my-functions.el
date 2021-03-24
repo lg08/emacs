@@ -1,5 +1,14 @@
 ;; loads all custom functions
 
+
+(defun my/stage-all-and-commit ()
+  (interactive)
+
+  (shell-command "git add .")
+  (magit-commit-create)
+
+  )
+
 (defun my/export-cover-letter ()
   "trying to export my cover letter automatically"
   (interactive)
@@ -47,6 +56,7 @@ buffer and output the whole cover letter"
     (yank)
     )
 
+
   ;; replace all address 2's
   (other-window 1)
   (goto-line 3)
@@ -72,7 +82,6 @@ buffer and output the whole cover letter"
   (delete-other-windows)
   (re-search-forward "Lucas_Gen_Cover_Letter.pdf")
   )
-
 
 
 ;; ;; sets gargage collection very high while in minibuffer

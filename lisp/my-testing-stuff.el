@@ -12,6 +12,12 @@
 
 ;; (setq org-format-latex-options (plist-put org-format-latex-options :scale 2.0))
 
+(use-package smooth-scrolling
+  :defer t
+  :config
+
+  )
+
 
 (setq frame-title-format
       '("" invocation-name ": "
