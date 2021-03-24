@@ -1,5 +1,12 @@
 
 ;; helm -------------------------------------------------------
+
+(use-package helm
+  :config
+
+  )
+
+
 ;; lets you browse system packages with helm
 (use-package helm-system-packages
   :defer t
