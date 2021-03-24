@@ -194,6 +194,7 @@
   "t l" 'toggle-truncate-lines
   "i m" 'counsel-imenu
   "i a" 'ivy-imenu-anywhere
+  "s c" 'my/stage-all-and-commit
   )
 
 

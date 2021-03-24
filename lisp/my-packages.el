@@ -112,6 +112,8 @@ pressed twice.
   :config
   (setq magit-refresh-status-buffer nil)
   (setq magit-revision-insert-related-refs 'nil)
+  (remove-hook 'server-switch-hook 'magit-commit-diff)
+
 
   ;; (add-to-list 'magit-no-confirm 'stage-all-changes)
   ;; (remove-hook 'server-switch-hook 'magit-commit-diff)
