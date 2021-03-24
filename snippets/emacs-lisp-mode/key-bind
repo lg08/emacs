@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: key-bind
+# key: bind
+# --
+(define-key ${1:KEYMAP} (kbd "${2:KEY}") ${3:DEF})$0

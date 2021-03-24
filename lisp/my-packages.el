@@ -162,6 +162,17 @@ pressed twice.
   :config
   (eyebrowse-mode 1)
   (setq eyebrowse-new-workspace t)
+  (eyebrowse-rename-window-config 1 "home")
+  (eyebrowse-switch-to-window-config-2)
+  (eyebrowse-rename-window-config 2 "files")
+  (find-file "~/")
+  (eyebrowse-switch-to-window-config-3)
+  (eyebrowse-rename-window-config 3 "3")
+  (eyebrowse-switch-to-window-config-4)
+  (eyebrowse-rename-window-config 4 "4")
+  (eyebrowse-switch-to-window-config-5)
+  (eyebrowse-rename-window-config 5 "5")
+  (eyebrowse-switch-to-window-config-1)
   )
 
 

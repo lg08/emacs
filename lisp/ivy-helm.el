@@ -3,9 +3,21 @@
 
 (use-package helm
   :config
+  (helm-adaptive-mode 1)
+  (helm-mode)
+  )
+
+(use-package helm-themes
+  :defer t
+  :config
 
   )
 
+(use-package helm-spotify-plus
+  ;; :defer t
+  :config
+
+  )
 
 ;; lets you browse system packages with helm
 (use-package helm-system-packages
@@ -25,7 +37,7 @@
 
 (use-package ivy
   :init
-  (ivy-mode)
+  ;; (ivy-mode)
   :defer t
   :config
   (setq ivy-use-virtual-buffers t       ;    Add recent files and bookmarks to the ivy-switch-buffer
@@ -59,13 +71,13 @@
   (setq prescient-save-file (expand-file-name "prescient-save.el" gemacs-misc-dir))
   :ensure t
   :config
-  (prescient-persist-mode +1)
+  ;; (prescient-persist-mode +1)
 
   )
 
 (use-package ivy-prescient              ;integrates prescient with ivy
   :init
-  (ivy-prescient-mode)
+  ;; (ivy-prescient-mode)
   :defer t
   :config
 

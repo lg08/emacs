@@ -11,65 +11,161 @@
   "Do we have clangd?")
 
 
+
+
+
+
+
 (use-package company
-  :diminish company-mode
+  :ensure t
+  :delight
+  :bind (("C-c ." . company-complete)
+         ("C-c C-." . company-complete)
+         ("C-c s s" . company-yasnippet)
+         :map company-active-map
+         ("C-j" . company-select-next)
+         ("C-k" . company-select-previous)
+         ("C-d" . company-show-doc-buffer)
+         ("M-." . company-show-location))
   :init
-  (setq company-backends '((company-files company-keywords company-capf
-                                          company-dabbrev-code
-                                          company-etags company-dabbrev)))
-  (global-company-mode 1)
-  :hook ((prog-mode LaTeX-mode latex-mode ess-r-mode) . company-mode)
-  :bind
-  (:map company-active-map
-        ("C-j" . company-select-next)
-        ("C-k" . company-select-previous)
-        ([tab] . user/company-complete-selection)
-        ("TAB" . user/company-complete-selection)
-        )
-  :custom
-  (company-minimum-prefix-length 1)
-  (company-tooltip-align-annotations t)
-  (company-require-match 'never)
-  ;; Don't use company in the following modes
-  (company-global-modes '(not shell-mode eaf-mode))
-  ;; Trigger completion immediately.
-  (company-idle-delay 0.2)
-  ;; Number the candidates (use M-1, M-2 etc to select completions).
-  (company-show-numbers t)
+  (add-hook 'c-mode-common-hook 'company-mode)
+  (add-hook 'sgml-mode-hook 'company-mode)
+  (add-hook 'emacs-lisp-mode-hook 'company-mode)
+  (add-hook 'text-mode-hook 'company-mode)
+  (add-hook 'lisp-mode-hook 'company-mode)
   :config
-  ;; (unless clangd-p (delete 'company-clang company-backends))
-  (global-company-mode 1)
-  ;; (defun smarter-tab-to-complete ()
-;;     "Try to `org-cycle', `yas-expand', and `yas-next-field' at current cursor position.
+  (eval-after-load 'c-mode
+    '(define-key c-mode-map (kbd "[tab]") 'company-complete))
 
-;; If all failed, try to complete the common part with `company-complete-common'"
-;;     (interactive)
-;;     (if yas-minor-mode
-;;         (let ((old-point (point))
-;;               (old-tick (buffer-chars-modified-tick))
-;;               (func-list '(org-cycle yas-expand yas-next-field)))
-;;           (catch 'func-suceed
-;;             (dolist (func func-list)
-;;               (ignore-errors (call-interactively func))
-;;               (unless (and (eq old-point (point))
-;;                            (eq old-tick (buffer-chars-modified-tick)))
-;;                 (throw 'func-suceed t)))
-;;             (company-complete-common)))))
-  )
+  (setq company-tooltip-limit 20)
+  (setq company-show-numbers t)
+  (setq company-dabbrev-downcase nil)
+  (setq company-idle-delay 0)
+  (setq company-echo-delay 0)
+  ;; (setq company-ispell-dictionary (f-join tychoish-config-path "aspell-pws"))
 
-(defun text-mode-hook-setup ()
-  ;; make `company-backends' local is critcal
-  ;; or else, you will have completion in every major mode, that's very annoying!
-  ;; (make-local-variable 'company-backends)
+  (setq company-backends '(company-capf
+                           company-keywords
+                           company-semantic
+                           company-files
+                           company-etags
+                           company-elisp
+                           company-clang
+                           ;; company-irony-c-headers
+                           company-irony
+                           company-jedi
+                           company-cmake
+                           company-ispell
+                           company-yasnippet))
 
-  ;; company-ispell is the plugin to complete words
-  (add-to-list 'company-backends 'company-ispell)
+  (global-company-mode))
 
-  ;; OPTIONAL, if `company-ispell-dictionary' is nil, `ispell-complete-word-dict' is used
-  ;;  but I prefer hard code the dictionary path. That's more portable.
-  (setq company-ispell-dictionary (file-truename "~/.emacs.d/english-words.txt")))
+(use-package company-quickhelp
+  :after company
+  :config
+  (setq company-quickhelp-idle-delay 0.1)
+  (company-quickhelp-mode 1))
 
-(add-hook 'text-mode-hook 'text-mode-hook-setup)
+(use-package company-irony
+  :ensure t
+  :after (company irony)
+  :commands (company-irony)
+  :config
+  (add-hook 'irony-mode-hook 'company-irony-setup-begin-commands))
+
+(use-package company-irony-c-headers
+  :ensure t
+  :commands (company-irony-c-headers)
+  :after company-irony)
+
+(use-package company-jedi
+  :ensure t
+  :commands (company-jedi)
+  :after (company python-mode))
+
+(use-package company-statistics
+  :ensure t
+  :after company
+  :config
+  (company-statistics-mode))
+
+
+(use-package helm-company
+   :ensure t
+   :after (helm company)
+   :bind (("C-c C-;" . helm-company))
+   :commands (helm-company)
+   :init
+   (define-key company-mode-map (kbd "C-;") 'helm-company)
+   (define-key company-active-map (kbd "C-;") 'helm-company))
+
+
+
+
+
+;; (use-package company
+;;   :diminish company-mode
+;;   :init
+;;   (setq company-backends '((company-files company-keywords company-capf
+;;                                           company-dabbrev-code
+;;                                           company-etags company-dabbrev
+;;                                           company-semantic company-etags
+;;                                           company-elisp company-jedi
+;;                                           company-cmake company-yasnippet
+;;                                           )))
+;;   (global-company-mode 1)
+;;   :hook ((prog-mode LaTeX-mode latex-mode ess-r-mode) . company-mode)
+;;   :bind
+;;   (:map company-active-map
+;;         ("C-j" . company-select-next)
+;;         ("C-k" . company-select-previous)
+;;         ([tab] . user/company-complete-selection)
+;;         ("TAB" . user/company-complete-selection)
+;;         )
+;;   :custom
+;;   (company-minimum-prefix-length 0)
+;;   (company-tooltip-align-annotations t)
+;;   (company-require-match 'never)
+;;   ;; Don't use company in the following modes
+;;   (company-global-modes '(not shell-mode eaf-mode))
+;;   ;; Trigger completion immediately.
+;;   (company-idle-delay 0.0)
+;;   ;; Number the candidates (use M-1, M-2 etc to select completions).
+;;   (company-show-numbers t)
+;;   :config
+;;   ;; (unless clangd-p (delete 'company-clang company-backends))
+;;   (global-company-mode 1)
+;;   ;; (defun smarter-tab-to-complete ()
+;; ;;     "Try to `org-cycle', `yas-expand', and `yas-next-field' at current cursor position.
+
+;; ;; If all failed, try to complete the common part with `company-complete-common'"
+;; ;;     (interactive)
+;; ;;     (if yas-minor-mode
+;; ;;         (let ((old-point (point))
+;; ;;               (old-tick (buffer-chars-modified-tick))
+;; ;;               (func-list '(org-cycle yas-expand yas-next-field)))
+;; ;;           (catch 'func-suceed
+;; ;;             (dolist (func func-list)
+;; ;;               (ignore-errors (call-interactively func))
+;; ;;               (unless (and (eq old-point (point))
+;; ;;                            (eq old-tick (buffer-chars-modified-tick)))
+;; ;;                 (throw 'func-suceed t)))
+;; ;;             (company-complete-common)))))
+;;   )
+
+;; (defun text-mode-hook-setup ()
+;;   ;; make `company-backends' local is critcal
+;;   ;; or else, you will have completion in every major mode, that's very annoying!
+;;   ;; (make-local-variable 'company-backends)
+
+;;   ;; company-ispell is the plugin to complete words
+;;   (add-to-list 'company-backends 'company-ispell)
+
+;;   ;; OPTIONAL, if `company-ispell-dictionary' is nil, `ispell-complete-word-dict' is used
+;;   ;;  but I prefer hard code the dictionary path. That's more portable.
+;;   (setq company-ispell-dictionary (file-truename "~/.emacs.d/english-words.txt")))
+
+;; (add-hook 'text-mode-hook 'text-mode-hook-setup)
 
 
 

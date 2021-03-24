@@ -5,8 +5,8 @@
   )
 
 (setq elpy-rpc-python-command "python3") ;only if you're using python3
-;; (add-to-list (make-local-variable 'company-backends)
-;;              'company-anaconda)
+(add-to-list (make-local-variable 'company-backends)
+             'company-anaconda)
 (aggressive-indent-mode -1)
 
 (setq python-shell-interpreter "python3")

@@ -7,7 +7,7 @@
 
 (general-define-key
  "M-y" 'helm-show-kill-ring
- "M-x" 'execute-extended-command
+ "M-x" 'helm-M-x
  "M-<down>" 'move-text-down
  "M-<up>" 'move-text-up
  ;; "C-s" 'swiper-isearch
