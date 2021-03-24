@@ -6,7 +6,7 @@
 (autoload 'View-scroll-half-page-forward "view") (autoload 'View-scroll-half-page-backward "view")
 
 (general-define-key
- "M-y" 'counsel-yank-pop
+ "M-y" 'helm-show-kill-ring
  "M-x" 'execute-extended-command
  "M-<down>" 'move-text-down
  "M-<up>" 'move-text-up
