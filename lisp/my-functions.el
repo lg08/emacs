@@ -74,7 +74,6 @@ buffer and output the whole cover letter"
   )
 
 
-
 ;; ;; sets gargage collection very high while in minibuffer
 ;; (add-hook 'minibuffer-setup-hook #'my/minibuffer-setup-hook)
 ;; (add-hook 'minibuffer-exit-hook #'my/minibuffer-exit-hook)
