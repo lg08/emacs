@@ -82,6 +82,7 @@
  :keymaps 'helm-map
  "C-j" 'helm-next-line
  "C-k" 'helm-previous-line
+ "C-h" 'helm-find-files-up-one-level
  )
 
 (general-define-key
