@@ -1,5 +1,14 @@
 ;; loads all custom functions
 
+
+(defun my/stage-all-and-commit ()
+  (interactive)
+
+  (shell-command "git add .")
+  (magit-commit-create)
+
+  )
+
 (defun my/export-cover-letter ()
   "trying to export my cover letter automatically"
   (interactive)
@@ -46,6 +55,7 @@ buffer and output the whole cover letter"
     (replace-match "")
     (yank)
     )
+
 
   ;; replace all address 2's
   (other-window 1)
