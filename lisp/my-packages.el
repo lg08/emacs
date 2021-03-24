@@ -110,6 +110,9 @@ pressed twice.
 (use-package magit                      ;best github client
   :defer t
   :config
+  (setq magit-refresh-status-buffer nil)
+  (setq magit-revision-insert-related-refs 'nil)
+
   ;; (add-to-list 'magit-no-confirm 'stage-all-changes)
   ;; (remove-hook 'server-switch-hook 'magit-commit-diff)
 
