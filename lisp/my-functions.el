@@ -21,66 +21,69 @@
   "give it a company name and two lines of address in newlines on a
 buffer and output the whole cover letter"
   (interactive)
-  (split-window-right)
-  (find-file "~/Documents/princeton/resume/Lucas_Gen_Cover_Letter.tex")
-  (other-window 1)
-  (goto-line 1)
-  (kill-line)
-  (yank)
 
-  (other-window 1)
+  ;; grab the data
+  (goto-line 1)
+  (setq company-name (buffer-substring-no-properties (line-beginning-position) (line-end-position) ))
+  (goto-line 2)
+  (setq address1 (buffer-substring-no-properties (line-beginning-position) (line-end-position) ))
+  (goto-line 3)
+  (setq address2 (buffer-substring-no-properties (line-beginning-position) (line-end-position)))
+  (goto-line 4)
+  (setq quote (buffer-substring-no-properties (line-beginning-position) (line-end-position)))
+
+  ;; work on the tex file
+  (setq cover-letter-file  "~/Documents/princeton/resume/Lucas_Gen_Cover_Letter.tex")
+  (find-file cover-letter-file)
 
   ;; replace all company names
-  (while (re-search-forward "Alarm.com" nil t)
-    (replace-match "")
-    (yank)
+  (goto-line 1)
+  (replace-string "COMPANYHERE" company-name)
+
+  (goto-line 1)
+  (replace-string "ADDRESS1" address1)
+
+  (goto-line 1)
+  (if (s-equals? address2 "")
+      (replace-string "\\\\ ADDRESS2" "%% ADDRESS2")
+    (replace-string "ADDRESS2" address2)
     )
 
-  (while (re-search-backward "Alarm.com" nil t)
-    (replace-match "")
-    (yank)
-    )
-
-  ;; replace all address 1's
-  (other-window 1)
-  (goto-line 2)
-  (kill-line)
-  (yank)
-  (other-window 1)
-  (while (re-search-backward "ADDRESS1" nil t)
-    (replace-match "")
-    (yank)
-    )
-  (while (re-search-forward "ADDRESS1" nil t)
-    (replace-match "")
-    (yank)
-    )
+  (goto-line 1)
+  (replace-string "QUOTEHERE" quote)
 
 
-  ;; replace all address 2's
-  (other-window 1)
-  (goto-line 3)
-  (kill-line)
-  (yank)
-  (other-window 1)
-  (while (re-search-backward "ADDRESS2" nil t)
-    (replace-match "")
-    (yank)
-    )
-  (while (re-search-forward "ADDRESS2" nil t)
-    (replace-match "")
-    (yank)
-    )
   ;; save buffer
   (save-buffer)
   ;; export the new cover letter
   (my/export-cover-letter)
-  (undo)
+
+
+  ;; replace all company names
+  (goto-line 1)
+  (replace-string company-name "COMPANYHERE" )
+
+  (goto-line 1)
+  (replace-string address1 "ADDRESS1")
+
+  (goto-line 1)
+  (if (s-equals? address2 "")
+      (replace-string "%% ADDRESS2" "\\\\ ADDRESS2")
+    (replace-string "ADDRESS2" address2)
+    )
+
+  (goto-line 1)
+  (replace-string quote "QUOTEHERE")
+
   (save-buffer)
-  (shell-command "mv ~/Documents/princeton/resume/Lucas_Gen_Cover_Letter.pdf ~/Downloads/Lucas_Gen_Cover_Letter.pdf")
+  ;; (shell-command "mv ~/Documents/princeton/resume/Lucas_Gen_Cover_Letter.pdf ~/Downloads/Lucas_Gen_Cover_Letter.pdf")
+  (setq cover-letter-pdf (s-replace ".tex" ".pdf" cover-letter-file))
+  (setq company-slug (s-replace " " "_" company-name))
+  (shell-command (concat "mv " cover-letter-pdf " ~/Downloads/Lucas_Gen_Cover_Letter_" company-slug ".pdf"))
   (find-file "~/Downloads")
+  (revert-buffer)
   (delete-other-windows)
-  (re-search-forward "Lucas_Gen_Cover_Letter.pdf")
+  ;; (re-search-forward "Lucas_Gen_Cover_Letter.pdf")
   )
 
 

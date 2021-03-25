@@ -18,6 +18,12 @@
 
   )
 
+(use-package s
+  :defer t
+  :config
+
+  )
+
 
 (setq frame-title-format
       '("" invocation-name ": "
