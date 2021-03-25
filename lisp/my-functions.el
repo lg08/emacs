@@ -12,8 +12,8 @@
 (defun my/export-cover-letter ()
   "trying to export my cover letter automatically"
   (interactive)
-  (shell-command "xelatex ~/Documents/resume/Lucas_Gen_Cover_Letter.tex")
-  (async-shell-command "mupdf ~/Documents/resume/Lucas_Gen_Cover_Letter.pdf")
+  (shell-command "xelatex ~/Documents/princeton/resume/Lucas_Gen_Cover_Letter.tex")
+  (async-shell-command "mupdf ~/Documents/princeton/resume/Lucas_Gen_Cover_Letter.pdf")
   (delete-other-windows)
   )
 
@@ -22,7 +22,7 @@
 buffer and output the whole cover letter"
   (interactive)
   (split-window-right)
-  (find-file "~/Documents/resume/Lucas_Gen_Cover_Letter.tex")
+  (find-file "~/Documents/princeton/resume/Lucas_Gen_Cover_Letter.tex")
   (other-window 1)
   (goto-line 1)
   (kill-line)
@@ -31,12 +31,12 @@ buffer and output the whole cover letter"
   (other-window 1)
 
   ;; replace all company names
-  (while (re-search-forward "COMPANYHERE" nil t)
+  (while (re-search-forward "Alarm.com" nil t)
     (replace-match "")
     (yank)
     )
 
-  (while (re-search-backward "COMPANYHERE" nil t)
+  (while (re-search-backward "Alarm.com" nil t)
     (replace-match "")
     (yank)
     )
@@ -77,7 +77,7 @@ buffer and output the whole cover letter"
   (my/export-cover-letter)
   (undo)
   (save-buffer)
-  (shell-command "mv ~/Documents/resume/Lucas_Gen_Cover_Letter.pdf ~/Downloads/Lucas_Gen_Cover_Letter.pdf")
+  (shell-command "mv ~/Documents/princeton/resume/Lucas_Gen_Cover_Letter.pdf ~/Downloads/Lucas_Gen_Cover_Letter.pdf")
   (find-file "~/Downloads")
   (delete-other-windows)
   (re-search-forward "Lucas_Gen_Cover_Letter.pdf")
