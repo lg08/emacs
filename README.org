@@ -13,7 +13,9 @@ Welcome to my emacs configuration. \\
 
 If you know me well, you'll know that this place means a lot to
 me. If you don't know me, but for some reason want to, this is
-honestly maybe one of the best places to start. I go back and forth
+honestly maybe one of the best places to start.
+
+I go back and forth
 over time, but it seems to me to be pretty reasonable that who a
 person is, is some sort of culmination of their thoughts and
 goals. It has to be more than merely the sum of biological parts since
@@ -21,7 +23,9 @@ people are constantly replacing biological parts and it seems pretty
 clear that the person doesn't change before and after. Now most people
 would argue that while replacing a biological arm with a mechanical
 one doesn't change the person, replacing, say parts of the brain with
-mechanical parts does. But why? If theoretically, parts of the brain
+mechanical parts does.
+
+But why? If theoretically, parts of the brain
 are replaced with mechanical parts that function exactly the same, it
 seems pretty reasonable to me that the person has not
 changed. Therefore, saying that the person has changed after a
@@ -29,7 +33,9 @@ certain replacement of a biological part with a mechanical one despite
 everything working the exact same seems completely arbitrary. Given
 that the self is separate from the physical body, we have to come to
 the conclusion that the self is actually some sort of culmination of
-thoughts and goals and processes that make up a person. And so if you
+thoughts and goals and processes that make up a person.
+
+And so if you
 for some reason want to get to know my self, it seems to me to be a
 pretty good place to look right here, in my emacs configuration, as it
 reflects my thoughts, goals, priorities, workflows, ambitions,
