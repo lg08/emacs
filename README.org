@@ -42,7 +42,7 @@ reflects my thoughts, goals, priorities, workflows, ambitions,
 preferences, etc. So welcome, to my emacs configuration. Please, take
 a look around, and meet me. If you have any questions or comments, or
 just want to talk about some nerdy stuff, please hit me up anytime,
-all my contact information can be found on [[https:www.lucasgen.com][my website]].
+all my contact information can be found on [[https://www.lucasgen.com][my website]].
 
 
 # Ever since the summer after my freshman year of college, I've been
