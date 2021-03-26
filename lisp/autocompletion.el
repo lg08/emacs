@@ -40,8 +40,9 @@
   (setq company-tooltip-limit 20)
   (setq company-show-numbers t)
   (setq company-dabbrev-downcase nil)
-  (setq company-idle-delay 0)
+  (setq company-idle-delay 0.2)
   (setq company-echo-delay 0)
+  (setq company-minimum-prefix-length 2)
   ;; (setq company-ispell-dictionary (f-join tychoish-config-path "aspell-pws"))
 
   (setq company-backends '(company-capf

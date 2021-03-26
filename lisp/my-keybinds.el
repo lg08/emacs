@@ -167,7 +167,7 @@
   ;; "x k" 'persp-remove-buffer
   ;; "x c" 'persp-kill
   ;; "b b" 'ivy-switch-buffer
-  "b b" 'helm-mini
+  "b" 'helm-mini
   ;; "b a" 'persp-switch-to-buffer
   "o o" 'other-window
   "1" 'delete-other-windows

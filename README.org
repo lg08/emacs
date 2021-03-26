@@ -3,126 +3,172 @@
 \\
 
 #+BEGIN_QUOTE
-While any text editor can save your files, only Emacs can save your soul. – PerAbrahamsen
+While any text editor can save your files, only Emacs can save your
+soul. – PerAbrahamsen
 #+END_QUOTE
 
 \\
 
-This quote just really hits home with me.
-Yes, I am a computer science student, planning on becoming a software engineer.
-Yes, I do write some sort of code almost every day, but even if I didn't I would still use emacs every day.
-The level of comfort I get from just being inside this emacs configuration that I have worked on and tailored to my exact workflow is unparalleled.
+Welcome to my emacs configuration. \\
 
-** Who this is for
-This configuration is somewhat of a hackjob, constantly changing, and yet unbelievably functional.
-This configuration is very effective, I can tell you that for certain.
-However, it's very effective for me.
-I built this conf for me, so it will likely be quite hard for someone else to step in and be fluent right away.
-
-** Keybindings
-While most of the default keybindings are left intact (mainly because I don't use them) I've implemented a modal system of editing using the Modalka package.
-My modal keybindings are not vim bindings at all.
-I did take some inspiration from the likes of evil, but the bindings are all different.
-I tried to make them very ergonomic and intuitive, and they certainly are for me, but again, this may not be the case for other people.
-
-
-* Configuration
-
-#+BEGIN_SRC emacs-lisp
-    ;; it.el, main config file, basically just sets things up and loads other files
-
-        (setq user-full-name "Lucas Gen")
-        (setq user-mail-address "lucasgen08@gmail.com")
-
-        (message "Gemacs is powering up... Be patient, Master %s!" user-full-name)
-
-        (when (version< emacs-version "25.1")
-          (error "Sorry, gemacs requires GNU Emacs 25.1 or newer, but you're running %s" emacs-version))
+If you know me well, you'll know that this place means a lot to
+me. If you don't know me, but for some reason want to, this is
+honestly maybe one of the best places to start. I go back and forth
+over time, but it seems to me to be pretty reasonable that who a
+person is, is some sort of culmination of their thoughts and
+goals. It has to be more than merely the sum of biological parts since
+people are constantly replacing biological parts and it seems pretty
+clear that the person doesn't change before and after. Now most people
+would argue that while replacing a biological arm with a mechanical
+one doesn't change the person, replacing, say parts of the brain with
+mechanical parts does. But why? If theoretically, parts of the brain
+are replaced with mechanical parts that function exactly the same, it
+seems pretty reasonable to me that the person has not
+changed. Therefore, saying that the person has changed after a
+certain replacement of a biological part with a mechanical one despite
+everything working the exact same seems completely arbitrary. Given
+that the self is separate from the physical body, we have to come to
+the conclusion that the self is actually some sort of culmination of
+thoughts and goals and processes that make up a person. And so if you
+for some reason want to get to know my self, it seems to me to be a
+pretty good place to look right here, in my emacs configuration, as it
+reflects my thoughts, goals, priorities, workflows, ambitions,
+preferences, etc. So welcome, to my emacs configuration. Please, take
+a look around, and meet me. If you have any questions or comments, or
+just want to talk about some nerdy stuff, please hit me up anytime,
+all my contact information can be found on [[https:www.lucasgen.com][my website]].
 
 
-        ;; define the folders needed for this configuration
-        (defvar gemacs-dir (file-name-directory load-file-name)
-          "The root dir of this distribution.")
-        (defvar gemacs-lisp-dir (expand-file-name "lisp" gemacs-dir)
-          "Where all the lisp files for gemacs are stored.")
-        (defvar gemacs-themes-dir (expand-file-name "themes" gemacs-dir)
-          "Where all the custom themes for gemacs are stored.")
-        (defvar gemacs-misc-dir (expand-file-name "misc" gemacs-dir)
-          "Where all the miscellaneous auto-made files for gemacs are stored.")
+# Ever since the summer after my freshman year of college, I've been
+# using emacs for almost everything I do that involves text. It's gotten
+# to the point where if I have to fill out a form on a website that's
+# more than a couple lines, I whip out an emacs client from my
+# constantly running daemon, hammer out the text in my scratch buffer,
+# then copy it over. For those of you who are wondering how I've become
+# so dependent on this beautiful text editor, let me give you a little intro.
 
-        ;; make the folders if necessary
-        (unless (file-exists-p gemacs-lisp-dir)
-          (make-directory gemacs-lisp-dir))
-        (unless (file-exists-p gemacs-themes-dir)
-          (make-directory gemacs-themes-dir))
-        (unless (file-exists-p gemacs-misc-dir)
-          (make-directory gemacs-misc-dir))
+# Emacs is a very flawed text editor. Certain aspects of it are very old
+# and outdated and really need to be improved at some point. However, it
+# is a text editor that is designed to be programmed, and because of
+# this, it's wildly functional. As a programmer, there's nothing I love
+# more than having the ability to write code to improve my daily life,
+# and that's what emacs makes it so easy to do.
 
-        ;; makes gemacs look for all our personal files
-        (add-to-list 'load-path gemacs-lisp-dir)
-        ;; tells gemacs where to look for personally loaded themes
-        (add-to-list 'custom-theme-load-path gemacs-themes-dir)
+# This quote just really hits home with me.  Yes, I am a computer
+# science student, planning on becoming a software engineer.  Yes, I do
+# write some sort of code almost every day, but even if I didn't I would
+# still use emacs every day.  The level of comfort I get from just being
+# inside this emacs configuration that I have worked on and tailored to
+# my exact workflow is unparalleled.
 
-        ;; declares the custom file and loads it
-        ;; (setq custom-file (concat gemacs-lisp-dir "custom-file.el"))
-        ;; (when (file-exists-p custom-file)
-        ;;   (load custom-file))
-        (setq custom-file (make-temp-file ""))
-        (setq custom-safe-themes t)
+# ** Who this is for
+# This configuration is somewhat of a hackjob, constantly changing, and
+# yet unbelievably functional.  This configuration is very effective, I
+# can tell you that for certain.  However, it's very effective for me.
+# I built this conf for me, so it will likely be quite hard for someone
+# else to step in and be fluent right away.
 
-
-
-        ;; bootstraps straight
-        (defvar bootstrap-version)
-        (let ((bootstrap-file
-               (expand-file-name "straight/repos/straight.el/bootstrap.el" user-emacs-directory))
-              (bootstrap-version 5))
-          (unless (file-exists-p bootstrap-file)
-            (with-current-buffer
-                (url-retrieve-synchronously
-                 "https://raw.githubusercontent.com/raxod502/straight.el/develop/install.el"
-                 'silent 'inhibit-cookies)
-              (goto-char (point-max))
-              (eval-print-last-sexp)))
-          (load bootstrap-file nil 'nomessage))
-
-          ;; replaces use-package with straight-use-package
-          (straight-use-package 'use-package)
-          (setq straight-use-package-by-default t)
-
-          ;; loads the theme
-          (straight-use-package 'doom-themes)
-         (load-theme 'doom-nord)
-          ;; (set-background-color "black")
+# ** Keybindings
+# While most of the default keybindings are left intact (mainly because
+# I don't use them) I've implemented a modal system of editing using the
+# Modalka package.  My modal keybindings are not vim bindings at all.  I
+# did take some inspiration from the likes of evil, but the bindings are
+# all different.  I tried to make them very ergonomic and intuitive, and
+# they certainly are for me, but again, this may not be the case for
+# other people.
 
 
-          (message "Loading Gemacs' configurations...")
+# * Configuration
 
-          ;; requires all necessary files
-          (require 'my-functions)
+# #+BEGIN_SRC emacs-lisp
+#     ;; it.el, main config file, basically just sets things up and
+#        loads other files
 
-          (require 'my-settings)
+#         (setq user-full-name "Lucas Gen") (setq user-mail-address
+#         "lucasgen08@gmail.com")
 
-          (require 'my-packages)
+#         (message "Gemacs is powering up... Be patient, Master %s!"
+#         user-full-name)
 
-          (require 'my-keybinds)
+#         (when (version< emacs-version "25.1") (error "Sorry, gemacs
+#           requires GNU Emacs 25.1 or newer, but you're running %s"
+#           emacs-version))
 
-          (require 'my-skeletons)
 
-          (require 'my-modes)
+#         ;; define the folders needed for this configuration (defvar
+#         gemacs-dir (file-name-directory load-file-name) "The root dir
+#         of this distribution.")  (defvar gemacs-lisp-dir
+#         (expand-file-name "lisp" gemacs-dir) "Where all the lisp files
+#         for gemacs are stored.")  (defvar gemacs-themes-dir
+#         (expand-file-name "themes" gemacs-dir) "Where all the custom
+#         themes for gemacs are stored.")  (defvar gemacs-misc-dir
+#         (expand-file-name "misc" gemacs-dir) "Where all the
+#         miscellaneous auto-made files for gemacs are stored.")
 
-          (require 'my-testing-stuff)
+#         ;; make the folders if necessary (unless (file-exists-p
+#         gemacs-lisp-dir) (make-directory gemacs-lisp-dir)) (unless
+#         (file-exists-p gemacs-themes-dir) (make-directory
+#         gemacs-themes-dir)) (unless (file-exists-p gemacs-misc-dir)
+#         (make-directory gemacs-misc-dir))
 
-          ;; startup message
-          (setq startup-message
-              (format "Welcome back old friend. Emacs ready in %.2f seconds with %d garbage collections."
-                      (float-time (time-subtract after-init-time before-init-time)) gcs-done))
-       (defun display-startup-echo-area-message ()
-       (display-message-or-buffer startup-message))
-          (message startup-message)
+#         ;; makes gemacs look for all our personal files (add-to-list
+#         'load-path gemacs-lisp-dir) ;; tells gemacs where to look for
+#         personally loaded themes (add-to-list 'custom-theme-load-path
+#         gemacs-themes-dir)
 
-        ;; sets up frame title and initial scratch messsage
-        ;; (setq frame-title-format '("" "%b - My-Dope-Ass Config"))
-        (setq initial-scratch-message "Welcome back old friend... \n\nEmacs is here. You're ok now.\n\n\n")
+#         ;; declares the custom file and loads it (setq custom-file
+#         ;; (concat gemacs-lisp-dir "custom-file.el")) (when
+#         ;; (file-exists-p custom-file) (load custom-file)) (setq
+#         ;; custom-file (make-temp-file "")) (setq custom-safe-themes
+#         ;; t)
 
-  #+END_SRC
+
+
+#         ;; bootstraps straight (defvar bootstrap-version) (let
+#         ((bootstrap-file (expand-file-name
+#         "straight/repos/straight.el/bootstrap.el"
+#         user-emacs-directory)) (bootstrap-version 5)) (unless
+#         (file-exists-p bootstrap-file) (with-current-buffer
+#         (url-retrieve-synchronously
+#         "https://raw.githubusercontent.com/raxod502/straight.el/develop/install.el"
+#         'silent 'inhibit-cookies) (goto-char (point-max))
+#         (eval-print-last-sexp))) (load bootstrap-file nil 'nomessage))
+
+#           ;; replaces use-package with straight-use-package
+#           (straight-use-package 'use-package) (setq
+#           straight-use-package-by-default t)
+
+#           ;; loads the theme (straight-use-package 'doom-themes)
+#           (load-theme 'doom-nord) ;; (set-background-color "black")
+
+
+#           (message "Loading Gemacs' configurations...")
+
+#           ;; requires all necessary files (require 'my-functions)
+
+#           (require 'my-settings)
+
+#           (require 'my-packages)
+
+#           (require 'my-keybinds)
+
+#           (require 'my-skeletons)
+
+#           (require 'my-modes)
+
+#           (require 'my-testing-stuff)
+
+#           ;; startup message (setq startup-message (format "Welcome
+#           back old friend. Emacs ready in %.2f seconds with %d garbage
+#           collections."  (float-time (time-subtract after-init-time
+#           before-init-time)) gcs-done)) (defun
+#           display-startup-echo-area-message ()
+#           (display-message-or-buffer startup-message)) (message
+#           startup-message)
+
+#         ;; sets up frame title and initial scratch messsage (setq
+#         ;; frame-title-format '("" "%b - My-Dope-Ass Config")) (setq
+#         ;; initial-scratch-message "Welcome back old
+#         ;; friend... \n\nEmacs is here. You're ok now.\n\n\n")
+
+#   #+END_SRC
