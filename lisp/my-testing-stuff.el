@@ -42,6 +42,18 @@
 
   )
 
+(use-package json
+  :defer t
+  :config
+
+  )
+
+(use-package url
+  :defer t
+  :config
+
+  )
+
 
 (setq frame-title-format
       '("" invocation-name ": "
