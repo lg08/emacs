@@ -83,6 +83,17 @@
  "C-j" 'helm-next-line
  "C-k" 'helm-previous-line
  "C-h" 'helm-find-files-up-one-level
+ "C-l" 'helm-execute-persistent-action
+ )
+
+(general-define-key
+ :keymaps 'helm-find-files-map
+ "C-l" 'helm-execute-persistent-action
+ )
+
+(general-define-key
+ :keymaps 'helm-read-file-map
+ "C-l" 'helm-execute-persistent-action
  )
 
 (general-define-key
@@ -167,7 +178,7 @@
   ;; "x k" 'persp-remove-buffer
   ;; "x c" 'persp-kill
   ;; "b b" 'ivy-switch-buffer
-  "b b" 'helm-mini
+  "b" 'helm-mini
   ;; "b a" 'persp-switch-to-buffer
   "o o" 'other-window
   "1" 'delete-other-windows

@@ -1,3 +1,5 @@
+;;; -*- lexical-binding: t -*-
+
 ;; loads all custom functions
 
 
@@ -44,7 +46,7 @@ buffer and output the whole cover letter"
   (replace-string "ADDRESS1" address1)
 
   (goto-line 1)
-  (if (s-equals? address2 "")
+  (if (string= address2 "")
       (replace-string "\\\\ ADDRESS2" "%% ADDRESS2")
     (replace-string "ADDRESS2" address2)
     )
@@ -67,7 +69,7 @@ buffer and output the whole cover letter"
   (replace-string address1 "ADDRESS1")
 
   (goto-line 1)
-  (if (s-equals? address2 "")
+  (if (string= address2 "")
       (replace-string "%% ADDRESS2" "\\\\ ADDRESS2")
     (replace-string "ADDRESS2" address2)
     )
