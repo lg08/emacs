@@ -36,7 +36,7 @@ the conclusion that the self is actually some sort of culmination of
 thoughts and goals and processes that make up a person.
 
 And so if you
-for some reason want to get to know my self, it seems to me to be a
+for some reason want to get to know /my/ self, it seems to me to be a
 pretty good place to look right here, in my emacs configuration, as it
 reflects my thoughts, goals, priorities, workflows, ambitions,
 preferences, etc. So welcome, to my emacs configuration. Please, take
