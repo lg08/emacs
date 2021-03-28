@@ -12,10 +12,14 @@
   (evil-define-key 'normal 'global (kbd "M-k") 'windmove-up)
   (evil-define-key 'normal 'global (kbd "M-j") 'windmove-down)
   (evil-define-key 'normal org-mode-map (kbd "C-c b r") 'my/revert-other-buffer)
+  (evil-define-key 'normal org-mode-map (kbd "SPC e s") 'org-edit-special)
+  (evil-define-key 'normal 'global (kbd "SPC e s") 'org-edit-src-abort)
+  (evil-define-key 'normal 'global (kbd "u") 'undo-tree-undo)
   ;; (evil-define-key 'normal 'global (kbd "u") 'undo-tree-undo)
   (evil-define-key 'normal 'global (kbd "C-r") 'avy-goto-char-2)
   (evil-define-key 'normal 'global (kbd "g b") 'ivy-switch-buffer)
   (evil-define-key 'normal 'global (kbd "C-w C-e") 'eyebrowse-switch-to-window-config)
+  (evil-define-key 'normal 'global (kbd "g d") 'dumb-jump-go)
 
 
 (add-hook 'pdf-view-mode-hook

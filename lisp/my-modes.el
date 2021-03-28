@@ -1,7 +1,6 @@
 ;; sets up all the settings for different modes
 
 (add-hook 'text-mode-hook (lambda ()
-                            (auto-fill-mode 1)
                             (require 'autocompletion)
                             ))
 
@@ -21,6 +20,9 @@
                             (yas-global-mode 1)
                             (global-evil-surround-mode 1)
                             (highlight-numbers-mode 1)
+                            (adaptive-wrap-prefix-mode 1)
+                            (display-fill-column-indicator-mode 1)
+                            (auto-fill-mode 1)
                             (message "prog-mode loaded successfully")
                             ))
 

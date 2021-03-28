@@ -1,3 +1,5 @@
+;;; -*- lexical-binding: t -*-
+
 ;; loads all custom functions
 
 

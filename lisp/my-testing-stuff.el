@@ -10,13 +10,31 @@
      (save-buffers-kill-emacs)))
 (global-set-key "\C-x\C-c" 'save-buffers-kill-emacs-with-confirm)
 
-;; (setq org-format-latex-options (plist-put org-format-latex-options :scale 2.0))
+;; (setq org-format-latex-options (plist-put org-format-latex-options
+;; :scale 2.0))
 
-(use-package smooth-scrolling
+;; Show the current function name in the header line
+(which-function-mode)
+(setq-default header-line-format
+              '((which-func-mode ("" which-func-format " "))))
+(setq mode-line-misc-info
+            ;; We remove Which Function Mode from the mode line, because it's mostly
+            ;; invisible here anyway.
+            (assq-delete-all 'which-func-mode mode-line-misc-info))
+
+
+
+
+
+(setq org-src-preserve-indentation t)
+(setq org-src-window-setup 'other-window)
+
+(use-package adaptive-wrap
   :defer t
   :config
 
   )
+
 
 (use-package s
   :defer t

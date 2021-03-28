@@ -6,6 +6,11 @@
 
 (require 'major-modes)                  ;makes all major modes available
 
+(require 'org-mode-loads)
+
+(require 'autocompletion)
+
+
 
 
 (use-package general                    ;keybinding system
