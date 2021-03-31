@@ -66,18 +66,11 @@
 (add-hook 'org-mode-hook (lambda ()
                            (require 'org-mode-loads)
                            (require 'autocompletion)
-                           (org-indent-mode)
-                           (org-bullets-mode)
+                           ;; (org-indent-mode)
+                           ;; (org-bullets-mode)
                            ;; (wakatime-mode)
                            ;; (setq org-agenda-files (list "~/.emacs.d/agenda.org"))
 
-                           (general-define-key
-                            :keymaps 'org-mode-map
-                            "M-h" 'windmove-left
-                            "M-l" 'windmove-right
-                            "M-j" 'windmove-down
-                            "M-k" 'windmove-up
-                            )
                            (message 'org-mode loaded successfully)
                            ))
 (add-hook 'tuareg-mode-hook (lambda ()

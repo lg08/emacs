@@ -25,6 +25,12 @@
 
   )
 
+(use-package helm-descbinds
+  :defer t
+  :config
+
+  )
+
 ;; ivy -------------------------------------------------------
 
 

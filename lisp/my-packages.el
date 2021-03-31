@@ -30,6 +30,12 @@
 
   )
 
+(use-package adaptive-wrap
+  :defer t
+  :config
+
+  )
+
 (use-package key-chord
   :defer 1
   :config
@@ -76,6 +82,14 @@ pressed twice.
   (doom-themes-visual-bell-config)
   (setq doom-themes-enable-bold t
         doom-themes-enable-italic t)
+  )
+
+(use-package doom-modeline
+  :init
+  (doom-modeline-mode 1)
+  :defer t
+  :config
+
   )
 
 
