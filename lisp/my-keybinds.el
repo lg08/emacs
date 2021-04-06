@@ -204,9 +204,10 @@
   "o v" 'my/overview
   "o a" 'my/exit-overview
   "t l" 'toggle-truncate-lines
-  "i m" 'counsel-imenu
+  "i m" 'helm-imenu
   "i a" 'ivy-imenu-anywhere
   "s c" 'my/stage-all-and-commit
+  "x e" 'my/xelatex-export-file
   )
 
 

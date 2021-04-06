@@ -14,9 +14,15 @@
 (defun my/export-cover-letter ()
   "trying to export my cover letter automatically"
   (interactive)
-  (shell-command "xelatex ~/Documents/princeton/resume/Lucas_Gen_Cover_Letter.tex")
+  (async-shell-command "xelatex ~/Documents/princeton/resume/Lucas_Gen_Cover_Letter.tex")
   (async-shell-command "mupdf ~/Documents/princeton/resume/Lucas_Gen_Cover_Letter.pdf")
   (delete-other-windows)
+  )
+
+(defun my/xelatex-export-file ()
+  (interactive)
+  (shell-command (concat "xelatex " buffer-file-name))
+  (async-shell-command "mupdf ~/OneDrive/resume/Lucas_Gen_Resume.pdf")
   )
 
 (defun my/make_cover_letter ()
