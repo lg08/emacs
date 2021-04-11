@@ -33,6 +33,11 @@
 ;;   :ensure t
 ;;   :init (company-auctex-init))
 
+(use-package base16-theme
+  :defer t
+  :config
+
+  )
 
 
 (provide 'my-testing-stuff)

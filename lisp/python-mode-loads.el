@@ -26,6 +26,12 @@
 
   )
 
+(use-package blacken
+  :defer t
+  :config
+
+  )
+
 (setq py-python-command "python3")
 (setq python-shell-interpreter "python3")
 
